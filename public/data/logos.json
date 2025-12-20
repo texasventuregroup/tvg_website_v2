@@ -1,0 +1,231 @@
+{
+  "tech": [
+    {
+      "name": "Google",
+      "image": "/assets/images/logo/home/google.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Apple",
+      "image": "/assets/images/logo/home/apple.png",
+      "colorPreservation": "inverse"
+    },
+    {
+      "name": "Microsoft",
+      "image": "/assets/images/logo/home/microsoft.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Amazon",
+      "image": "/assets/images/logo/home/amazon.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Tesla",
+      "image": "/assets/images/logo/home/tesla.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Palantir",
+      "image": "/assets/images/logo/home/palantir.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "DeepMind",
+      "image": "/assets/images/logo/home/deepmind.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Stripe",
+      "image": "/assets/images/logo/home/stripe.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Salesforce",
+      "image": "/assets/images/logo/home/salesforce.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Coinbase",
+      "image": "/assets/images/logo/home/coinbase.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Slack",
+      "image": "/assets/images/logo/home/slack.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Expedia",
+      "image": "/assets/images/logo/home/expedia.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "AMD",
+      "image": "/assets/images/logo/home/amd.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "MATLAB",
+      "image": "/assets/images/logo/home/matlab.png",
+      "colorPreservation": "inverse"
+    },
+    {
+      "name": "Raytheon Technologies",
+      "image": "/assets/images/logo/home/raytheon-technologies.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Texas Instruments",
+      "image": "/assets/images/logo/home/texas-instruments.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Y Combinator",
+      "image": "/assets/images/logo/home/yc.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Techstars",
+      "image": "/assets/images/logo/home/techstars.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Capital Factory",
+      "image": "/assets/images/logo/home/capital-factory.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Antler",
+      "image": "/assets/images/logo/home/antler.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Boring Company",
+      "image": "/assets/images/logo/home/boring.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Neo",
+      "image": "/assets/images/logo/home/neo.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Base",
+      "image": "/assets/images/logo/home/base.jpg",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Boundary",
+      "image": "/assets/images/logo/home/boundary.png",
+      "colorPreservation": "default"
+    }
+  ],
+  "finance": [
+    {
+      "name": "Goldman Sachs",
+      "image": "/assets/images/logo/home/goldman-sachs.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Jane Street",
+      "image": "/assets/images/logo/home/jane-street.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Harvard Business School",
+      "image": "/assets/images/logo/home/hbs.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Wells Fargo",
+      "image": "/assets/images/logo/home/wells-fargo.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Ares",
+      "image": "/assets/images/logo/home/ares.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "McKinsey",
+      "image": "/assets/images/logo/home/mck.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "BCG",
+      "image": "/assets/images/logo/home/bcg.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Bain",
+      "image": "/assets/images/logo/home/bain-and-company.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Accenture",
+      "image": "/assets/images/logo/home/accenture.svg",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "PwC",
+      "image": "/assets/images/logo/home/pwc.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Evercore",
+      "image": "/assets/images/logo/home/evercore.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Guggenheim",
+      "image": "/assets/images/logo/home/guggenheim.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Piper Sandler",
+      "image": "/assets/images/logo/home/piper-sandler.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Moelis",
+      "image": "/assets/images/logo/home/moelis.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Kleiner Perkins",
+      "image": "/assets/images/logo/home/kleiner-perkins.png",
+      "colorPreservation": "inverse"
+    },
+    {
+      "name": "8VC",
+      "image": "/assets/images/logo/home/8vc.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Battery Ventures",
+      "image": "/assets/images/logo/home/battery-ventures.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Soma Capital",
+      "image": "/assets/images/logo/home/soma-capital.png",
+      "colorPreservation": "default"
+    },
+    {
+      "name": "Contrary",
+      "image": "/assets/images/logo/home/contrary.png",
+      "colorPreservation": "preserve"
+    },
+    {
+      "name": "Republic",
+      "image": "/assets/images/logo/home/republic.png",
+      "colorPreservation": "inverse"
+    },
+    {
+      "name": "Mainsail",
+      "image": "/assets/images/logo/home/mainsail.png",
+      "colorPreservation": "default"
+    }
+  ]
+} 

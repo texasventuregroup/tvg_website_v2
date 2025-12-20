@@ -1,0 +1,271 @@
+{
+  "partnerships": [
+    {
+      "name": "Lazard",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "lazard.com",
+      "logo": "lazard.jpeg"
+    },
+    {
+      "name": "BMW iVentures",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Robotics",
+      "website": "bmwiventures.com",
+      "logo": "bmw.jpeg"
+    },
+    {
+      "name": "Midnight VP",
+      "type": "VC",
+      "tier": "B",
+      "industry": "Consumer",
+      "website": "midnightvp.com",
+      "logo": "midnight.jpeg"
+    },
+    {
+      "name": "Oxcart VC",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Deeptech",
+      "website": "oxcart.vc",
+      "logo": "oxcart.jpeg"
+    },
+    {
+      "name": "Overmatch VC",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Deeptech",
+      "website": "overmatch.vc",
+      "logo": "overmatch.jpeg"
+    },
+    {
+      "name": "Earl Grey Capital",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Generalist",
+      "website": "earlgrey.capital",
+      "logo": "earl-grey.jpeg"
+    },
+    {
+      "name": "Pipedream Labs",
+      "type": "Startup",
+      "tier": "B",
+      "industry": "Transportation",
+      "website": "pipedreamlabs.co",
+      "logo": "pipedream.jpeg"
+    },
+    {
+      "name": "Saronic",
+      "type": "Startup",
+      "tier": "S",
+      "industry": "Defense",
+      "website": "saronic.com",
+      "logo": "saronic.jpeg"
+    },
+    {
+      "name": "Base Power Company",
+      "shortName": "Base",
+      "type": "Startup",
+      "tier": "S",
+      "industry": "Energy",
+      "website": "basepowercompany.com",
+      "logo": "base.jpeg"
+    },
+    {
+      "name": "Learn Capital",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Edtech",
+      "website": "learn.vc",
+      "logo": "learn.jpeg"
+    },
+    {
+      "name": "Sweetspot",
+      "type": "Startup",
+      "tier": "B",
+      "industry": "SaaS",
+      "website": "sweetspot.so",
+      "logo": "sweetspot.jpeg"
+    },
+    {
+      "name": "Next Coast Ventures",
+      "type": "VC",
+      "tier": "B",
+      "industry": "SaaS",
+      "website": "nextcoastventures.com",
+      "logo": "next-coast.jpeg"
+    },
+    {
+      "name": "LiveOak Ventures",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Generalist",
+      "website": "liveoakvc.vc",
+      "logo": "liveoak.jpeg"
+    },
+    {
+      "name": "Energy Transition Ventures",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Energy",
+      "website": "energytransitionventures.com",
+      "logo": "etv.jpeg"
+    },
+    {
+      "name": "S3 Ventures",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Generalist",
+      "website": "s3vc.com",
+      "logo": "s3.jpeg"
+    },
+    {
+      "name": "BuildGroup",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Software",
+      "website": "buildgroup.com",
+      "logo": "buildgroup.jpeg"
+    },
+    {
+      "name": "Capital Creek Partners",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Generalist",
+      "website": "capitalcreek.com",
+      "logo": "ccp.jpeg"
+    },
+    {
+      "name": "Gothams",
+      "type": "VC",
+      "tier": "B",
+      "industry": "Deeptech",
+      "website": "gothams.com",
+      "logo": "gothams.jpeg"
+    },
+    {
+      "name": "Grafton Street Partners",
+      "type": "VC",
+      "tier": "A",
+      "industry": "Generalist",
+      "website": "graftonstreetpartners.com",
+      "logo": "grafton.jpeg"
+    },
+    {
+      "name": "NVIDIA",
+      "type": "Other",
+      "tier": "A",
+      "industry": "Generalist",
+      "website": "nvidia.com",
+      "logo": "nvidia.jpeg"
+    },
+    {
+      "name": "Mainshares",
+      "type": "Startup",
+      "tier": "B",
+      "industry": "Fintech",
+      "website": "mainshares.com",
+      "logo": "mainshares.jpeg"
+    },
+    {
+      "name": "Accenture",
+      "type": "Other",
+      "tier": "B",
+      "industry": "Consulting",
+      "website": "accenture.com",
+      "logo": "accenture.jpeg"
+    },
+    {
+      "name": "Insight Partners",
+      "type": "VC",
+      "tier": "S",
+      "industry": "Software",
+      "website": "insightpartners.com",
+      "logo": "insight.jpeg"
+    },
+    {
+      "name": "Oceans Ventures",
+      "type": "VC",
+      "tier": "B",
+      "industry": "Generalist",
+      "website": "oceans.ventures",
+      "logo": "oceans.jpeg"
+    },
+    {
+      "name": "Team8",
+      "type": "VC",
+      "tier": "B",
+      "industry": "Technology",
+      "website": "team8.vc",
+      "logo": "team8.jpeg"
+    },
+    {
+      "name": "RRE Ventures",
+      "type": "VC",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "rre.com",
+      "logo": "rre.jpeg"
+    },
+    {
+      "name": "Bessemer Venture Partners",
+      "shortName": "BVP",
+      "type": "VC",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "bvp.com",
+      "logo": "bvp.jpeg"
+    },
+    {
+      "name": "New Enterprise Associates",
+      "shortName": "NEA",
+      "type": "VC",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "nea.com",
+      "logo": "nea.jpeg"
+    },
+    {
+      "name": "Tacora Capital",
+      "type": "Asset Manager",
+      "tier": "A",
+      "industry": "Generalist",
+      "website": "tacoracap.com",
+      "logo": "tacora.jpeg"
+    },
+    {
+      "name": "Harvest Growth Capital",
+      "type": "Growth Equity",
+      "tier": "B",
+      "industry": "SaaS",
+      "website": "harvestgrowthcapital.com",
+      "logo": "harvest.jpeg"
+    },
+    {
+      "name": "8VC",
+      "type": "VC",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "8vc.com",
+      "logo": "8vc.jpeg"
+    },
+    {
+      "name": "Velo CFO",
+      "type": "Other",
+      "tier": "B",
+      "industry": "SaaS",
+      "website": "velocfo.com",
+      "logo": "velo.jpeg"
+    },
+    {
+      "name": "Dallas Venture Capital",
+      "type": "VC",
+      "tier": "B",
+      "industry": "SaaS",
+      "website": "dallasvc.com",
+      "logo": "dallas-venture-capital.jpeg"
+    }
+  ]
+}
