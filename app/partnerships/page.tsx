@@ -63,17 +63,21 @@ export default async function Partnerships() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="partnership-card partnership-card--logo-only"
-                title={partner.name}
               >
-                <img
-                  src={getLogoUrl(partner.website, 128)}
-                  alt={partner.name}
-                  width={100}
-                  height={100}
-                  className="partnership-card__logo"
-                  style={{ objectFit: 'contain' }}
-                  loading="lazy"
-                />
+                <div className="partnership-card__logo-container">
+                  <img
+                    src={getLogoUrl(partner.website, 128)}
+                    alt={partner.name}
+                    width={100}
+                    height={100}
+                    className="partnership-card__logo"
+                    style={{ objectFit: 'contain' }}
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="partnership-card__name">
+                  {partner.shortName || partner.name}
+                </h3>
               </a>
             ))}
           </div>
