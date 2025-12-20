@@ -62,16 +62,13 @@ export default async function Partnerships() {
                 href={`https://${partner.website}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="partnership-card partnership-card--logo-only"
+                className="partnership-card"
               >
                 <div className="partnership-card__logo-container">
                   <img
                     src={getLogoUrl(partner.website, 128)}
-                    alt={partner.name}
-                    width={100}
-                    height={100}
+                    alt={`${partner.name} logo`}
                     className="partnership-card__logo"
-                    style={{ objectFit: 'contain' }}
                     loading="lazy"
                   />
                 </div>
