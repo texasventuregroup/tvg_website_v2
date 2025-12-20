@@ -1,5 +1,7 @@
+'use client';
+
 import { useEffect, useState } from 'react';
-import LogoCarousel from '../components/LogoCarousel/LogoCarousel';
+import LogoCarousel from '../components/LogoCarousel';
 
 interface TimeLeft {
   days: number;
@@ -41,21 +43,19 @@ function useCountdown(targetDate: Date): TimeLeft {
 }
 
 export default function Join() {
-  const deadline = new Date('2025-09-07T23:59:00-06:00'); // Sept 7, 2025 11:59 PM CST
+  const deadline = new Date('2025-09-07T23:59:00-06:00');
   const timeLeft = useCountdown(deadline);
-
   const formatNumber = (num: number) => num.toString().padStart(2, '0');
 
   return (
     <>
-      {/* Hero Section */}
       <section className="hero">
         <div className="container">
           <div className="hero__content animate-in">
             <h1 className="hero__title">Join TVG</h1>
             <p className="hero__text">
               Applications for the Fall 2025 cohort are now closed. Stay tuned for Spring 2026
-              opportunities to join UT's premier venture capital and startup community.
+              opportunities to join UT&apos;s premier venture capital and startup community.
             </p>
             <div className="rules-banner">
               <div className="rules-banner__item">
@@ -68,7 +68,6 @@ export default function Join() {
               </div>
             </div>
 
-            {/* Countdown Timer */}
             <div className="countdown__header">Application Deadline</div>
             <div className="countdown">
               <div className="countdown__item">
@@ -90,14 +89,8 @@ export default function Join() {
             </div>
             <div className="countdown__deadline">September 7, 2025 at 11:59 PM CST</div>
 
-            <div
-              className="button-group button-group--centered"
-              style={{ marginTop: 'var(--spacing-lg)' }}
-            >
-              <span
-                className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              >
+            <div className="button-group button-group--centered" style={{ marginTop: 'var(--spacing-lg)' }}>
+              <span className="button button--primary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
                 Applications Closed
               </span>
               <a href="mailto:contact.txventuregroup@gmail.com" className="button">
@@ -108,7 +101,6 @@ export default function Join() {
         </div>
       </section>
 
-      {/* Logo Carousel Section */}
       <section className="logo-carousel-section" data-animate>
         <div className="container">
           <h2 className="logo-carousel-section__title">Placement.</h2>
@@ -120,7 +112,6 @@ export default function Join() {
         </div>
       </section>
 
-      {/* Why Join */}
       <section className="content-section">
         <div className="container">
           <h2 className="content-section__title">Why Join TVG?</h2>
@@ -150,13 +141,12 @@ export default function Join() {
         </div>
       </section>
 
-      {/* Application Process */}
       <section className="content-section">
         <div className="container">
           <h2 className="content-section__title">Application Process</h2>
           <div className="application-grid">
             <div className="application-card">
-              <h3 className="application-card__title">Who We're Looking For</h3>
+              <h3 className="application-card__title">Who We&apos;re Looking For</h3>
               <p className="application-card__description">
                 Passionate students interested in venture capital, startups, and innovation. All
                 majors welcome - no prior experience required.
@@ -173,7 +163,6 @@ export default function Join() {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="content-section" id="faq">
         <div className="container">
           <h2 className="content-section__title">Frequently Asked Questions</h2>
@@ -190,8 +179,7 @@ export default function Join() {
               <h3 className="card__title">What programs do you offer?</h3>
               <p className="card__text">
                 We offer several programs including our Analyst Program, Associates Program, and Bevs
-                & Devs community. Each program is designed to provide hands-on experience in
-                different aspects of venture capital and entrepreneurship.
+                & Devs community. Each program provides hands-on experience in venture capital and entrepreneurship.
               </p>
             </div>
             <div className="card">
@@ -212,20 +200,16 @@ export default function Join() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="content-section">
         <div className="container">
           <div className="content-section__inner text-center">
             <h2 className="content-section__title">Applications Closed</h2>
             <p className="content-section__text">
               Applications for the Fall 2025 cohort are now closed. Stay connected with TVG and
-              watch for Spring 2026 opportunities to join UT's leading venture capital community.
+              watch for Spring 2026 opportunities to join UT&apos;s leading venture capital community.
             </p>
             <div className="button-group button-group--centered">
-              <span
-                className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              >
+              <span className="button button--primary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
                 Applications Closed
               </span>
               <a href="mailto:contact.txventuregroup@gmail.com" className="button">

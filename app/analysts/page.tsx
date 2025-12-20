@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const experienceCards = [
   {
@@ -127,7 +128,14 @@ export default function Analysts() {
             {experienceCards.map((card) => (
               <div key={card.title} className={`card ${card.featured ? 'card--featured' : ''}`}>
                 <div className="card__image-container">
-                  <img src={card.image} alt={card.title} className="card__image" loading="lazy" />
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    width={400}
+                    height={250}
+                    className="card__image"
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
                 <h3 className="card__title">{card.title}</h3>
                 <p className="card__text">{card.description}</p>
@@ -170,7 +178,7 @@ export default function Analysts() {
             <h2 className="content-section__title">Ready to Join?</h2>
             <p className="content-section__text">
               Ready to dive into the world of venture capital? Applications for the Fall 2025 cohort
-              are now closed. Stay tuned for Spring 2026 opportunities to join TVG's analyst program!
+              are now closed. Stay tuned for Spring 2026 opportunities to join TVG&apos;s analyst program!
             </p>
             <div className="button-group button-group--centered">
               <span
@@ -179,7 +187,7 @@ export default function Analysts() {
               >
                 Applications Closed
               </span>
-              <Link to="/join" className="button">
+              <Link href="/join" className="button">
                 Learn More
               </Link>
             </div>

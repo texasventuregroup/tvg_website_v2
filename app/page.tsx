@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
-import LogoCarousel from '../components/LogoCarousel/LogoCarousel';
+import Image from 'next/image';
+import Link from 'next/link';
+import LogoCarousel from './components/LogoCarousel';
 
 const programs = [
   {
@@ -34,33 +35,31 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero__background">
-          <img
+          <Image
             src="/images/about/cover.png"
             alt=""
+            fill
+            priority
             className="hero__background-image"
-            aria-hidden="true"
-            fetchPriority="high"
-            decoding="async"
-            loading="eager"
+            style={{ objectFit: 'cover' }}
+            sizes="100vw"
           />
         </div>
         <div className="container">
           <div style={{ textAlign: 'center' }}>
-            <Link
-              to="/application-confirmation"
+            <span
               className="application-button"
               style={{ backgroundColor: 'rgba(225, 135, 32, 0.2)', cursor: 'not-allowed', opacity: 0.7 }}
-              onClick={(e) => e.preventDefault()}
             >
               Applications Opening Soon - Spring 2026 Cohort
-            </Link>
+            </span>
           </div>
           <div className="hero__content" data-animate>
             <h1 className="hero__title">
-              UT Austin's hub for venture capital learning and startup building.
+              UT Austin&apos;s hub for venture capital learning and startup building.
             </h1>
             <p className="hero__text">
-              We're a group of UT Austin students building a better entrepreneurial ecosystem. We
+              We&apos;re a group of UT Austin students building a better entrepreneurial ecosystem. We
               support students in joining, building, and investing in early-stage to growth-stage
               ventures.
             </p>
@@ -83,21 +82,19 @@ export default function Home() {
             <div className="content-section__text-content">
               <h2 className="content-section__title">About</h2>
               <p className="content-section__text">
-                We're a group of UT Austin students building a better entrepreneurial ecosystem. We
+                We&apos;re a group of UT Austin students building a better entrepreneurial ecosystem. We
                 support students in joining, building, and investing in early and growth-stage
                 ventures.
               </p>
             </div>
             <div className="content-section__image-container" style={{ flexShrink: 0, margin: 0 }}>
-              <img
+              <Image
                 src="/images/about/nyc.jpg"
                 alt="TVG Members at work"
-                className="content-section__image"
-                style={{ width: '500px', height: '300px', objectFit: 'cover' }}
-                loading="lazy"
-                decoding="async"
                 width={500}
                 height={300}
+                className="content-section__image"
+                style={{ objectFit: 'cover' }}
               />
             </div>
           </div>
@@ -124,25 +121,23 @@ export default function Home() {
             {programs.map((program) => (
               <div key={program.title} className="card" data-animate>
                 <div className="card__image-container">
-                  <img
+                  <Image
                     src={program.image}
                     alt={`TVG ${program.title}`}
-                    className="card__image"
-                    loading="lazy"
-                    decoding="async"
                     width={500}
                     height={300}
+                    className="card__image"
+                    style={{ objectFit: 'cover' }}
                   />
                 </div>
                 <h3 className="card__title">{program.title}</h3>
                 <p className="card__text">{program.description}</p>
-                <Link to={program.link} className="card__link">
+                <Link href={program.link} className="card__link">
                   Learn More &rarr;
                 </Link>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -194,15 +189,13 @@ export default function Home() {
               </p>
             </div>
             <div className="content-section__image-container" style={{ flexShrink: 0, margin: 0 }}>
-              <img
+              <Image
                 src="/images/events/top.jpeg"
                 alt="TVG Members at work"
-                className="content-section__image"
-                style={{ width: '500px', height: '300px', objectFit: 'cover' }}
-                loading="lazy"
-                decoding="async"
                 width={500}
                 height={300}
+                className="content-section__image"
+                style={{ objectFit: 'cover' }}
               />
             </div>
           </div>
@@ -215,7 +208,7 @@ export default function Home() {
           <div className="content-section__inner text-center">
             <h2 className="content-section__title">Join Our Community</h2>
             <p className="content-section__text">
-              Ready to be part of Texas's leading student venture group? Applications for the Fall
+              Ready to be part of Texas&apos;s leading student venture group? Applications for the Fall
               2025 cohort are now closed. Check back for Spring 2026 opportunities.
             </p>
             <div className="button-group button-group--centered">
@@ -225,7 +218,7 @@ export default function Home() {
               >
                 Applications Closed
               </span>
-              <Link to="/join" className="button">
+              <Link href="/join" className="button">
                 Learn More
               </Link>
             </div>

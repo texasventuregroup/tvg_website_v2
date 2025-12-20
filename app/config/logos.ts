@@ -1,6 +1,5 @@
 // Logo.dev API configuration
-// Replace LOGO_DEV_TOKEN with your actual publishable key
-export const LOGO_DEV_TOKEN = import.meta.env.VITE_LOGO_DEV_TOKEN || 'YOUR_TOKEN_HERE';
+export const LOGO_DEV_TOKEN = process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN || '';
 
 // Company domain mappings for logo.dev API
 export const logoMappings = {
@@ -58,20 +57,4 @@ export const logoMappings = {
 // Generate logo.dev URL for a domain
 export function getLogoUrl(domain: string, size: number = 128): string {
   return `https://img.logo.dev/${domain}?token=${LOGO_DEV_TOKEN}&size=${size}&format=png`;
-}
-
-// Get all logos with their URLs
-export function getLogosWithUrls(size: number = 128) {
-  return {
-    tech: logoMappings.tech.map(logo => ({
-      name: logo.name,
-      image: getLogoUrl(logo.domain, size),
-      domain: logo.domain,
-    })),
-    finance: logoMappings.finance.map(logo => ({
-      name: logo.name,
-      image: getLogoUrl(logo.domain, size),
-      domain: logo.domain,
-    })),
-  };
 }

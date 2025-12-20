@@ -1,5 +1,7 @@
+'use client';
+
 import { useEffect, useRef, useMemo } from 'react';
-import { logoMappings, getLogoUrl } from '../../config/logos';
+import { logoMappings, getLogoUrl } from '../config/logos';
 
 interface LogoCarouselProps {
   type: 'tech' | 'finance';
@@ -12,7 +14,6 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
   const isPausedRef = useRef(false);
   const translateRef = useRef(0);
 
-  // Generate logos from logo.dev API
   const logos = useMemo(() => {
     const mappings = logoMappings[type] || [];
     return mappings.map(logo => ({
@@ -83,6 +84,7 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
       >
         {duplicatedLogos.map((logo, index) => (
           <div key={`${logo.name}-${index}`} className="logo-carousel__item">
+            {/* Using regular img for external logo.dev images */}
             <img
               src={logo.image}
               alt={logo.name}
@@ -91,7 +93,6 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
               width={128}
               height={128}
               onError={(e) => {
-                // Fallback to a placeholder if logo.dev doesn't have the logo
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
             />

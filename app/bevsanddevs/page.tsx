@@ -1,20 +1,24 @@
+import Image from 'next/image';
+
 export default function BevsAndDevs() {
   return (
     <>
-      {/* Hero Section */}
       <section className="hero">
         <div className="container">
           <div className="hero__content animate-in">
             <div className="hero__logo-container">
-              <img
+              <Image
                 src="/images/logo/bevs-and-devs.jpg"
                 alt="Bevs & Devs Logo"
+                width={200}
+                height={200}
                 className="hero__logo"
+                priority
               />
             </div>
             <h1 className="hero__title">Bevs & Devs</h1>
             <p className="hero__text">
-              Biweekly coworking sessions bringing together UT's top builders and hackers. Join us for
+              Biweekly coworking sessions bringing together UT&apos;s top builders and hackers. Join us for
               coffee, collaboration, and community.
             </p>
             <div className="button-group">
@@ -29,49 +33,35 @@ export default function BevsAndDevs() {
         </div>
       </section>
 
-      {/* About Section */}
       <section className="content-section">
         <div className="container">
           <div
             className="content-section__inner"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--spacing-xl)',
-              flexWrap: 'wrap',
-            }}
+            style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xl)', flexWrap: 'wrap' }}
           >
             <div className="content-section__text-content" style={{ flex: 1, minWidth: '300px' }}>
               <h2 className="content-section__title">About the Program</h2>
               <p className="content-section__text">
-                This is a community of UT's top student founders and hackers. Built by founders for
+                This is a community of UT&apos;s top student founders and hackers. Built by founders for
                 founders, our coworking sessions accelerate growth and make the journey less lonely.
                 We connect students with a fleet of experienced YC-backed mentors and VC firms from
                 Austin to SF such as Sputnik, Antler, 1517, and Pear VC.
               </p>
             </div>
-            <div
-              className="content-section__image-container"
-              style={{ flex: 1, minWidth: '300px', maxWidth: '500px' }}
-            >
-              <img
+            <div className="content-section__image-container" style={{ flex: 1, minWidth: '300px', maxWidth: '500px' }}>
+              <Image
                 src="/images/programs/bevs-devs-zf.jpeg"
                 alt="Bevs & Devs Event"
+                width={500}
+                height={350}
                 className="content-section__image"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '12px',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
-                }}
-                loading="lazy"
+                style={{ borderRadius: '12px', boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)' }}
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Schedule Section */}
       <section className="content-section" id="schedule">
         <div className="container">
           <h2 className="content-section__title">Biweekly Schedule</h2>
@@ -106,7 +96,6 @@ export default function BevsAndDevs() {
         </div>
       </section>
 
-      {/* Community Benefits */}
       <section className="content-section">
         <div className="container">
           <h2 className="content-section__title">Community Benefits</h2>
@@ -121,7 +110,7 @@ export default function BevsAndDevs() {
             <div className="card">
               <h3 className="card__title">Founder Community</h3>
               <p className="card__text">
-                Join a community of UT's top student founders and hackers. Built by founders for
+                Join a community of UT&apos;s top student founders and hackers. Built by founders for
                 founders, our coworking sessions accelerate growth and make the journey less lonely.
               </p>
             </div>
@@ -129,12 +118,17 @@ export default function BevsAndDevs() {
         </div>
       </section>
 
-      {/* Sponsors Section */}
       <section className="content-section" id="join">
         <div className="container">
           <h2 className="content-section__title">Sponsored By</h2>
           <div className="card card--sponsor">
-            <img src="/images/logo/Teal_Sputnik.png" alt="Sputnik VC Logo" className="sponsor-logo" />
+            <Image
+              src="/images/logo/Teal_Sputnik.png"
+              alt="Sputnik VC Logo"
+              width={150}
+              height={60}
+              className="sponsor-logo"
+            />
             <div className="card__content">
               <h3 className="card__title">Sputnik VC</h3>
               <p className="card__text">

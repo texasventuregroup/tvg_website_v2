@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+'use client';
+
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface Member {
   name: string;
@@ -24,27 +27,8 @@ interface MembersData {
   alumni: Member[];
 }
 
-export default function Members() {
-  const [members, setMembers] = useState<MembersData | null>(null);
+export default function MembersClient({ members }: { members: MembersData }) {
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetch('/data/members.json')
-      .then((res) => {
-        if (!res.ok) throw new Error('Failed to load members');
-        return res.json();
-      })
-      .then((data) => {
-        setMembers(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
 
   useEffect(() => {
     if (selectedMember) {
@@ -67,14 +51,13 @@ export default function Members() {
       style={{ cursor: 'pointer' }}
     >
       <div className="team-member__image-container">
-        <img
+        <Image
           src={member.image}
           alt={member.name}
-          className="team-member__image"
-          loading="lazy"
-          decoding="async"
           width={300}
           height={300}
+          className="team-member__image"
+          style={{ objectFit: 'cover' }}
         />
       </div>
       <h3 className="team-member__name">{member.name}</h3>
@@ -109,93 +92,27 @@ export default function Members() {
     );
   };
 
-  if (loading) {
-    return (
-      <section className="hero">
-        <div className="container">
-          <div className="hero__content">
-            <h1 className="hero__title">Loading...</h1>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section className="hero">
-        <div className="container">
-          <div className="hero__content">
-            <h1 className="hero__title">Error</h1>
-            <p className="hero__text">{error}</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="container">
-          <div className="hero__content animate-in">
-            <h1 className="hero__title">Our Team</h1>
-            <p className="hero__text">
-              Meet the dedicated students driving innovation and entrepreneurship at UT Austin
-              through venture capital education and startup support.
-            </p>
+      {renderSection('Executive Team', members.executiveTeam)}
+      {renderSection('Associates', members.associates, false)}
+      {members.analysts && members.analysts.length > 0 ? (
+        renderSection('Analysts', members.analysts, false)
+      ) : (
+        <section className="content-section" id="analysts">
+          <div className="container">
+            <h2 className="content-section__title">Analysts</h2>
+            <div className="content-section__text text-center">
+              <p>
+                Recruitment for Fall 2025 analysts will begin in the fall semester. Check back
+                later for updates or visit our <Link href="/join">Join</Link> page for more
+                information.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {members && (
-        <>
-          {renderSection('Executive Team', members.executiveTeam)}
-          {renderSection('Associates', members.associates, false)}
-          {members.analysts && members.analysts.length > 0 ? (
-            renderSection('Analysts', members.analysts, false)
-          ) : (
-            <section className="content-section" id="analysts">
-              <div className="container">
-                <h2 className="content-section__title">Analysts</h2>
-                <div className="content-section__text text-center">
-                  <p>
-                    Recruitment for Fall 2025 analysts will begin in the fall semester. Check back
-                    later for updates or visit our <Link to="/join">Join</Link> page for more
-                    information.
-                  </p>
-                </div>
-              </div>
-            </section>
-          )}
-          {renderSection('Alumni', members.alumni, false)}
-        </>
+        </section>
       )}
-
-      {/* Join Section */}
-      <section className="content-section" id="join">
-        <div className="container">
-          <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Join Our Team</h2>
-            <div className="content-section__text text-center mt-4">
-              Interested in joining TVG? Applications for the Fall 2025 cohort are now closed. Check
-              back for Spring 2026 opportunities to join our team!
-            </div>
-            <div className="button-group button-group--centered">
-              <span
-                className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              >
-                Applications Closed
-              </span>
-              <Link to="/join" className="button">
-                Learn More
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {renderSection('Alumni', members.alumni, false)}
 
       {/* Member Popup */}
       {selectedMember && (
@@ -209,10 +126,13 @@ export default function Members() {
 
             <div className="member-popup__header">
               <div className="member-popup__image-container">
-                <img
+                <Image
                   src={selectedMember.image}
                   alt={selectedMember.name}
+                  width={150}
+                  height={150}
                   className="member-popup__image"
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <div className="member-popup__title">

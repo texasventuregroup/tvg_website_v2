@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const clients = [
   {
     name: 'Mainshares',
@@ -76,7 +78,7 @@ export default function Associates() {
           <div className="hero__content animate-in">
             <h1 className="hero__title">Associates Program</h1>
             <p className="hero__text">
-              TVG's associate program gives students the opportunity to work with leading startups and
+              TVG&apos;s associate program gives students the opportunity to work with leading startups and
               VCs. Our projects vary by client and have included software development, financial
               modeling, and market research. In addition to helping our clients, we also publish our
               own research.
@@ -94,23 +96,29 @@ export default function Associates() {
       <section className="content-section">
         <div className="container">
           <div className="photo-gallery">
-            <img
+            <Image
               src="/images/associates/associates_1.png"
               alt="Associates Program"
+              width={400}
+              height={300}
               className="photo-gallery__image"
-              loading="lazy"
+              style={{ objectFit: 'cover' }}
             />
-            <img
+            <Image
               src="/images/associates/associates_2.png"
               alt="Associates Program"
+              width={400}
+              height={300}
               className="photo-gallery__image"
-              loading="lazy"
+              style={{ objectFit: 'cover' }}
             />
-            <img
+            <Image
               src="/images/associates/associates_3.png"
               alt="Associates Program"
+              width={400}
+              height={300}
               className="photo-gallery__image"
-              loading="lazy"
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </div>

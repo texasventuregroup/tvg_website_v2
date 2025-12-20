@@ -1,13 +1,17 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import { useTheme } from './ThemeProvider';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { toggleTheme } = useTheme();
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -19,7 +23,7 @@ export default function Navbar() {
   useEffect(() => {
     setIsMenuOpen(false);
     setIsDropdownOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -39,12 +43,14 @@ export default function Navbar() {
   return (
     <nav className={`nav ${isScrolled || isMenuOpen ? 'nav--scrolled' : ''}`}>
       <div className="container">
-        <Link to="/" className="nav__logo">
-          <img
+        <Link href="/" className="nav__logo">
+          <Image
             src="/images/logo/logo-small.png"
             alt="TVG Logo"
-            style={{ width: '32px', height: '32px' }}
+            width={32}
+            height={32}
             className="nav__logo-image"
+            priority
           />
         </Link>
 
@@ -74,18 +80,18 @@ export default function Navbar() {
               Programs
             </button>
             <div className="nav__dropdown-content">
-              <Link to="/analysts" className="nav__dropdown-link">Analysts</Link>
-              <Link to="/associates" className="nav__dropdown-link">Associates</Link>
-              <Link to="/bevsanddevs" className="nav__dropdown-link">Bevs & Devs</Link>
+              <Link href="/analysts" className="nav__dropdown-link">Analysts</Link>
+              <Link href="/associates" className="nav__dropdown-link">Associates</Link>
+              <Link href="/bevsanddevs" className="nav__dropdown-link">Bevs & Devs</Link>
             </div>
           </div>
-          <Link to="/events" className="nav__link">Events</Link>
-          <Link to="/partnerships" className="nav__link">Partners</Link>
+          <Link href="/events" className="nav__link">Events</Link>
+          <Link href="/partnerships" className="nav__link">Partners</Link>
           <a href="https://venturabytvg.substack.com/" target="_blank" rel="noopener noreferrer" className="nav__link">
             Research
           </a>
-          <Link to="/members" className="nav__link">Team</Link>
-          <Link to="/join" className="nav__link">Join</Link>
+          <Link href="/members" className="nav__link">Team</Link>
+          <Link href="/join" className="nav__link">Join</Link>
           <button className="theme-toggle" aria-label="Toggle theme" onClick={toggleTheme}>
             <div className="theme-toggle__circle"></div>
           </button>
