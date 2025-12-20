@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { getLogoUrl } from '../config/logos';
 
 interface Partner {
   name: string;
@@ -64,13 +65,15 @@ export default async function Partnerships() {
                 className="partnership-card"
               >
                 <div className="partnership-card__logo-container">
-                  <Image
-                    src={`/images/partners/${partner.logo}`}
-                    alt={partner.name}
+                  {/* Using logo.dev for partner logos */}
+                  <img
+                    src={getLogoUrl(partner.website, 128)}
+                    alt=""
                     width={120}
                     height={60}
                     className="partnership-card__logo"
                     style={{ objectFit: 'contain' }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="partnership-card__info">
