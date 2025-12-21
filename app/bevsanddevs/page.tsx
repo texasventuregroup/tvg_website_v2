@@ -12,6 +12,7 @@ export default function BevsAndDevs() {
                 alt="Bevs & Devs Logo"
                 width={200}
                 height={200}
+                sizes="200px"
                 className="hero__logo"
                 priority
               />
@@ -54,6 +55,7 @@ export default function BevsAndDevs() {
                 alt="Bevs & Devs Event"
                 width={500}
                 height={350}
+                sizes="(max-width: 768px) 100vw, 500px"
                 className="content-section__image"
                 style={{ borderRadius: '12px', boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)' }}
               />
@@ -127,6 +129,7 @@ export default function BevsAndDevs() {
               alt="Sputnik VC Logo"
               width={150}
               height={60}
+              sizes="150px"
               className="sponsor-logo"
             />
             <div className="card__content">

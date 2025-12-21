@@ -56,6 +56,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
           alt={member.name}
           width={300}
           height={300}
+          sizes="(max-width: 480px) 50vw, (max-width: 768px) 33vw, 200px"
           className="team-member__image"
           style={{ objectFit: 'cover' }}
         />
@@ -129,6 +130,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
                   alt={selectedMember.name}
                   width={150}
                   height={150}
+                  sizes="150px"
                   className="member-popup__image"
                   style={{ objectFit: 'cover' }}
                 />

@@ -2735,30 +2735,72 @@ a:hover {
     transform: scale(1.05);
 }
 
+/* Mobile: Static grid instead of animated carousel */
+.logo-carousel--mobile {
+    overflow: visible;
+}
+
+.logo-carousel__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    justify-items: center;
+    align-items: center;
+    padding: var(--spacing-sm);
+}
+
+.logo-carousel--mobile .logo-carousel__item {
+    min-width: unset;
+    max-width: unset;
+    padding: var(--spacing-xs);
+}
+
+.logo-carousel--mobile .logo-carousel__item img {
+    height: 48px;
+    width: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    object-fit: contain;
+}
+
 @media (max-width: 768px) {
     .logo-carousel__item {
         min-width: 140px;
         max-width: 200px;
         padding: 0 var(--spacing-sm);
     }
-    
+
     .logo-carousel__track {
         gap: var(--spacing-lg);
     }
-    
+
     .logo-carousel__item img {
         height: 45px;
         min-width: 45px;
         min-height: 45px;
         max-width: 140px;
     }
-    
+
     .logo-carousel-section__title {
         font-size: 2rem;
     }
-    
+
     .logo-carousel-section__subtitle {
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-carousel__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .logo-carousel--mobile .logo-carousel__item img {
+        height: 40px;
+        width: 40px;
+        min-width: 40px;
+        min-height: 40px;
     }
 }
 

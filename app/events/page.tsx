@@ -31,6 +31,7 @@ function EventCard({ event }: { event: Event }) {
           alt={event.title}
           width={400}
           height={250}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
           className="event-card__image"
           style={{ objectFit: 'cover' }}
         />

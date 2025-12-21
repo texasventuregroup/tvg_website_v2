@@ -93,6 +93,7 @@ export default function Home() {
                 alt="TVG and Bessemer Venture Partners Lunch"
                 width={550}
                 height={440}
+                sizes="(max-width: 768px) 100vw, 550px"
                 style={{ objectFit: 'cover', width: '100%', height: 'auto', borderRadius: 4 }}
               />
             </div>
@@ -125,6 +126,7 @@ export default function Home() {
                     alt={`TVG ${program.title}`}
                     width={500}
                     height={300}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                     className="card__image"
                     style={{ objectFit: 'cover' }}
                   />
@@ -193,6 +195,7 @@ export default function Home() {
                 alt="TVG, a16z, Saronic, and Base Power Company"
                 width={500}
                 height={300}
+                sizes="(max-width: 768px) 100vw, 500px"
                 className="content-section__image"
                 style={{ objectFit: 'cover' }}
               />
