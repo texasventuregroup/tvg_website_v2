@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useMemo, useState } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { logoMappings, getLogoUrl } from '../config/logos';
 
 interface LogoCarouselProps {
@@ -13,7 +13,6 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
   const animationRef = useRef<number | undefined>(undefined);
   const isPausedRef = useRef(false);
   const translateRef = useRef(0);
-  const [isMobile, setIsMobile] = useState(false);
 
   const logos = useMemo(() => {
     const mappings = logoMappings[type] || [];
@@ -24,19 +23,8 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
     }));
   }, [type]);
 
-  // Check for mobile viewport
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Carousel animation (desktop only)
-  useEffect(() => {
-    if (isMobile || !logos.length || !trackRef.current) return;
+    if (!logos.length || !trackRef.current) return;
 
     const track = trackRef.current;
     const items = track.querySelectorAll('.logo-carousel__item');
@@ -79,39 +67,13 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [logos, reverse, isMobile]);
+  }, [logos, reverse]);
 
   const handleMouseEnter = () => { isPausedRef.current = true; };
   const handleMouseLeave = () => { isPausedRef.current = false; };
 
   const duplicatedLogos = [...logos, ...logos];
 
-  // Mobile: Static grid layout
-  if (isMobile) {
-    return (
-      <div className="logo-carousel logo-carousel--mobile">
-        <div className="logo-carousel__grid">
-          {logos.map((logo, index) => (
-            <div key={`${logo.name}-${index}`} className="logo-carousel__item">
-              <img
-                src={logo.image}
-                alt={logo.name}
-                loading="lazy"
-                decoding="async"
-                width={64}
-                height={64}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  // Desktop: Animated carousel
   return (
     <div className={`logo-carousel ${reverse ? 'logo-carousel--reverse' : ''}`}>
       <div
@@ -122,6 +84,7 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
       >
         {duplicatedLogos.map((logo, index) => (
           <div key={`${logo.name}-${index}`} className="logo-carousel__item">
+            {/* Using regular img for external logo.dev images */}
             <img
               src={logo.image}
               alt={logo.name}

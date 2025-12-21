@@ -94,7 +94,6 @@ export default function Analysts() {
                 alt="TVG Analysts"
                 width={600}
                 height={400}
-                sizes="(max-width: 768px) 100vw, 600px"
                 style={{ objectFit: 'cover', width: '100%', height: 'auto', borderRadius: 8 }}
               />
             </div>
@@ -145,7 +144,6 @@ export default function Analysts() {
                     alt={card.title}
                     width={400}
                     height={250}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                     className="card__image"
                     style={{ objectFit: 'cover' }}
                   />

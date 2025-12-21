@@ -37,7 +37,6 @@ export default async function Partnerships() {
             alt=""
             fill
             priority
-            sizes="100vw"
             className="hero__background-image"
             style={{ objectFit: 'cover' }}
           />

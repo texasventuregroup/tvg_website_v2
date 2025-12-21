@@ -113,7 +113,6 @@ export default function Associates() {
               alt="Associates Program"
               width={400}
               height={300}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
               className="photo-gallery__image"
               style={{ objectFit: 'cover' }}
             />
@@ -122,7 +121,6 @@ export default function Associates() {
               alt="Associates Program"
               width={400}
               height={300}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
               className="photo-gallery__image"
               style={{ objectFit: 'cover' }}
             />
@@ -131,7 +129,6 @@ export default function Associates() {
               alt="Associates Program"
               width={400}
               height={300}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
               className="photo-gallery__image"
               style={{ objectFit: 'cover' }}
             />
