@@ -39,7 +39,7 @@ export default async function MembersPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero hero--compact">
         <div className="container">
           <div className="hero__content animate-in">
             <h1 className="hero__title">Our Team</h1>

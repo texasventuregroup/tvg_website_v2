@@ -5,7 +5,7 @@ import LogoCarousel from './components/LogoCarousel';
 const programs = [
   {
     title: 'Analysts',
-    image: '/images/programs/analysts.png',
+    image: '/images/programs/analysts_3.jpg',
     description: 'Our analyst program is the entry point into TVG. Analysts learn venture capital fundamentals through hands-on experience, working on real projects with startups and VCs. They participate in Special Interest Groups (SIGs) focused on specific industries, conducting market research and sharing insights through regular market watches.',
     link: '/analysts',
   },
@@ -87,14 +87,13 @@ export default function Home() {
                 ventures.
               </p>
             </div>
-            <div className="content-section__image-container" style={{ flexShrink: 0, margin: 0 }}>
+            <div className="about-image-container">
               <Image
-                src="/images/about/nyc.jpg"
-                alt="TVG Members at work"
-                width={500}
-                height={300}
-                className="content-section__image"
-                style={{ objectFit: 'cover' }}
+                src="/images/about/bessemer_front_page.jpeg"
+                alt="TVG and Bessemer Venture Partners Lunch"
+                width={550}
+                height={440}
+                style={{ objectFit: 'cover', width: '100%', height: 'auto', borderRadius: 4 }}
               />
             </div>
           </div>
@@ -190,8 +189,8 @@ export default function Home() {
             </div>
             <div className="content-section__image-container" style={{ flexShrink: 0, margin: 0 }}>
               <Image
-                src="/images/events/top.jpeg"
-                alt="TVG Members at work"
+                src="/images/events/american_dynamism_pic.jpeg"
+                alt="TVG, a16z, Saronic, and Base Power Company"
                 width={500}
                 height={300}
                 className="content-section__image"

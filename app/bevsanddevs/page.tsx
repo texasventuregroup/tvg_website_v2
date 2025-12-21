@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function BevsAndDevs() {
   return (
     <>
-      <section className="hero">
+      <section className="hero hero--compact">
         <div className="container">
           <div className="hero__content animate-in">
             <div className="hero__logo-container">

@@ -102,13 +102,11 @@ export default function MembersClient({ members }: { members: MembersData }) {
         <section className="content-section" id="analysts">
           <div className="container">
             <h2 className="content-section__title">Analysts</h2>
-            <div className="content-section__text text-center">
-              <p>
-                Recruitment for Fall 2025 analysts will begin in the fall semester. Check back
-                later for updates or visit our <Link href="/join">Join</Link> page for more
-                information.
-              </p>
-            </div>
+            <p className="content-section__text" style={{ textAlign: 'center', margin: '0 auto' }}>
+              Recruitment for Fall 2025 analysts will begin in the fall semester. Check back
+              later for updates or visit our <Link href="/join">Join</Link> page for more
+              information.
+            </p>
           </div>
         </section>
       )}

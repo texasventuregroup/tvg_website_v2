@@ -2,6 +2,18 @@ import Image from 'next/image';
 
 const clients = [
   {
+    name: 'Great Circle Ventures',
+    url: 'http://usesteer.io',
+    tag: 'Due-diligence & Market Research',
+    description: 'Early-stage investment firm focused on the evolution of food and consumer health.',
+  },
+  {
+    name: 'Steer',
+    url: 'http://usesteer.io',
+    tag: 'Software Development',
+    description: 'First affiliate marketing software built for consumer service brands.',
+  },
+  {
     name: 'Mainshares',
     url: 'http://mainshares.com',
     tag: 'Due-diligence & Market Research',
@@ -73,7 +85,7 @@ export default function Associates() {
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero hero--compact">
         <div className="container">
           <div className="hero__content animate-in">
             <h1 className="hero__title">Associates Program</h1>
@@ -158,7 +170,7 @@ export default function Associates() {
             <h2 className="content-section__title">Work With Us</h2>
             <p className="content-section__text">
               Interested in working with us? Reach out to our External Director,{' '}
-              <a href="mailto:charlesjmiele@gmail.com">Charles Miele</a>.
+              <a href="mailto:mayaglenn@utexas.edu">Maya Glenn</a>.
             </p>
           </div>
         </div>

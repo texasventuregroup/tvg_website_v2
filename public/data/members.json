@@ -1,23 +1,8 @@
 {
   "executiveTeam": [
     {
-      "name": "Ria Mehrotra",
-      "role": "Co-President",
-      "major": "Business",
-      "image": "/images/members/ria-mehrotra.jpg",
-      "linkedin": "https://www.linkedin.com/in/riamehrotraa/",
-      "bio": "Hi! I'm Ria, a Junior studying Finance and Entrepreneurship at UT Austin. On campus, I'm involved in Texas Venture Group, Social Entrepreneurship Learning Lab, and Texas Angels. I love to play tennis, read, travel, and hang out with friends. Fun fact, I actually used to live in Australia!",
-      "quote": {
-        "text": "No knowledge is ever wasted.",
-        "author": "Unknown"
-      },
-      "favoritePart": "I love TVG for the community of driven, ambitious people. There's no other place on campus that has such people with such unique interests and perspectives and that's what makes TVG so special.",
-      "favoriteBook": "Pride and Prejudice by Jane Austen",
-      "childhoodDream": "I wanted to be a teacher or a vet!"
-    },
-    {
       "name": "Cameron Llewellyn",
-      "role": "Co-President",
+      "role": "President",
       "major": "Economics, Finance",
       "image": "/images/members/cameron-llewellyn.jpg",
       "linkedin": "https://www.linkedin.com/in/cam-llewellyn/",
@@ -29,36 +14,6 @@
       "favoritePart": "My favorite part of TVG is working on projects for VCs and startups. TVG is uniquely positioned to provide legitimate value to firms, and its infrastructure enables extensive experiential learning for students.",
       "favoriteBook": "The Power Broker by Robert Caro",
       "childhoodDream": "I wanted to be an \"inventor\". I've always been interested in building economically productive and societally progressive products/solutions."
-    },
-    {
-      "name": "Jack Golten",
-      "role": "Director of Operations",
-      "major": "History",
-      "image": "/images/members/jack-golten.jpg",
-      "linkedin": "https://www.linkedin.com/in/jack-golten2024/",
-      "bio": "I'm a Junior majoring in History with a Business minor, originally from NYC. Outside of my time with Texas Venture Group, I serve as the Academic Chair for Zeta Beta Tau and am in the fund team within TAMID. I'm always eager to meet new people, exchange fresh ideas, and dive into research on emerging industry trends. In my free time, I play jazz saxophone and am currently learning how to golf.",
-      "quote": {
-        "text": "When we are no longer able to change a situation - we are challenged to change ourselves.",
-        "author": "Viktor Frankl"
-      },
-      "favoritePart": "The people. Everyone has their own background, interests, and skills. But what brings us together is a shared curiosity.",
-      "favoriteBook": "All The Light We Cannot See by Anthony Doerr",
-      "childhoodDream": "When I was a kid, I think I wanted to be an engineer without really knowing it. Growing up, I was always playing with Legos, doing puzzles, or sketching out random inventions. I loved taking ideas from my imagination and trying to bring them to life in a tangible way."
-    },
-    {
-      "name": "Arya Mujumdar",
-      "role": "Director of External",
-      "major": "Math",
-      "image": "/images/members/arya-mujumdar.jpg",
-      "linkedin": "https://www.linkedin.com/in/arya-mujumdar-25708b169/",
-      "bio": "I'm from Morris County, New Jersey, and I'm super interested in all things biotech. Last summer, I worked at Pfizer, and this summer, I'm excited to explore early stage biotech investing in Austin. A fun fact about me is that I've been to all 50 states, and something I'm looking forward to is going python hunting in Florida.",
-      "quote": {
-        "text": "Some people graduate with honors. I am just honored to graduate.",
-        "author": "John McEnroe"
-      },
-      "favoritePart": "My favorite part about TVG is the ability to get involved in the entrepreneurial landscape at Austin and learn about exciting new products across all industries.",
-      "favoriteBook": "Born a Crime by Trevor Noah",
-      "childhoodDream": "Robot Astronaut Film Reviewer Specialist"
     },
     {
       "name": "Maya Glenn",
@@ -76,49 +31,79 @@
       "childhoodDream": "I wanted to be a marine biologist when I was a kid because I loved the ocean."
     },
     {
-      "name": "Rohan Gorti",
-      "role": "Director of Education",
+      "name": "Morgan Davis",
+      "role": "Director of Operations",
       "major": "Finance",
-      "image": "/images/members/rohan-gorti.jpg",
-      "linkedin": "https://www.linkedin.com/in/rohan-gorti-61a868128/",
-      "bio": "I'm from San Jose, California, which means I'm a huge Warriors and Niners fan. I'm a finance and economics double major, and the world of venture and startups has always excited me. I love debating random topics with my friends, whether it's business, sports, or something completely obscure. Music is also a big part of my life, and right now, I'm trying to learn how to play the guitar. I'm always looking for new things to learn and ways to challenge myself.",
+      "image": "/images/members/morgan-davis.jpg",
+      "linkedin": "https://www.linkedin.com/in/morgan-davis-a6aa89292/",
+      "bio": "I'm Morgan and I'm from Austin, TX! I'm a Junior Finance major interested in real estate and investment management. I enjoy traveling, experimenting with different  latte recipes, walking South Congress with friends, and playing games with my brother.",
       "quote": {
-        "text": "If I had asked people what they wanted, they would have said faster horses.",
-        "author": "Henry Ford"
+        "text": "Be curious. Not judgemental.",
+        "author": "Ted Lasso"
       },
-      "favoritePart": "My favorite part of TVG is the tight-knit community of people who are passionate about building and investing in the next big thing. It's one of the few groups on campus that truly pushes you to be your best and most interesting self. I love the diversity of interests and backgrounds within the group and the opportunity to meet people who I know will go on to make a huge impact in the world someday.",
-      "favoriteBook": "The Client by John Grisham",
-      "childhoodDream": "Growing up, I wanted to be a Paleontologist."
+      "favoritePart": "I love getting real, hands on experience with venture capital and working with a group of very driven, like minded people. It's been amazing to learn from investors, analyzing startups, and getting a deeper look into how the industry works.",
+      "favoriteBook": "The Catcher in the Rye by J.D. Salinger",
+      "childhoodDream": "I wanted to be a singer/songwriter and go on a world tour. :)"
     },
     {
-      "name": "Kate Ferrer",
-      "role": "Director of Education",
-      "major": "Finance",
-      "image": "/images/members/kate-ferrer.jpg",
-      "linkedin": "https://www.linkedin.com/in/kate-ferrer-40621a259/",
-      "bio": "I'm a Junior studying Finance with an Economics minor from the Greater Houston area. I love learning about early stage ventures and enjoy meeting new people to share ideas. Outside of TVG, I'm also involved in Alpha Kappa Psi and enjoy running, traveling, and being outdoors.",
-      "quote": {
-        "text": "Luck is what happens when preparation meets opportunity.",
-        "author": "Seneca"
-      },
-      "favoritePart": "My favorite part of TVG is being immersed in the exciting world of startups and investing alongside ambitious peers that challenge me to grow.",
-      "favoriteBook": "The Idiot by Elif Bautman",
-      "childhoodDream": "I wanted to be an Architect, I was obsessed with Architectural Digest"
-    },
-    {
-      "name": "Ravi Tej Guntuku",
-      "role": "Director of Ventura",
+      "name": "Aarav Kansupada",
+      "role": "Director of Funding",
       "major": "Business, Computer Science",
-      "image": "/images/members/ravi-tej-guntuku.png",
-      "linkedin": "https://www.linkedin.com/in/ravi-tej-guntuku/",
-      "bio": "I'm a sophomore in UT Austin's Computer Science and Business Program. I'm captivated by the human-centered nature of computer systems and hope to help design intuitive and frictionless digital experiences for all. In my free time, I enjoy reading philosophy, listening to country music, keeping up with politics, watching stand-up comedy, playing pickleball, or getting Insomnia Cookies with my friends. Fun fact: I'm a black belt in TaeKwonDo",
+      "image": "/images/members/aarav-kansupada.jpeg",
+      "linkedin": "https://www.linkedin.com/in/aaravkansupada/",
+      "bio": "Hi there, I'm Aarav! I'm from Irving, TX, and majoring in Computer Science Honors and Canfield Business Honors. On campus, I'm also involved with the Texas Undergraduate Investment Team. In my free time, I enjoy critiquing movies on my LetterBoxd, watching Ferrari continually lose in Formula 1, finding the optimal Catan strategy, vibecoding, and exploring Austin's food scene.",
       "quote": {
-        "text": "Pay attention, don't let life go by you. Fall in love with the back of your cereal box.",
-        "author": "Jerry Seinfeld"
+        "text": "It is not enough to be busy. So are the ants. The question is: What are we busy about?",
+        "author": "Henry David Thoreau"
       },
-      "favoritePart": "I love the people I've met through TVG. It's not every day that a college student gets to talk to investors managing multi-million dollar portfolios or founders working on game-changing ideas. And, TVG's social events have allowed me to engage in thought-provoking discussions, share wild experiences, and build friendships with people beyond my usual circle.",
-      "favoriteBook": "Frankenstein by Mary Shelley",
-      "childhoodDream": "Inspired by the Star Wars, Harry Potter, and Lord of the Rings movies, I've always wanted to be an actor when I was young."
+      "favoritePart": "How intellectually stimulating it is. TVG members are some of the most interesting people I've met, and they push me to see the world in different ways. To be honest, I didn't expect to be discussing philosophy as part of a venture club, but it's pushed me to think deeper and really reflect. That's kind of what venture is about: questioning the status quo and creating your own unique perspective on what the future looks like.",
+      "favoriteBook": "The Count of Monte Cristo by Alexandre Dumas",
+      "childhoodDream": "Growing up right outside DFW International Airport, I really wanted to be an aerospace engineer."
+    },
+    {
+      "name": "Hollis Griffin",
+      "role": "Director of Education",
+      "major": "Philosophy",
+      "image": "/images/members/hollis-griffin.jpeg",
+      "linkedin": "https://www.linkedin.com/in/hollis-griffin/",
+      "bio": "I'm from Chicago, Illinois, and am studying Philosophy with a minor in Entrepreneurship. Outside of Texas Venture Group, I'm involved in startups and enjoy exploring all things tech. I'm also a Semester at Sea alum and transfer student from CU Boulder. In my free time, I love scuba diving, snowboarding, cooking, climbing, traveling (I've visited 32 countries!), and tracking restaurants on Beli.",
+      "quote": {
+        "text": "Don't tell me the sky's the limit when there are footprints on the Moon.",
+        "author": "Paul Brandt"
+      },
+      "favoritePart": "My favorite part of TVG is the community. Everyone is ambitious, intelligent, and passionate about entrepreneurship and venture capital. The culture is uplifting and collaborative, and whether you need advice, an introduction, or even just someone to talk philosophy with, TVG has people for you.",
+      "favoriteBook": "Leviathan Wakes by James S. A. Corey",
+      "childhoodDream": "I wanted to be an Astronaut. It's still a dream of mine to go to space."
+    },
+    {
+      "name": "Judi Aly",
+      "role": "Director of Recruitment",
+      "major": "Business Honors",
+      "image": "/images/members/judi-aly.jpeg",
+      "linkedin": "https://www.linkedin.com/in/judi-aly-631099375/",
+      "bio": "Howdy! I'm Judi I'm from Austin, Texas (Lake Travis) and I'm really passionate about community and sustainability. I love learning about anything related to philosophy and current events. My favorite thing to do in my free time is spending time with friends and going on walks and discovering new spots on campus.",
+      "quote": {
+        "text": "Just Keep Swimming",
+        "author": "Dory from Nemo"
+      },
+      "favoritePart": "My favorite part of TVG is being able to dive into different industries and niches and learn from the experienced alumni. I also love how everyone is curious to explore, whether thats about philosophical debates or interesting reads. TVG is a place where the unknown is welcome and we're encouraged to be eager to learn.",
+      "favoriteBook": "Crime and Punishment by Fyodor Dostoevsky",
+      "childhoodDream": "I wanted to be president. Never say never but I don't think that's something I'll pursue"
+    },
+    {
+      "name": "Dhilan Shah",
+      "role": "Director of Engineering",
+      "major": "Computer Science, Philosophy, and Mathematics",
+      "image": "/images/members/dhilan-shah.jpg",
+      "linkedin": "https://www.linkedin.com/in/dhilan-shah-a1326820b/",
+      "bio": "I'm a Chicago native (bears/bulls/cubs superfan). Interested in cybersecurity, AI/ML, and blockchain infra. I spend way too much time playing chess and run3. I have a feeling that meaning has ties to craftsmanship.... my goal in life is to build as much cool stuff as I can. ",
+      "quote": {
+        "text": "Still wouldst thou sing, and I have ears in vain— To thy high requiem become a sod",
+        "author": "John Keats"
+      },
+      "favoritePart": "The people and culture. TVG is a community of people who want to both define and pursue success. People are curious - not just about venture and technology, but about life and morality.",
+      "favoriteBook": "Zen and the Art of Motorcycle Maintenance",
+      "childhoodDream": "Professional football player for the Chicago Bears!"
     },
     {
       "name": "Max Chen",
@@ -133,36 +118,6 @@
       },
       "favoriteBook": "Fahrenheit 451 by Ray Bradbury",
       "childhoodDream": "Doctor (Before I saw my brother take the MCAT)"
-    },
-    {
-      "name": "Leni Brooks",
-      "role": "Director of Recruitment",
-      "major": "Economics",
-      "image": "/images/members/leni-brooks.jpg",
-      "linkedin": "https://www.linkedin.com/in/leni-brooks-509102313/",
-      "bio": "I'm from Los Angeles, California and I'm a current sophomore at UT studying government. My experiences working in hospitality has helped me gain insight into the cooperate eye of a business and my personal passion for talent and entertainment has helped me find a niche within entrepreneurship that I am excited to explore further. I am constantly looking to expand my knowledge across all verticals of business management in the startup ecosystem. My favorite things to do in my free time is travel and explore the outdoors.",
-      "quote": {
-        "text": "A creative man is motivated by the desire to achieve, not by the desire to beat others.",
-        "author": "Ayn Rand"
-      },
-      "favoritePart": "My favorite part about being in TVG is constantly surrounding myself with not only some of the most intelligent and dedicated students on campus, but also students that empower me to one day be just like them. I found that being a part of TVG brings out the most courageous and passionate side of myself that I never thought I could reach.",
-      "favoriteBook": "Man's Search for Meaning by Viktor Frankl",
-      "childhoodDream": "Growing up, I deeply admired my grandfather who dedicated his life to pediatrics. Attempting to follow in his footsteps, I dreamed of becoming a surgeon, taking courses over many summers to learn more about medicine and surgery. Eventually as I began to mature and grew queasy at the sight of blood, I thought that may not be the best fit for me."
-    },
-    {
-      "name": "Anvith Maddipoti",
-      "role": "Director of Recruitment",
-      "major": "Informatics",
-      "image": "/images/members/anvith-maddipoti.jpg",
-      "linkedin": "https://www.linkedin.com/in/anvith-maddipoti/",
-      "bio": "Hey! I'm Anvith and I'm a sophomore at UT from Austin, Texas. I have a strong interest in cybersecurity so I'm often researching new vulnerabilities or toying with different tools, trying to stay updated on the changing landscape. Outside of school, I enjoy listening to music and trying new sports!",
-      "quote": {
-        "text": "Mystery creates wonder and wonder is the basis of man's desire to understand.",
-        "author": "Neil Armstrong"
-      },
-      "favoritePart": "The best part of being in TVG is the environment. Through the diverse events, there's always an opportunity to learn something or meet someone new. Every member brings a unique blend of knowledge, curiosity, and drive, making the organization an ideal space to explore interests and grow!",
-      "favoriteBook": "Outliers: The Story of Success - Malcolm Gladwell",
-      "childhoodDream": "As a young child, I had the same career aspirations as everyone else - policeman, president, athlete. As I matured, I slowly became drawn to technology, specifically its use in automating tedious tasks and creating new solutions that could make people's lives easier. That fascination with building and innovating led me to want to pursue a career in a computer science-related field."
     },
     {
       "name": "Shivam Siddaiya",
@@ -200,7 +155,7 @@
   "associates": [
     {
       "name": "Rafael Reynal",
-      "role": "Principal",
+      "role": "Associate",
       "major": "Finance, Plan II",
       "image": "/images/members/rafael-reynal.jpg",
       "linkedin": "https://www.linkedin.com/in/rafael-reynal/",
@@ -215,7 +170,7 @@
     },
     {
       "name": "Shrey Gupta",
-      "role": "Principal",
+      "role": "Associate",
       "major": "Computer Science",
       "image": "/images/members/shrey-gupta.jpg",
       "linkedin": "https://www.linkedin.com/in/shreygu/",
@@ -229,8 +184,23 @@
       "childhoodDream": "I wanted to become a mad scientist, like the kind that you would see in shows and movies."
     },
     {
+      "name": "Ravi Tej Guntuku",
+      "role": "Associate",
+      "major": "Business, Computer Science",
+      "image": "/images/members/ravi-tej-guntuku.png",
+      "linkedin": "https://www.linkedin.com/in/ravi-tej-guntuku/",
+      "bio": "I'm a sophomore in UT Austin's Computer Science and Business Program. I'm captivated by the human-centered nature of computer systems and hope to help design intuitive and frictionless digital experiences for all. In my free time, I enjoy reading philosophy, listening to country music, keeping up with politics, watching stand-up comedy, playing pickleball, or getting Insomnia Cookies with my friends. Fun fact: I'm a black belt in TaeKwonDo",
+      "quote": {
+        "text": "Pay attention, don't let life go by you. Fall in love with the back of your cereal box.",
+        "author": "Jerry Seinfeld"
+      },
+      "favoritePart": "I love the people I've met through TVG. It's not every day that a college student gets to talk to investors managing multi-million dollar portfolios or founders working on game-changing ideas. And, TVG's social events have allowed me to engage in thought-provoking discussions, share wild experiences, and build friendships with people beyond my usual circle.",
+      "favoriteBook": "Frankenstein by Mary Shelley",
+      "childhoodDream": "Inspired by the Star Wars, Harry Potter, and Lord of the Rings movies, I've always wanted to be an actor when I was young."
+    },
+    {
       "name": "Rushi Yalamanchili",
-      "role": "Principal",
+      "role": "Associate",
       "major": "Math, Physics",
       "image": "/images/members/rushi-yalamanchili.jpg",
       "linkedin": "https://www.linkedin.com/in/rushi-yalamanchili/",
@@ -238,6 +208,51 @@
       "favoritePart": "The community is really niche. Everyone has super specific interests and seem to be subject matter experts in their field.",
       "favoriteBook": "Fair Play by Greg Olsen",
       "childhoodDream": "Bob the Builder. I don’t really need to explain why."
+    },
+    {
+      "name": "Jack Golten",
+      "role": "Associate",
+      "major": "History",
+      "image": "/images/members/jack-golten.jpg",
+      "linkedin": "https://www.linkedin.com/in/jack-golten2024/",
+      "bio": "I'm a Junior majoring in History with a Business minor, originally from NYC. Outside of my time with Texas Venture Group, I serve as the Academic Chair for Zeta Beta Tau and am in the fund team within TAMID. I'm always eager to meet new people, exchange fresh ideas, and dive into research on emerging industry trends. In my free time, I play jazz saxophone and am currently learning how to golf.",
+      "quote": {
+        "text": "When we are no longer able to change a situation - we are challenged to change ourselves.",
+        "author": "Viktor Frankl"
+      },
+      "favoritePart": "The people. Everyone has their own background, interests, and skills. But what brings us together is a shared curiosity.",
+      "favoriteBook": "All The Light We Cannot See by Anthony Doerr",
+      "childhoodDream": "When I was a kid, I think I wanted to be an engineer without really knowing it. Growing up, I was always playing with Legos, doing puzzles, or sketching out random inventions. I loved taking ideas from my imagination and trying to bring them to life in a tangible way."
+    },
+    {
+      "name": "Arya Mujumdar",
+      "role": "Associate",
+      "major": "Math",
+      "image": "/images/members/arya-mujumdar.jpg",
+      "linkedin": "https://www.linkedin.com/in/arya-mujumdar-25708b169/",
+      "bio": "I'm from Morris County, New Jersey, and I'm super interested in all things biotech. Last summer, I worked at Pfizer, and this summer, I'm excited to explore early stage biotech investing in Austin. A fun fact about me is that I've been to all 50 states, and something I'm looking forward to is going python hunting in Florida.",
+      "quote": {
+        "text": "Some people graduate with honors. I am just honored to graduate.",
+        "author": "John McEnroe"
+      },
+      "favoritePart": "My favorite part about TVG is the ability to get involved in the entrepreneurial landscape at Austin and learn about exciting new products across all industries.",
+      "favoriteBook": "Born a Crime by Trevor Noah",
+      "childhoodDream": "Robot Astronaut Film Reviewer Specialist"
+    },
+    {
+      "name": "Leni Brooks",
+      "role": "Associate",
+      "major": "Economics",
+      "image": "/images/members/leni-brooks.jpg",
+      "linkedin": "https://www.linkedin.com/in/leni-brooks-509102313/",
+      "bio": "I'm from Los Angeles, California and I'm a current sophomore at UT studying government. My experiences working in hospitality has helped me gain insight into the cooperate eye of a business and my personal passion for talent and entertainment has helped me find a niche within entrepreneurship that I am excited to explore further. I am constantly looking to expand my knowledge across all verticals of business management in the startup ecosystem. My favorite things to do in my free time is travel and explore the outdoors.",
+      "quote": {
+        "text": "A creative man is motivated by the desire to achieve, not by the desire to beat others.",
+        "author": "Ayn Rand"
+      },
+      "favoritePart": "My favorite part about being in TVG is constantly surrounding myself with not only some of the most intelligent and dedicated students on campus, but also students that empower me to one day be just like them. I found that being a part of TVG brings out the most courageous and passionate side of myself that I never thought I could reach.",
+      "favoriteBook": "Man's Search for Meaning by Viktor Frankl",
+      "childhoodDream": "Growing up, I deeply admired my grandfather who dedicated his life to pediatrics. Attempting to follow in his footsteps, I dreamed of becoming a surgeon, taking courses over many summers to learn more about medicine and surgery. Eventually as I began to mature and grew queasy at the sight of blood, I thought that may not be the best fit for me."
     },
     {
       "name": "Akil Dondapati",
@@ -285,6 +300,21 @@
       "childhoodDream": "I wanted to own my own patisserie in Paris."
     },
     {
+      "name": "Ria Mehrotra",
+      "role": "Associate",
+      "major": "Business",
+      "image": "/images/members/ria-mehrotra.jpg",
+      "linkedin": "https://www.linkedin.com/in/riamehrotraa/",
+      "bio": "Hi! I'm Ria, a Junior studying Finance and Entrepreneurship at UT Austin. On campus, I'm involved in Texas Venture Group, Social Entrepreneurship Learning Lab, and Texas Angels. I love to play tennis, read, travel, and hang out with friends. Fun fact, I actually used to live in Australia!",
+      "quote": {
+        "text": "No knowledge is ever wasted.",
+        "author": "Unknown"
+      },
+      "favoritePart": "I love TVG for the community of driven, ambitious people. There's no other place on campus that has such people with such unique interests and perspectives and that's what makes TVG so special.",
+      "favoriteBook": "Pride and Prejudice by Jane Austen",
+      "childhoodDream": "I wanted to be a teacher or a vet!"
+    },
+    {
       "name": "Shanaya Kabnur",
       "role": "Associate",
       "major": "Finance",
@@ -315,6 +345,21 @@
       "childhoodDream": "When I was younger I wanted to be an astronaut."
     },
     {
+      "name": "Anvith Maddipoti",
+      "role": "Associate",
+      "major": "Informatics",
+      "image": "/images/members/anvith-maddipoti.jpg",
+      "linkedin": "https://www.linkedin.com/in/anvith-maddipoti/",
+      "bio": "Hey! I'm Anvith and I'm a sophomore at UT from Austin, Texas. I have a strong interest in cybersecurity so I'm often researching new vulnerabilities or toying with different tools, trying to stay updated on the changing landscape. Outside of school, I enjoy listening to music and trying new sports!",
+      "quote": {
+        "text": "Mystery creates wonder and wonder is the basis of man's desire to understand.",
+        "author": "Neil Armstrong"
+      },
+      "favoritePart": "The best part of being in TVG is the environment. Through the diverse events, there's always an opportunity to learn something or meet someone new. Every member brings a unique blend of knowledge, curiosity, and drive, making the organization an ideal space to explore interests and grow!",
+      "favoriteBook": "Outliers: The Story of Success - Malcolm Gladwell",
+      "childhoodDream": "As a young child, I had the same career aspirations as everyone else - policeman, president, athlete. As I matured, I slowly became drawn to technology, specifically its use in automating tedious tasks and creating new solutions that could make people's lives easier. That fascination with building and innovating led me to want to pursue a career in a computer science-related field."
+    },
+    {
       "name": "Ryota Yokoyama",
       "role": "Associate",
       "major": "Business Analytics",
@@ -343,6 +388,21 @@
       "favoritePart": "My favorite part about TVG have been the people I have met as well as the associate projects I have had the opportunity to participate in.",
       "favoriteBook": "The Namesake by Jhumpa Lahiri",
       "childhoodDream": "Growing up, I wanted to be a doctor."
+    },
+    {
+      "name": "Kate Ferrer",
+      "role": "Associate",
+      "major": "Finance",
+      "image": "/images/members/kate-ferrer.jpg",
+      "linkedin": "https://www.linkedin.com/in/kate-ferrer-40621a259/",
+      "bio": "I'm a Junior studying Finance with an Economics minor from the Greater Houston area. I love learning about early stage ventures and enjoy meeting new people to share ideas. Outside of TVG, I'm also involved in Alpha Kappa Psi and enjoy running, traveling, and being outdoors.",
+      "quote": {
+        "text": "Luck is what happens when preparation meets opportunity.",
+        "author": "Seneca"
+      },
+      "favoritePart": "My favorite part of TVG is being immersed in the exciting world of startups and investing alongside ambitious peers that challenge me to grow.",
+      "favoriteBook": "The Idiot by Elif Bautman",
+      "childhoodDream": "I wanted to be an Architect, I was obsessed with Architectural Digest"
     },
     {
       "name": "Shray Jain",
@@ -509,21 +569,6 @@
       "childhoodDream": "I wanted to be an astronaut and have always been interested in space. When I was in high school, I took an astrophysics class at Harvard and still find the field fascinating today."
     },
     {
-      "name": "Morgan Davis",
-      "role": "Associate",
-      "major": "Finance",
-      "image": "/images/members/morgan-davis.jpg",
-      "linkedin": "https://www.linkedin.com/in/morgan-davis-a6aa89292/",
-      "bio": "I'm Morgan and I'm from Austin, TX! I'm a Junior Finance major interested in real estate and investment management. I enjoy traveling, experimenting with different  latte recipes, walking South Congress with friends, and playing games with my brother.",
-      "quote": {
-        "text": "Be curious. Not judgemental.",
-        "author": "Ted Lasso"
-      },
-      "favoritePart": "I love getting real, hands on experience with venture capital and working with a group of very driven, like minded people. It's been amazing to learn from investors, analyzing startups, and getting a deeper look into how the industry works.",
-      "favoriteBook": "The Catcher in the Rye by J.D. Salinger",
-      "childhoodDream": "I wanted to be a singer/songwriter and go on a world tour. :)"
-    },
-    {
       "name": "Justin Shapiro",
       "role": "Associate",
       "major": "Finance",
@@ -652,27 +697,10 @@
       "favoritePart": "My favorite part of TVG is the constant stream of opportunity, insight, and ideas that the people in this organization expose you to.",
       "favoriteBook": "Any dystopian fiction, but my favorite is Champion by Marie Lu",
       "childhoodDream": "Professional soccer player at Liverpool FC!"
-    }
-  ],
-  "analysts": [
-    {
-      "name": "Dhilan Shah",
-      "role": "Analyst",
-      "major": "Computer Science, Philosophy, and Mathematics",
-      "image": "/images/members/dhilan-shah.jpg",
-      "linkedin": "https://www.linkedin.com/in/dhilan-shah-a1326820b/",
-      "bio": "I'm a Chicago native (bears/bulls/cubs superfan). Interested in cybersecurity, AI/ML, and blockchain infra. I spend way too much time playing chess and run3. I have a feeling that meaning has ties to craftsmanship.... my goal in life is to build as much cool stuff as I can. ",
-      "quote": {
-        "text": "Still wouldst thou sing, and I have ears in vain— To thy high requiem become a sod",
-        "author": "John Keats"
-      },
-      "favoritePart": "The people and culture. TVG is a community of people who want to both define and pursue success. People are curious - not just about venture and technology, but about life and morality.",
-      "favoriteBook": "Zen and the Art of Motorcycle Maintenance",
-      "childhoodDream": "Professional football player for the Chicago Bears!"
     },
     {
       "name": "Arushi Singh",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Electrical & Computer Engineering",
       "image": "/images/members/arushi-singh.jpeg",
       "linkedin": "https://www.linkedin.com/in/arushixsingh/",
@@ -687,7 +715,7 @@
     },
     {
       "name": "Abdullah Usman",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Business Honors, Finance",
       "image": "/images/members/abdullah-usman.jpeg",
       "linkedin": "https://www.linkedin.com/in/-abdullahusman-/",
@@ -702,7 +730,7 @@
     },
     {
       "name": "Asher Feldman",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Computer Science",
       "image": "/images/members/asher-feldman.jpeg",
       "linkedin": "https://www.linkedin.com/in/asher-feldman",
@@ -716,23 +744,8 @@
       "childhoodDream": "I wanted to open a donut shop."
     },
     {
-      "name": "Aarav Kansupada",
-      "role": "Analyst",
-      "major": "Business, Computer Science",
-      "image": "/images/members/aarav-kansupada.jpeg",
-      "linkedin": "https://www.linkedin.com/in/aaravkansupada/",
-      "bio": "Hi there, I'm Aarav! I'm from Irving, TX, and majoring in Computer Science Honors and Canfield Business Honors. On campus, I'm also involved with the Texas Undergraduate Investment Team. In my free time, I enjoy critiquing movies on my LetterBoxd, watching Ferrari continually lose in Formula 1, finding the optimal Catan strategy, vibecoding, and exploring Austin's food scene.",
-      "quote": {
-        "text": "It is not enough to be busy. So are the ants. The question is: What are we busy about?",
-        "author": "Henry David Thoreau"
-      },
-      "favoritePart": "How intellectually stimulating it is. TVG members are some of the most interesting people I've met, and they push me to see the world in different ways. To be honest, I didn't expect to be discussing philosophy as part of a venture club, but it's pushed me to think deeper and really reflect. That's kind of what venture is about: questioning the status quo and creating your own unique perspective on what the future looks like.",
-      "favoriteBook": "The Count of Monte Cristo by Alexandre Dumas",
-      "childhoodDream": "Growing up right outside DFW International Airport, I really wanted to be an aerospace engineer."
-    },
-    {
       "name": "Zeynep Sahin",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Business, Computer Science",
       "image": "/images/members/zeynep-sahin.jpg",
       "linkedin": "https://www.linkedin.com/in/zeynepdsahin/",
@@ -746,23 +759,8 @@
       "childhoodDream": "Fashion designer. I've been interested in fashion since I was young, although it's more of a hobby than a career path for me now."
     },
     {
-      "name": "Hollis Griffin",
-      "role": "Analyst",
-      "major": "Philosophy",
-      "image": "/images/members/hollis-griffin.jpeg",
-      "linkedin": "https://www.linkedin.com/in/hollis-griffin/",
-      "bio": "I'm from Chicago, Illinois, and am studying Philosophy with a minor in Entrepreneurship. Outside of Texas Venture Group, I'm involved in startups and enjoy exploring all things tech. I'm also a Semester at Sea alum and transfer student from CU Boulder. In my free time, I love scuba diving, snowboarding, cooking, climbing, traveling (I've visited 32 countries!), and tracking restaurants on Beli.",
-      "quote": {
-        "text": "Don't tell me the sky's the limit when there are footprints on the Moon.",
-        "author": "Paul Brandt"
-      },
-      "favoritePart": "My favorite part of TVG is the community. Everyone is ambitious, intelligent, and passionate about entrepreneurship and venture capital. The culture is uplifting and collaborative, and whether you need advice, an introduction, or even just someone to talk philosophy with, TVG has people for you.",
-      "favoriteBook": "Leviathan Wakes by James S. A. Corey",
-      "childhoodDream": "I wanted to be an Astronaut. It's still a dream of mine to go to space."
-    },
-    {
       "name": "Aileen Wu",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Business Honors",
       "image": "/images/members/aileen-wu.jpeg",
       "linkedin": "https://www.linkedin.com/in/aileen-xiaohan-wu/",
@@ -776,23 +774,8 @@
       "childhoodDream": "I've always wanted to be a professional violinist; Hillary Hahn was, and still is, my idol!"
     },
     {
-      "name": "Judi Aly",
-      "role": "Analyst",
-      "major": "Business Honors",
-      "image": "/images/members/judi-aly.jpeg",
-      "linkedin": "https://www.linkedin.com/in/judi-aly-631099375/",
-      "bio": "Howdy! I'm Judi I'm from Austin, Texas (Lake Travis) and I'm really passionate about community and sustainability. I love learning about anything related to philosophy and current events. My favorite thing to do in my free time is spending time with friends and going on walks and discovering new spots on campus.",
-      "quote": {
-        "text": "Just Keep Swimming",
-        "author": "Dory from Nemo"
-      },
-      "favoritePart": "My favorite part of TVG is being able to dive into different industries and niches and learn from the experienced alumni. I also love how everyone is curious to explore, whether thats about philosophical debates or interesting reads. TVG is a place where the unknown is welcome and we're encouraged to be eager to learn.",
-      "favoriteBook": "Crime and Punishment by Fyodor Dostoevsky",
-      "childhoodDream": "I wanted to be president. Never say never but I don't think that's something I'll pursue"
-    },
-    {
       "name": "Rishik Kolpekwar",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Computer Science",
       "image": "/images/members/rishik-kolpekwar.jpeg",
       "linkedin": "https://www.linkedin.com/in/rishik-kolpekwar/",
@@ -806,6 +789,7 @@
       "childhoodDream": "I wanted to be a race car driver, and by the time I was in middle school I became fascinated with the idea of autonomous cars and how they could make a real impact on how our society operates."
     }
   ],
+  "analysts": [],
   "alumni": [
     {
       "name": "Tejas Mehta",

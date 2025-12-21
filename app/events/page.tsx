@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 interface Event {
@@ -11,7 +11,64 @@ interface Event {
   year: string;
 }
 
+function EventCard({ event }: { event: Event }) {
+  const [expanded, setExpanded] = useState(false);
+  const [isTruncated, setIsTruncated] = useState(false);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const el = descriptionRef.current;
+    if (el) {
+      setIsTruncated(el.scrollHeight > el.clientHeight);
+    }
+  }, [event.description]);
+
+  return (
+    <div className="event-card">
+      {event.image ? (
+        <Image
+          src={event.image}
+          alt={event.title}
+          width={400}
+          height={250}
+          className="event-card__image"
+          style={{ objectFit: 'cover' }}
+        />
+      ) : (
+        <div className="event-card__image-placeholder" />
+      )}
+      <div className="event-card__content">
+        <div className="event-card__date">{event.date}</div>
+        <h3 className="event-card__title">{event.title}</h3>
+        <p
+          ref={descriptionRef}
+          className={`event-card__description ${expanded ? 'expanded' : ''}`}
+        >
+          {event.description}
+        </p>
+        {isTruncated && (
+          <button
+            className="event-card__toggle"
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? '- See Less' : '+ See More'}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
 const events: Event[] = [
+
+  { title: 'TVG San Francisco Trek', date: 'Fall 2025', image: '/images/events/sf_2025.jpeg', description: 'Visited top VC firms (Sequoia, Entrepreneurs First, Vista, Gradient Ventures, Transpose, Heavybit, Antler) and high-growth startups (Crusoe, Tavus, Mira) in San Francisco.', year: 'F25' },
+  { title: 'TVG x Bessemer Venture Partners', date: 'Fall 2025', image: '/images/events/bessemer.jpeg', description: 'Fireside chat with Jason Scheller and John Drake, General Partners at Bessemer Venture Partners, which gave us rare chance to dig into sourcing, founder judgment, and the realities of evaluating companies at the earliest stages.', year: 'F25' },
+  { title: 'TVG x Superhuman', date: 'Fall 2025', image: '/images/events/vivek.jpeg', description: 'Fireside chat with Vivek Sodera, Founder & GP of Supercharge.vc and Co-Founder of Superhuman Mail, who shared lessons from scaling Superhuman (recently acquired by Grammarly), his experience co-founding LiveRamp (IPO: RAMP), and his journey backing 20+ AI-centric startups across Silicon Valley and Austin.', year: 'F25' },
+  { title: 'TVG x Throne', date: 'Fall 2025', image: '/images/events/ScottHickle.jpeg', description: 'Fireside chat with Scott Hickle, co-founder of Throne Science, a company pioneering continuous gut health testing to help people improve their health with every flush', year: 'F25' },
+  { title: 'TVG x a16z & Saronic & Base (American Dynamism)', date: 'Fall 2025', image: '/images/events/american_dynamism.jpeg', description: 'TVG Mega-event: TVG and a16z brought the Austin venture community together for an incredible night featuring Doug Lambert (Co-Founder & COO, Saronic Technologies), Erin Prince-Wright (GP, Andreessen Horowitz American Dynamism), and Jared Green (Head of Software, Base Power Company), who shared incredible insights about scaling hard-tech ventures.', year: 'F25' },
+  
+  { title: 'TVG x a16z Crypto', date: 'Spring 2025', image: '', description: 'Fireside chat with Chris Lyons, a General Partner at a16z leading the firm\'s crypto investment efforts, shared insights about web3\'s evolution and early-stage investing in crypto', year: 'S25' },
+  { title: 'TVG x Amenities Health', date: 'Spring 2025', image: '', description: 'Fireside chat with Aasim Saeed (MD-MPA), who clarified many misconceptions about healthcare and delineated how he helped many hospitals (including Baylor Scott & White) unlock millions of dollars in profit', year: 'S25' },
   { title: 'TVG x BuildGroup', date: 'Spring 2025', image: '/images/events/buildgroup.jpeg', description: 'Fireside chat with Jim Curry, co-founder of BuildGroup, who brought a powerhouse perspective on long-term growth and investing with purpose.', year: 'S25' },
   { title: 'TVG x Saga Ventures', date: 'Spring 2025', image: '/images/events/saga-ventures.jpeg', description: 'Fireside chat with Max Altman, co-founder of Saga Ventures, who discussed the nature of VC in the Bay Area and his passion for AI, fintech, and manufacturing.', year: 'S25' },
   { title: 'TVG x Earl Grey Capital', date: 'Spring 2025', image: '/images/events/earl-grey-capital.jpeg', description: 'Fireside chat with Amit Vasudev, co-founder of Earl Grey Capital, who shared incredible insights on early-stage tech investing and his journey from starting Clearbit to his own VC firm.', year: 'S25' },
@@ -26,11 +83,13 @@ const events: Event[] = [
   { title: 'TVG x NVIDIA', date: 'Spring 2025', image: '/images/events/nvidia.jpg', description: 'Fireside chat with Anish Maddipoti, who shared his journey from college startup founder to product manager at NVIDIA working on AI developer tools.', year: 'S25' },
   { title: 'TVG x Velo CFO', date: 'Spring 2025', image: '/images/events/velo-cfo.jpg', description: 'Fireside chat with Vibhav Joopelli, UT Austin alum and founder of Velo CFO, who discussed outsourced CFO services for VC-backed startups.', year: 'S25' },
   { title: 'TVG Bevs & Devs x Z Fellows', date: 'Spring 2025', image: '/images/events/bevs-devs-zf.jpg', description: 'Networking event with students from TVG Bevs & Devs and Z Fellows.', year: 'S25' },
-  { title: 'TVG x New York Venture Capital', date: 'Spring 2025', image: '/images/events/nyc.jpg', description: 'Visiting top VC firms in New York City.', year: 'S25' },
+  { title: 'TVG New York Trek', date: 'Spring 2025', image: '/images/events/nyc.jpg', description: 'Visiting top VC firms in New York City.', year: 'S25' },
+
   { title: 'Base Power Company: Growth in Energy', date: 'Fall 2024', image: '/images/events/base.jpeg', description: 'Talk + Q&A with Cole Jones, Head of Growth at Base Power Company', year: 'F24' },
   { title: 'Saronic / 8VC Fireside Chat', date: 'Fall 2024', image: '/images/events/saronic-8vc.jpeg', description: 'Fireside chat with Alex Moore, Partner at 8VC, and Vib Altekar, Head of Software at Saronic.', year: 'F24' },
   { title: 'Pipedream Labs: Innovation in Logistics', date: 'Fall 2024', image: '/images/events/pipedream.jpeg', description: 'Talk + Q&A with Canon Reeves, CTO of Pipedream Labs.', year: 'F24' },
   { title: 'TVG x Genesis x Momentum', date: 'Fall 2024', image: '/images/events/efpc.jpg', description: 'Entrepreneur First Pitch Competition - Showcasing the next generation of student founders.', year: 'F24' },
+  
   { title: 'Lazard: Venture & Growth Banking', date: 'Spring 2024', image: '/images/events/lazard.jpg', description: 'Talk + Q&A from the Venture & Growth Banking team at Lazard.', year: 'S24' },
   { title: 'BMW iVentures: Financial Modeling', date: 'Spring 2024', image: '/images/events/bmw.jpg', description: 'Financial modeling workshop with Scott Walbrun, Principal at BMW iVentures', year: 'S24' },
   { title: 'Crypto Panel', date: 'Spring 2024', image: '/images/events/crypto.jpeg', description: 'Expert panel discussion on the future of cryptocurrency and blockchain technology.', year: 'S24' },
@@ -52,7 +111,7 @@ export default function Events() {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero hero--compact">
         <div className="container">
           <div className="hero__content">
             <h1 className="hero__title">Events & Activities</h1>
@@ -80,21 +139,7 @@ export default function Events() {
 
           <div className="events-grid">
             {filteredEvents.map((event, index) => (
-              <div key={`${event.title}-${index}`} className="event-card">
-                <Image
-                  src={event.image}
-                  alt={event.title}
-                  width={400}
-                  height={250}
-                  className="event-card__image"
-                  style={{ objectFit: 'cover' }}
-                />
-                <div className="event-card__content">
-                  <div className="event-card__date">{event.date}</div>
-                  <h3 className="event-card__title">{event.title}</h3>
-                  <p className="event-card__description">{event.description}</p>
-                </div>
-              </div>
+              <EventCard key={`${event.title}-${index}`} event={event} />
             ))}
           </div>
         </div>

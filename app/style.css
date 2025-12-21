@@ -963,6 +963,30 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* About Section Image */
+.about-image-container {
+    flex-shrink: 0;
+    width: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: var(--spacing-xl);
+}
+
+@media (max-width: 1024px) {
+    .about-image-container {
+        width: 400px;
+        margin-left: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-image-container {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
 /* Content Sections */
 .content-section {
     padding: var(--spacing-xl) 0;
@@ -1851,6 +1875,13 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 8px;
 }
 
+.event-card__image-placeholder {
+    width: 100%;
+    aspect-ratio: 400 / 250;
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-secondary) 100%);
+    border-radius: 8px;
+}
+
 .event-card__title {
     font-size: 1.5em;
     margin: 10px 0;
@@ -2732,9 +2763,19 @@ a:hover {
 }
 
 /* Events Page */
+/* Compact hero for events page */
+.hero--compact {
+    min-height: auto;
+    padding: calc(var(--header-height) + var(--spacing-lg)) 0 var(--spacing-md);
+}
+
 .events-filter {
-    margin: var(--spacing-lg) 0;
+    margin: var(--spacing-md) 0;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 .filter-button {
     padding: 0.75rem 1.5rem;
@@ -2799,6 +2840,31 @@ a:hover {
 .event-card__description {
     font-size: 0.95rem;
     margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.event-card__description.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.event-card__toggle {
+    background: none;
+    border: none;
+    color: var(--color-text-accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 0.25rem;
+}
+
+.event-card__toggle:hover {
+    text-decoration: underline;
 }
 .event-card__link {
     color: var(--color-text-accent);

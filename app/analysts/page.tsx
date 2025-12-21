@@ -63,28 +63,39 @@ export default function Analysts() {
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero hero--compact">
         <div className="container">
-          <div className="hero__content animate-in">
-            <h1 className="hero__title">Analyst Program</h1>
-            <p className="hero__text">
-              Our Analyst Program provides comprehensive training in venture capital fundamentals
-              through hands-on experience. Members learn essential skills in deal evaluation, market
-              analysis, and due diligence while working on real investment opportunities. The program
-              culminates in formal pitch presentations where analysts evaluate startups and defend
-              their investment theses, preparing them for future roles in venture capital and the
-              broader startup ecosystem.
-            </p>
-            <div className="button-group">
-              <span
-                className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              >
-                Applications Closed
-              </span>
-              <a href="mailto:contact.txventuregroup@gmail.com" className="button">
-                Learn More
-              </a>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--spacing-xl)' }}>
+            <div className="hero__content animate-in">
+              <h1 className="hero__title">Analyst Program</h1>
+              <p className="hero__text">
+                Our Analyst Program provides comprehensive training in venture capital fundamentals
+                through hands-on experience. Members learn essential skills in deal evaluation, market
+                analysis, and due diligence while working on real investment opportunities. The program
+                culminates in formal pitch presentations where analysts evaluate startups and defend
+                their investment theses, preparing them for future roles in venture capital and the
+                broader startup ecosystem.
+              </p>
+              <div className="button-group">
+                <span
+                  className="button button--primary"
+                  style={{ opacity: 0.6, cursor: 'not-allowed' }}
+                >
+                  Applications Closed
+                </span>
+                <a href="mailto:contact.txventuregroup@gmail.com" className="button">
+                  Learn More
+                </a>
+              </div>
+            </div>
+            <div style={{ flexShrink: 0, width: 600, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Image
+                src="/images/analysts/tvg_pitch.jpg"
+                alt="TVG Analysts"
+                width={600}
+                height={400}
+                style={{ objectFit: 'cover', width: '100%', height: 'auto', borderRadius: 8 }}
+              />
             </div>
           </div>
         </div>

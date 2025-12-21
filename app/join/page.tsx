@@ -49,7 +49,7 @@ export default function Join() {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero hero--compact">
         <div className="container">
           <div className="hero__content animate-in">
             <h1 className="hero__title">Join TVG</h1>

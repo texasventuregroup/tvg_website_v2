@@ -30,7 +30,7 @@ export default async function Partnerships() {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero hero--compact">
         <div className="hero__background">
           <Image
             src="/images/about/cover.png"
