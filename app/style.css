@@ -213,6 +213,19 @@
     box-sizing: border-box;
 }
 
+/* Remove default focus outline - use custom styles instead */
+*:focus {
+    outline: none;
+}
+
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+}
+
 /* Global Styles */
 html {
     font-size: 16px;
@@ -308,6 +321,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav__link:hover {
     transform: translateY(-2px);
     opacity: 1;
+    color: var(--color-text-accent);
 }
 
 /* Hamburger Menu */
