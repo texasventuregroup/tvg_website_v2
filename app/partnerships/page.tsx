@@ -33,7 +33,7 @@ export default async function Partnerships() {
       <section className="hero hero--compact">
         <div className="hero__background">
           <Image
-            src="/images/about/cover.png"
+            src="/images/about/cover.webp"
             alt=""
             fill
             priority

@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     url: 'https://txventuregroup.com/',
     title: 'Join Texas Venture Group',
     description: "Join UT's premier venture capital and startup community. Applications for Fall 2025 cohort due September 7th.",
-    images: [{ url: 'https://txventuregroup.com/images/about/cover.png' }],
+    images: [{ url: 'https://txventuregroup.com/images/about/cover.webp' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Join Texas Venture Group',
     description: "Join UT's premier venture capital and startup community.",
-    images: ['https://txventuregroup.com/images/about/cover.png'],
+    images: ['https://txventuregroup.com/images/about/cover.webp'],
   },
 };
 
@@ -39,10 +39,24 @@ export default function RootLayout({
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/images/logo/logo-small.png" />
-        {/* Font Awesome for icons */}
+        {/* Preconnect to external domains for faster resource loading */}
+        <link rel="preconnect" href="https://img.logo.dev" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://img.logo.dev" />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+        {/* Preload hero image for faster LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/about/cover.webp"
+          type="image/webp"
+        />
+        {/* Font Awesome - loaded with low priority */}
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          // @ts-expect-error - fetchpriority is valid but not in React types
+          fetchpriority="low"
         />
       </head>
       <body>
