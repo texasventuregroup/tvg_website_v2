@@ -106,20 +106,6 @@
       "childhoodDream": "Professional football player for the Chicago Bears!"
     },
     {
-      "name": "Max Chen",
-      "role": "Director of Bevs & Devs",
-      "major": "MIS",
-      "image": "/images/members/max-chen.jpeg",
-      "linkedin": "https://www.linkedin.com/in/maxchen04/",
-      "bio": "Hi I'm Max! I'm from Houston, TX and currently studying Management Information Systems. On campus I have been previously involved with TX Momentum, TEDxUTAustin, Product@TX, and Perplexity  throwing workshops, hackathons, and conferences. I've previously dabbled in start-up projects and hope to bring those experiences into enhancing start-up events around campus. My hottest take is that coffee is best black (I am addicted).  In my free time you can find me scrolling on coffee and AI reddit forums, at the gym, watching anime, or slapping stuff on Figma and Cursor.",
-      "quote": {
-        "text": "It is not in the pursuit of happiness that we find fulfillment, it is in the happiness of pursuit.",
-        "author": "Denis Waitley"
-      },
-      "favoriteBook": "Fahrenheit 451 by Ray Bradbury",
-      "childhoodDream": "Doctor (Before I saw my brother take the MCAT)"
-    },
-    {
       "name": "Shivam Siddaiya",
       "role": "Founder, Senior Advisor",
       "major": "Business Analytics, Philosophy",
@@ -268,6 +254,20 @@
       "favoritePart": "TVG is a diverse group with unique ambitions and pursuits. Whenever I have a question about an unfamiliar space, there’s always someone who can help me understand it.",
       "favoriteBook": "Predictably Irrational - Dan Ariely",
       "childhoodDream": "I wanted to be a firefighter, because it was one of the bravest jobs I could imagine."
+    },
+    {
+      "name": "Max Chen",
+      "role": "Associate",
+      "major": "MIS",
+      "image": "/images/members/max-chen.jpeg",
+      "linkedin": "https://www.linkedin.com/in/maxchen04/",
+      "bio": "Hi I'm Max! I'm from Houston, TX and currently studying Management Information Systems. On campus I have been previously involved with TX Momentum, TEDxUTAustin, Product@TX, and Perplexity  throwing workshops, hackathons, and conferences. I've previously dabbled in start-up projects and hope to bring those experiences into enhancing start-up events around campus. My hottest take is that coffee is best black (I am addicted).  In my free time you can find me scrolling on coffee and AI reddit forums, at the gym, watching anime, or slapping stuff on Figma and Cursor.",
+      "quote": {
+        "text": "It is not in the pursuit of happiness that we find fulfillment, it is in the happiness of pursuit.",
+        "author": "Denis Waitley"
+      },
+      "favoriteBook": "Fahrenheit 451 by Ray Bradbury",
+      "childhoodDream": "Doctor (Before I saw my brother take the MCAT)"
     },
     {
       "name": "Aaron Vedaraj",
