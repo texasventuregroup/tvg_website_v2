@@ -73,32 +73,6 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="content-section" id="about" data-animate>
-        <div className="container">
-          <div
-            className="content-section__inner"
-            style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--spacing-xl)' }}
-          >
-            <div className="content-section__text-content">
-              <h2 className="content-section__title">About</h2>
-              <p className="content-section__text">
-                We&apos;re a group of UT Austin students building a better entrepreneurial ecosystem. We
-                support students in joining, building, and investing in early and growth-stage
-                ventures.
-              </p>
-            </div>
-            {/* <div className="about-image-container">
-              <Image
-                src="/images/about/bessemer_front_page.jpeg"
-                alt="TVG and Bessemer Venture Partners Lunch"
-                width={550}
-                height={440}
-                style={{ objectFit: 'cover', width: '100%', height: 'auto', borderRadius: 4 }}
-              />
-            </div> */}
-          </div>
-        </div>
-      </section>
 
       {/* Logo Carousel Section */}
       <section className="logo-carousel-section" data-animate>
