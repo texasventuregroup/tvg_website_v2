@@ -87,7 +87,7 @@ export default function Home() {
                 ventures.
               </p>
             </div>
-            <div className="about-image-container">
+            {/* <div className="about-image-container">
               <Image
                 src="/images/about/bessemer_front_page.jpeg"
                 alt="TVG and Bessemer Venture Partners Lunch"
@@ -95,7 +95,7 @@ export default function Home() {
                 height={440}
                 style={{ objectFit: 'cover', width: '100%', height: 'auto', borderRadius: 4 }}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
