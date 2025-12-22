@@ -5,7 +5,7 @@ import './style.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ThemeProvider } from './components/ThemeProvider';
-import Spotlight from './components/Spotlight';
+import { ClientEffects } from './components/ClientComponents';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -62,7 +62,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <Spotlight />
+          <ClientEffects />
           <Navbar />
           <main>{children}</main>
           <Footer />
