@@ -2724,19 +2724,20 @@ a:hover {
     align-items: center;
     justify-content: center;
     padding: 0 var(--spacing-md);
-    min-width: 180px;
-    max-width: 280px;
+    min-width: 220px;
+    max-width: 320px;
 }
 
 .logo-carousel__item img {
-    height: 65px;
+    height: 96px;
     width: auto;
-    min-width: 65px;
-    min-height: 65px;
+    min-height: 96px;
     object-fit: contain;
     filter: grayscale(0.2) opacity(1) brightness(1.2);
     transition: all var(--transition-standard);
-    max-width: 200px;
+    max-width: 240px;
+    max-height: 96px;
+    border-radius: 14px;
 }
 
 .logo-carousel__item img.brighten {
@@ -2772,8 +2773,8 @@ a:hover {
 
 @media (max-width: 768px) {
     .logo-carousel__item {
-        min-width: 140px;
-        max-width: 200px;
+        min-width: 180px;
+        max-width: 240px;
         padding: 0 var(--spacing-sm);
     }
     
@@ -2782,10 +2783,11 @@ a:hover {
     }
     
     .logo-carousel__item img {
-        height: 45px;
-        min-width: 45px;
-        min-height: 45px;
-        max-width: 140px;
+        height: 72px;
+        width: auto;
+        min-height: 72px;
+        max-width: 180px;
+        max-height: 72px;
     }
     
     .logo-carousel-section__title {

@@ -6,7 +6,7 @@ export const logoMappings = {
   tech: [
     { name: 'Google', domain: 'google.com' },
     { name: 'Apple', domain: 'apple.com' },
-    { name: 'Microsoft', domain: 'microsoft.com' },
+    { name: 'Microsoft', domain: 'office.com' },
     { name: 'Amazon', domain: 'amazon.com' },
     { name: 'Tesla', domain: 'tesla.com' },
     { name: 'Palantir', domain: 'palantir.com' },
@@ -55,6 +55,20 @@ export const logoMappings = {
 };
 
 // Generate logo.dev URL for a domain
-export function getLogoUrl(domain: string, size: number = 128): string {
-  return `https://img.logo.dev/${domain}?token=${LOGO_DEV_TOKEN}&size=${size}&format=png`;
+export function getLogoUrl(
+  domain: string,
+  size: number = 128,
+  variant: 'icon' | 'full' = 'icon'
+): string {
+  const params = new URLSearchParams({
+    token: LOGO_DEV_TOKEN,
+    size: String(size),
+    format: 'png',
+  });
+
+  if (variant === 'full') {
+    params.set('logo', 'full');
+  }
+
+  return `https://img.logo.dev/${domain}?${params.toString()}`;
 }

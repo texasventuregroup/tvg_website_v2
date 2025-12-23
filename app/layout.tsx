@@ -56,8 +56,7 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          // @ts-expect-error - fetchpriority is valid but not in React types
-          fetchpriority="low"
+          fetchPriority="low"
         />
       </head>
       <body>

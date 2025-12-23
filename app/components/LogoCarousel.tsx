@@ -45,7 +45,7 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
   const logos = useMemo(() => {
     const mappings = logoMappings[type] || [];
     // On mobile, use fewer logos and smaller size for better performance
-    const logoSize = isMobile ? 64 : 128;
+    const logoSize = isMobile ? 96 : 160;
     const logoList = isMobile ? mappings.slice(0, 12) : mappings;
 
     return logoList.map(logo => ({
@@ -113,7 +113,7 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
   const handleMouseLeave = () => { isPausedRef.current = false; };
 
   const duplicatedLogos = [...logos, ...logos];
-  const logoSize = isMobile ? 64 : 128;
+  const logoSize = isMobile ? 96 : 160;
 
   return (
     <div
