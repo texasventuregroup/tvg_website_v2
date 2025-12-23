@@ -50,7 +50,7 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
 
     return logoList.map(logo => ({
       name: logo.name,
-      image: getLogoUrl(logo.domain, logoSize),
+      image: getLogoUrl(logo.domain, logoSize, 'full'),
       domain: logo.domain,
     }));
   }, [type, isMobile]);

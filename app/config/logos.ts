@@ -24,15 +24,20 @@ export const logoMappings = {
     { name: 'Techstars', domain: 'techstars.com' },
     { name: 'Capital Factory', domain: 'capitalfactory.com' },
     { name: 'Antler', domain: 'antler.co' },
-    { name: 'Boring Company', domain: 'boringcompany.com' },
+    // { name: 'Boring Company', domain: 'boringcompany.com' },
     { name: 'Neo', domain: 'neo.com' },
     { name: 'Base Power', domain: 'basepowercompany.com' },
-    { name: 'Boundary', domain: 'boundary.com' },
+    { name: 'Boundary', domain: 'boundaryml.com' },
+    { name: 'OpenAI', domain: 'openai.com' },
+    { name: 'Saronic', domain: 'saronic.com' },
+    { name: 'NVIDIA', domain: 'nvidia.com' },
   ],
   finance: [
     { name: 'Goldman Sachs', domain: 'goldmansachs.com' },
+    { name: 'J.P. Morgan', domain: 'jpmorgan.com' },
     { name: 'Jane Street', domain: 'janestreet.com' },
     { name: 'Harvard Business School', domain: 'hbs.edu' },
+    { name: 'Stanford GSB', domain: 'gsb.stanford.edu' },
     { name: 'Wells Fargo', domain: 'wellsfargo.com' },
     { name: 'Ares', domain: 'aresmgmt.com' },
     { name: 'McKinsey', domain: 'mckinsey.com' },
@@ -51,6 +56,8 @@ export const logoMappings = {
     { name: 'Contrary', domain: 'contrary.com' },
     { name: 'Republic', domain: 'republic.com' },
     { name: 'Mainsail Partners', domain: 'mainsailpartners.com' },
+    { name: 'Lazard', domain: 'lazard.com' },
+    { name: 'Susquehanna', domain: 'sig.com' }
   ],
 };
 

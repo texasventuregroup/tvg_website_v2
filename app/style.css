@@ -2737,7 +2737,7 @@ a:hover {
     transition: all var(--transition-standard);
     max-width: 240px;
     max-height: 96px;
-    border-radius: 14px;
+    border-radius: 0;
 }
 
 .logo-carousel__item img.brighten {
