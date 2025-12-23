@@ -1,5 +1,5 @@
 // Logo.dev API configuration
-export const LOGO_DEV_TOKEN = process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN || '';
+export const LOGO_DEV_TOKEN = (process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN || '').trim();
 
 // Company domain mappings for logo.dev API
 export const logoMappings = {
