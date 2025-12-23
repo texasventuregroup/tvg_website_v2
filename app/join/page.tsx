@@ -10,6 +10,8 @@ interface TimeLeft {
   seconds: number;
 }
 
+const APPLICATION_DEADLINE = new Date('2025-09-07T23:59:00-06:00');
+
 function useCountdown(targetDate: Date): TimeLeft {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -43,8 +45,7 @@ function useCountdown(targetDate: Date): TimeLeft {
 }
 
 export default function Join() {
-  const deadline = new Date('2025-09-07T23:59:00-06:00');
-  const timeLeft = useCountdown(deadline);
+  const timeLeft = useCountdown(APPLICATION_DEADLINE);
   const formatNumber = (num: number) => num.toString().padStart(2, '0');
 
   return (
