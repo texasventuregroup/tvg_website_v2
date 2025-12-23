@@ -103,7 +103,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
           <div className="container">
             <h2 className="content-section__title">Analysts</h2>
             <p className="content-section__text" style={{ textAlign: 'center', margin: '0 auto' }}>
-              Recruitment for Fall 2025 analysts will begin in the fall semester. Check back
+              Recruitment for Spring 2026 analysts will begin in the spring semester. Check back
               later for updates or visit our <Link href="/join">Join</Link> page for more
               information.
             </p>
