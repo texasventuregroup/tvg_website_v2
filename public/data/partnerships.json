@@ -1,12 +1,163 @@
 {
   "partnerships": [
     {
+      "name": "a16z",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "a16z.com"
+    },
+    {
+      "name": "Sequoia",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "sequoiacap.com"
+    },
+    {
+      "name": "Saronic",
+      "type": "Startup",
+      "tier": "S",
+      "industry": "Defense",
+      "website": "saronic.com",
+      "logo": "saronic.jpeg"
+    },
+    {
+      "name": "Base Power Company",
+      "shortName": "Base",
+      "type": "Startup",
+      "tier": "S",
+      "industry": "Energy",
+      "website": "basepowercompany.com",
+      "logo": "base.jpeg"
+    },
+    {
       "name": "Lazard",
       "type": "Other",
       "tier": "S",
       "industry": "Generalist",
       "website": "lazard.com",
       "logo": "lazard.jpeg"
+    },
+    {
+      "name": "Insight Partners",
+      "type": "VC",
+      "tier": "S",
+      "industry": "Software",
+      "website": "insightpartners.com",
+      "logo": "insight.jpeg"
+    },
+    {
+      "name": "Antler",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "antler.co"
+    },
+    {
+      "name": "Gradient",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "gradient.com"
+    },
+    {
+      "name": "Tavus",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "tavus.io"
+    },
+    {
+      "name": "Heavybit",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "heavybit.com"
+    },
+    {
+      "name": "Transpose Platform",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "transposeplatform.vc"
+    },
+    {
+      "name": "Delphi",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "delphi.ai"
+    },
+    {
+      "name": "Mira",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "trymira.com"
+    },
+    {
+      "name": "Entrepreneurs First",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "joinef.com"
+    },
+    {
+      "name": "Trust Ventures",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "trustventures.com"
+    },
+    {
+      "name": "Superhuman",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "superhuman.com"
+    },
+    {
+      "name": "Entrepreneurs Roundtable Accelerator",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "eranyc.com"
+    },
+    {
+      "name": "Remarkable Ventures",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "remarkable.vc"
+    },
+    {
+      "name": "Vista Equity Partners",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "vistaequitypartners.com"
+    },
+    {
+      "name": "Saga Ventures",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "sagevc.com"
+    },
+    {
+      "name": "Lontra Ventures",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "lontraventures.com"
+    },
+    {
+      "name": "Great Circle VC",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "greatcircle.vc"
     },
     {
       "name": "BMW iVentures",
@@ -55,23 +206,6 @@
       "industry": "Transportation",
       "website": "pipedreamlabs.co",
       "logo": "pipedream.jpeg"
-    },
-    {
-      "name": "Saronic",
-      "type": "Startup",
-      "tier": "S",
-      "industry": "Defense",
-      "website": "saronic.com",
-      "logo": "saronic.jpeg"
-    },
-    {
-      "name": "Base Power Company",
-      "shortName": "Base",
-      "type": "Startup",
-      "tier": "S",
-      "industry": "Energy",
-      "website": "basepowercompany.com",
-      "logo": "base.jpeg"
     },
     {
       "name": "Learn Capital",
@@ -178,14 +312,6 @@
       "logo": "accenture.jpeg"
     },
     {
-      "name": "Insight Partners",
-      "type": "VC",
-      "tier": "S",
-      "industry": "Software",
-      "website": "insightpartners.com",
-      "logo": "insight.jpeg"
-    },
-    {
       "name": "Oceans Ventures",
       "type": "VC",
       "tier": "B",
@@ -266,6 +392,13 @@
       "industry": "SaaS",
       "website": "dallasvc.com",
       "logo": "dallas-venture-capital.jpeg"
+    },
+    {
+      "name": "Steer",
+      "type": "Other",
+      "tier": "S",
+      "industry": "Generalist",
+      "website": "usesteer.io"
     }
   ]
 }
