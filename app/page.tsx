@@ -81,8 +81,7 @@ export default function Home() {
           <p className="logo-carousel-section__subtitle">
             Internship and full-time offers include the firms below:
           </p>
-          <LogoCarousel type="tech" />
-          <LogoCarousel type="finance" reverse />
+          <LogoCarousel />
         </div>
       </section>
 

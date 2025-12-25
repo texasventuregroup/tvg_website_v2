@@ -1,23 +1,22 @@
 'use client';
 
-import { useEffect, useRef, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { logoMappings, getLogoUrl } from '../config/logos';
 
-interface LogoCarouselProps {
-  type: 'tech' | 'finance';
-  reverse?: boolean;
-}
+const AUTO_SCROLL_INTERVAL_MS = 3000;
+const SCROLL_END_DEBOUNCE_MS = 120;
 
-export default function LogoCarousel({ type, reverse = false }: LogoCarouselProps) {
-  const trackRef = useRef<HTMLDivElement>(null);
+export default function LogoCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | undefined>(undefined);
-  const isPausedRef = useRef(false);
-  const translateRef = useRef(0);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const isAnimatingRef = useRef(false);
+  const isJumpingRef = useRef(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
+  const currentPageRef = useRef(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Check if mobile on mount
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -25,15 +24,12 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Use IntersectionObserver to only animate when visible
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
+      ([entry]) => setIsVisible(entry.isIntersecting),
       { threshold: 0.1, rootMargin: '50px' }
     );
 
@@ -41,107 +37,208 @@ export default function LogoCarousel({ type, reverse = false }: LogoCarouselProp
     return () => observer.disconnect();
   }, []);
 
-  // Reduce logos on mobile for better performance
   const logos = useMemo(() => {
-    const mappings = logoMappings[type] || [];
-    // On mobile, use fewer logos and smaller size for better performance
+    const combined = [...logoMappings.tech, ...logoMappings.finance];
+    const seen = new Set<string>();
     const logoSize = isMobile ? 96 : 160;
-    const logoList = isMobile ? mappings.slice(0, 12) : mappings;
 
-    return logoList.map(logo => ({
-      name: logo.name,
-      image: getLogoUrl(logo.domain, logoSize, 'full'),
-      domain: logo.domain,
-    }));
-  }, [type, isMobile]);
+    return combined
+      .filter((logo) => {
+        if (seen.has(logo.domain)) return false;
+        seen.add(logo.domain);
+        return true;
+      })
+      .map((logo) => ({
+        name: logo.name,
+        image: getLogoUrl(logo.domain, logoSize, 'full'),
+        domain: logo.domain,
+      }));
+  }, [isMobile]);
+
+  const logosPerSlide = isMobile ? 4 : 8;
+  const slides = useMemo(() => {
+    const groups = [];
+    for (let i = 0; i < logos.length; i += logosPerSlide) {
+      groups.push(logos.slice(i, i + logosPerSlide));
+    }
+    return groups;
+  }, [logos, logosPerSlide]);
+
+  const totalSlides = slides.length;
+  const loopSlides = totalSlides > 1 ? [...slides, ...slides, ...slides] : slides;
+
+  const jumpToPage = (pageIndex: number) => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    viewport.scrollLeft = viewport.clientWidth * pageIndex;
+  };
+
+  const scrollToPage = (pageIndex: number) => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    viewport.scrollTo({ left: viewport.clientWidth * pageIndex, behavior: 'smooth' });
+  };
 
   useEffect(() => {
-    if (!logos.length || !trackRef.current || !isVisible) {
-      // Cancel animation if not visible
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-        animationRef.current = undefined;
-      }
+    if (!totalSlides) {
+      setCurrentIndex(0);
+      currentPageRef.current = 0;
       return;
     }
+    const startPage = totalSlides;
+    currentPageRef.current = startPage;
+    setCurrentIndex(0);
+    jumpToPage(startPage);
+  }, [totalSlides]);
 
-    const track = trackRef.current;
-    const items = track.querySelectorAll('.logo-carousel__item');
-    if (!items.length) return;
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport || !totalSlides) return;
+    const normalized = (currentPageRef.current % totalSlides) + totalSlides;
+    currentPageRef.current = normalized;
+    jumpToPage(normalized);
+  }, [isMobile, totalSlides]);
 
-    const getItemSetWidth = () => {
-      let width = 0;
-      const half = Math.floor(items.length / 2);
-      for (let i = 0; i < half; i++) {
-        const item = items[i] as HTMLElement;
-        const style = window.getComputedStyle(item);
-        const marginLeft = parseFloat(style.marginLeft) || 0;
-        const marginRight = parseFloat(style.marginRight) || 0;
-        const gap = parseFloat(getComputedStyle(track).gap) || 0;
-        width += item.offsetWidth + marginLeft + marginRight + gap;
+  useEffect(() => {
+    if (totalSlides <= 1) return;
+    if (!isVisible) return;
+
+    const interval = window.setInterval(() => {
+      if (isAnimatingRef.current) return;
+      isAnimatingRef.current = true;
+      scrollToPage(currentPageRef.current + 1);
+    }, AUTO_SCROLL_INTERVAL_MS);
+
+    return () => window.clearInterval(interval);
+  }, [totalSlides, isVisible]);
+
+  const handleScrollEnd = () => {
+    const viewport = viewportRef.current;
+    if (!viewport || !totalSlides) return;
+    const pageWidth = viewport.clientWidth || 1;
+    const pageIndex = Math.round(viewport.scrollLeft / pageWidth);
+    currentPageRef.current = pageIndex;
+
+    if (totalSlides > 1) {
+      if (pageIndex < totalSlides) {
+        isJumpingRef.current = true;
+        const normalized = pageIndex + totalSlides;
+        jumpToPage(normalized);
+        currentPageRef.current = normalized;
+        setCurrentIndex(pageIndex);
+        isJumpingRef.current = false;
+        isAnimatingRef.current = false;
+        return;
       }
-      return width;
-    };
-
-    const itemSetWidth = getItemSetWidth();
-    const randomOffset = Math.random() * (itemSetWidth / 1.5);
-    translateRef.current = reverse ? randomOffset : -randomOffset;
-    track.style.transform = `translateX(${translateRef.current}px)`;
-
-    // Slower speed on mobile for smoother animation
-    const speed = (reverse ? 1 : -1) * (isMobile ? 0.5 : 1);
-
-    const animate = () => {
-      if (!isPausedRef.current && isVisible) {
-        translateRef.current += speed;
-        if (Math.abs(translateRef.current) >= itemSetWidth) {
-          translateRef.current = 0;
-        }
-        track.style.transform = `translateX(${translateRef.current}px)`;
+      if (pageIndex >= totalSlides * 2) {
+        isJumpingRef.current = true;
+        const normalized = pageIndex - totalSlides;
+        jumpToPage(normalized);
+        currentPageRef.current = normalized;
+        setCurrentIndex(pageIndex - totalSlides);
+        isJumpingRef.current = false;
+        isAnimatingRef.current = false;
+        return;
       }
-      animationRef.current = requestAnimationFrame(animate);
-    };
+      setCurrentIndex(pageIndex - totalSlides);
+    } else {
+      setCurrentIndex(0);
+    }
 
-    animationRef.current = requestAnimationFrame(animate);
+    isAnimatingRef.current = false;
+  };
 
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    };
-  }, [logos, reverse, isVisible, isMobile]);
+  const handleScroll = () => {
+    if (scrollTimeoutRef.current) {
+      window.clearTimeout(scrollTimeoutRef.current);
+    }
+    scrollTimeoutRef.current = window.setTimeout(() => {
+      if (isJumpingRef.current) return;
+      handleScrollEnd();
+    }, SCROLL_END_DEBOUNCE_MS);
+  };
 
-  const handleMouseEnter = () => { isPausedRef.current = true; };
-  const handleMouseLeave = () => { isPausedRef.current = false; };
+  const handlePrev = () => {
+    if (!totalSlides) return;
+    if (isAnimatingRef.current) return;
+    isAnimatingRef.current = true;
+    scrollToPage(currentPageRef.current - 1);
+  };
 
-  const duplicatedLogos = [...logos, ...logos];
-  const logoSize = isMobile ? 96 : 160;
+  const handleNext = () => {
+    if (!totalSlides) return;
+    if (isAnimatingRef.current) return;
+    isAnimatingRef.current = true;
+    scrollToPage(currentPageRef.current + 1);
+  };
 
   return (
-    <div
-      ref={containerRef}
-      className={`logo-carousel ${reverse ? 'logo-carousel--reverse' : ''}`}
-    >
+    <div ref={containerRef} className="logo-carousel">
+      {totalSlides > 1 && (
+        <div className="logo-carousel__controls">
+          <button
+            type="button"
+            className="logo-carousel__control logo-carousel__control--prev"
+            aria-label="Previous logos"
+            onClick={handlePrev}
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            className="logo-carousel__control logo-carousel__control--next"
+            aria-label="Next logos"
+            onClick={handleNext}
+          >
+            ›
+          </button>
+        </div>
+      )}
       <div
-        ref={trackRef}
-        className="logo-carousel__track"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        ref={viewportRef}
+        className="logo-carousel__viewport"
+        onScroll={handleScroll}
       >
-        {duplicatedLogos.map((logo, index) => (
-          <div key={`${logo.name}-${index}`} className="logo-carousel__item">
-            <img
-              src={logo.image}
-              alt={logo.name}
-              loading="lazy"
-              decoding="async"
-              width={logoSize}
-              height={logoSize}
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none';
+        <div className="logo-carousel__track">
+          {loopSlides.map((slide, slideIndex) => (
+            <div key={`logos-slide-${slideIndex}`} className="logo-carousel__slide">
+              {slide.map((logo) => (
+                <div key={logo.name} className="logo-carousel__item">
+                  <img
+                    src={logo.image}
+                    alt={logo.name}
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {totalSlides > 1 && (
+        <div className="logo-carousel__dots" role="tablist" aria-label="Logo slides">
+          {slides.map((_, index) => (
+            <button
+              key={`logos-dot-${index}`}
+              type="button"
+              className={`logo-carousel__dot ${index === currentIndex ? 'is-active' : ''}`}
+              aria-label={`Go to slide ${index + 1}`}
+              aria-pressed={index === currentIndex}
+              onClick={() => {
+                if (isAnimatingRef.current) return;
+                isAnimatingRef.current = true;
+                currentPageRef.current = index;
+                scrollToPage(index);
               }}
             />
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
