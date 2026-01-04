@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ThemeProvider } from './components/ThemeProvider';
 import { ClientEffects } from './components/ClientComponents';
+import { SignupModalProvider } from './components/SignupModal';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -61,10 +62,12 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <ClientEffects />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <SignupModalProvider>
+            <ClientEffects />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </SignupModalProvider>
         </ThemeProvider>
       </body>
     </html>

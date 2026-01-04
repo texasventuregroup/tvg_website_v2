@@ -1,6 +1,28 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import LogoCarousel from './components/LogoCarousel';
+import { promises as fs } from 'fs';
+import path from 'path';
+import LogoCarousel, { CarouselLogo } from './components/LogoCarousel';
+import JoinButton from './components/JoinButton';
+
+async function getCarouselLogos(): Promise<{ row1: CarouselLogo[]; row2: CarouselLogo[] }> {
+  const filePath = path.join(process.cwd(), 'public', 'data', 'carousel-logos.json');
+  const fileContents = await fs.readFile(filePath, 'utf8');
+  const data = JSON.parse(fileContents);
+  const logos: CarouselLogo[] = data.logos || [];
+
+  const row1: CarouselLogo[] = [];
+  const row2: CarouselLogo[] = [];
+  logos.forEach((logo, index) => {
+    if (index % 2 === 0) {
+      row1.push(logo);
+    } else {
+      row2.push(logo);
+    }
+  });
+
+  return { row1, row2 };
+}
 
 const programs = [
   {
@@ -29,7 +51,9 @@ const programs = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const { row1, row2 } = await getCarouselLogos();
+
   return (
     <>
       {/* Hero Section */}
@@ -81,7 +105,8 @@ export default function Home() {
           <p className="logo-carousel-section__subtitle">
             Internship and full-time offers include the firms below:
           </p>
-          <LogoCarousel />
+          <LogoCarousel logos={row1} />
+          <LogoCarousel logos={row2} reverse />
         </div>
       </section>
 
@@ -190,9 +215,9 @@ export default function Home() {
               >
                 Applications Closed
               </span>
-              <Link href="/join" className="button">
+              <JoinButton>
                 Learn More
-              </Link>
+              </JoinButton>
             </div>
           </div>
         </div>

@@ -5,12 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
+import { useJoinModal } from './SignupModal';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { toggleTheme } = useTheme();
+  const { openModal } = useJoinModal();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -91,7 +93,7 @@ export default function Navbar() {
             Research
           </a>
           <Link href="/members" className="nav__link">Team</Link>
-          <Link href="/join" className="nav__link">Join</Link>
+          <button className="nav__link" onClick={() => { openModal(); setIsMenuOpen(false); }}>Join</button>
           <button className="theme-toggle" aria-label="Toggle theme" onClick={toggleTheme}>
             <div className="theme-toggle__circle"></div>
           </button>

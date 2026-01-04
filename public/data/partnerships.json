@@ -19,8 +19,7 @@
       "type": "Startup",
       "tier": "S",
       "industry": "Defense",
-      "website": "saronic.com",
-      "logo": "saronic.jpeg"
+      "website": "saronic.com"
     },
     {
       "name": "Base Power Company",
@@ -28,24 +27,21 @@
       "type": "Startup",
       "tier": "S",
       "industry": "Energy",
-      "website": "basepowercompany.com",
-      "logo": "base.jpeg"
+      "website": "basepowercompany.com"
     },
     {
       "name": "Lazard",
       "type": "Other",
       "tier": "S",
       "industry": "Generalist",
-      "website": "lazard.com",
-      "logo": "lazard.jpeg"
+      "website": "lazard.com"
     },
     {
       "name": "Insight Partners",
       "type": "VC",
       "tier": "S",
       "industry": "Software",
-      "website": "insightpartners.com",
-      "logo": "insight.jpeg"
+      "website": "insightpartners.com"
     },
     {
       "name": "Antler",
@@ -164,176 +160,154 @@
       "type": "VC",
       "tier": "A",
       "industry": "Robotics",
-      "website": "bmwiventures.com",
-      "logo": "bmw.jpeg"
+      "website": "bmwiventures.com"
     },
     {
       "name": "Midnight VP",
       "type": "VC",
       "tier": "B",
       "industry": "Consumer",
-      "website": "midnightvp.com",
-      "logo": "midnight.jpeg"
+      "website": "midnightvp.com"
     },
     {
       "name": "Oxcart VC",
       "type": "VC",
       "tier": "A",
       "industry": "Deeptech",
-      "website": "oxcart.vc",
-      "logo": "oxcart.jpeg"
+      "website": "oxcart.vc"
     },
     {
       "name": "Overmatch VC",
       "type": "VC",
       "tier": "A",
       "industry": "Deeptech",
-      "website": "overmatch.vc",
-      "logo": "overmatch.jpeg"
+      "website": "overmatch.vc"
     },
     {
       "name": "Earl Grey Capital",
       "type": "VC",
       "tier": "A",
       "industry": "Generalist",
-      "website": "earlgrey.capital",
-      "logo": "earl-grey.jpeg"
+      "website": "earlgrey.capital"
     },
     {
       "name": "Pipedream Labs",
       "type": "Startup",
       "tier": "B",
       "industry": "Transportation",
-      "website": "pipedreamlabs.co",
-      "logo": "pipedream.jpeg"
+      "website": "pipedreamlabs.co"
     },
     {
       "name": "Learn Capital",
       "type": "VC",
       "tier": "A",
       "industry": "Edtech",
-      "website": "learn.vc",
-      "logo": "learn.jpeg"
+      "website": "learn.vc"
     },
     {
       "name": "Sweetspot",
       "type": "Startup",
       "tier": "B",
       "industry": "SaaS",
-      "website": "sweetspot.so",
-      "logo": "sweetspot.jpeg"
+      "website": "sweetspot.so"
     },
     {
       "name": "Next Coast Ventures",
       "type": "VC",
       "tier": "B",
       "industry": "SaaS",
-      "website": "nextcoastventures.com",
-      "logo": "next-coast.jpeg"
+      "website": "nextcoastventures.com"
     },
     {
       "name": "LiveOak Ventures",
       "type": "VC",
       "tier": "A",
       "industry": "Generalist",
-      "website": "liveoakvc.vc",
-      "logo": "liveoak.jpeg"
+      "website": "liveoakvc.vc"
     },
     {
       "name": "Energy Transition Ventures",
       "type": "VC",
       "tier": "A",
       "industry": "Energy",
-      "website": "energytransitionventures.com",
-      "logo": "etv.jpeg"
+      "website": "energytransitionventures.com"
     },
     {
       "name": "S3 Ventures",
       "type": "VC",
       "tier": "A",
       "industry": "Generalist",
-      "website": "s3vc.com",
-      "logo": "s3.jpeg"
+      "website": "s3vc.com"
     },
     {
       "name": "BuildGroup",
       "type": "VC",
       "tier": "A",
       "industry": "Software",
-      "website": "buildgroup.com",
-      "logo": "buildgroup.jpeg"
+      "website": "buildgroup.com"
     },
     {
       "name": "Capital Creek Partners",
       "type": "VC",
       "tier": "A",
       "industry": "Generalist",
-      "website": "capitalcreek.com",
-      "logo": "ccp.jpeg"
+      "website": "capitalcreek.com"
     },
     {
       "name": "Gothams",
       "type": "VC",
       "tier": "B",
       "industry": "Deeptech",
-      "website": "gothams.com",
-      "logo": "gothams.jpeg"
+      "website": "gothams.com"
     },
     {
       "name": "Grafton Street Partners",
       "type": "VC",
       "tier": "A",
       "industry": "Generalist",
-      "website": "graftonstreetpartners.com",
-      "logo": "grafton.jpeg"
+      "website": "graftonstreetpartners.com"
     },
     {
       "name": "NVIDIA",
       "type": "Other",
       "tier": "A",
       "industry": "Generalist",
-      "website": "nvidia.com",
-      "logo": "nvidia.jpeg"
+      "website": "nvidia.com"
     },
     {
       "name": "Mainshares",
       "type": "Startup",
       "tier": "B",
       "industry": "Fintech",
-      "website": "mainshares.com",
-      "logo": "mainshares.jpeg"
+      "website": "mainshares.com"
     },
     {
       "name": "Accenture",
       "type": "Other",
       "tier": "B",
       "industry": "Consulting",
-      "website": "accenture.com",
-      "logo": "accenture.jpeg"
+      "website": "accenture.com"
     },
     {
       "name": "Oceans Ventures",
       "type": "VC",
       "tier": "B",
       "industry": "Generalist",
-      "website": "oceans.ventures",
-      "logo": "oceans.jpeg"
+      "website": "oceans.ventures"
     },
     {
       "name": "Team8",
       "type": "VC",
       "tier": "B",
       "industry": "Technology",
-      "website": "team8.vc",
-      "logo": "team8.jpeg"
+      "website": "team8.vc"
     },
     {
       "name": "RRE Ventures",
       "type": "VC",
       "tier": "S",
       "industry": "Generalist",
-      "website": "rre.com",
-      "logo": "rre.jpeg"
+      "website": "rre.com"
     },
     {
       "name": "Bessemer Venture Partners",
@@ -341,8 +315,7 @@
       "type": "VC",
       "tier": "S",
       "industry": "Generalist",
-      "website": "bvp.com",
-      "logo": "bvp.jpeg"
+      "website": "bvp.com"
     },
     {
       "name": "New Enterprise Associates",
@@ -350,48 +323,42 @@
       "type": "VC",
       "tier": "S",
       "industry": "Generalist",
-      "website": "nea.com",
-      "logo": "nea.jpeg"
+      "website": "nea.com"
     },
     {
       "name": "Tacora Capital",
       "type": "Asset Manager",
       "tier": "A",
       "industry": "Generalist",
-      "website": "tacoracap.com",
-      "logo": "tacora.jpeg"
+      "website": "tacoracap.com"
     },
     {
       "name": "Harvest Growth Capital",
       "type": "Growth Equity",
       "tier": "B",
       "industry": "SaaS",
-      "website": "harvestgrowthcapital.com",
-      "logo": "harvest.jpeg"
+      "website": "harvestgrowthcapital.com"
     },
     {
       "name": "8VC",
       "type": "VC",
       "tier": "S",
       "industry": "Generalist",
-      "website": "8vc.com",
-      "logo": "8vc.jpeg"
+      "website": "8vc.com"
     },
     {
       "name": "Velo CFO",
       "type": "Other",
       "tier": "B",
       "industry": "SaaS",
-      "website": "velocfo.com",
-      "logo": "velo.jpeg"
+      "website": "velocfo.com"
     },
     {
       "name": "Dallas Venture Capital",
       "type": "VC",
       "tier": "B",
       "industry": "SaaS",
-      "website": "dallasvc.com",
-      "logo": "dallas-venture-capital.jpeg"
+      "website": "dallasvc.com"
     },
     {
       "name": "Steer",

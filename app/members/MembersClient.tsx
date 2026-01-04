@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useJoinModal } from '../components/SignupModal';
 
 interface Member {
   name: string;
@@ -29,6 +29,7 @@ interface MembersData {
 
 export default function MembersClient({ members }: { members: MembersData }) {
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+  const { openModal } = useJoinModal();
 
   useEffect(() => {
     if (selectedMember) {
@@ -104,7 +105,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
             <h2 className="content-section__title">Analysts</h2>
             <p className="content-section__text" style={{ textAlign: 'center', margin: '0 auto' }}>
               Recruitment for Spring 2026 analysts will begin in the spring semester. Check back
-              later for updates or visit our <Link href="/join">Join</Link> page for more
+              later for updates or <button onClick={openModal} style={{ background: 'none', border: 'none', color: 'var(--color-text-accent)', cursor: 'pointer', padding: 0, font: 'inherit', textDecoration: 'underline' }}>click here</button> for more
               information.
             </p>
           </div>

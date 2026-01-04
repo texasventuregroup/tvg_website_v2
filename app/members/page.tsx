@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { promises as fs } from 'fs';
 import path from 'path';
 import MembersClient from './MembersClient';
+import JoinButton from '../components/JoinButton';
 
 interface Member {
   name: string;
@@ -69,9 +70,9 @@ export default async function MembersPage() {
               >
                 Applications Closed
               </span>
-              <Link href="/join" className="button">
+              <JoinButton>
                 Learn More
-              </Link>
+              </JoinButton>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ interface Partner {
   tier: string;
   industry: string;
   website: string;
-  logo: string;
+  logo?: string;
 }
 
 async function getPartnerships(): Promise<Partner[]> {
@@ -66,7 +66,7 @@ export default async function Partnerships() {
               >
                 <div className="partnership-card__logo-container">
                   <img
-                    src={getLogoUrl(partner.website, 128)}
+                    src={partner.logo ? `/images/partners/${partner.logo}` : getLogoUrl(partner.website, 128)}
                     alt={`${partner.name} logo`}
                     className="partnership-card__logo"
                     loading="lazy"

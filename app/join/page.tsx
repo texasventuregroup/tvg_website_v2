@@ -1,52 +1,19 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import LogoCarousel from '../components/LogoCarousel';
-
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
+import { promises as fs } from 'fs';
+import path from 'path';
+import LogoCarousel, { CarouselLogo } from '../components/LogoCarousel';
+import Countdown from '../components/Countdown';
 
 const APPLICATION_DEADLINE = new Date('2025-09-07T23:59:00-06:00');
 
-function useCountdown(targetDate: Date): TimeLeft {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
-
-      if (difference <= 0) {
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      }
-
-      return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / (1000 * 60)) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    };
-
-    setTimeLeft(calculateTimeLeft());
-
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [targetDate]);
-
-  return timeLeft;
+async function getCarouselLogos(): Promise<CarouselLogo[]> {
+  const filePath = path.join(process.cwd(), 'public', 'data', 'carousel-logos.json');
+  const fileContents = await fs.readFile(filePath, 'utf8');
+  const data = JSON.parse(fileContents);
+  return data.logos || [];
 }
 
-export default function Join() {
-  const timeLeft = useCountdown(APPLICATION_DEADLINE);
-  const formatNumber = (num: number) => num.toString().padStart(2, '0');
+export default async function Join() {
+  const carouselLogos = await getCarouselLogos();
 
   return (
     <>
@@ -69,26 +36,10 @@ export default function Join() {
               </div>
             </div>
 
-            <div className="countdown__header">Application Deadline</div>
-            <div className="countdown">
-              <div className="countdown__item">
-                <div className="countdown__value">{formatNumber(timeLeft.days)}</div>
-                <div className="countdown__label">Days</div>
-              </div>
-              <div className="countdown__item">
-                <div className="countdown__value">{formatNumber(timeLeft.hours)}</div>
-                <div className="countdown__label">Hours</div>
-              </div>
-              <div className="countdown__item">
-                <div className="countdown__value">{formatNumber(timeLeft.minutes)}</div>
-                <div className="countdown__label">Minutes</div>
-              </div>
-              <div className="countdown__item">
-                <div className="countdown__value">{formatNumber(timeLeft.seconds)}</div>
-                <div className="countdown__label">Seconds</div>
-              </div>
-            </div>
-            <div className="countdown__deadline">September 7, 2025 at 11:59 PM CST</div>
+            <Countdown
+              targetDate={APPLICATION_DEADLINE}
+              deadlineText="September 7, 2025 at 11:59 PM CST"
+            />
 
             <div className="button-group button-group--centered" style={{ marginTop: 'var(--spacing-lg)' }}>
               <span className="button button--primary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
@@ -108,7 +59,7 @@ export default function Join() {
           <p className="logo-carousel-section__subtitle">
             Internship and full-time offers include the firms below:
           </p>
-          <LogoCarousel />
+          <LogoCarousel logos={carouselLogos} />
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import JoinButton from '../components/JoinButton';
 
 const experienceCards = [
   {
@@ -198,9 +199,9 @@ export default function Analysts() {
               >
                 Applications Closed
               </span>
-              <Link href="/join" className="button">
+              <JoinButton>
                 Learn More
-              </Link>
+              </JoinButton>
             </div>
           </div>
         </div>
