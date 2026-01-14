@@ -7,6 +7,7 @@ export interface CarouselLogo {
   name: string;
   domain: string;
   logo_img?: string;
+  scale?: number;
 }
 
 interface LogoCarouselProps {
@@ -56,6 +57,7 @@ export default function LogoCarousel({ logos: logoData, reverse = false }: LogoC
       name: logo.name,
       image: logo.logo_img || getLogoUrl(logo.domain, logoSize),
       domain: logo.domain,
+      scale: logo.scale || 1,
     }));
   }, [logoData, isMobile]);
 
@@ -124,7 +126,6 @@ export default function LogoCarousel({ logos: logoData, reverse = false }: LogoC
   const handleMouseLeave = () => { isPausedRef.current = false; };
 
   const duplicatedLogos = [...logos, ...logos];
-  const logoSize = isMobile ? 96 : 160;
 
   return (
     <div
@@ -141,11 +142,10 @@ export default function LogoCarousel({ logos: logoData, reverse = false }: LogoC
           <div key={`${logo.name}-${index}`} className="logo-carousel__item">
             <img
               src={logo.image}
-              alt=""
+              alt={logo.name}
               loading="lazy"
               decoding="async"
-              width={logoSize}
-              height={logoSize}
+              style={logo.scale !== 1 ? { transform: `scale(${logo.scale})` } : undefined}
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = 'none';
               }}

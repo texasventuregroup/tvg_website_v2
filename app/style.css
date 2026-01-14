@@ -2741,21 +2741,20 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 var(--spacing-md);
-    min-width: 220px;
-    max-width: 320px;
+    width: 180px;
+    height: 72px;
+    margin: 0 var(--spacing-lg);
+    padding: var(--spacing-sm);
 }
 
 .logo-carousel__item img {
-    height: 96px;
+    max-width: 100%;
+    max-height: 100%;
     width: auto;
-    min-height: 96px;
+    height: auto;
     object-fit: contain;
-    filter: grayscale(0.2) opacity(1) brightness(1.2);
+    filter: grayscale(0.15) opacity(0.9);
     transition: all var(--transition-standard);
-    max-width: 240px;
-    max-height: 96px;
-    border-radius: 0;
 }
 
 .logo-carousel__item img.brighten {
@@ -2772,7 +2771,7 @@ a:hover {
 
 .logo-carousel__item:hover img {
     filter: grayscale(0) opacity(1);
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .logo-carousel__item:hover img.brighten {
@@ -2821,32 +2820,30 @@ a:hover {
 
 @media (max-width: 768px) {
     .logo-carousel__item {
-        min-width: 180px;
-        max-width: 240px;
-        padding: 0 var(--spacing-sm);
+        width: 120px;
+        height: 48px;
+        margin: 0 var(--spacing-md);
+        padding: var(--spacing-xs);
     }
 
     .logo-carousel {
         padding: var(--spacing-md) var(--spacing-md) var(--spacing-md);
     }
-    
+
     .logo-carousel__slide {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--spacing-lg);
     }
-    
+
     .logo-carousel__item img {
-        height: 72px;
-        width: auto;
-        min-height: 72px;
-        max-width: 180px;
-        max-height: 72px;
+        max-width: 100%;
+        max-height: 100%;
     }
-    
+
     .logo-carousel-section__title {
         font-size: 2rem;
     }
-    
+
     .logo-carousel-section__subtitle {
         font-size: 1rem;
     }

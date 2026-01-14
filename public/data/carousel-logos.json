@@ -1,58 +1,254 @@
 {
   "logos": [
-    { "name": "Google", "domain": "google.com" },
-    { "name": "Apple", "domain": "apple.com" },
-    { "name": "Microsoft", "domain": "office.com" },
-    { "name": "Amazon", "domain": "amazon.com" },
-    { "name": "Tesla", "domain": "tesla.com" },
-    { "name": "Palantir", "domain": "palantir.com" },
-    { "name": "DeepMind", "domain": "deepmind.com" },
-    { "name": "Stripe", "domain": "stripe.com" },
-    { "name": "Salesforce", "domain": "salesforce.com" },
-    { "name": "Coinbase", "domain": "coinbase.com" },
-    { "name": "Slack", "domain": "slack.com" },
-    { "name": "Expedia", "domain": "expedia.com" },
-    { "name": "AMD", "domain": "amd.com" },
-    { "name": "MathWorks", "domain": "mathworks.com" },
-    { "name": "Raytheon", "domain": "rtx.com" },
-    { "name": "Texas Instruments", "domain": "ti.com" },
+    {
+      "name": "Google",
+      "domain": "google.com",
+      "logo_img": "/images/logo/home/google.webp"
+    },
+    {
+      "name": "Apple",
+      "domain": "apple.com",
+      "logo_img": "/images/logo/home/apple.webp"
+    },
+    {
+      "name": "Microsoft",
+      "domain": "office.com",
+      "logo_img": "/images/logo/home/microsoft.png"
+    },
+    {
+      "name": "Amazon",
+      "domain": "amazon.com",
+      "logo_img": "/images/logo/home/amazon.webp"
+    },
+    {
+      "name": "Tesla",
+      "domain": "tesla.com",
+      "logo_img": "/images/logo/home/tesla.webp"
+    },
+    {
+      "name": "Palantir",
+      "domain": "palantir.com",
+      "logo_img": "/images/logo/home/palantir.webp"
+    },
+    {
+      "name": "DeepMind",
+      "domain": "deepmind.com",
+      "logo_img": "/images/logo/home/deepmind.webp"
+    },
+    {
+      "name": "Stripe",
+      "domain": "stripe.com",
+      "logo_img": "/images/logo/home/stripe.webp"
+    },
+    {
+      "name": "Salesforce",
+      "domain": "salesforce.com",
+      "logo_img": "/images/logo/home/salesforce.webp"
+    },
+    {
+      "name": "Coinbase",
+      "domain": "coinbase.com",
+      "logo_img": "/images/logo/home/coinbase.webp"
+    },
+    {
+      "name": "Slack",
+      "domain": "slack.com",
+      "logo_img": "/images/logo/home/slack.webp"
+    },
+    {
+      "name": "Expedia",
+      "domain": "expedia.com",
+      "logo_img": "/images/logo/home/expedia.webp"
+    },
+    {
+      "name": "AMD",
+      "domain": "amd.com",
+      "logo_img": "/images/logo/home/amd.webp"
+    },
+    {
+      "name": "MathWorks",
+      "domain": "mathworks.com",
+      "logo_img": "/images/logo/home/matlab.webp"
+    },
+    {
+      "name": "Raytheon",
+      "domain": "rtx.com",
+      "logo_img": "/images/logo/home/raytheon-technologies.webp"
+    },
+    {
+      "name": "Texas Instruments",
+      "domain": "ti.com",
+      "logo_img": "/images/logo/home/texas-instruments.webp"
+    },
     {
       "name": "Y Combinator",
-      "domain": "ycombinator.com"
+      "domain": "ycombinator.com",
+      "logo_img": "/images/logo/home/yc.webp"
     },
-    { "name": "Techstars", "domain": "techstars.com" },
-    { "name": "Capital Factory", "domain": "capitalfactory.com" },
-    { "name": "Antler", "domain": "antler.co" },
-    { "name": "Neo", "domain": "neo.com" },
-    { "name": "Base Power", "domain": "basepowercompany.com" },
-    { "name": "Boundary", "domain": "boundaryml.com" },
-    { "name": "OpenAI", "domain": "openai.com" },
-    { "name": "Saronic", "domain": "saronic.com" },
-    { "name": "NVIDIA", "domain": "nvidia.com" },
-    { "name": "Goldman Sachs", "domain": "goldmansachs.com" },
-    { "name": "J.P. Morgan", "domain": "jpmorgan.com" },
-    { "name": "Jane Street", "domain": "janestreet.com" },
-    { "name": "Harvard Business School", "domain": "hbs.edu" },
-    { "name": "Stanford GSB", "domain": "gsb.stanford.edu" },
-    { "name": "Wells Fargo", "domain": "wellsfargo.com" },
-    { "name": "Ares", "domain": "aresmgmt.com" },
-    { "name": "McKinsey", "domain": "mckinsey.com" },
-    { "name": "BCG", "domain": "bcg.com" },
-    { "name": "Bain", "domain": "bain.com" },
-    { "name": "Accenture", "domain": "accenture.com" },
-    { "name": "PwC", "domain": "pwc.com" },
-    { "name": "Evercore", "domain": "evercore.com" },
-    { "name": "Guggenheim", "domain": "guggenheimpartners.com" },
-    { "name": "Piper Sandler", "domain": "pipersandler.com" },
-    { "name": "Moelis", "domain": "moelis.com" },
-    { "name": "Kleiner Perkins", "domain": "kleinerperkins.com" },
-    { "name": "8VC", "domain": "8vc.com" },
-    { "name": "Battery Ventures", "domain": "battery.com" },
-    { "name": "Soma Capital", "domain": "somacap.com" },
-    { "name": "Contrary", "domain": "contrary.com" },
-    { "name": "Republic", "domain": "republic.com" },
-    { "name": "Mainsail Partners", "domain": "mainsailpartners.com" },
-    { "name": "Lazard", "domain": "lazard.com" },
-    { "name": "Susquehanna", "domain": "sig.com" }
+    {
+      "name": "Techstars",
+      "domain": "techstars.com",
+      "logo_img": "/images/logo/home/techstars.webp"
+    },
+    {
+      "name": "Capital Factory",
+      "domain": "capitalfactory.com",
+      "logo_img": "/images/logo/home/capital-factory.webp"
+    },
+    {
+      "name": "Antler",
+      "domain": "antler.co",
+      "logo_img": "/images/logo/home/antler.webp"
+    },
+    {
+      "name": "Neo",
+      "domain": "neo.com",
+      "logo_img": "/images/logo/home/neo.png"
+    },
+    {
+      "name": "Base Power",
+      "domain": "basepowercompany.com",
+      "logo_img": "/images/logo/home/base.png"
+    },
+    {
+      "name": "Boundary",
+      "domain": "boundaryml.com",
+      "logo_img": "/images/logo/home/boundaryml_cover.png"
+    },
+    {
+      "name": "OpenAI",
+      "domain": "openai.com",
+      "logo_img": "/images/logo/home/openai.png"
+    },
+    {
+      "name": "Saronic",
+      "domain": "saronic.com",
+      "logo_img": "/images/logo/home/saronic.webp"
+    },
+    {
+      "name": "NVIDIA",
+      "domain": "nvidia.com",
+      "logo_img": "/images/logo/home/nvidia.png"
+    },
+    {
+      "name": "Goldman Sachs",
+      "domain": "goldmansachs.com",
+      "logo_img": "/images/logo/home/goldman-sachs.webp"
+    },
+    {
+      "name": "J.P. Morgan",
+      "domain": "jpmorgan.com",
+      "logo_img": "/images/logo/home/jpmorgan.png"
+    },
+    {
+      "name": "Jane Street",
+      "domain": "janestreet.com",
+      "logo_img": "/images/logo/home/jane-street.webp"
+    },
+    {
+      "name": "Harvard Business School",
+      "domain": "hbs.edu",
+      "logo_img": "/images/logo/home/hbs.webp"
+    },
+    {
+      "name": "Stanford GSB",
+      "domain": "gsb.stanford.edu",
+      "logo_img": "/images/logo/home/Stanford_GSB_Logo.png"
+    },
+    {
+      "name": "Wells Fargo",
+      "domain": "wellsfargo.com",
+      "logo_img": "/images/logo/home/wells-fargo.webp"
+    },
+    {
+      "name": "Ares",
+      "domain": "aresmgmt.com",
+      "logo_img": "/images/logo/home/ares.webp"
+    },
+    {
+      "name": "McKinsey",
+      "domain": "mckinsey.com",
+      "logo_img": "/images/logo/home/mck.webp"
+    },
+    {
+      "name": "BCG",
+      "domain": "bcg.com",
+      "logo_img": "/images/logo/home/bcg.webp"
+    },
+    {
+      "name": "Bain",
+      "domain": "bain.com",
+      "logo_img": "/images/logo/home/bain-and-company.webp"
+    },
+    {
+      "name": "Accenture",
+      "domain": "accenture.com",
+      "logo_img": "/images/logo/home/accenture.png"
+    },
+    {
+      "name": "PwC",
+      "domain": "pwc.com",
+      "logo_img": "/images/logo/home/pwc.webp"
+    },
+    {
+      "name": "Evercore",
+      "domain": "evercore.com",
+      "logo_img": "/images/logo/home/evercore.webp"
+    },
+    {
+      "name": "Guggenheim",
+      "domain": "guggenheimpartners.com",
+      "logo_img": "/images/logo/home/guggenheim.webp"
+    },
+    {
+      "name": "Piper Sandler",
+      "domain": "pipersandler.com",
+      "logo_img": "/images/logo/home/piper-sandler.webp"
+    },
+    {
+      "name": "Moelis",
+      "domain": "moelis.com",
+      "logo_img": "/images/logo/home/moelis.webp"
+    },
+    {
+      "name": "Kleiner Perkins",
+      "domain": "kleinerperkins.com",
+      "logo_img": "/images/logo/home/kleiner-perkins.webp"
+    },
+    {
+      "name": "Battery Ventures",
+      "domain": "battery.com",
+      "logo_img": "/images/logo/home/battery.png"
+    },
+    {
+      "name": "Soma Capital",
+      "domain": "somacap.com",
+      "logo_img": "/images/logo/home/soma-capital.webp"
+    },
+    {
+      "name": "Contrary",
+      "domain": "contrary.com",
+      "logo_img": "/images/logo/home/contrary.webp"
+    },
+    {
+      "name": "Republic",
+      "domain": "republic.com",
+      "logo_img": "/images/logo/home/republic.png"
+    },
+    {
+      "name": "Mainsail Partners",
+      "domain": "mainsailpartners.com",
+      "logo_img": "/images/logo/home/mainsail.webp"
+    },
+    {
+      "name": "Lazard",
+      "domain": "lazard.com",
+      "logo_img": "/images/logo/home/lazard.png"
+    },
+    {
+      "name": "Susquehanna",
+      "domain": "sig.com",
+      "logo_img": "/images/logo/home/sig.png"
+    }
   ]
 }
