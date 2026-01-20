@@ -71,12 +71,15 @@ export default async function Home() {
         </div>
         <div className="container">
           <div style={{ textAlign: 'center' }}>
-            <span
+            <a
+              href="https://tally.so/r/81LpGx"
               className="application-button"
-              style={{ backgroundColor: 'rgba(225, 135, 32, 0.2)', cursor: 'not-allowed', opacity: 0.7 }}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ backgroundColor: 'rgba(225, 135, 32, 0.2)' }}
             >
-              Applications Opening Soon - Spring 2026 Cohort
-            </span>
+              Applications Open - Spring 2026 Cohort
+            </a>
           </div>
           <div className="hero__content" data-animate>
             <h1 className="hero__title">
@@ -205,16 +208,18 @@ export default async function Home() {
           <div className="content-section__inner text-center">
             <h2 className="content-section__title">Join Our Community</h2>
             <p className="content-section__text">
-              Ready to be part of Texas&apos;s leading student venture group? Applications for the Fall
-              2025 cohort are now closed. Check back for Spring 2026 opportunities.
+              Ready to be part of Texas&apos;s leading student venture group? Applications for the Spring
+              2026 cohort are now open!
             </p>
             <div className="button-group button-group--centered">
-              <span
+              <a
+                href="https://tally.so/r/81LpGx"
                 className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Applications Closed
-              </span>
+                Apply Now
+              </a>
               <JoinButton>
                 Learn More
               </JoinButton>

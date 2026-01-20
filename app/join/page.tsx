@@ -3,7 +3,7 @@ import path from 'path';
 import LogoCarousel, { CarouselLogo } from '../components/LogoCarousel';
 import Countdown from '../components/Countdown';
 
-const APPLICATION_DEADLINE = new Date('2025-09-07T23:59:00-06:00');
+const APPLICATION_DEADLINE = new Date('2026-01-22T23:59:00-06:00');
 
 async function getCarouselLogos(): Promise<CarouselLogo[]> {
   const filePath = path.join(process.cwd(), 'public', 'data', 'carousel-logos.json');
@@ -22,29 +22,29 @@ export default async function Join() {
           <div className="hero__content animate-in">
             <h1 className="hero__title">Join TVG</h1>
             <p className="hero__text">
-              Applications for the Fall 2025 cohort are now closed. Stay tuned for Spring 2026
-              opportunities to join UT&apos;s premier venture capital and startup community.
+              Applications for the Spring 2026 cohort are now open! Join UT&apos;s premier
+              venture capital and startup community.
             </p>
             <div className="rules-banner">
               <div className="rules-banner__item">
                 <i className="fas fa-calendar"></i>
-                <span>Applications Closed</span>
+                <span>Applications Open</span>
               </div>
               <div className="rules-banner__item">
                 <i className="fas fa-clock"></i>
-                <span>Fall 2025 Cohort</span>
+                <span>Spring 2026 Cohort</span>
               </div>
             </div>
 
             <Countdown
               targetDate={APPLICATION_DEADLINE}
-              deadlineText="September 7, 2025 at 11:59 PM CST"
+              deadlineText="Thursday 01/22 by 11:59 PM CT"
             />
 
             <div className="button-group button-group--centered" style={{ marginTop: 'var(--spacing-lg)' }}>
-              <span className="button button--primary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
-                Applications Closed
-              </span>
+              <a href="https://tally.so/r/81LpGx" className="button button--primary" target="_blank" rel="noopener noreferrer">
+                Apply Now
+              </a>
               <a href="mailto:contact.txventuregroup@gmail.com" className="button">
                 Contact Us
               </a>
@@ -154,15 +154,15 @@ export default async function Join() {
       <section className="content-section">
         <div className="container">
           <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Applications Closed</h2>
+            <h2 className="content-section__title">Ready to Apply?</h2>
             <p className="content-section__text">
-              Applications for the Fall 2025 cohort are now closed. Stay connected with TVG and
-              watch for Spring 2026 opportunities to join UT&apos;s leading venture capital community.
+              Applications for the Spring 2026 cohort are now open. Join UT&apos;s leading
+              venture capital community and start your journey today.
             </p>
             <div className="button-group button-group--centered">
-              <span className="button button--primary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
-                Applications Closed
-              </span>
+              <a href="https://tally.so/r/81LpGx" className="button button--primary" target="_blank" rel="noopener noreferrer">
+                Apply Now
+              </a>
               <a href="mailto:contact.txventuregroup@gmail.com" className="button">
                 Questions? Contact Us
               </a>

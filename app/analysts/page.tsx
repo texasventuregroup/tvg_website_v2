@@ -78,12 +78,14 @@ export default function Analysts() {
                 broader startup ecosystem.
               </p>
               <div className="button-group">
-                <span
+                <a
+                  href="https://tally.so/r/81LpGx"
                   className="button button--primary"
-                  style={{ opacity: 0.6, cursor: 'not-allowed' }}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Applications Closed
-                </span>
+                  Apply Now
+                </a>
                 <a href="mailto:contact.txventuregroup@gmail.com" className="button">
                   Learn More
                 </a>
@@ -162,7 +164,7 @@ export default function Analysts() {
         <div className="container">
           <h2 className="content-section__title">Application Process</h2>
           <p className="content-section__text">
-            Applications for the Fall 2025 cohort are open through September 7th. The selection
+            Applications for the Spring 2026 cohort are open through Thursday 01/22. The selection
             process includes:
           </p>
           <div className="process-grid">
@@ -189,16 +191,18 @@ export default function Analysts() {
           <div className="content-section__inner text-center">
             <h2 className="content-section__title">Ready to Join?</h2>
             <p className="content-section__text">
-              Ready to dive into the world of venture capital? Applications for the Fall 2025 cohort
-              are now closed. Stay tuned for Spring 2026 opportunities to join TVG&apos;s analyst program!
+              Ready to dive into the world of venture capital? Applications for the Spring 2026
+              cohort are now open!
             </p>
             <div className="button-group button-group--centered">
-              <span
+              <a
+                href="https://tally.so/r/81LpGx"
                 className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Applications Closed
-              </span>
+                Apply Now
+              </a>
               <JoinButton>
                 Learn More
               </JoinButton>

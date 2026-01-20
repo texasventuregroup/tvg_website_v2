@@ -19,11 +19,11 @@ interface SignupConfig {
 
 const DEFAULT_CONFIG: SignupConfig = {
   title: 'Join TVG',
-  subtitle: 'Applications for the Fall 2025 cohort are now closed. Stay tuned for Spring 2026 opportunities to join UT Austin\'s premier venture capital and startup community.',
-  deadlineDate: new Date('2025-09-07T23:59:00-06:00'),
-  deadlineText: 'September 7, 2025 at 11:59 PM CST',
-  applyUrl: null, // Set to URL string when applications open
-  applyButtonText: 'Join Us',
+  subtitle: 'Applications for the Spring 2026 cohort are now open! Join UT Austin\'s premier venture capital and startup community.',
+  deadlineDate: new Date('2026-01-22T23:59:00-06:00'),
+  deadlineText: 'Thursday 01/22 by 11:59 PM CT',
+  applyUrl: 'https://tally.so/r/81LpGx',
+  applyButtonText: 'Apply Now',
   closedButtonText: 'Join Us',
   contactEmail: 'contact.txventuregroup@gmail.com',
 };
@@ -201,7 +201,7 @@ function SignupModal({ isOpen, onClose, config }: SignupModalProps) {
       <div className="signup-modal">
         <div className="signup-modal__close" onClick={onClose} role="button" tabIndex={0} aria-label="Close" onKeyDown={(e) => e.key === 'Enter' && onClose()}>
           <svg className="signup-modal__close-icon" width="10" height="10" viewBox="0 0 10 10" fill="none">
-            <path d="M1 1L9 9M1 9L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <path d="M1 1L9 9M1 9L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </div>
 
