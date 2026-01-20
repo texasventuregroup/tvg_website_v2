@@ -160,7 +160,8 @@ export default function Analysts() {
         <div className="container">
           <h2 className="content-section__title">Application Process</h2>
           <p className="content-section__text">
-            Applications for the Spring 2026 cohort are now open. The selection process includes:
+            Applications for the Spring 2026 cohort are open through Thursday 01/22. The selection
+            process includes:
           </p>
           <div className="process-grid">
             {processSteps.map((step) => (

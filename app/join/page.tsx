@@ -40,7 +40,7 @@ export default async function Join() {
 
             <Countdown
               targetDate={APPLICATION_DEADLINE}
-              deadlineText="January 22, 2026 at 11:59 PM CST"
+              deadlineText="Thursday 01/22 by 11:59 PM CT"
             />
 
             <div className="button-group button-group--centered" style={{ marginTop: 'var(--spacing-lg)' }}>
