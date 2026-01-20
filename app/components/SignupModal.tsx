@@ -19,10 +19,10 @@ interface SignupConfig {
 
 const DEFAULT_CONFIG: SignupConfig = {
   title: 'Join TVG',
-  subtitle: 'Applications for the Fall 2025 cohort are now closed. Stay tuned for Spring 2026 opportunities to join UT Austin\'s premier venture capital and startup community.',
-  deadlineDate: new Date('2025-09-07T23:59:00-06:00'),
-  deadlineText: 'September 7, 2025 at 11:59 PM CST',
-  applyUrl: null, // Set to URL string when applications open
+  subtitle: 'Applications for the Spring 2026 cohort are now open. Apply to join UT Austin\'s premier venture capital and startup community.',
+  deadlineDate: new Date('2026-01-22T23:59:00-06:00'),
+  deadlineText: 'January 22nd, 2026 at 11:59 PM CST',
+  applyUrl: "https://tally.so/r/81LpGx", // Set to URL string when applications open
   applyButtonText: 'Join Us',
   closedButtonText: 'Join Us',
   contactEmail: 'contact.txventuregroup@gmail.com',
@@ -110,6 +110,19 @@ export function SignupModalProvider({ children, config: customConfig }: SignupMo
 
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
+
+  // Auto-open modal on first visit
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('tvg_has_visited');
+    if (!hasVisited) {
+      // Small delay to ensure hydration is complete
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+        localStorage.setItem('tvg_has_visited', 'true');
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // Handle escape key
   useEffect(() => {

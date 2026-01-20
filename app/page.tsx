@@ -4,6 +4,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import LogoCarousel, { CarouselLogo } from './components/LogoCarousel';
 import JoinButton from './components/JoinButton';
+import JoinCTA from './components/JoinCTA';
 
 async function getCarouselLogos(): Promise<{ row1: CarouselLogo[]; row2: CarouselLogo[] }> {
   const filePath = path.join(process.cwd(), 'public', 'data', 'carousel-logos.json');
@@ -71,12 +72,9 @@ export default async function Home() {
         </div>
         <div className="container">
           <div style={{ textAlign: 'center' }}>
-            <span
-              className="application-button"
-              style={{ backgroundColor: 'rgba(225, 135, 32, 0.2)', cursor: 'not-allowed', opacity: 0.7 }}
-            >
-              Applications Opening Soon - Spring 2026 Cohort
-            </span>
+            <JoinButton className="application-button" style={{ backgroundColor: 'rgba(225, 135, 32, 0.2)' }}>
+              Applications Open Now for Spring 2026 Cohort.
+            </JoinButton>
           </div>
           <div className="hero__content" data-animate>
             <h1 className="hero__title">
@@ -200,28 +198,7 @@ export default async function Home() {
       </section>
 
       {/* Join Section */}
-      <section className="content-section" data-animate>
-        <div className="container">
-          <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Join Our Community</h2>
-            <p className="content-section__text">
-              Ready to be part of Texas&apos;s leading student venture group? Applications for the Fall
-              2025 cohort are now closed. Check back for Spring 2026 opportunities.
-            </p>
-            <div className="button-group button-group--centered">
-              <span
-                className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              >
-                Applications Closed
-              </span>
-              <JoinButton>
-                Learn More
-              </JoinButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <JoinCTA />
     </>
   );
 }

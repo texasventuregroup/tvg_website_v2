@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import JoinButton from '../components/JoinButton';
+import JoinCTA from '../components/JoinCTA';
 
 const experienceCards = [
   {
@@ -78,12 +79,9 @@ export default function Analysts() {
                 broader startup ecosystem.
               </p>
               <div className="button-group">
-                <span
-                  className="button button--primary"
-                  style={{ opacity: 0.6, cursor: 'not-allowed' }}
-                >
-                  Applications Closed
-                </span>
+                <JoinButton className="button button--primary">
+                  Apply Now
+                </JoinButton>
                 <a href="mailto:contact.txventuregroup@gmail.com" className="button">
                   Learn More
                 </a>
@@ -162,8 +160,7 @@ export default function Analysts() {
         <div className="container">
           <h2 className="content-section__title">Application Process</h2>
           <p className="content-section__text">
-            Applications for the Fall 2025 cohort are open through September 7th. The selection
-            process includes:
+            Applications for the Spring 2026 cohort are now open. The selection process includes:
           </p>
           <div className="process-grid">
             {processSteps.map((step) => (
@@ -184,28 +181,10 @@ export default function Analysts() {
       </section>
 
       {/* Application CTA Section */}
-      <section className="content-section">
-        <div className="container">
-          <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Ready to Join?</h2>
-            <p className="content-section__text">
-              Ready to dive into the world of venture capital? Applications for the Fall 2025 cohort
-              are now closed. Stay tuned for Spring 2026 opportunities to join TVG&apos;s analyst program!
-            </p>
-            <div className="button-group button-group--centered">
-              <span
-                className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              >
-                Applications Closed
-              </span>
-              <JoinButton>
-                Learn More
-              </JoinButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <JoinCTA
+        title="Ready to Join?"
+        description="Ready to dive into the world of venture capital? Applications for the Spring 2026 cohort are now open!"
+      />
     </>
   );
 }

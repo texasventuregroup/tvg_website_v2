@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { promises as fs } from 'fs';
 import path from 'path';
 import MembersClient from './MembersClient';
-import JoinButton from '../components/JoinButton';
+import JoinCTA from '../components/JoinCTA';
 
 interface Member {
   name: string;
@@ -55,28 +55,10 @@ export default async function MembersPage() {
       <MembersClient members={members} />
 
       {/* Join Section */}
-      <section className="content-section" id="join">
-        <div className="container">
-          <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Join Our Team</h2>
-            <div className="content-section__text text-center mt-4">
-              Interested in joining TVG? Applications for the Fall 2025 cohort are now closed. Check
-              back for Spring 2026 opportunities to join our team!
-            </div>
-            <div className="button-group button-group--centered">
-              <span
-                className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              >
-                Applications Closed
-              </span>
-              <JoinButton>
-                Learn More
-              </JoinButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <JoinCTA
+        title="Join Our Team"
+        description="Interested in joining TVG? Applications for the Spring 2026 cohort are now open!"
+      />
     </>
   );
 }
