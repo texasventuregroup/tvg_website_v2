@@ -78,14 +78,12 @@ export default function Analysts() {
                 broader startup ecosystem.
               </p>
               <div className="button-group">
-                <a
-                  href="https://tally.so/r/81LpGx"
+                <span
                   className="button button--primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  style={{ opacity: 0.6, cursor: 'not-allowed' }}
                 >
-                  Apply Now
-                </a>
+                  Applications Closed
+                </span>
                 <a href="mailto:contact.txventuregroup@gmail.com" className="button">
                   Learn More
                 </a>
@@ -164,7 +162,7 @@ export default function Analysts() {
         <div className="container">
           <h2 className="content-section__title">Application Process</h2>
           <p className="content-section__text">
-            Applications for the Spring 2026 cohort are open through Thursday 01/22. The selection
+            Applications for the Spring 2026 cohort are now closed. The selection
             process includes:
           </p>
           <div className="process-grid">
@@ -189,20 +187,18 @@ export default function Analysts() {
       <section className="content-section">
         <div className="container">
           <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Ready to Join?</h2>
+            <h2 className="content-section__title">Applications Closed</h2>
             <p className="content-section__text">
-              Ready to dive into the world of venture capital? Applications for the Spring 2026
-              cohort are now open!
+              Applications for the Spring 2026 cohort are now closed. Stay tuned for Fall 2026
+              opportunities to join TVG&apos;s analyst program!
             </p>
             <div className="button-group button-group--centered">
-              <a
-                href="https://tally.so/r/81LpGx"
+              <span
                 className="button button--primary"
-                target="_blank"
-                rel="noopener noreferrer"
+                style={{ opacity: 0.6, cursor: 'not-allowed' }}
               >
-                Apply Now
-              </a>
+                Applications Closed
+              </span>
               <JoinButton>
                 Learn More
               </JoinButton>

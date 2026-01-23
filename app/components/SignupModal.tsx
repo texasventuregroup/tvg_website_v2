@@ -19,12 +19,12 @@ interface SignupConfig {
 
 const DEFAULT_CONFIG: SignupConfig = {
   title: 'Join TVG',
-  subtitle: 'Applications for the Spring 2026 cohort are now open! Join UT Austin\'s premier venture capital and startup community.',
+  subtitle: 'Applications for the Spring 2026 cohort are now closed. Stay tuned for Fall 2026 opportunities to join UT Austin\'s premier venture capital and startup community.',
   deadlineDate: new Date('2026-01-22T23:59:00-06:00'),
   deadlineText: 'Thursday 01/22 by 11:59 PM CT',
-  applyUrl: 'https://tally.so/r/81LpGx',
+  applyUrl: null, // Set to URL string when applications open
   applyButtonText: 'Apply Now',
-  closedButtonText: 'Join Us',
+  closedButtonText: 'Applications Closed',
   contactEmail: 'contact.txventuregroup@gmail.com',
 };
 

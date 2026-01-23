@@ -22,13 +22,13 @@ export default async function Join() {
           <div className="hero__content animate-in">
             <h1 className="hero__title">Join TVG</h1>
             <p className="hero__text">
-              Applications for the Spring 2026 cohort are now open! Join UT&apos;s premier
-              venture capital and startup community.
+              Applications for the Spring 2026 cohort are now closed. Stay tuned for Fall 2026
+              opportunities to join UT&apos;s premier venture capital and startup community.
             </p>
             <div className="rules-banner">
               <div className="rules-banner__item">
                 <i className="fas fa-calendar"></i>
-                <span>Applications Open</span>
+                <span>Applications Closed</span>
               </div>
               <div className="rules-banner__item">
                 <i className="fas fa-clock"></i>
@@ -42,9 +42,9 @@ export default async function Join() {
             />
 
             <div className="button-group button-group--centered" style={{ marginTop: 'var(--spacing-lg)' }}>
-              <a href="https://tally.so/r/81LpGx" className="button button--primary" target="_blank" rel="noopener noreferrer">
-                Apply Now
-              </a>
+              <span className="button button--primary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
+                Applications Closed
+              </span>
               <a href="mailto:contact.txventuregroup@gmail.com" className="button">
                 Contact Us
               </a>
@@ -154,15 +154,15 @@ export default async function Join() {
       <section className="content-section">
         <div className="container">
           <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Ready to Apply?</h2>
+            <h2 className="content-section__title">Applications Closed</h2>
             <p className="content-section__text">
-              Applications for the Spring 2026 cohort are now open. Join UT&apos;s leading
-              venture capital community and start your journey today.
+              Applications for the Spring 2026 cohort are now closed. Stay connected with TVG and
+              watch for Fall 2026 opportunities to join UT&apos;s leading venture capital community.
             </p>
             <div className="button-group button-group--centered">
-              <a href="https://tally.so/r/81LpGx" className="button button--primary" target="_blank" rel="noopener noreferrer">
-                Apply Now
-              </a>
+              <span className="button button--primary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
+                Applications Closed
+              </span>
               <a href="mailto:contact.txventuregroup@gmail.com" className="button">
                 Questions? Contact Us
               </a>

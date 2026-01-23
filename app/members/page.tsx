@@ -60,17 +60,16 @@ export default async function MembersPage() {
           <div className="content-section__inner text-center">
             <h2 className="content-section__title">Join Our Team</h2>
             <div className="content-section__text text-center mt-4">
-              Interested in joining TVG? Applications for the Spring 2026 cohort are now open!
+              Interested in joining TVG? Applications for the Spring 2026 cohort are now closed.
+              Check back for Fall 2026 opportunities to join our team!
             </div>
             <div className="button-group button-group--centered">
-              <a
-                href="https://tally.so/r/81LpGx"
+              <span
                 className="button button--primary"
-                target="_blank"
-                rel="noopener noreferrer"
+                style={{ opacity: 0.6, cursor: 'not-allowed' }}
               >
-                Apply Now
-              </a>
+                Applications Closed
+              </span>
               <JoinButton>
                 Learn More
               </JoinButton>
