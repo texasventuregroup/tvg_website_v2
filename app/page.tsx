@@ -28,7 +28,7 @@ const programs = [
   {
     title: 'Analysts',
     image: '/images/programs/analysts_3.jpg',
-    description: 'Our analyst program is the entry point into TVG. Analysts learn venture capital fundamentals through hands-on experience, working on real projects with startups and VCs. They participate in Special Interest Groups (SIGs) focused on specific industries, conducting market research and sharing insights through regular market watches.',
+    description: 'Our analyst program is the entry point into TVG. Analysts learn venture capital fundamentals through hands-on experience, working on real projects with startups and VCs. The program culminates in the Diligence Project, where analysts research and pitch a startup of their choice to a panel of distinguished judges.',
     link: '/analysts',
   },
   {
