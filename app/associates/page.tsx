@@ -1,180 +1,116 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const clients = [
-  {
-    name: 'Great Circle Ventures',
-    url: 'http://usesteer.io',
-    tag: 'Due-diligence & Market Research',
-    description: 'Early-stage investment firm focused on the evolution of food and consumer health.',
-  },
-  {
-    name: 'Steer',
-    url: 'http://usesteer.io',
-    tag: 'Software Development',
-    description: 'First affiliate marketing software built for consumer service brands.',
-  },
-  {
-    name: 'Mainshares',
-    url: 'http://mainshares.com',
-    tag: 'Due-diligence & Market Research',
-    description: 'Austin-based, 8VC-backed startup helping future owner-operators acquire and run small businesses.',
-  },
-  {
-    name: 'BoxGroup',
-    url: 'http://boxgroup.com',
-    tag: 'Internal Tooling',
-    description: 'NYC-based VC partnering at the earliest stages with companies like Ramp, Clay, and Cursor.',
-  },
-  {
-    name: 'Sorenson Capital',
-    url: 'http://sorensoncapital.com',
-    tag: 'Market Research',
-    description: 'Utah-based VC investing in product-oriented B2B software companies across multiple stages.',
-  },
-  {
-    name: 'Gothams',
-    url: 'http://gothams.com',
-    tag: 'Strategic Consulting',
-    description: 'Austin-based firm designed to address complex crises through rapid deployment.',
-  },
-  {
-    name: 'Harvest Growth Capital',
-    url: 'http://harvestgrowthcapital.com',
-    tag: 'Late-stage Investment',
-    description: 'Late-stage (pre-IPO) investment firm providing growth capital and secondary liquidity to technology companies poised for public markets.',
-  },
-  {
-    name: 'Earl Grey Capital',
-    url: 'http://earlgrey.capital',
-    tag: 'Software Development',
-    description: 'Austin-based VC firm investing in DevOps, AI, and Web3. Founded by the team behind ClearBit. Portfolio includes CrewAI and ScienceIO.',
-  },
-  {
-    name: 'Midnight Venture Partners',
-    url: 'http://midnightvp.com',
-    tag: 'Market Research',
-    description: 'Austin-based VC firm focused on CPG investments. Portfolio includes Olipop, Jolie, and Jinx.',
-  },
-  {
-    name: 'BMW iVentures',
-    url: 'http://bmwiventures.com',
-    tag: 'Due-diligence & Financial Modeling',
-    description: 'Independent VC arm of BMW investing in robotics and transportation. Portfolio includes Fox Robotics, Kodiac, and Lime.',
-  },
-  {
-    name: 'Oxcart Ventures',
-    url: 'http://oxcart.vc',
-    tag: 'Market & Technology Research',
-    description: 'Recent spin-out of Gigafund, an Austin-based VC firm known for leading investments in SpaceX and Neuralink.',
-  },
-  {
-    name: 'Overmatch Ventures',
-    url: 'http://overmatch.vc',
-    tag: 'Market & Technology Research',
-    description: 'Austin-based VC firm focused on frontier technologies. Portfolio includes Base Power Company and Epirus.',
-  },
-  {
-    name: 'Sweetspot',
-    url: 'http://Sweetspot.so',
-    tag: 'Software Development',
-    description: 'Seed-stage startup applying AI to government contracting. Founded by UT alumni.',
-  },
+  { id: '01', name: 'Great Circle Ventures', tag: 'Due Diligence', description: 'Early-stage investment firm focused on food and consumer health.' },
+  { id: '02', name: 'Steer', tag: 'Software', description: 'Affiliate marketing software for consumer service brands.' },
+  { id: '03', name: 'Mainshares', tag: 'Research', description: '8VC-backed startup helping owner-operators acquire small businesses.' },
+  { id: '04', name: 'BoxGroup', tag: 'Tooling', description: 'NYC VC with portfolio including Ramp, Clay, and Cursor.' },
+  { id: '05', name: 'Sorenson Capital', tag: 'Research', description: 'Utah-based VC investing in B2B software.' },
+  { id: '06', name: 'Gothams', tag: 'Strategy', description: 'Crisis response firm with rapid deployment capabilities.' },
+  { id: '07', name: 'Harvest Growth Capital', tag: 'Investment', description: 'Late-stage growth capital for tech companies.' },
+  { id: '08', name: 'Earl Grey Capital', tag: 'Software', description: 'Austin VC investing in DevOps, AI, and Web3.' },
+  { id: '09', name: 'Midnight Venture Partners', tag: 'Research', description: 'CPG-focused VC with Olipop, Jolie, and Jinx.' },
+  { id: '10', name: 'BMW iVentures', tag: 'Due Diligence', description: "BMW's VC arm in robotics and transportation." },
+  { id: '11', name: 'Oxcart Ventures', tag: 'Research', description: 'Gigafund spin-out, invested in SpaceX and Neuralink.' },
+  { id: '12', name: 'Overmatch Ventures', tag: 'Research', description: 'Frontier tech VC, Base Power Company and Epirus.' },
+];
+
+const researchAreas = [
+  { id: '01', title: 'Software', description: 'B2B SaaS, developer tools, AI/ML infrastructure.' },
+  { id: '02', title: 'Fintech', description: 'Payments, lending, capital markets infrastructure.' },
+  { id: '03', title: 'Climate', description: 'Energy transition, carbon markets, sustainability tech.' },
+  { id: '04', title: 'Life Sciences', description: 'Biotech, healthtech, medical devices.' },
 ];
 
 export default function Associates() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="hero hero--compact">
-        <div className="container">
-          <div className="hero__content animate-in">
-            <h1 className="hero__title">Associates Program</h1>
-            <p className="hero__text">
-              TVG&apos;s associate program gives students the opportunity to work with leading startups and
-              VCs. Our projects vary by client and have included software development, financial
-              modeling, and market research. In addition to helping our clients, we also publish our
-              own research.
-            </p>
-            <div className="button-group">
-              <a href="mailto:charlesjmiele@gmail.com" className="button button--primary">
-                Work With Us
-              </a>
-            </div>
+    <main className="min-h-screen bg-[#fcf7f0] text-[#082820] pt-20">
+      {/* Hero - Two Column Layout */}
+      <section className="border-b border-[#082820]/10 grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
+        {/* Content */}
+        <div className="p-8 lg:p-16 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#082820]/10">
+          <span className="label mb-4">Program 02</span>
+          <h1 className="text-5xl lg:text-6xl font-semibold leading-[0.95] tracking-tight mb-8">
+            Associate<br />Program
+          </h1>
+          <p className="text-lg opacity-70 max-w-md mb-10">
+            Real client work with startups and VC firms. Software development, financial modeling, market research—projects vary. You lead research initiatives and help shape what TVG becomes next.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a href="mailto:charlesjmiele@gmail.com" className="btn-primary">Work With Us</a>
+            <Link href="/analysts" className="btn-secondary">Start as Analyst</Link>
           </div>
+        </div>
+
+        {/* Image */}
+        <div className="relative h-[400px] lg:h-auto">
+          <Image src="/images/associates/associates_1.webp" alt="TVG Associates" fill className="object-cover" />
         </div>
       </section>
 
-      {/* Photo Gallery */}
-      <section className="content-section">
-        <div className="container">
-          <div className="photo-gallery">
-            <Image
-              src="/images/associates/associates_1.png"
-              alt="Associates Program"
-              width={400}
-              height={300}
-              className="photo-gallery__image"
-              style={{ objectFit: 'cover' }}
-            />
-            <Image
-              src="/images/associates/associates_2.png"
-              alt="Associates Program"
-              width={400}
-              height={300}
-              className="photo-gallery__image"
-              style={{ objectFit: 'cover' }}
-            />
-            <Image
-              src="/images/associates/associates_3.png"
-              alt="Associates Program"
-              width={400}
-              height={300}
-              className="photo-gallery__image"
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
+      {/* Research Areas */}
+      <section className="border-b border-[#082820]/10">
+        <div className="p-6 border-b border-[#082820]/10 flex justify-between items-center">
+          <h2 className="text-xl font-semibold">Research Coverage</h2>
+          <span className="label">Sectors</span>
         </div>
+
+        {/* Table Header */}
+        <div className="hidden md:grid grid-cols-4 p-4 border-b border-[#082820]/10 text-[10px] font-mono uppercase tracking-wider opacity-40">
+          <div>idx</div>
+          <div>Sector</div>
+          <div>Focus Areas</div>
+          <div></div>
+        </div>
+
+        {researchAreas.map((area) => (
+          <div key={area.id} className="grid grid-cols-1 md:grid-cols-4 p-6 border-b border-[#082820]/10 hover:bg-[#082820]/5 transition-all items-center gap-2 md:gap-0">
+            <div className="font-mono text-sm opacity-50 hidden md:block">{area.id}</div>
+            <div className="font-semibold">{area.title}</div>
+            <div className="opacity-70 text-sm hidden md:block">{area.description}</div>
+            <div></div>
+          </div>
+        ))}
       </section>
 
-      {/* Clients Section */}
-      <section className="content-section">
-        <div className="container">
-          <h2 className="content-section__title">Past & Current Clients</h2>
-          <div className="clients-grid">
-            {clients.map((client) => (
-              <div key={client.name} className="client-card">
-                <div className="client-card__header">
-                  <h3 className="client-card__title">
-                    <a
-                      href={client.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="client-card__link"
-                    >
-                      {client.name}
-                    </a>
-                  </h3>
-                  <span className="client-card__tag">{client.tag}</span>
-                </div>
-                <p className="client-card__text">{client.description}</p>
-              </div>
-            ))}
-          </div>
+      {/* Clients - Dark Section */}
+      <section className="bg-[#082820] text-[#fcf7f0]">
+        <div className="p-6 border-b border-[#fcf7f0]/20 flex justify-between items-center">
+          <h2 className="text-xl font-semibold">Past Clients</h2>
+          <span className="label text-[#01A072]">Portfolio</span>
         </div>
+
+        {/* Table Header */}
+        <div className="hidden md:grid grid-cols-4 p-4 border-b border-[#fcf7f0]/20 text-[10px] font-mono uppercase tracking-wider opacity-40">
+          <div>idx</div>
+          <div>Client</div>
+          <div>Work Type</div>
+          <div>Description</div>
+        </div>
+
+        {clients.map((client) => (
+          <div key={client.id} className="grid grid-cols-1 md:grid-cols-4 p-6 border-b border-[#fcf7f0]/10 hover:bg-[#fcf7f0]/5 transition-all items-center gap-2 md:gap-0">
+            <div className="font-mono text-sm opacity-50 hidden md:block">{client.id}</div>
+            <div className="font-semibold">{client.name}</div>
+            <div className="text-sm opacity-70 hidden md:block">{client.tag}</div>
+            <div className="text-sm opacity-70">{client.description}</div>
+          </div>
+        ))}
       </section>
 
-      {/* Contact Section */}
-      <section className="content-section">
-        <div className="container">
-          <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Work With Us</h2>
-            <p className="content-section__text">
-              Interested in working with us? Reach out to our External Director,{' '}
-              <a href="mailto:mayaglenn@utexas.edu">Maya Glenn</a>.
-            </p>
-          </div>
+      {/* CTA */}
+      <section className="py-24 text-center">
+        <span className="label block mb-4">Interested?</span>
+        <h2 className="text-4xl font-semibold mb-6">Work With Us</h2>
+        <p className="text-sm opacity-70 max-w-md mx-auto mb-10">
+          We&apos;re always looking for partners. If you&apos;re a VC or a startup with a project, reach out.
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <a href="mailto:charlesjmiele@gmail.com" className="btn-primary">Get In Touch</a>
+          <Link href="/analysts" className="btn-secondary">Join as Analyst</Link>
         </div>
       </section>
-    </>
+    </main>
   );
 }

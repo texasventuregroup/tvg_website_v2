@@ -7,7 +7,10 @@ interface JoinButtonProps {
   children?: React.ReactNode;
 }
 
-export default function JoinButton({ className = 'button', children = 'Join' }: JoinButtonProps) {
+export default function JoinButton({
+  className = 'btn-primary',
+  children = 'Apply'
+}: JoinButtonProps) {
   const { openModal } = useJoinModal();
 
   return (

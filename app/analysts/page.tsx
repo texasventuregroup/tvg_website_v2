@@ -2,210 +2,122 @@ import Image from 'next/image';
 import Link from 'next/link';
 import JoinButton from '../components/JoinButton';
 
-const experienceCards = [
-  {
-    title: 'Training & Development',
-    image: '/images/analysts/training-development.jpeg',
-    description:
-      'Comprehensive training in venture capital fundamentals, financial modeling, and market analysis through structured workshops and hands-on projects.',
-    featured: false,
-  },
-  {
-    title: 'Network Building',
-    image: '/images/analysts/networking.png',
-    description:
-      'Connect with industry professionals, successful entrepreneurs, and fellow analysts through regular networking events and social gatherings.',
-    featured: true,
-  },
-  {
-    title: 'Project Work',
-    image: '/images/analysts/project_work.png',
-    description:
-      'Work on real investment opportunities, conduct due diligence, and present findings to the investment committee.',
-    featured: false,
-  },
+const processSteps = [
+  { id: '01', title: 'Meet Us', processing: 'Info Sessions', output: 'Get to know the team' },
+  { id: '02', title: 'Apply', processing: 'Written App', output: 'Tell us about you' },
+  { id: '03', title: 'Interview', processing: 'Conversation', output: 'How you think' },
+  { id: '04', title: 'Case Study', processing: 'Analysis', output: 'Evaluate a startup' },
+  { id: '05', title: 'Decision', processing: 'Final', output: 'Welcome to the crew' },
 ];
 
-const processSteps = [
-  {
-    number: 1,
-    title: 'Information Sessions & Coffee Chats',
-    description:
-      "Attend our information sessions to learn more about TVG and meet current members. We also host coffee chats throughout the start of the semester for prospective applicants to connect with our team one-on-one.",
-    fullWidth: true,
-  },
-  {
-    number: 2,
-    title: 'Application',
-    description:
-      'Submit your resume and complete our application form, sharing your interest in venture capital and relevant experience.',
-  },
-  {
-    number: 3,
-    title: 'Interview',
-    description:
-      'Selected candidates will be invited for interviews with current members to discuss their background and interests.',
-  },
-  {
-    number: 4,
-    title: 'Case Study',
-    description:
-      'Demonstrate your analytical abilities through a case study analysis of a potential investment opportunity.',
-  },
-  {
-    number: 5,
-    title: 'Final Decision',
-    description:
-      "Successful candidates will be notified and begin their journey with TVG's analyst program.",
-  },
+const pillars = [
+  { id: '01', title: 'Research', description: 'Dig into markets. Understand industries. Figure out what makes companies win or lose.' },
+  { id: '02', title: 'Experience', description: 'Work on real deals. Conduct due diligence. Present to the team. Learn by doing.' },
+  { id: '03', title: 'Community', description: "Find mentors. Build friendships. Join a network you'll have for the next fifteen years." },
 ];
 
 export default function Analysts() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="hero hero--compact">
-        <div className="container">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--spacing-xl)' }}>
-            <div className="hero__content animate-in">
-              <h1 className="hero__title">Analyst Program</h1>
-              <p className="hero__text">
-                Our Analyst Program provides comprehensive training in venture capital fundamentals
-                through hands-on experience. Members learn essential skills in deal evaluation, market
-                analysis, and due diligence while working on real investment opportunities. The program
-                culminates in formal pitch presentations where analysts evaluate startups and defend
-                their investment theses, preparing them for future roles in venture capital and the
-                broader startup ecosystem.
-              </p>
-              <div className="button-group">
-                <span
-                  className="button button--primary"
-                  style={{ opacity: 0.6, cursor: 'not-allowed' }}
-                >
-                  Applications Closed
-                </span>
-                <a href="mailto:contact.txventuregroup@gmail.com" className="button">
-                  Learn More
-                </a>
-              </div>
-            </div>
-            <div style={{ flexShrink: 0, width: 600, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Image
-                src="/images/analysts/tvg_pitch.jpg"
-                alt="TVG Analysts"
-                width={600}
-                height={400}
-                style={{ objectFit: 'cover', width: '100%', height: 'auto', borderRadius: 8 }}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Program Overview Section */}
-      <section className="content-section" id="program-overview">
-        <div className="container">
-          <h2 className="content-section__title">Program Overview</h2>
-          <div className="cards-horizontal">
-            <div className="card">
-              <h3 className="card__title">Research & Analysis</h3>
-              <p className="card__text">
-                Conduct in-depth market research, analyze industry trends, and evaluate startup
-                opportunities. Work directly with portfolio companies and potential investments.
-              </p>
-            </div>
-            <div className="card card--featured">
-              <h3 className="card__title">Hands-on Experience</h3>
-              <p className="card__text">
-                Gain practical experience in venture capital operations, due diligence processes, and
-                investment analysis through real-world projects.
-              </p>
-            </div>
-            <div className="card">
-              <h3 className="card__title">Mentorship</h3>
-              <p className="card__text">
-                Work closely with experienced principals and associates who provide guidance and
-                support throughout your journey in venture capital.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Analyst Experience Section */}
-      <section className="content-section" id="experience">
-        <div className="container">
-          <h2 className="content-section__title">The Analyst Experience</h2>
-          <div className="cards-horizontal">
-            {experienceCards.map((card) => (
-              <div key={card.title} className={`card ${card.featured ? 'card--featured' : ''}`}>
-                <div className="card__image-container">
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    width={400}
-                    height={250}
-                    className="card__image"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
-                <h3 className="card__title">{card.title}</h3>
-                <p className="card__text">{card.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Application Process Section */}
-      <section className="content-section" id="apply">
-        <div className="container">
-          <h2 className="content-section__title">Application Process</h2>
-          <p className="content-section__text">
-            Applications for the Spring 2026 cohort are now closed. The selection
-            process includes:
+    <main className="min-h-screen bg-[#fcf7f0] text-[#082820] pt-20">
+      {/* Hero */}
+      <section className="border-b border-[#082820]/10 grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
+        {/* Content */}
+        <div className="p-8 lg:p-16 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#082820]/10">
+          <span className="label mb-4">Program 01</span>
+          <h1 className="text-5xl lg:text-6xl font-semibold leading-[0.95] tracking-tight mb-8">
+            Analyst<br />Program
+          </h1>
+          <p className="text-lg opacity-70 max-w-md mb-10">
+            The entry point. You&apos;ll work on real projects with startups and investors, learning how technology businesses actually work.
           </p>
-          <div className="process-grid">
-            {processSteps.map((step) => (
-              <div
-                key={step.number}
-                className="process-card"
-                style={step.fullWidth ? { gridColumn: '1 / -1' } : undefined}
-              >
-                <h3 className="process-card__title">
-                  <span className="process-card__number">{step.number}</span>
-                  {step.title}
-                </h3>
-                <p className="process-card__text">{step.description}</p>
-              </div>
-            ))}
+          <div className="flex flex-wrap gap-4">
+            <span className="btn-secondary opacity-50 cursor-not-allowed">Applications Closed</span>
+            <Link href="/events" className="btn-primary">Attend an Event</Link>
           </div>
+        </div>
+
+        {/* Image */}
+        <div className="relative h-[400px] lg:h-auto">
+          <Image src="/images/analysts/tvg_pitch.jpg" alt="TVG Analysts" fill className="object-cover" />
         </div>
       </section>
 
-      {/* Application CTA Section */}
-      <section className="content-section">
-        <div className="container">
-          <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Applications Closed</h2>
-            <p className="content-section__text">
-              Applications for the Spring 2026 cohort are now closed. Stay tuned for Fall 2026
-              opportunities to join TVG&apos;s analyst program!
-            </p>
-            <div className="button-group button-group--centered">
-              <span
-                className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              >
-                Applications Closed
-              </span>
-              <JoinButton>
-                Learn More
-              </JoinButton>
+      {/* What You'll Do */}
+      <section className="border-b border-[#082820]/10">
+        <div className="p-6 border-b border-[#082820]/10 flex justify-between items-center">
+          <h2 className="text-xl font-semibold">What You&apos;ll Do</h2>
+          <span className="label">Three Pillars</span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#082820]/10">
+          {pillars.map((pillar) => (
+            <div key={pillar.id} className="p-8 lg:p-12 hover:bg-[#082820] hover:text-[#fcf7f0] transition-all group">
+              <span className="inline-flex items-center justify-center w-8 h-8 border border-current rounded-full text-xs mb-6">{pillar.id}</span>
+              <h3 className="text-lg font-semibold mb-4">{pillar.title}</h3>
+              <p className="text-sm opacity-70">{pillar.description}</p>
             </div>
-          </div>
+          ))}
         </div>
       </section>
-    </>
+
+      {/* Experience */}
+      <section className="border-b border-[#082820]/10 grid grid-cols-1 lg:grid-cols-2">
+        <div className="relative h-[400px] lg:h-auto border-b lg:border-b-0 lg:border-r border-[#082820]/10">
+          <Image src="/images/analysts/networking.png" alt="Analyst Experience" fill className="object-cover" />
+        </div>
+        <div className="p-8 lg:p-16 flex flex-col justify-center">
+          <span className="label mb-4">The Experience</span>
+          <h2 className="text-3xl font-semibold mb-6">Find Your People</h2>
+          <p className="text-sm opacity-70 mb-4">
+            Dinners, treks, coffee chats. Meet founders, investors, and other students who think the same way you do.
+          </p>
+          <p className="text-sm opacity-70">
+            By the end, you&apos;ll have evaluated companies, presented investment theses, and figured out what part of this world you want to explore next.
+          </p>
+        </div>
+      </section>
+
+      {/* Application Process - Dark Section */}
+      <section className="bg-[#082820] text-[#fcf7f0]">
+        <div className="p-6 border-b border-[#fcf7f0]/20 flex justify-between items-center">
+          <h2 className="text-xl font-semibold">The Process</h2>
+          <span className="label text-[#01A072]">How To Join</span>
+        </div>
+
+        {/* Table Header */}
+        <div className="hidden md:grid grid-cols-4 p-4 border-b border-[#fcf7f0]/20 text-[10px] font-mono uppercase tracking-wider opacity-40">
+          <div>Step</div>
+          <div>Title</div>
+          <div>Processing</div>
+          <div>Output</div>
+        </div>
+
+        {processSteps.map((step) => (
+          <div key={step.id} className="grid grid-cols-1 md:grid-cols-4 p-6 border-b border-[#fcf7f0]/10 hover:bg-[#fcf7f0]/5 transition-all items-center gap-2 md:gap-0">
+            <div className="font-mono text-sm opacity-50 hidden md:block">{step.id}</div>
+            <div className="font-semibold">{step.title}</div>
+            <div className="text-sm opacity-70 hidden md:block">{step.processing}</div>
+            <div className="text-sm opacity-70">{step.output}</div>
+          </div>
+        ))}
+
+        <div className="p-6 text-xs opacity-40">
+          Applications for Spring 2026 are closed. Check back for Fall 2026.
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 text-center">
+        <span className="label block mb-4">Stay Connected</span>
+        <h2 className="text-4xl font-semibold mb-6">Applications Closed</h2>
+        <p className="text-sm opacity-70 max-w-md mx-auto mb-10">
+          Check back for Fall 2026. In the meantime, come to our events. Meet the team.
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <JoinButton className="btn-primary">Stay Updated</JoinButton>
+          <Link href="/events" className="btn-secondary">View Events</Link>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { promises as fs } from 'fs';
 import path from 'path';
 import MembersClient from './MembersClient';
@@ -27,7 +26,6 @@ interface MembersData {
   alumni: Member[];
 }
 
-// This runs at build time - SSG
 async function getMembers(): Promise<MembersData> {
   const filePath = path.join(process.cwd(), 'public', 'data', 'members.json');
   const fileContents = await fs.readFile(filePath, 'utf8');
@@ -38,45 +36,34 @@ export default async function MembersPage() {
   const members = await getMembers();
 
   return (
-    <>
-      {/* Hero Section */}
-      <section className="hero hero--compact">
-        <div className="container">
-          <div className="hero__content animate-in">
-            <h1 className="hero__title">Our Team</h1>
-            <p className="hero__text">
-              Meet the dedicated students driving innovation and entrepreneurship at UT Austin
-              through venture capital education and startup support.
-            </p>
-          </div>
+    <main className="min-h-screen bg-[#fcf7f0] text-[#082820] pt-20">
+      {/* Hero */}
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-6">
+          <span className="label mb-4 block">The Team</span>
+          <h1 className="text-5xl lg:text-6xl font-semibold leading-[0.95] tracking-tight mb-6">Our Team</h1>
+          <p className="text-lg opacity-70 max-w-lg">
+            The people building TVG. Students exploring the frontier of technology and entrepreneurship at UT Austin.
+          </p>
         </div>
       </section>
 
       <MembersClient members={members} />
 
       {/* Join Section */}
-      <section className="content-section" id="join">
-        <div className="container">
-          <div className="content-section__inner text-center">
-            <h2 className="content-section__title">Join Our Team</h2>
-            <div className="content-section__text text-center mt-4">
-              Interested in joining TVG? Applications for the Spring 2026 cohort are now closed.
-              Check back for Fall 2026 opportunities to join our team!
-            </div>
-            <div className="button-group button-group--centered">
-              <span
-                className="button button--primary"
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              >
-                Applications Closed
-              </span>
-              <JoinButton>
-                Learn More
-              </JoinButton>
-            </div>
-          </div>
+      <section className="border-t border-[#082820]/10 py-24 text-center">
+        <span className="label block mb-4">Join Us</span>
+        <h2 className="text-4xl font-semibold mb-6">Want To Be Part of This?</h2>
+        <p className="text-sm opacity-70 max-w-md mx-auto mb-10">
+          Applications for Spring 2026 are closed. Check back for Fall 2026.
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <span className="px-6 py-3 border border-[#082820]/30 opacity-50 cursor-not-allowed text-sm rounded-lg">
+            Applications Closed
+          </span>
+          <JoinButton className="btn-primary">Stay Updated</JoinButton>
         </div>
       </section>
-    </>
+    </main>
   );
 }

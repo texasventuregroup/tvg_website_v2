@@ -1,39 +1,101 @@
+import Link from 'next/link';
+import Image from 'next/image';
+
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="container">
-        <p className="footer__text">&copy; 2025 Texas Venture Group. All rights reserved.</p>
-        <div className="footer__credit">
-          <p className="footer__text footer__text--front">
-            Made with <i className="fas fa-heart" style={{ color: '#ff4d4d' }}></i> in Austin
-          </p>
-          <p className="footer__text footer__text--back">
-            Made with <i className="fas fa-heart" style={{ color: '#ff4d4d' }}></i> by{' '}
-            <a href="https://khosraw.com" target="_blank" rel="noopener noreferrer">
-              Khosraw Azizi
-            </a>
-          </p>
+    <footer className="bg-[#082820] text-[#fcf7f0]">
+      <div className="container mx-auto py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <div className="relative w-8 h-8">
+                <Image
+                  src="/images-rebrand/logo.png"
+                  alt="TVG"
+                  fill
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
+              <span className="font-semibold text-lg">TVG</span>
+            </Link>
+            <p className="text-sm opacity-60 leading-relaxed max-w-xs">
+              A community for students genuinely curious about startups at UT Austin. Est. 2021.
+            </p>
+          </div>
+
+          {/* Programs */}
+          <div>
+            <h4 className="label text-[#01A072] mb-6">Programs</h4>
+            <div className="space-y-4">
+              <Link href="/analysts" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+                Analysts
+              </Link>
+              <Link href="/associates" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+                Associates
+              </Link>
+              <Link href="/bevsanddevs" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+                Bevs & Devs
+              </Link>
+            </div>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <h4 className="label text-[#01A072] mb-6">Connect</h4>
+            <div className="space-y-4">
+              <Link href="/events" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+                Events
+              </Link>
+              <Link href="/partnerships" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+                Partners
+              </Link>
+              <Link href="/members" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+                Team
+              </Link>
+            </div>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h4 className="label text-[#01A072] mb-6">Follow</h4>
+            <div className="space-y-4">
+              <a
+                href="https://www.linkedin.com/company/texas-venture-group/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://www.instagram.com/txventuregroup/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all"
+              >
+                Instagram
+              </a>
+              <a
+                href="mailto:contact.txventuregroup@gmail.com"
+                className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all"
+              >
+                contact.txventuregroup@gmail.com
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="footer__social-media">
-          <a
-            href="https://www.linkedin.com/company/texas-venture-group/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer__link"
-          >
-            <i className="fab fa-linkedin"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/txventuregroup/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer__link"
-          >
-            <i className="fab fa-instagram"></i>
-          </a>
-          <a href="mailto:contact.txventuregroup@gmail.com" className="footer__link">
-            <i className="fas fa-envelope"></i>
-          </a>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-[#fcf7f0]/10">
+        <div className="container mx-auto py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs opacity-40 font-mono">
+            © 2026 Texas Venture Group. All rights reserved.
+          </p>
+          <p className="text-xs opacity-40 font-mono">
+            Austin, TX • University of Texas
+          </p>
         </div>
       </div>
     </footer>

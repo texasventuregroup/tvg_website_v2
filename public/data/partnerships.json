@@ -27,7 +27,8 @@
       "type": "Startup",
       "tier": "S",
       "industry": "Energy",
-      "website": "basepowercompany.com"
+      "website": "basepowercompany.com",
+      "logo": "base.webp"
     },
     {
       "name": "Lazard",
@@ -41,7 +42,8 @@
       "type": "VC",
       "tier": "S",
       "industry": "Software",
-      "website": "insightpartners.com"
+      "website": "insightpartners.com",
+      "logo": "insight.webp"
     },
     {
       "name": "Antler",
@@ -104,7 +106,8 @@
       "type": "Other",
       "tier": "S",
       "industry": "Generalist",
-      "website": "trustventures.com"
+      "website": "trustventures.com",
+      "logo": "trust-ventures.webp"
     },
     {
       "name": "Superhuman",
@@ -230,7 +233,8 @@
       "type": "VC",
       "tier": "A",
       "industry": "Energy",
-      "website": "energytransitionventures.com"
+      "website": "energytransitionventures.com",
+      "logo": "etv.webp"
     },
     {
       "name": "S3 Ventures",
@@ -258,7 +262,8 @@
       "type": "VC",
       "tier": "B",
       "industry": "Deeptech",
-      "website": "gothams.com"
+      "website": "gothams.com",
+      "logo": "gothams.webp"
     },
     {
       "name": "Grafton Street Partners",
@@ -272,7 +277,8 @@
       "type": "Other",
       "tier": "A",
       "industry": "Generalist",
-      "website": "nvidia.com"
+      "website": "nvidia.com",
+      "logo": "nvidia.webp"
     },
     {
       "name": "Mainshares",
@@ -286,21 +292,24 @@
       "type": "Other",
       "tier": "B",
       "industry": "Consulting",
-      "website": "accenture.com"
+      "website": "accenture.com",
+      "logo": "accenture.webp"
     },
     {
       "name": "Oceans Ventures",
       "type": "VC",
       "tier": "B",
       "industry": "Generalist",
-      "website": "oceans.ventures"
+      "website": "oceans.ventures",
+      "logo": "oceans.webp"
     },
     {
       "name": "Team8",
       "type": "VC",
       "tier": "B",
       "industry": "Technology",
-      "website": "team8.vc"
+      "website": "team8.vc",
+      "logo": "team8.webp"
     },
     {
       "name": "RRE Ventures",
@@ -344,14 +353,16 @@
       "type": "VC",
       "tier": "S",
       "industry": "Generalist",
-      "website": "8vc.com"
+      "website": "8vc.com",
+      "logo": "8vc.webp"
     },
     {
       "name": "Velo CFO",
       "type": "Other",
       "tier": "B",
       "industry": "SaaS",
-      "website": "velocfo.com"
+      "website": "velocfo.com",
+      "logo": "velo.webp"
     },
     {
       "name": "Dallas Venture Capital",

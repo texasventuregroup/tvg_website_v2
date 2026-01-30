@@ -1,17 +1,24 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './reset.css';
-import './style.css';
+import { Poppins, Space_Mono } from 'next/font/google';
+import './globals.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ThemeProvider } from './components/ThemeProvider';
 import { ClientEffects } from './components/ClientComponents';
 import { SignupModalProvider } from './components/SignupModal';
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-poppins',
   display: 'swap',
-  variable: '--font-inter',
+});
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-space-mono',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -38,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} ${spaceMono.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/images/logo/logo-small.png" />
         {/* Preconnect to external domains for faster resource loading */}
@@ -60,7 +67,7 @@ export default function RootLayout({
           fetchPriority="low"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider>
           <SignupModalProvider>
             <ClientEffects />

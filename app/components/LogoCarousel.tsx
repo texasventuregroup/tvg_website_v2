@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useMemo, useState } from 'react';
-import { getLogoUrl } from '../config/logos';
+import { useMemo, useState, useEffect } from 'react';
 
 export interface CarouselLogo {
   name: string;
@@ -15,16 +14,21 @@ interface LogoCarouselProps {
   reverse?: boolean;
 }
 
+// Logo.dev API key from environment
+const LOGO_DEV_TOKEN = process.env.NEXT_PUBLIC_LOGO_DEV_TOKEN || '';
+
+function getLogoDevUrl(domain: string): string {
+  const params = new URLSearchParams({
+    token: LOGO_DEV_TOKEN,
+    size: '128',
+    format: 'png',
+  });
+  return `https://img.logo.dev/${domain}?${params.toString()}`;
+}
+
 export default function LogoCarousel({ logos: logoData, reverse = false }: LogoCarouselProps) {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | undefined>(undefined);
-  const isPausedRef = useRef(false);
-  const translateRef = useRef(0);
-  const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Check if mobile on mount
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -32,125 +36,59 @@ export default function LogoCarousel({ logos: logoData, reverse = false }: LogoC
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Use IntersectionObserver to only animate when visible
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1, rootMargin: '50px' }
-    );
-
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, []);
-
-  // Reduce logos on mobile for better performance
   const logos = useMemo(() => {
-    const logoSize = isMobile ? 96 : 160;
-    const logoList = isMobile ? logoData.slice(0, 12) : logoData;
-
+    const logoList = isMobile ? logoData.slice(0, 16) : logoData;
     return logoList.map(logo => ({
       name: logo.name,
-      image: logo.logo_img || getLogoUrl(logo.domain, logoSize),
+      image: logo.logo_img || getLogoDevUrl(logo.domain),
+      fallbackImage: `https://logo.clearbit.com/${logo.domain}`,
       domain: logo.domain,
       scale: logo.scale || 1,
     }));
   }, [logoData, isMobile]);
 
-  useEffect(() => {
-    if (!logos.length || !trackRef.current || !isVisible) {
-      // Cancel animation if not visible
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-        animationRef.current = undefined;
-      }
-      return;
-    }
-
-    const track = trackRef.current;
-    const items = track.querySelectorAll('.logo-carousel__item');
-    if (!items.length) return;
-
-    const getItemSetWidth = () => {
-      let width = 0;
-      const half = Math.floor(items.length / 2);
-      for (let i = 0; i < half; i++) {
-        const item = items[i] as HTMLElement;
-        const style = window.getComputedStyle(item);
-        const marginLeft = parseFloat(style.marginLeft) || 0;
-        const marginRight = parseFloat(style.marginRight) || 0;
-        const gap = parseFloat(getComputedStyle(track).gap) || 0;
-        width += item.offsetWidth + marginLeft + marginRight + gap;
-      }
-      return width;
-    };
-
-    const itemSetWidth = getItemSetWidth();
-    const randomOffset = Math.random() * (itemSetWidth / 1.5);
-    translateRef.current = reverse ? -randomOffset : -randomOffset;
-    track.style.transform = `translateX(${translateRef.current}px)`;
-
-    // Slower speed on mobile for smoother animation
-    const speed = (reverse ? 1 : -1) * (isMobile ? 0.5 : 1);
-
-    const animate = () => {
-      if (!isPausedRef.current && isVisible) {
-        translateRef.current += speed;
-        // Reset logic for seamless looping
-        if (reverse) {
-          if (translateRef.current >= 0) {
-            translateRef.current = -itemSetWidth;
-          }
-        } else {
-          if (translateRef.current <= -itemSetWidth) {
-            translateRef.current = 0;
-          }
-        }
-        track.style.transform = `translateX(${translateRef.current}px)`;
-      }
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    };
-  }, [logos, reverse, isVisible, isMobile]);
-
-  const handleMouseEnter = () => { isPausedRef.current = true; };
-  const handleMouseLeave = () => { isPausedRef.current = false; };
-
-  const duplicatedLogos = [...logos, ...logos];
+  // Triple the logos for seamless loop
+  const displayLogos = [...logos, ...logos, ...logos];
 
   return (
     <div
-      ref={containerRef}
-      className={`logo-carousel ${reverse ? 'logo-carousel--reverse' : ''}`}
+      className="relative w-full overflow-hidden py-4"
+      style={{
+        maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+      }}
     >
       <div
-        ref={trackRef}
-        className="logo-carousel__track"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className={`flex gap-12 md:gap-16 w-max items-center ${reverse ? 'animate-scroll-right' : 'animate-scroll-left'}`}
+        style={{
+          animationDuration: isMobile ? '60s' : '80s',
+        }}
       >
-        {duplicatedLogos.map((logo, index) => (
-          <div key={`${logo.name}-${index}`} className="logo-carousel__item">
+        {displayLogos.map((logo, index) => (
+          <div
+            key={`${logo.name}-${index}`}
+            className="flex flex-col items-center justify-center transition-all duration-300 w-28 md:w-36 flex-shrink-0 hover:scale-105 opacity-80 hover:opacity-100"
+          >
             <img
               src={logo.image}
               alt={logo.name}
               loading="lazy"
               decoding="async"
-              style={logo.scale !== 1 ? { transform: `scale(${logo.scale})` } : undefined}
+              className="w-full h-auto object-contain max-h-10 md:max-h-12"
+              style={{
+                filter: 'brightness(0) saturate(100%)',
+                ...(logo.scale !== 1 ? { transform: `scale(${logo.scale})` } : {})
+              }}
               onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none';
+                const target = e.target as HTMLImageElement;
+                if (!target.dataset.fallback) {
+                  target.dataset.fallback = 'true';
+                  target.src = logo.fallbackImage;
+                } else {
+                  target.style.display = 'none';
+                }
               }}
             />
-            <span className="logo-carousel__label">{logo.name}</span>
           </div>
         ))}
       </div>
