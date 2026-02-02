@@ -80,15 +80,15 @@ export default function Hackathons() {
 
             {/* Featured Hackathons (Upcoming & Previous Showcase) */}
             {hackathons.filter(h => h.status === 'upcoming' || h.status === 'previous').map((hackathon) => (
-                <section key={hackathon.name} className="pb-24">
+                <section key={hackathon.name} className="py-12 lg:pb-24">
                     <div className="container mx-auto px-6">
-                        <div className="bg-[#082820] text-[#fcf7f0] rounded-2xl p-8 lg:p-12">
+                        <div className="bg-[#082820] text-[#fcf7f0] rounded-2xl p-6 lg:p-12">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                                 <div>
-                                    <div className="flex items-center gap-3 mb-6">
+                                    <div className="flex flex-wrap items-center gap-3 mb-6">
                                         <span className={`px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider ${hackathon.status === 'upcoming'
-                                                ? 'bg-[#01A072] text-[#fcf7f0]'
-                                                : 'bg-[#fcf7f0]/20 text-[#fcf7f0]'
+                                            ? 'bg-[#01A072] text-[#fcf7f0]'
+                                            : 'bg-[#fcf7f0]/20 text-[#fcf7f0]'
                                             }`}>
                                             {hackathon.status === 'upcoming' ? 'Upcoming' : 'Previous'}
                                         </span>

@@ -102,7 +102,7 @@ export default function NYCTrek() {
                 <div className="container mx-auto">
                     <div className="flex flex-col lg:flex-row gap-12 items-end mb-8 border-b border-[#082820] pb-8">
                         <div className="flex-1">
-                            <div className="flex items-center gap-4 mb-6">
+                            <div className="flex flex-wrap items-center gap-4 mb-6">
                                 <span className="px-3 py-1 bg-[#016F4E] text-[#fcf7f0] rounded-full text-xs font-mono uppercase tracking-wider">
                                     {trekData.status}
                                 </span>

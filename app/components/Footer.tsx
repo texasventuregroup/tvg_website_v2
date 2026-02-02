@@ -4,10 +4,10 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer className="bg-[#082820] text-[#fcf7f0]">
-      <div className="container mx-auto py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-6 pt-32 pb-12 md:py-24">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="col-span-2 md:col-span-1 lg:col-span-1 pt-8 md:pt-0">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <div className="relative w-8 h-8">
                 <Image
@@ -34,8 +34,8 @@ export default function Footer() {
               <Link href="/associates" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
                 Associates
               </Link>
-              <Link href="/bevsanddevs" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
-                Bevs & Devs
+              <Link href="/hackathons" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+                Hackathons
               </Link>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-[#fcf7f0]/10">
-        <div className="container mx-auto py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs opacity-40 font-mono">
             © 2026 Texas Venture Group. All rights reserved.
           </p>

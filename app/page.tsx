@@ -72,7 +72,7 @@ export default async function Home() {
   return (
     <main className="bg-[#fcf7f0] text-[#082820]">
       {/* ========== HERO SECTION ========== */}
-      <header className="min-h-screen relative flex items-center overflow-hidden pt-20">
+      <header className="min-h-[100svh] relative flex flex-col justify-start lg:justify-center overflow-hidden pt-40 pb-20 lg:py-0">
         <div className="container mx-auto relative z-10">
           <div className="hero-content">
             {/* Badges */}
@@ -206,8 +206,8 @@ export default async function Home() {
       </section>
 
       {/* ========== PLACEMENT / ALUMNI SECTION ========== */}
-      <section className="py-[120px]">
-        <div className="container mx-auto mb-24">
+      <section className="py-16 lg:py-[120px]">
+        <div className="container mx-auto mb-12 lg:mb-24">
           <span className="label mb-4 block">Placement</span>
         </div>
         <div className="space-y-8">
@@ -217,7 +217,7 @@ export default async function Home() {
       </section>
 
       {/* ========== CULTURE SECTION ========== */}
-      <section id="culture" className="py-[120px]">
+      <section id="culture" className="py-16 lg:py-[120px]">
         <div className="container mx-auto">
           <span className="label mb-4 block">Culture & Values</span>
 
@@ -238,7 +238,7 @@ export default async function Home() {
       </section>
 
       {/* ========== CTA SECTION ========== */}
-      <section className="py-[160px] text-center relative overflow-hidden">
+      <section className="py-16 lg:py-[160px] text-center relative overflow-hidden">
         {/* Background line */}
         <div className="absolute top-1/2 left-0 w-full h-px bg-[#082820]/10" />
 
@@ -247,7 +247,7 @@ export default async function Home() {
             JOIN THE EXPEDITION
           </h2>
           <JoinButton className="btn-expedition">
-            APPLY FOR SPRING 2026
+            JOIN OUR NEWSLETTER
           </JoinButton>
         </div>
       </section>

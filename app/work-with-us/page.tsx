@@ -112,11 +112,11 @@ export default function WorkWithUs() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t border-l border-[#fcf7f0]/10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t border-l border-[#fcf7f0]/10">
                         {partners.map((partner) => (
                             <div
                                 key={partner}
-                                className="aspect-[3/1] flex items-center justify-center p-6 border-r border-b border-[#fcf7f0]/10 hover:bg-[#fcf7f0]/5 transition-colors cursor-default group"
+                                className="min-h-[100px] flex items-center justify-center p-6 border-r border-b border-[#fcf7f0]/10 hover:bg-[#fcf7f0]/5 transition-colors cursor-default group"
                             >
                                 <span className="text-lg md:text-xl font-medium opacity-40 group-hover:opacity-100 transition-opacity text-center">
                                     {partner}
