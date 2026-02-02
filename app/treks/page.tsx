@@ -5,18 +5,20 @@ const treks = [
     {
         city: 'San Francisco',
         slug: 'sf',
-        description: 'Visit top VC firms and high-growth startups in the Bay Area.',
+        status: 'Dec 2025',
+        description: 'Meet top VCs and high-growth AI startups across SF and the Bay Area.',
         image: '/images/events/sf_2025.jpeg',
-        firms: ['Sequoia', 'Entrepreneurs First', 'Vista', 'Gradient Ventures', 'Antler'],
-        companies: ['Crusoe', 'Tavus', 'Mira'],
+        firms: ['Sequoia', 'Vista Equity', 'Gradient Ventures', 'Antler', 'Heavybit'],
+        companies: ['Tavus', 'Mira', 'Delphi'],
     },
     {
         city: 'New York City',
         slug: 'nyc',
-        description: 'Explore the East Coast startup ecosystem and meet leaders in fintech, media, and enterprise.',
+        status: 'Jan 2024',
+        description: 'NYSE Opening Bell, Wall Street VCs, and East Coast fintech leaders.',
         image: '/images/events/nyc.webp',
-        firms: ['Union Square Ventures', 'Thrive Capital', 'Insight Partners'],
-        companies: ['Ramp', 'Notion'],
+        firms: ['Bessemer', 'NEA', 'Insight Partners', 'RRE Ventures', 'Team8'],
+        companies: [],
     },
 ];
 

@@ -58,14 +58,14 @@ export default function WorkWithUs() {
                             We collaborate with world-class firms to provide diligence, sourcing, and unrivaled access to top student talent.
                         </p>
 
-                        <div className="flex gap-12">
+                        {/* <div className="flex gap-12">
                             {stats.map((stat) => (
                                 <div key={stat.label}>
                                     <div className="text-3xl font-bold text-[#016F4E] mb-1">{stat.value}</div>
                                     <div className="text-xs font-mono uppercase opacity-60">{stat.label}</div>
                                 </div>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>
@@ -130,7 +130,7 @@ export default function WorkWithUs() {
             {/* CTA */}
             <section className="py-32 px-6 lg:px-12 text-center">
                 <div className="max-w-2xl mx-auto">
-                    <h2 className="text-4xl font-semibold mb-8">Ready to collaborate?</h2>
+                    <h2 className="text-4xl font-semibold mb-8">See a work sample?</h2>
                     <a
                         href="mailto:partnerships@texasventuregroup.com"
                         className="inline-flex items-center gap-3 bg-[#016F4E] text-[#fcf7f0] px-8 py-4 text-lg font-medium rounded-full hover:bg-[#015a3e] transition-colors"

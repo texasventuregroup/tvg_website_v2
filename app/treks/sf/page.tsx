@@ -3,128 +3,262 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const sfTrek = {
+// SF Trek Data - Winter 2025
+const trekData = {
     city: 'San Francisco',
-    slug: 'sf',
-    date: 'Fall 2025',
-    description: 'Our flagship west coast trek. Members spent a week visiting top-tier VC firms and high-growth startups across the Bay Area.',
-    image: '/images/events/sf_2025.jpeg',
-    highlights: [
-        'Visited Sequoia Capital at Sand Hill Road',
-        'Toured Crusoe\'s AI data centers',
-        'Pitch session at Gradient Ventures',
-        'Networking with Bay Area founders',
-    ],
+    short: 'SF',
+    code: 'SFO-25',
+    date: 'December 16-18, 2025',
+    status: 'Complete',
+    hotel: {
+        name: 'Stanford Court Hotel',
+        address: '905 California St, San Francisco, CA 94108',
+        description: 'Perched atop Nob Hill, this elegant, contemporary hotel on the cable-car line is 7 minutes walk from Chinatown and 10 minutes walk from Union Square.'
+    },
     schedule: [
-        { time: 'Day 1', event: 'Sequoia Capital & entrepreneurs first' },
-        { time: 'Day 2', event: 'Vista Equity & Gradient Ventures' },
-        { time: 'Day 3', event: 'Crusoe, Tavus, & Mira' },
-        { time: 'Day 4', event: 'Alumni Dinner @ Mission District' },
+        {
+            day: 'Tuesday, December 16th',
+            events: [
+                { time: '1:30 PM', title: 'Crusoe - Finance + Product Session', location: '225 Bush St #15' },
+                { time: '2:30 PM', title: 'Tavus - Office Tour + CEO Chat', location: '35 Stillman St' },
+                { time: '4:15 PM', title: 'Entrepreneurs First - Investor Chat', location: '501 Folsom St' },
+                { time: '5:30 PM', title: 'Group Dinner', location: 'Sushi Sato, 1122 Post St' },
+            ]
+        },
+        {
+            day: 'Wednesday, December 17th',
+            events: [
+                { time: '10:00 AM', title: 'Vista Equity Partners - Office Tour', location: '4 Embarcadero Center, 30th Floor' },
+                { time: '11:45 AM', title: 'Sequoia Capital - Partner Chat', location: '298 Alabama Street' },
+                { time: '1:00 PM', title: 'Mira - Lunch + Co-Founder Chat', location: '85 5th St Suite A' },
+                { time: '2:30 PM', title: 'Golden Gate Bridge / Presidio Explore', location: 'Presidio Park' },
+                { time: '4:30 PM', title: 'Delphi - Office Tour + Co-Founder Chat', location: '850 Montgomery' },
+            ]
+        },
+        {
+            day: 'Thursday, December 18th',
+            events: [
+                { time: '9:45 AM', title: 'Transpose & Heavybit - Partner Chats', location: '27 South Park St' },
+                { time: '11:30 AM', title: 'Gradient Ventures - Office Tour', location: '560 Davis St #150' },
+                { time: '1:30 PM', title: 'Antler - Director Chat', location: '144 Townsend Street, 3rd Floor' },
+            ]
+        }
     ],
     firms: [
-        'Sequoia', 'Entrepreneurs First', 'Vista Equity', 'Gradient',
-        'Antler', 'Heavybit', 'Transpose'
+        {
+            name: 'Sequoia Capital',
+            category: 'Venture Capital',
+            description: 'Founded 1972. Backed Apple, Google, YouTube, Instagram, Airbnb, WhatsApp, Zoom, Stripe, Nvidia. One of the most influential VC firms globally, managing tens of billions in capital.',
+            aum: '$85B+',
+            focus: 'Seed to IPO'
+        },
+        {
+            name: 'Vista Equity Partners',
+            category: 'Private Equity',
+            description: 'Founded 2000. Exclusively focused on enterprise software, data, and technology-enabled businesses. Known for deep operational infrastructure via Vista Consulting Group.',
+            aum: '$100B+',
+            focus: 'Enterprise Software'
+        },
+        {
+            name: 'Gradient Ventures',
+            category: 'Venture Capital',
+            description: 'Founded 2017 (Google VC spinout). Early-stage focus exclusively on AI startups. Offers deep technical mentorship and access to Google engineering resources.',
+            aum: 'Undisclosed',
+            focus: 'AI / ML'
+        },
+        {
+            name: 'Entrepreneurs First',
+            category: 'Talent Investor',
+            description: 'Founded 2011, London. Backs individuals pre-team and pre-idea. Produced Tractable, Cleo, Omnipresent. Industrializes founder creation globally.',
+            aum: '$500M+',
+            focus: 'Pre-Seed'
+        },
+        {
+            name: 'Tavus',
+            category: 'AI Startup',
+            description: 'Founded 2021. Building real-time multimodal AI humans. Core product: Conversational Video Interface (CVI). Over 2B+ interactive sessions to date. $18M Series A (2024).',
+            raised: '$18M',
+            focus: 'AI Video'
+        },
+        {
+            name: 'Mira',
+            category: 'AI Hardware',
+            description: 'AI-powered smart glasses acting as a "second brain." Features: infinite memory, instant answers, proactive intelligence. $6.6M seed led by General Catalyst, Naval Ravikant.',
+            raised: '$6.6M',
+            focus: 'Wearables'
+        },
+        {
+            name: 'Delphi',
+            category: 'AI Startup',
+            description: 'Founded 2022. AI-powered "digital minds" that capture how a person thinks, speaks, and reasons. $16M Series A led by Sequoia (2025). Used by creators, coaches, executives.',
+            raised: '$16M',
+            focus: 'AI Clones'
+        },
+        {
+            name: 'Antler',
+            category: 'Venture Builder',
+            description: 'Founded 2017 (Singapore). Global Day Zero backer operating 30+ cities. Runs residency programs for co-founder matching. 1,800+ investments to date.',
+            aum: '$1B+',
+            focus: 'Pre-Seed'
+        },
+        {
+            name: 'Heavybit',
+            category: 'Venture Capital',
+            description: 'Founded 2013. Specializes in developer-first and infrastructure software. Portfolio: PagerDuty, CircleCI, Netlify, Snyk, LaunchDarkly, Tailscale. Hands-on go-to-market coaching.',
+            aum: '$100M+',
+            focus: 'DevTools'
+        },
+        {
+            name: 'Transpose',
+            category: 'Venture Capital',
+            description: 'Founded 2015. Formation-stage firm backing founders and emerging managers from Day 0. 1000+ companies, 80+ unicorns/decacorns in portfolio.',
+            focus: 'Formation Stage'
+        }
     ]
 };
 
 export default function SFTrek() {
     return (
         <main className="min-h-screen bg-[#fcf7f0] text-[#082820] pt-20">
-            {/* Hero */}
-            <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
-                <Image
-                    src={sfTrek.image}
-                    alt={sfTrek.city}
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                <div className="absolute inset-0 bg-black/40" />
-                <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-16">
-                    <div className="container mx-auto">
-                        <span className="inline-block px-3 py-1 border border-white/30 rounded-full text-white/80 text-xs font-mono uppercase tracking-wider mb-6 backdrop-blur-md">
-                            {sfTrek.date}
-                        </span>
-                        <h1 className="text-[clamp(4rem,10vw,8rem)] font-bold text-white leading-[0.9] tracking-tighter mb-4">
-                            {sfTrek.city}
-                        </h1>
-                        <p className="text-white/80 text-xl max-w-xl leading-relaxed">
-                            {sfTrek.description}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="container mx-auto px-6 lg:px-12 py-24">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-
-                    {/* Main Info */}
-                    <div className="lg:col-span-8">
-                        <h2 className="text-3xl font-semibold mb-12">Mission Brief</h2>
-
-                        {/* Highlights Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
-                            {sfTrek.highlights.map((item, i) => (
-                                <div key={i} className="p-6 border border-[#082820]/10 rounded-lg hover:bg-[#082820]/5 transition-colors">
-                                    <span className="block text-[#016F4E] font-mono text-xs mb-2">0{i + 1}</span>
-                                    <p className="font-medium text-lg">{item}</p>
-                                </div>
-                            ))}
+            {/* Hero Header */}
+            <section className="px-6 lg:px-12 pt-12 pb-8">
+                <div className="container mx-auto">
+                    <div className="flex flex-col lg:flex-row gap-12 items-end mb-8 border-b border-[#082820] pb-8">
+                        <div className="flex-1">
+                            <div className="flex items-center gap-4 mb-6">
+                                <span className="px-3 py-1 bg-[#016F4E] text-[#fcf7f0] rounded-full text-xs font-mono uppercase tracking-wider">
+                                    {trekData.status}
+                                </span>
+                                <span className="text-xs font-mono opacity-60 uppercase">
+                                    {trekData.code}
+                                </span>
+                            </div>
+                            <h1 className="text-[12vw] lg:text-[10rem] font-bold leading-[0.8] tracking-tighter text-[#082820] mb-4 -ml-1">
+                                {trekData.short}
+                            </h1>
+                            <div className="text-lg font-medium opacity-70">{trekData.city}</div>
                         </div>
 
-                        {/* Itinerary */}
-                        <h3 className="text-xl font-semibold mb-6">Itinerary</h3>
-                        <div className="border border-[#082820]/10 rounded-xl overflow-hidden">
-                            {sfTrek.schedule.map((item, i) => (
-                                <div key={i} className="flex border-b border-[#082820]/10 last:border-none">
-                                    <div className="w-32 p-4 bg-[#082820]/5 border-r border-[#082820]/10 font-mono text-sm opacity-60">
-                                        {item.time}
-                                    </div>
-                                    <div className="flex-1 p-4 font-medium">
-                                        {item.event}
-                                    </div>
+                        <div className="w-full lg:w-1/3 space-y-4">
+                            <div className="grid grid-cols-2 gap-4 text-sm font-mono">
+                                <div>
+                                    <span className="opacity-50 block mb-1 uppercase text-xs">Date</span>
+                                    <span className="font-medium">{trekData.date}</span>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Sidebar */}
-                    <div className="lg:col-span-4 space-y-12">
-                        <div>
-                            <h3 className="text-sm font-mono uppercase opacity-50 mb-6 border-b border-[#082820]/10 pb-2">
-                                Network Stats
-                            </h3>
-                            <div className="grid grid-cols-2 gap-4 mb-8">
-                                <div className="text-center p-4 bg-[#016F4E]/5 rounded-lg">
-                                    <div className="text-3xl font-bold text-[#016F4E]">7</div>
-                                    <div className="text-xs opacity-60">Firms Visited</div>
-                                </div>
-                                <div className="text-center p-4 bg-[#016F4E]/5 rounded-lg">
-                                    <div className="text-3xl font-bold text-[#016F4E]">3</div>
-                                    <div className="text-xs opacity-60">Startup Tours</div>
+                                <div>
+                                    <span className="opacity-50 block mb-1 uppercase text-xs">Firms</span>
+                                    <span className="font-medium">{trekData.firms.length} Visited</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div>
-                            <h3 className="text-sm font-mono uppercase opacity-50 mb-6 border-b border-[#082820]/10 pb-2">
-                                Participating Firms
-                            </h3>
-                            <div className="flex flex-wrap gap-2">
-                                {sfTrek.firms.map(firm => (
-                                    <span key={firm} className="px-3 py-1.5 border border-[#082820]/20 rounded-md text-sm hover:bg-[#082820] hover:text-[#fcf7f0] transition-colors cursor-default">
-                                        {firm}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
-                        <Link href="/treks" className="block w-full py-4 text-center border border-[#082820]/20 rounded-lg hover:bg-[#082820] hover:text-[#fcf7f0] transition-all">
-                            ← Back to All Treks
-                        </Link>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            {/* Hero Image */}
+            <section className="px-6 lg:px-12 pb-16">
+                <div className="container mx-auto">
+                    <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden">
+                        <Image
+                            src="/images/events/sf_2025.jpeg"
+                            alt="SF Trek 2025"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* Schedule Section */}
+            <section className="px-6 lg:px-12 py-16 bg-white">
+                <div className="container mx-auto">
+                    <div className="flex items-center justify-between mb-12 border-b border-[#082820] pb-4">
+                        <h2 className="text-2xl font-bold">Itinerary</h2>
+                        <span className="text-xs font-mono uppercase tracking-widest opacity-50">3 Days</span>
+                    </div>
+
+                    <div className="space-y-16">
+                        {trekData.schedule.map((day, dayIndex) => (
+                            <div key={dayIndex}>
+                                <h3 className="text-lg font-bold text-[#016F4E] mb-6 border-l-4 border-[#016F4E] pl-4">
+                                    {day.day}
+                                </h3>
+                                <div className="space-y-0">
+                                    {day.events.map((event, eventIndex) => (
+                                        <div
+                                            key={eventIndex}
+                                            className="grid grid-cols-1 md:grid-cols-[120px_1fr_1fr] gap-4 py-5 border-b border-[#082820]/10 hover:bg-[#082820]/5 transition-colors px-4 -mx-4"
+                                        >
+                                            <div className="font-mono text-sm text-[#016F4E]">{event.time}</div>
+                                            <div className="font-semibold">{event.title}</div>
+                                            <div className="text-sm opacity-60">{event.location}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Firms Section */}
+            <section className="px-6 lg:px-12 py-16">
+                <div className="container mx-auto">
+                    <div className="flex items-center justify-between mb-12 border-b border-[#082820] pb-4">
+                        <h2 className="text-2xl font-bold">Firms Visited</h2>
+                        <span className="text-xs font-mono uppercase tracking-widest opacity-50">{trekData.firms.length} Partners</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {trekData.firms.map((firm, index) => (
+                            <div
+                                key={index}
+                                className="p-6 border border-[#082820]/10 rounded-xl hover:border-[#016F4E]/30 hover:bg-white transition-all group"
+                            >
+                                <div className="flex items-start justify-between mb-4">
+                                    <div>
+                                        <h3 className="text-xl font-bold group-hover:text-[#016F4E] transition-colors">{firm.name}</h3>
+                                        <span className="text-xs font-mono uppercase text-[#016F4E] opacity-70">{firm.category}</span>
+                                    </div>
+                                    {(firm.aum || firm.raised) && (
+                                        <div className="text-right">
+                                            <div className="text-sm font-bold text-[#016F4E]">{firm.aum || firm.raised}</div>
+                                            <div className="text-[10px] font-mono uppercase opacity-50">{firm.aum ? 'AUM' : 'Raised'}</div>
+                                        </div>
+                                    )}
+                                </div>
+                                <p className="text-sm opacity-70 leading-relaxed mb-3">{firm.description}</p>
+                                <div className="flex items-center gap-2">
+                                    <span className="px-2 py-1 bg-[#082820]/5 rounded text-xs font-mono">{firm.focus}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Hotel Info */}
+            <section className="px-6 lg:px-12 py-16 bg-[#082820] text-[#fcf7f0]">
+                <div className="container mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <span className="text-xs font-mono uppercase tracking-widest text-[#01A072] mb-4 block">Accommodation</span>
+                            <h2 className="text-3xl font-bold mb-4">{trekData.hotel.name}</h2>
+                            <p className="opacity-70 mb-6">{trekData.hotel.description}</p>
+                            <div className="font-mono text-sm opacity-60">{trekData.hotel.address}</div>
+                        </div>
+                        <div className="flex items-center justify-center lg:justify-end">
+                            <Link
+                                href="/treks"
+                                className="px-8 py-4 border border-[#fcf7f0]/20 rounded-lg hover:bg-[#fcf7f0] hover:text-[#082820] transition-all font-medium"
+                            >
+                                ← Back to Treks
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     );
 }

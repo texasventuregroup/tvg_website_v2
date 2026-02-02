@@ -13,7 +13,18 @@ interface Event {
 
 export default function Events() {
   const events: Event[] = eventsData.events || [];
-  const years = [...new Set(events.map(e => e.year))].sort((a, b) => b.localeCompare(a));
+  const years = [...new Set(events.map(e => e.year))].sort((a, b) => {
+    // Sort logic: Year descending, then Season (Fall > Spring)
+    const yearA = parseInt(a.slice(1));
+    const yearB = parseInt(b.slice(1));
+    if (yearA !== yearB) return yearB - yearA; // Newest year first
+
+    // If years equal, Fall (F) comes before Spring (S) for reverse chronological
+    const seasonA = a.charAt(0);
+    const seasonB = b.charAt(0);
+    if (seasonA === seasonB) return 0;
+    return seasonA === 'F' ? -1 : 1; // F comes before S
+  });
   const [expandedEvent, setExpandedEvent] = useState<string | null>(null);
 
   // Group events by year
@@ -92,8 +103,8 @@ export default function Events() {
                           <div
                             onClick={() => setExpandedEvent(isExpanded ? null : eventKey)}
                             className={`ml-12 md:ml-0 md:w-[calc(50%-3rem)] bg-white rounded-xl border transition-all cursor-pointer group ${isExpanded
-                                ? 'border-[#016F4E] shadow-lg'
-                                : 'border-[#082820]/10 hover:border-[#016F4E]/50 hover:shadow-md'
+                              ? 'border-[#016F4E] shadow-lg'
+                              : 'border-[#082820]/10 hover:border-[#016F4E]/50 hover:shadow-md'
                               }`}
                           >
                             <div className="p-5">

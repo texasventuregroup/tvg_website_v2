@@ -38,7 +38,7 @@ export default function Associates() {
             Real client work with startups and VC firms. Software development, financial modeling, market research—projects vary. You lead research initiatives and help shape what TVG becomes next.
           </p>
           <div className="flex flex-wrap gap-4">
-            <a href="mailto:charlesjmiele@gmail.com" className="btn-primary">Work With Us</a>
+            <Link href="/work-with-us" className="btn-primary">Work With Us</Link>
             <Link href="/analysts" className="btn-secondary">Start as Analyst</Link>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function Associates() {
           We&apos;re always looking for partners. If you&apos;re a VC or a startup with a project, reach out.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <a href="mailto:charlesjmiele@gmail.com" className="btn-primary">Get In Touch</a>
+          <Link href="/work-with-us" className="btn-primary">Get In Touch</Link>
           <Link href="/analysts" className="btn-secondary">Join as Analyst</Link>
         </div>
       </section>

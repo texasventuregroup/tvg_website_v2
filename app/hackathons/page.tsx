@@ -1,24 +1,66 @@
 import Image from 'next/image';
 import JoinButton from '../components/JoinButton';
+import Link from 'next/link';
 
-const hackathons = [
+interface Hackathon {
+    name: string;
+    tagline: string;
+    description: string;
+    image: string;
+    status: 'upcoming' | 'recurring' | 'previous';
+    partner?: string;
+    date?: string;
+    time?: string;
+    location?: string;
+    judges?: { name: string; title: string }[];
+    stats?: { label: string; value: string }[];
+    sponsors?: string[];
+}
+
+interface PastEvent {
+    name: string;
+    date: string;
+    winners?: string[];
+    sponsors?: string[];
+    stats?: string;
+}
+
+const hackathons: Hackathon[] = [
     {
-        name: 'Bevs & Devs',
-        tagline: 'Build something cool, meet cool people',
-        description: 'Our flagship hackathon bringing together builders, designers, and entrepreneurs for a weekend of creation. Teams pitch to VC judges for prizes.',
+        name: "Let's Build",
+        tagline: "Startups × Venture × Students",
+        partner: 'Transpose Platform & Y Combinator',
+        date: 'Friday, February 20th, 2026',
+        time: '5:00 PM – 10:30 PM',
+        location: 'UT Austin (Register for location)',
+        description: 'Our Spring 2026 hackathon in partnership with Transpose Platform and Y Combinator. Build something new, pitch to founders, and compete for prizes.',
         image: '/images/events/bevs-devs-zf.webp',
-        stats: [
-            { label: 'Participants', value: '100+' },
-            { label: 'Projects', value: '25+' },
-            { label: 'Prize Pool', value: '$5K+' },
+        judges: [
+            { name: 'Shapol M.', title: 'CEO, Entangl (YC S24)' },
+            { name: 'Mason F.', title: 'Chief of Staff, Interface' },
+            { name: 'Armel T.', title: 'CEO, Miru (YC S24)' },
+            { name: 'Varun T.', title: 'CEO, Waypoint (YC W25)' },
         ],
+        status: 'upcoming' as const,
+    },
+    {
+        name: 'TVG Vibeathon',
+        tagline: 'Build & Vibes',
+        date: 'October 4-5th, 2025',
+        time: 'Weekend',
+        location: 'Austin, TX',
+        description: 'A weekend of building and vibes. Sponsored by Flora and Framer.',
+        image: '/images/events/american_dynamism.webp',
+        sponsors: ['Flora', 'Anthropic', 'Framer'],
+        status: 'previous' as const,
     },
 ];
 
-const pastEvents = [
-    { name: 'Bevs & Devs Fall 2025', winners: ['Startup Name 1', 'Startup Name 2'] },
-    { name: 'Bevs & Devs Spring 2025', winners: ['Startup Name 3'] },
-    { name: 'Bevs & Devs Fall 2024', winners: ['Startup Name 4', 'Startup Name 5'] },
+const pastEvents: PastEvent[] = [
+    { name: 'Bevs & Devs', date: 'Recurring Flagship', stats: '100+ Builders' },
+    { name: 'Bevs & Devs Fall 2025', date: 'Fall 2025' },
+    { name: 'Bevs & Devs Spring 2025', date: 'Spring 2025' },
+    { name: 'Bevs & Devs Fall 2024', date: 'Fall 2024' },
 ];
 
 export default function Hackathons() {
@@ -36,58 +78,79 @@ export default function Hackathons() {
                 </JoinButton>
             </section>
 
-            {/* Featured Hackathon */}
-            {hackathons.map((hackathon) => (
+            {/* Featured Hackathons (Upcoming & Previous Showcase) */}
+            {hackathons.filter(h => h.status === 'upcoming' || h.status === 'previous').map((hackathon) => (
                 <section key={hackathon.name} className="pb-24">
                     <div className="container mx-auto px-6">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            {/* Image */}
-                            <div className="relative h-[400px] rounded-2xl overflow-hidden">
-                                <Image
-                                    src={hackathon.image}
-                                    alt={hackathon.name}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
+                        <div className="bg-[#082820] text-[#fcf7f0] rounded-2xl p-8 lg:p-12">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                                <div>
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <span className={`px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider ${hackathon.status === 'upcoming'
+                                                ? 'bg-[#01A072] text-[#fcf7f0]'
+                                                : 'bg-[#fcf7f0]/20 text-[#fcf7f0]'
+                                            }`}>
+                                            {hackathon.status === 'upcoming' ? 'Upcoming' : 'Previous'}
+                                        </span>
+                                        {hackathon.partner && (
+                                            <span className="text-xs font-mono opacity-60">
+                                                with {hackathon.partner}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <h2 className="text-4xl lg:text-5xl font-bold mb-4">{hackathon.name}</h2>
+                                    <p className="text-lg opacity-70 mb-6">{hackathon.tagline}</p>
+                                    <p className="opacity-70 mb-8">{hackathon.description}</p>
 
-                            {/* Content */}
-                            <div>
-                                <span className="label text-[#016F4E] mb-2 block">Flagship Event</span>
-                                <h2 className="text-4xl font-semibold mb-4">{hackathon.name}</h2>
-                                <p className="text-lg opacity-70 mb-8">{hackathon.description}</p>
-
-                                {/* Stats */}
-                                <div className="grid grid-cols-3 gap-6 mb-8">
-                                    {hackathon.stats.map((stat) => (
-                                        <div key={stat.label} className="text-center p-4 bg-white rounded-xl border border-[#082820]/10">
-                                            <div className="text-2xl font-semibold text-[#016F4E]">{stat.value}</div>
-                                            <div className="text-xs opacity-60">{stat.label}</div>
+                                    {/* Event Details */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                                        <div className="p-4 bg-[#fcf7f0]/10 rounded-lg">
+                                            <div className="text-xs font-mono uppercase opacity-60 mb-1">Date</div>
+                                            <div className="font-semibold">{hackathon.date}</div>
                                         </div>
-                                    ))}
+                                        <div className="p-4 bg-[#fcf7f0]/10 rounded-lg">
+                                            <div className="text-xs font-mono uppercase opacity-60 mb-1">Time</div>
+                                            <div className="font-semibold">{hackathon.time}</div>
+                                        </div>
+                                        <div className="p-4 bg-[#fcf7f0]/10 rounded-lg">
+                                            <div className="text-xs font-mono uppercase opacity-60 mb-1">Location</div>
+                                            <div className="font-semibold">{hackathon.location}</div>
+                                        </div>
+                                    </div>
+
+                                    {hackathon.status === 'upcoming' && (
+                                        <JoinButton className="btn-primary bg-[#01A072] hover:bg-[#016F4E]">
+                                            Register Now
+                                        </JoinButton>
+                                    )}
                                 </div>
 
-                                {/* What to expect */}
-                                <div className="space-y-3">
-                                    <h3 className="font-semibold">What to Expect</h3>
-                                    <ul className="space-y-2 text-sm opacity-70">
-                                        <li className="flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#016F4E]" />
-                                            48 hours of building
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#016F4E]" />
-                                            Mentorship from founders & engineers
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#016F4E]" />
-                                            Pitch to VC judges
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#016F4E]" />
-                                            Cash prizes + follow-on opportunities
-                                        </li>
-                                    </ul>
+                                {/* Sidebar: Judges or Sponsors */}
+                                <div>
+                                    {hackathon.judges ? (
+                                        <>
+                                            <h3 className="font-semibold text-lg mb-6 border-b border-[#fcf7f0]/20 pb-4">Judges</h3>
+                                            <div className="space-y-4">
+                                                {hackathon.judges.map((judge) => (
+                                                    <div key={judge.name} className="p-4 border border-[#fcf7f0]/10 rounded-lg hover:border-[#01A072]/50 transition-colors">
+                                                        <div className="font-semibold">{judge.name}</div>
+                                                        <div className="text-sm opacity-60">{judge.title}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </>
+                                    ) : hackathon.sponsors ? (
+                                        <>
+                                            <h3 className="font-semibold text-lg mb-6 border-b border-[#fcf7f0]/20 pb-4">Sponsors</h3>
+                                            <div className="flex flex-wrap gap-3">
+                                                {hackathon.sponsors.map((sponsor) => (
+                                                    <span key={sponsor} className="px-4 py-3 bg-[#fcf7f0] text-[#082820] font-bold rounded-lg text-lg">
+                                                        {sponsor}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </>
+                                    ) : null}
                                 </div>
                             </div>
                         </div>
@@ -101,13 +164,20 @@ export default function Hackathons() {
                     <span className="label text-[#01A072] mb-4 block">History</span>
                     <h2 className="text-3xl font-semibold mb-8">Past Hackathons</h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {pastEvents.map((event) => (
-                            <div key={event.name} className="p-6 border border-[#fcf7f0]/10 rounded-xl">
-                                <h3 className="font-semibold mb-3">{event.name}</h3>
-                                <div className="text-sm opacity-60">
-                                    Winners: {event.winners.join(', ')}
-                                </div>
+                            <div key={event.name} className="p-6 border border-[#fcf7f0]/10 rounded-xl hover:border-[#01A072]/30 transition-colors">
+                                <h3 className="font-semibold mb-2">{event.name}</h3>
+                                <div className="text-sm opacity-60 mb-3">{event.date}</div>
+                                {event.sponsors && (
+                                    <div className="flex flex-wrap gap-2">
+                                        {event.sponsors.map((sponsor) => (
+                                            <span key={sponsor} className="text-xs px-2 py-1 bg-[#fcf7f0]/10 rounded">
+                                                {sponsor}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>

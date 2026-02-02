@@ -40,14 +40,14 @@ const programs = [
     title: 'Research',
     description: 'Deep dives into emerging verticals. Publishing white papers and industry maps.',
     link: '/associates',
-    image: '/images-rebrand/image copy 3.png'
+    image: '/images/research/future-of-compute.webp'
   },
   {
     id: '04',
-    title: 'Bevs & Devs',
-    description: 'Our founder community. Weekly builds, mentorship, and launch support.',
-    link: '/bevsanddevs',
-    image: '/images-rebrand/image.png'
+    title: 'Hackathons',
+    description: 'Our flagship building events. Join hundreds of students to build, pitch, and win prizes.',
+    link: '/hackathons',
+    image: '/images/events/bevs-devs-zf.webp'
   },
 ];
 
@@ -62,7 +62,7 @@ const cultureValues = [
   },
   {
     title: 'LONG-TERM THINKING',
-    image: '/images-rebrand/image.png'
+    image: '/images-rebrand/image copy 4.png'
   },
 ];
 
