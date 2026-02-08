@@ -31,14 +31,16 @@ export default async function Partnerships() {
   return (
     <main className="min-h-screen bg-tvg-cream text-tvg-forest pt-20">
       <section className="relative py-20 lg:py-32 overflow-hidden bg-tvg-forest">
-        <div className="absolute inset-0 opacity-30">
-          <Image
-            src="/images/about/cover.webp"
-            alt="Partnerships Cover"
-            fill
-            className="object-cover"
-            priority
-          />
+        <div className="absolute inset-0 opacity-20">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/videos/ship.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-tvg-forest/60" />
         </div>
         <div className="container mx-auto px-6 relative z-10 text-center text-white">
@@ -80,17 +82,23 @@ export default async function Partnerships() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-24 bg-tvg-forest relative overflow-hidden">
+        {/* Background video */}
+        <div className="absolute inset-0 opacity-10">
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+            <source src="/videos/healthcare.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="container mx-auto px-6 text-center relative z-10">
           <div className="max-w-3xl mx-auto">
-            <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">Work With Us</span>
-            <h2 className="text-4xl font-bold mt-4 mb-6 text-tvg-forest">Partner With TVG</h2>
-            <p className="text-xl text-tvg-forest/70 mb-10 leading-relaxed">
+            <span className="font-mono text-sm text-tvg-teal uppercase tracking-wider">Work With Us</span>
+            <h2 className="text-4xl font-bold mt-4 mb-6 text-white">Partner With TVG</h2>
+            <p className="text-xl text-white/70 mb-10 leading-relaxed">
               Interested in working with us? We&apos;re always looking to connect with
               firms and companies doing interesting things.
             </p>
             <div className="flex justify-center">
-              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm bg-tvg-forest text-white font-bold hover:bg-tvg-forest/90 transition-all">
+              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm bg-white text-tvg-forest font-bold hover:bg-tvg-teal hover:text-white transition-all">
                 Get In Touch
               </a>
             </div>

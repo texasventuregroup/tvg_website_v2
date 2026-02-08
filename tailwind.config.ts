@@ -21,7 +21,7 @@ const config: Config = {
                 "tvg-deep-blue": "#045277",
             },
             fontFamily: {
-                sans: ["var(--font-poppins)"],
+                sans: ["var(--font-outfit)"],
                 mono: ["var(--font-space-mono)"],
             },
             backgroundImage: {

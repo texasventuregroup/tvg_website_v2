@@ -540,3 +540,21 @@ h6 {
   opacity: 0;
   animation: fade-up 0.8s var(--ease) forwards;
 }
+
+/* ========== SCROLLBAR ========== */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(8, 40, 32, 0.15);
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(8, 40, 32, 0.3);
+}

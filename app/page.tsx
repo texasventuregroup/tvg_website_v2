@@ -4,6 +4,8 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import LogoCarousel, { CarouselLogo } from './components/LogoCarousel';
 import JoinButton from './components/JoinButton';
+import DomainPanels from './components/DomainPanels';
+import CultureFlipCards from './components/CultureFlipCards';
 import AustinSkylineSVG from './components/AustinSkylineSVG';
 
 async function getCarouselLogos(): Promise<{ row1: CarouselLogo[]; row2: CarouselLogo[] }> {
@@ -40,29 +42,14 @@ const programs = [
     title: 'Research',
     description: 'Deep dives into emerging verticals. Publishing white papers and industry maps.',
     link: '/associates',
-    image: '/images/research/future-of-compute.webp'
+    image: '/images/programs/research.jpeg'
   },
   {
     id: '04',
     title: 'Hackathons',
     description: 'Our flagship building events. Join hundreds of students to build, pitch, and win prizes.',
     link: '/hackathons',
-    image: '/images/events/bevs-devs-zf.webp'
-  },
-];
-
-const cultureValues = [
-  {
-    title: 'GENUINE CURIOSITY',
-    image: '/images-rebrand/image copy 2.png'
-  },
-  {
-    title: 'HIGH AGENCY',
-    image: '/images-rebrand/image copy 3.png'
-  },
-  {
-    title: 'LONG-TERM THINKING',
-    image: '/images-rebrand/image copy 4.png'
+    image: '/images/events/hackathon-workspace.jpg'
   },
 ];
 
@@ -93,7 +80,7 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* SVG Skyline Background */}
+        {/* Pencil Skyline Background */}
         <AustinSkylineSVG />
       </header>
 
@@ -135,8 +122,8 @@ export default async function Home() {
       </section>
 
       {/* ========== MISSION SECTION ========== */}
-      <section id="mission" className="py-[120px] bg-white">
-        <div className="container mx-auto">
+      <section id="mission" className="py-[120px] bg-white relative">
+        <div className="container mx-auto relative z-10">
           <span className="label mb-6 block">The Mission</span>
           <p className="text-[clamp(2rem,4vw,3.5rem)] leading-[1.2] max-w-[1100px]">
             There wasn&apos;t a place for students <span className="text-[#016F4E]">obsessed</span> with startups. We built Texas Venture Group to be the gravity well for the ambitious, the curious, and the relentless.
@@ -144,8 +131,13 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* ========== DOMAINS SECTION ========== */}
+      <section id="domains" className="pt-16 pb-[120px] bg-[#082820] text-[#fcf7f0]">
+        <DomainPanels />
+      </section>
+
       {/* ========== PHILOSOPHY SECTION ========== */}
-      <section id="philosophy" className="py-[120px] bg-[#082820] text-[#fcf7f0]">
+      <section id="philosophy" className="pt-8 pb-[120px] bg-[#082820] text-[#fcf7f0]">
         <div className="container mx-auto">
           <span className="label text-[#01A072] mb-6 block">Our Philosophy</span>
           <p className="text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] max-w-[900px] mb-16">
@@ -155,7 +147,7 @@ export default async function Home() {
           </p>
 
           {/* Three Modalities */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 num: '01',
@@ -183,25 +175,6 @@ export default async function Home() {
               </div>
             ))}
           </div>
-
-          {/* Areas of Interest */}
-          <div className="border-t border-[#fcf7f0]/10 pt-12">
-            <span className="label text-[#01A072] mb-8 block">Areas of Interest</span>
-            <div className="flex flex-wrap gap-3">
-              {[
-                'Enterprise Software', 'AI/ML', 'Fintech', 'Climate & Energy',
-                'Healthcare', 'Defense Tech', 'Consumer', 'Crypto/Web3',
-                'Developer Tools', 'Biotech', 'Robotics', 'Space'
-              ].map((area) => (
-                <span
-                  key={area}
-                  className="px-4 py-2 border border-[#fcf7f0]/20 rounded-full text-sm hover:border-[#01A072] hover:text-[#01A072] transition-colors cursor-default"
-                >
-                  {area}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
@@ -217,23 +190,10 @@ export default async function Home() {
       </section>
 
       {/* ========== CULTURE SECTION ========== */}
-      <section id="culture" className="py-16 lg:py-[120px]">
+      <section id="culture" className="py-16 lg:py-[120px] bg-white">
         <div className="container mx-auto">
-          <span className="label mb-4 block">Culture & Values</span>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-            {cultureValues.map((value) => (
-              <div key={value.title} className="culture-card group">
-                <Image
-                  src={value.image}
-                  alt={value.title}
-                  fill
-                  className="culture-img group-hover:scale-105 group-hover:grayscale-0"
-                />
-                <div className="culture-label">{value.title}</div>
-              </div>
-            ))}
-          </div>
+          <span className="label mb-12 block">Culture & Values</span>
+          <CultureFlipCards />
         </div>
       </section>
 

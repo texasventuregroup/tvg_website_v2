@@ -1,114 +1,89 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const clients = [
-  { id: '01', name: 'Great Circle Ventures', tag: 'Due Diligence', description: 'Early-stage investment firm focused on food and consumer health.' },
-  { id: '02', name: 'Steer', tag: 'Software', description: 'Affiliate marketing software for consumer service brands.' },
-  { id: '03', name: 'Mainshares', tag: 'Research', description: '8VC-backed startup helping owner-operators acquire small businesses.' },
-  { id: '04', name: 'BoxGroup', tag: 'Tooling', description: 'NYC VC with portfolio including Ramp, Clay, and Cursor.' },
-  { id: '05', name: 'Sorenson Capital', tag: 'Research', description: 'Utah-based VC investing in B2B software.' },
-  { id: '06', name: 'Gothams', tag: 'Strategy', description: 'Crisis response firm with rapid deployment capabilities.' },
-  { id: '07', name: 'Harvest Growth Capital', tag: 'Investment', description: 'Late-stage growth capital for tech companies.' },
-  { id: '08', name: 'Earl Grey Capital', tag: 'Software', description: 'Austin VC investing in DevOps, AI, and Web3.' },
-  { id: '09', name: 'Midnight Venture Partners', tag: 'Research', description: 'CPG-focused VC with Olipop, Jolie, and Jinx.' },
-  { id: '10', name: 'BMW iVentures', tag: 'Due Diligence', description: "BMW's VC arm in robotics and transportation." },
-  { id: '11', name: 'Oxcart Ventures', tag: 'Research', description: 'Gigafund spin-out, invested in SpaceX and Neuralink.' },
-  { id: '12', name: 'Overmatch Ventures', tag: 'Research', description: 'Frontier tech VC, Base Power Company and Epirus.' },
+const scope = [
+  { id: '01', title: 'Client Work', description: 'Direct projects with portfolio companies and venture partners.' },
+  { id: '02', title: 'Market Research', description: 'Deep sector analysis and competitive intelligence reports.' },
+  { id: '03', title: 'Deal Support', description: 'Active involvement in sourcing and diligence workflows.' },
 ];
 
-const researchAreas = [
-  { id: '01', title: 'Software', description: 'B2B SaaS, developer tools, AI/ML infrastructure.' },
-  { id: '02', title: 'Fintech', description: 'Payments, lending, capital markets infrastructure.' },
-  { id: '03', title: 'Climate', description: 'Energy transition, carbon markets, sustainability tech.' },
-  { id: '04', title: 'Life Sciences', description: 'Biotech, healthtech, medical devices.' },
+const clients = [
+  { name: 'Silverton Partners', type: 'VC', logo: null },
+  { name: '8VC', type: 'VC', logo: null },
+  { name: 'S3 Ventures', type: 'VC', logo: null },
+  { name: 'Founders Fund', type: 'VC', logo: null },
+  { name: 'LiveOak Venture Partners', type: 'VC', logo: null },
+  { name: 'Capital Factory', type: 'Accelerator', logo: null },
+  { name: 'Techstars', type: 'Accelerator', logo: null },
+  { name: 'Mercury Fund', type: 'VC', logo: null },
 ];
 
 export default function Associates() {
   return (
-    <main className="min-h-screen bg-[#fcf7f0] text-[#082820] pt-20">
-      {/* Hero - Two Column Layout */}
-      <section className="border-b border-[#082820]/10 grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
-        {/* Content */}
-        <div className="p-8 lg:p-16 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#082820]/10">
-          <span className="label mb-4">Program 02</span>
-          <h1 className="text-5xl lg:text-6xl font-semibold leading-[0.95] tracking-tight mb-8">
-            Associate<br />Program
+    <main className="min-h-screen bg-[#fcf7f0] text-[#082820]">
+      {/* Hero */}
+      <section className="pt-32 lg:pt-40 pb-16 px-6 lg:px-12 border-b border-[#082820]/10">
+        <div className="max-w-screen-xl mx-auto">
+          <h1 className="text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.9] tracking-tighter mb-6">
+            Associates
           </h1>
-          <p className="text-lg opacity-70 max-w-md mb-10">
-            Real client work with startups and VC firms. Software development, financial modeling, market research—projects vary. You lead research initiatives and help shape what TVG becomes next.
+          <p className="text-lg lg:text-xl opacity-70 max-w-lg leading-relaxed">
+            For proven analysts ready to lead client engagements and drive real deal flow.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/work-with-us" className="btn-primary">Work With Us</Link>
-            <Link href="/analysts" className="btn-secondary">Start as Analyst</Link>
-          </div>
-        </div>
-
-        {/* Image */}
-        <div className="relative h-[400px] lg:h-auto">
-          <Image src="/images/associates/associates_1.webp" alt="TVG Associates" fill className="object-cover" />
         </div>
       </section>
 
-      {/* Research Areas */}
-      <section className="border-b border-[#082820]/10">
-        <div className="p-6 border-b border-[#082820]/10 flex justify-between items-center">
-          <h2 className="text-xl font-semibold">Research Coverage</h2>
-          <span className="label">Sectors</span>
-        </div>
+      {/* Scope */}
+      <section className="py-20 lg:py-28 px-6 lg:px-12 border-b border-[#082820]/10">
+        <div className="max-w-screen-xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12">Scope of Work</h2>
 
-        {/* Table Header */}
-        <div className="hidden md:grid grid-cols-4 p-4 border-b border-[#082820]/10 text-[10px] font-mono uppercase tracking-wider opacity-40">
-          <div>idx</div>
-          <div>Sector</div>
-          <div>Focus Areas</div>
-          <div></div>
-        </div>
-
-        {researchAreas.map((area) => (
-          <div key={area.id} className="grid grid-cols-1 md:grid-cols-4 p-6 border-b border-[#082820]/10 hover:bg-[#082820]/5 transition-all items-center gap-2 md:gap-0">
-            <div className="font-mono text-sm opacity-50 hidden md:block">{area.id}</div>
-            <div className="font-semibold">{area.title}</div>
-            <div className="opacity-70 text-sm hidden md:block">{area.description}</div>
-            <div></div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-[#082820]/10">
+            {scope.map((item) => (
+              <div key={item.id} className="bg-[#fcf7f0] p-8 hover:bg-white transition-colors group">
+                <div className="w-8 h-8 rounded-full border-2 border-[#01A072] flex items-center justify-center mb-6 group-hover:bg-[#01A072] transition-colors">
+                  <div className="w-2 h-2 rounded-full bg-[#01A072] group-hover:bg-white transition-colors" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-[#01A072] transition-colors">{item.title}</h3>
+                <p className="opacity-70 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </section>
 
-      {/* Clients - Dark Section */}
-      <section className="bg-[#082820] text-[#fcf7f0]">
-        <div className="p-6 border-b border-[#fcf7f0]/20 flex justify-between items-center">
-          <h2 className="text-xl font-semibold">Past Clients</h2>
-          <span className="label text-[#01A072]">Portfolio</span>
+      {/* Clients - Grid Style */}
+      <section className="py-20 lg:py-28 px-6 lg:px-12 bg-[#082820] text-[#fcf7f0] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.07]">
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+            <source src="/videos/ship.mp4" type="video/mp4" />
+          </video>
         </div>
-
-        {/* Table Header */}
-        <div className="hidden md:grid grid-cols-4 p-4 border-b border-[#fcf7f0]/20 text-[10px] font-mono uppercase tracking-wider opacity-40">
-          <div>idx</div>
-          <div>Client</div>
-          <div>Work Type</div>
-          <div>Description</div>
-        </div>
-
-        {clients.map((client) => (
-          <div key={client.id} className="grid grid-cols-1 md:grid-cols-4 p-6 border-b border-[#fcf7f0]/10 hover:bg-[#fcf7f0]/5 transition-all items-center gap-2 md:gap-0">
-            <div className="font-mono text-sm opacity-50 hidden md:block">{client.id}</div>
-            <div className="font-semibold">{client.name}</div>
-            <div className="text-sm opacity-70 hidden md:block">{client.tag}</div>
-            <div className="text-sm opacity-70">{client.description}</div>
+        <div className="max-w-screen-xl mx-auto relative z-10">
+          <div className="flex justify-between items-baseline mb-12">
+            <h2 className="text-3xl font-bold">Client Network</h2>
+            <span className="font-mono text-xs opacity-50">Partners</span>
           </div>
-        ))}
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#fcf7f0]/10">
+            {clients.map((client) => (
+              <div key={client.name} className="bg-[#082820] p-6 lg:p-8 hover:bg-[#fcf7f0]/5 transition-colors flex flex-col justify-between min-h-[120px]">
+                <span className="font-mono text-xs text-[#01A072]">{client.type}</span>
+                <span className="font-bold text-lg">{client.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 text-center">
-        <span className="label block mb-4">Interested?</span>
-        <h2 className="text-4xl font-semibold mb-6">Work With Us</h2>
-        <p className="text-sm opacity-70 max-w-md mx-auto mb-10">
-          We&apos;re always looking for partners. If you&apos;re a VC or a startup with a project, reach out.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <Link href="/work-with-us" className="btn-primary">Get In Touch</Link>
-          <Link href="/analysts" className="btn-secondary">Join as Analyst</Link>
+      <section className="py-20 lg:py-28 px-6 lg:px-12 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Interested in becoming an Associate?</h2>
+          <p className="text-lg opacity-60 mb-10">Associates are selected from our analyst alumni each spring.</p>
+          <Link href="/analysts" className="inline-block px-8 py-4 border-b-2 border-[#082820] font-bold hover:text-[#01A072] hover:border-[#01A072] transition-all">
+            Start as an Analyst →
+          </Link>
         </div>
       </section>
     </main>

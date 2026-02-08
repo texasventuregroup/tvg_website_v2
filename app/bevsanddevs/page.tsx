@@ -49,14 +49,14 @@ export default function BevsAndDevs() {
               </p>
             </div>
             <div className="md:w-1/2 relative">
-              <div className="relative rounded-xl overflow-hidden shadow-xl">
+              <div className="relative rounded-xl overflow-hidden shadow-xl aspect-video">
                 <Image
-                  src="/images/programs/bevs-devs-zf.jpeg"
-                  alt="Bevs & Devs Event"
-                  width={600}
-                  height={420}
-                  className="object-cover w-full h-auto"
+                  src="/images/events/bevs-devs-zf.webp"
+                  alt="Bevs and Devs event"
+                  fill
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-tvg-forest/10" />
               </div>
             </div>
           </div>

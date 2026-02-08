@@ -118,7 +118,7 @@ export default function Navbar() {
                       </svg>
                     </button>
                     {openDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 w-56 bg-[#082820] border border-[#fcf7f0]/10 rounded-lg shadow-xl py-2 animate-fade-in">
+                      <div className="absolute top-full left-0 mt-2 w-56 bg-[#082820] border border-[#fcf7f0]/10 rounded-lg shadow-xl py-2">
                         {item.dropdown.map((dropItem) => (
                           <Link
                             key={dropItem.href}
@@ -179,7 +179,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#082820] animate-fade-in max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#082820] max-h-[80vh] overflow-y-auto">
           <div className="container mx-auto py-6">
             {navItems.map((item) => (
               <div key={item.label}>

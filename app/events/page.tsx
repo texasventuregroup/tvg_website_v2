@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import eventsData from '../../public/data/events.json';
+import FirmLogo from '../components/FirmLogo';
 
 interface Event {
   title: string;
@@ -9,6 +10,7 @@ interface Event {
   image: string;
   description: string;
   year: string;
+  logos?: string[];
 }
 
 export default function Events() {
@@ -38,10 +40,10 @@ export default function Events() {
   return (
     <main className="min-h-screen bg-[#fcf7f0] text-[#082820] pt-20">
       {/* Hero */}
-      <section className="py-12 lg:py-16 container mx-auto px-6">
+      <section className="py-16 lg:py-24 container mx-auto px-6">
         <span className="label mb-4 block">Community</span>
-        <h1 className="text-4xl lg:text-5xl font-semibold leading-[0.95] tracking-tight mb-4">Events</h1>
-        <p className="text-lg opacity-60 max-w-xl">
+        <h1 className="text-5xl lg:text-6xl font-semibold leading-[0.95] tracking-tight mb-6">Events</h1>
+        <p className="text-lg opacity-60 max-w-xl leading-relaxed">
           Speaker sessions, pitch nights, and conversations with the people building the future.
         </p>
       </section>
@@ -113,6 +115,15 @@ export default function Events() {
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#016F4E]" />
                                 {event.date}
                               </span>
+
+                              {/* Logos */}
+                              {event.logos && event.logos.length > 0 && (
+                                <div className="flex items-center gap-1.5 mb-3">
+                                  {event.logos.map((domain) => (
+                                    <FirmLogo key={domain} name={domain.split('.')[0]} domain={domain} size={22} className="rounded-full" />
+                                  ))}
+                                </div>
+                              )}
 
                               {/* Title */}
                               <h3 className={`font-semibold mb-2 group-hover:text-[#016F4E] transition-colors ${isExpanded ? 'text-lg text-[#016F4E]' : 'text-base'

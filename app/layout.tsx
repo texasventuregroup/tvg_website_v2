@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Poppins, Space_Mono } from 'next/font/google';
+import { Outfit, Space_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -7,10 +7,10 @@ import { ThemeProvider } from './components/ThemeProvider';
 import { ClientEffects } from './components/ClientComponents';
 import { SignupModalProvider } from './components/SignupModal';
 
-const poppins = Poppins({
+const outfit = Outfit({
   subsets: ['latin'],
   weight: ['400', '600', '700'],
-  variable: '--font-poppins',
+  variable: '--font-outfit',
   display: 'swap',
 });
 
@@ -22,19 +22,19 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Texas Venture Group',
-  description: "UT Austin's hub for venture capital learning and startup building.",
+  title: 'Texas Venture Group | Student Venture Capital & Entrepreneurship',
+  description: 'The ecosystem for student investors and founders at UT Austin. Exploration is not just about where you go, but who you go with.',
   openGraph: {
     type: 'website',
     url: 'https://txventuregroup.com/',
-    title: 'Join Texas Venture Group',
-    description: "Join UT's premier venture capital and startup community. Applications for Fall 2025 cohort due September 7th.",
+    title: 'Texas Venture Group | Student VC & Entrepreneurship',
+    description: 'The ecosystem for student investors and founders at UT Austin.',
     images: [{ url: 'https://txventuregroup.com/images/about/cover.webp' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Join Texas Venture Group',
-    description: "Join UT's premier venture capital and startup community.",
+    title: 'Texas Venture Group',
+    description: 'The ecosystem for student investors and founders at UT Austin.',
     images: ['https://txventuregroup.com/images/about/cover.webp'],
   },
 };
@@ -45,9 +45,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${spaceMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${outfit.variable} ${spaceMono.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images/logo/logo-small.png" />
+        <link rel="icon" href="/images-rebrand/logo.png" />
         {/* Preconnect to external domains for faster resource loading */}
         <link rel="preconnect" href="https://img.logo.dev" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />

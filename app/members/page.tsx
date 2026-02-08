@@ -42,7 +42,7 @@ export default async function MembersPage() {
         <div className="container mx-auto px-6">
           <span className="label mb-4 block">The Team</span>
           <h1 className="text-5xl lg:text-6xl font-semibold leading-[0.95] tracking-tight mb-6">Our Team</h1>
-          <p className="text-lg opacity-70 max-w-lg">
+          <p className="text-lg opacity-70 max-w-lg leading-relaxed">
             The people building TVG. Students exploring the frontier of technology and entrepreneurship at UT Austin.
           </p>
         </div>
@@ -51,7 +51,13 @@ export default async function MembersPage() {
       <MembersClient members={members} />
 
       {/* Join Section */}
-      <section className="border-t border-[#082820]/10 py-24 text-center">
+      <section className="border-t border-[#082820]/10 py-24 text-center relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.04]">
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+            <source src="/videos/lecture.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="relative z-10">
         <span className="label block mb-4">Join Us</span>
         <h2 className="text-4xl font-semibold mb-6">Want To Be Part of This?</h2>
         <p className="text-sm opacity-70 max-w-md mx-auto mb-10">
@@ -62,6 +68,7 @@ export default async function MembersPage() {
             Applications Closed
           </span>
           <JoinButton className="btn-primary">Stay Updated</JoinButton>
+        </div>
         </div>
       </section>
     </main>
