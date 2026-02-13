@@ -1,7 +1,14 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname === '/work-with-us') return null;
+
   return (
     <footer className="bg-[#082820] text-[#fcf7f0]">
       <div className="container mx-auto px-6 pt-32 pb-12 md:py-24">

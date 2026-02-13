@@ -1,66 +1,153 @@
 'use client';
 
 import Link from 'next/link';
-import ProjectNetwork from '../components/ProjectNetwork';
-import PartnerMap from '../components/PartnerMap';
+
+const services = [
+    {
+        number: '01',
+        title: 'Market Mapping',
+        description: 'Comprehensive landscape analysis to identify key players, emerging trends, and white space opportunities in target sectors.',
+    },
+    {
+        number: '02',
+        title: 'Valuation Analysis',
+        description: 'Rigorous financial modeling, comparable company analysis, and cap table scenarios to support pricing decisions.',
+    },
+    {
+        number: '03',
+        title: 'Due Diligence',
+        description: 'Deep-dive investigation into business models, competitive moats, risks, and operational viability of potential investments.',
+    },
+    {
+        number: '04',
+        title: 'Tech Projects',
+        description: 'Custom software prototyping, MVP development, automation, and technical feasibility assessments for portfolio companies.',
+    },
+    {
+        number: '05',
+        title: 'Thesis Development',
+        description: 'Original research and data synthesis to help firms develop conviction in new markets or technologies.',
+    },
+    {
+        number: '06',
+        title: 'Internal Tooling',
+        description: 'Automation scripts, data pipelines, and custom dashboarding to streamline internal VC operations.',
+    },
+];
 
 export default function WorkWithUs() {
     return (
-        <main className="min-h-screen bg-[#fcf7f0] text-[#082820] pt-20">
-            {/* Hero Section */}
-            <section className="py-24 lg:py-32 px-6 lg:px-12 border-b border-[#082820]/10">
-                <div className="max-w-screen-xl mx-auto">
-                    <span className="font-mono text-xs uppercase tracking-widest text-[#01A072] mb-6 block">
-                        Partnerships
-                    </span>
-                    <h1 className="text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[0.95] tracking-tighter mb-12 max-w-4xl">
-                        Collaborate on high-impact projects.
+        <main className="w-full min-h-screen bg-[#fcf7f0] text-[#082820]">
+
+
+
+            {/* Thesis */}
+            {/* Thesis */}
+            <section className="bg-[#fcf7f0] text-[#082820] pt-40 pb-24 md:pb-32 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#01A072] opacity-[0.05] rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3" />
+
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                    <h1 className="text-5xl lg:text-7xl font-semibold tracking-tight mb-16 text-[#082820]">
+                        Work With Us
                     </h1>
-
-                    <div className="flex flex-col lg:flex-row gap-12 lg:items-end">
-                        <div className="lg:w-2/3">
-                            <p className="text-xl lg:text-2xl opacity-70 leading-relaxed max-w-2xl mb-8">
-                                Partner with TVG to access student-driven research, diligence, and innovative tooling. We work alongside firms to tackle real investment challenges.
-                            </p>
-                        </div>
-
-                        <div>
-                            <a href="mailto:partnerships@texasventuregroup.com" className="inline-block px-8 py-4 bg-[#082820] text-[#fcf7f0] rounded-full font-bold hover:bg-[#016F4E] transition-all">
-                                Get in Touch
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Interactive Project Network */}
-            <section className="py-24 px-6 lg:px-12">
-                <div className="max-w-screen-xl mx-auto">
-                    <div className="mb-16">
-                        <span className="label block mb-4">Engagement Models</span>
-                        <h2 className="text-4xl font-bold">How We Work</h2>
-                    </div>
-
-                    <ProjectNetwork />
-                </div>
-            </section>
-
-            {/* Partner Map */}
-            <section className="py-24 px-6 lg:px-12">
-                <div className="max-w-screen-xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between md:items-end mb-12 gap-6">
-                        <div>
-                            <span className="label text-[#01A072] mb-4 block">Ecosystem</span>
-                            <h2 className="text-3xl font-semibold text-[#082820]">Partner Network</h2>
-                        </div>
-                        <p className="text-sm text-[#082820]/50 max-w-md md:text-right">
-                            We work with leading venture firms and startups across the country
+                    {/* Stacked prose with larger text */}
+                    {/* Stacked prose with larger text */}
+                    <div className="space-y-12 max-w-3xl">
+                        <p className="text-2xl leading-relaxed text-[#082820]/80 font-light">
+                            Texas Venture Group represents a paradigm shift in how institutional investors leverage academic talent. We bridge the gap between campus talent and real-world applications. 
+                        </p>
+                        <p className="text-2xl leading-relaxed text-[#082820]/80 font-light">
+                            Our engagement models are designed for flexibility and depth. Whether it&apos;s mapping an entirely new vertical or developing custom internal tooling, our teams integrate seamlessly with your existing workflows. We&apos;ve built lasting relationships with firms who return semester after semester.
                         </p>
                     </div>
-
-                    <PartnerMap />
                 </div>
             </section>
+
+            {/* How We Work — Frontier Grid */}
+            <section className="border-t border-[#082820]/10 py-20 md:py-28">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-12 pb-6 border-b border-[#082820]">
+                        <div>
+                            <h2 className="text-3xl font-bold mb-2">How We Work</h2>
+                            <p className="font-mono text-sm text-[#082820]/40 uppercase tracking-widest">Capabilities &amp; Services</p>
+                        </div>
+                        <div className="hidden md:block text-right">
+                            <p className="text-sm text-[#082820]/50 max-w-xs">
+                                Direct engagement with top university talent for specialized venture capital operations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-[#082820]">
+                        {services.map((svc) => (
+                            <div
+                                key={svc.number}
+                                className="border-r border-b border-[#082820] p-8 md:p-12 group relative overflow-hidden transition-all duration-300 hover:bg-white hover:shadow-[inset_0_0_0_1px_#01A072]"
+                            >
+                                <div className="flex justify-between items-start mb-8">
+                                    <div className="w-12 h-12 bg-[#01A072]/10 rounded-lg flex items-center justify-center text-[#01A072] group-hover:bg-[#01A072] group-hover:text-white transition-colors duration-300">
+                                        <span className="font-mono font-bold text-lg">{svc.number}</span>
+                                    </div>
+                                    <span className="font-mono text-2xl font-bold text-[#082820]/10 group-hover:text-[#01A072]/30 transition-colors">
+                                        {svc.number}
+                                    </span>
+                                </div>
+                                <h3 className="text-2xl font-bold mb-3 group-hover:translate-x-1 transition-transform">
+                                    {svc.title}
+                                </h3>
+                                <p className="text-[#082820]/60 leading-relaxed group-hover:text-[#082820] transition-colors">
+                                    {svc.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA */}
+            <section className="py-24">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="bg-[#082820] text-[#fcf7f0] rounded-2xl p-12 md:p-20 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#01A072] opacity-10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#01A072] opacity-10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+
+                        <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+                            <div className="max-w-xl">
+                                <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to accelerate your firm?</h2>
+                                <p className="text-[#fcf7f0]/60 text-lg mb-8">
+                                    Join the growing list of venture firms leveraging TVG&apos;s top-tier student talent for critical operations.
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    <a
+                                        href="mailto:partnerships@texasventuregroup.com"
+                                        className="bg-[#fcf7f0] text-[#082820] px-8 py-3 rounded-full font-semibold hover:bg-[#01A072] hover:text-white transition-colors text-center"
+                                    >
+                                        Get in Touch
+                                    </a>
+                                    <Link
+                                        href="/events"
+                                        className="border border-[#fcf7f0]/30 text-[#fcf7f0] px-8 py-3 rounded-full font-semibold hover:border-[#01A072] hover:text-[#01A072] transition-colors text-center"
+                                    >
+                                        View Events
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="border-t border-[#082820]/10 py-8">
+                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-[#082820]/40 font-mono">
+                    <p>© 2026 Texas Venture Group. All rights reserved.</p>
+                    <div className="flex gap-6 mt-4 md:mt-0">
+                        <Link href="/" className="hover:text-[#082820] transition-colors">Home</Link>
+                        <Link href="/members" className="hover:text-[#082820] transition-colors">Team</Link>
+                        <Link href="/events" className="hover:text-[#082820] transition-colors">Events</Link>
+                    </div>
+                </div>
+            </footer>
         </main>
     );
 }

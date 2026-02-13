@@ -22,14 +22,19 @@ export default function FirmLogo({ name, domain, logo, size = 48, className = ''
             return;
         }
 
-        // Try logo.dev first if domain exists
         if (domain) {
-            const params = new URLSearchParams({
-                token: LOGO_DEV_TOKEN,
-                size: String(size * 2), // 2x for retina
-                format: 'png',
-            });
-            setImgSrc(`https://img.logo.dev/${domain}?${params.toString()}`);
+            // If we have a token, try logo.dev
+            if (LOGO_DEV_TOKEN) {
+                const params = new URLSearchParams({
+                    token: LOGO_DEV_TOKEN,
+                    size: String(size * 2), // 2x for retina
+                    format: 'png',
+                });
+                setImgSrc(`https://img.logo.dev/${domain}?${params.toString()}`);
+            } else {
+                // Fallback to Clearbit if no token
+                setImgSrc(`https://logo.clearbit.com/${domain}?size=${size * 2}`);
+            }
         } else {
             setImgSrc(null);
         }
@@ -38,10 +43,10 @@ export default function FirmLogo({ name, domain, logo, size = 48, className = ''
     if (!imgSrc || hasError) {
         return (
             <div
-                className={`bg-[#fcf7f0]/10 flex items-center justify-center shrink-0 border border-[#082820]/10 rounded-full ${className}`}
+                className={`bg-[#082820]/5 flex items-center justify-center shrink-0 border border-[#082820]/10 rounded-full ${className}`}
                 style={{ width: size, height: size }}
             >
-                <span className="text-xs font-bold opacity-50">{name[0]}</span>
+                <span className="text-xs font-bold text-[#082820]/50">{name[0]}</span>
             </div>
         );
     }
@@ -50,10 +55,10 @@ export default function FirmLogo({ name, domain, logo, size = 48, className = ''
     if (imgSrc.startsWith('/') || imgSrc.startsWith('http') === false) { // Local path check
         return (
             <div
-                className={`relative overflow-hidden shrink-0 rounded-full bg-white border border-[#082820]/5 ${className}`}
+                className={`relative shrink-0 ${className}`}
                 style={{ width: size, height: size }}
             >
-                <Image src={imgSrc} alt={name} fill className="object-cover" />
+                <Image src={imgSrc} alt={name} fill className="object-contain" />
             </div>
         );
     }
@@ -61,13 +66,13 @@ export default function FirmLogo({ name, domain, logo, size = 48, className = ''
     // Remote image (logo.dev/clearbit) - use img for error handling
     return (
         <div
-            className={`relative overflow-hidden shrink-0 rounded-full bg-white border border-[#082820]/5 ${className}`}
+            className={`relative shrink-0 ${className}`}
             style={{ width: size, height: size }}
         >
             <img
                 src={imgSrc}
                 alt={name}
-                className="w-full h-full object-contain p-1.5"
+                className="w-full h-full object-contain"
                 onError={() => {
                     // If logo.dev fails, try Clearbit as backup before giving up
                     if (imgSrc.includes('logo.dev') && domain) {

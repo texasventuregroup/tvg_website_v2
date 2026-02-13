@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Outfit, Space_Mono } from 'next/font/google';
+import { Outfit, Space_Mono, Playfair_Display, Libre_Baskerville } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -18,6 +18,19 @@ const spaceMono = Space_Mono({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-space-mono',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
+const libre = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-libre',
   display: 'swap',
 });
 
@@ -45,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${spaceMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${outfit.variable} ${spaceMono.variable} ${playfair.variable} ${libre.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/images-rebrand/logo.png" />
         {/* Preconnect to external domains for faster resource loading */}

@@ -131,13 +131,27 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ========== DOMAINS SECTION ========== */}
-      <section id="domains" className="pt-16 pb-[120px] bg-[#082820] text-[#fcf7f0]">
-        <DomainPanels />
+      {/* ========== PLACEMENT / ALUMNI SECTION ========== */}
+      <section className="py-16 lg:py-[120px]">
+        <div className="container mx-auto mb-12 lg:mb-24">
+          <span className="label mb-4 block">Placement</span>
+        </div>
+        <div className="space-y-8">
+          <LogoCarousel logos={row1} />
+          <LogoCarousel logos={row2} reverse />
+        </div>
+      </section>
+
+      {/* ========== CULTURE SECTION ========== */}
+      <section id="culture" className="py-16 lg:py-[120px] bg-white">
+        <div className="container mx-auto">
+          <span className="label mb-12 block">Culture & Values</span>
+          <CultureFlipCards />
+        </div>
       </section>
 
       {/* ========== PHILOSOPHY SECTION ========== */}
-      <section id="philosophy" className="pt-8 pb-[120px] bg-[#082820] text-[#fcf7f0]">
+      <section id="philosophy" className="pt-16 pb-[120px] bg-[#082820] text-[#fcf7f0]">
         <div className="container mx-auto">
           <span className="label text-[#01A072] mb-6 block">Our Philosophy</span>
           <p className="text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] max-w-[900px] mb-16">
@@ -178,22 +192,10 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ========== PLACEMENT / ALUMNI SECTION ========== */}
-      <section className="py-16 lg:py-[120px]">
-        <div className="container mx-auto mb-12 lg:mb-24">
-          <span className="label mb-4 block">Placement</span>
-        </div>
-        <div className="space-y-8">
-          <LogoCarousel logos={row1} />
-          <LogoCarousel logos={row2} reverse />
-        </div>
-      </section>
-
-      {/* ========== CULTURE SECTION ========== */}
-      <section id="culture" className="py-16 lg:py-[120px] bg-white">
-        <div className="container mx-auto">
-          <span className="label mb-12 block">Culture & Values</span>
-          <CultureFlipCards />
+      {/* ========== DOMAINS SECTION ========== */}
+      <section id="domains" className="pt-8 pb-[120px] bg-[#082820] text-[#fcf7f0]">
+        <div className="container mx-auto px-6">
+          <DomainPanels variant="newspaper" />
         </div>
       </section>
 

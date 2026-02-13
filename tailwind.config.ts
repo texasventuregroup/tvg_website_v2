@@ -19,10 +19,17 @@ const config: Config = {
                 "tvg-sky": "#038BC8",
                 "tvg-muted-teal": "#368686",
                 "tvg-deep-blue": "#045277",
+                // Newspaper Theme Colors
+                cream: '#fcf7f0',
+                forest: '#082820',
+                teal: '#01A072',
+                ink: '#1a1a1a',
             },
             fontFamily: {
                 sans: ["var(--font-outfit)"],
                 mono: ["var(--font-space-mono)"],
+                serif: ["var(--font-playfair)", "serif"],
+                body: ["var(--font-libre)", "serif"],
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
