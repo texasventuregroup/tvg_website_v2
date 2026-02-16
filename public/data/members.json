@@ -762,6 +762,11 @@
   "analysts": [],
   "alumni": [
     {
+      "name": "Ankit Devalla",
+      "linkedin": "https://www.linkedin.com/in/ankit-devalla/",
+      "image": "/images/members/ankit-devalla.jpg"
+    },
+    {
       "name": "Tejas Mehta",
       "linkedin": "https://www.linkedin.com/in/tejasmehta14/",
       "image": "/images/members/tejas-mehta.jpeg"
@@ -860,11 +865,6 @@
       "name": "Jimmy Propper",
       "linkedin": "https://www.linkedin.com/in/lincolnpropper/",
       "image": "/images/members/jimmy-propper.jpeg"
-    },
-    {
-      "name": "Ankit Devalla",
-      "linkedin": "https://www.linkedin.com/in/ankit-devalla/",
-      "image": "/images/members/ankit-devalla.jpg"
     },
     {
       "name": "Lawrence Park",

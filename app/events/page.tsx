@@ -80,7 +80,7 @@ export default function Events() {
           </div>
           <div className="border-y-[6px] border-[#1a1a1a] py-3 mb-1">
             <h1 className="text-center font-serif font-black text-[clamp(4rem,12vw,10rem)] leading-[0.85] tracking-[-0.03em]">
-              THE TVG GAZETTE
+              THE TVG TIMES
             </h1>
           </div>
           <div className="border-b-[2px] border-[#1a1a1a] mb-1" />
@@ -307,7 +307,7 @@ export default function Events() {
             </div>
           </footer>
         </div>
-      </div>
-    </main>
+      </div >
+    </main >
   );
 }

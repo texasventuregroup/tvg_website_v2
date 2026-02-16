@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 // ============================================
 // DATA
@@ -100,14 +102,41 @@ export default function Associates() {
         </div>
       </header>
 
+
+
       {/* ============ SCOPE OF WORK ============ */}
       <section id="scope" className="py-24 lg:py-32 px-6 md:px-12 lg:px-24 bg-[#fcf7f0]">
         <div className="max-w-screen-xl mx-auto">
           {/* Section header */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20" data-animate>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">Scope of Work</h2>
-            <div className="h-px bg-[#082820]/10 flex-grow ml-12 mb-4 hidden md:block" />
-            <p className="font-mono text-xs uppercase tracking-widest text-[#082820]/50 mb-2 md:mb-4 mt-4 md:mt-0">Engagements</p>
+          {/* Section header */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-12 items-center mb-20" data-animate>
+            <div className="max-w-xl">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">Scope of Work</h2>
+              <div className="h-px bg-[#082820]/10 w-full mb-4" />
+              <p className="font-mono text-xs uppercase tracking-widest text-[#082820]/50">Engagements</p>
+            </div>
+
+            {/* Images Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-[#082820]/10 group cursor-pointer animate-float">
+                <Image
+                  src="/images/associates/associates_1.png"
+                  alt="TVG associates meeting"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+              </div>
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-[#082820]/10 group cursor-pointer animate-float" style={{ animationDelay: '1.5s' }}>
+                <Image
+                  src="/images/associates/associates_2.png"
+                  alt="TVG client network"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+              </div>
+            </div>
           </div>
 
           {/* Scope cards */}
@@ -152,10 +181,10 @@ export default function Associates() {
         />
 
         <div className="max-w-screen-xl mx-auto relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20" data-animate>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">Client Network</h2>
-            <div className="h-px bg-[#fcf7f0]/10 flex-grow ml-12 mb-4 hidden md:block" />
-            <p className="font-mono text-xs uppercase tracking-widest text-[#fcf7f0]/40 mb-2 md:mb-4 mt-4 md:mt-0">Partners</p>
+          <div className="mb-20 text-center" data-animate>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">Client Network</h2>
+            <div className="h-px bg-[#fcf7f0]/10 w-full max-w-xs mx-auto mb-4" />
+            <p className="font-mono text-xs uppercase tracking-widest text-[#fcf7f0]/40">Partners</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#fcf7f0]/10">

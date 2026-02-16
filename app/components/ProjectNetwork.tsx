@@ -8,31 +8,31 @@ const projects = [
         title: 'Market Mapping',
         description: 'Given a company in a portfolio (or a specific market), our team organizes competitors to understand the competitive landscape, identify market gaps, and find investment opportunities.',
         deliverables: ['Executive Summary', 'Market Landscape Map', 'Competitive Matrix'],
-        x: 12,
-        y: 20,
+        x: 85, // 0 deg
+        y: 50,
     },
     {
         id: 'valuation',
         title: 'Valuation Analysis',
         description: 'Semester-long investigation of an opportunity. We interview founders, perform market evaluation (TAM/SAM/SOM), and model revenue growth (waterfall ARR/MRR).',
         deliverables: ['Executive Summary', 'Public/Private Comps', 'Growth Model'],
-        x: 40,
-        y: 12,
+        x: 67.5, // 60 deg
+        y: 80.3,
     },
     {
         id: 'diligence',
         title: 'Due Diligence',
         description: 'We connect with founders in the Austin area, source pitch decks and financials, then conduct rigorous investment analysis.',
         deliverables: ['Investment Decision', 'Deal Memo'],
-        x: 70,
-        y: 20,
+        x: 32.5, // 120 deg
+        y: 80.3,
     },
     {
         id: 'tech',
         title: 'Tech Projects',
         description: 'The majority of our members are technical. Previous work includes data analytics, compiler development, and diligence automation.',
         deliverables: ['Working Software', 'Technical Docs', 'Integration Support'],
-        x: 88,
+        x: 15, // 180 deg
         y: 50,
     },
     {
@@ -40,16 +40,16 @@ const projects = [
         title: 'Internal Tooling',
         description: 'We develop and test internal tools for partners—sourcing agents, automated outflow managers, revenue modelers, or context-aware inference systems.',
         deliverables: ['Working Platform', 'Integration Docs'],
-        x: 12,
-        y: 80,
+        x: 32.5, // 240 deg
+        y: 19.7,
     },
     {
         id: 'thesis',
         title: 'Thesis Development',
         description: 'Research and develop investment theses. We maintain market maps for sectors of interest, highlight exciting startups, and predict market movement.',
         deliverables: ['Thesis Report', 'Sector Map', 'Partner Presentation'],
-        x: 70,
-        y: 85,
+        x: 67.5, // 300 deg
+        y: 19.7,
     },
 ];
 
@@ -167,7 +167,7 @@ export default function ProjectNetwork() {
                                     style={{ animationDuration: '1.5s' }} />
 
                                 <div className="relative w-24 h-24 lg:w-28 lg:h-28 rounded-full flex items-center justify-center border-2 border-[#01A072] bg-[#fcf7f0] group-hover:bg-[#01A072]/10 transition-all duration-300">
-                                    <span className={`text-xs lg:text-sm font-bold text-center px-2 leading-tight text-[#082820] transition-opacity duration-300 ${phase === 'idle' ? 'opacity-100' : 'opacity-0'}`}>
+                                    <span className={`text-[10px] lg:text-xs font-bold text-center px-1 leading-tight text-[#082820] uppercase tracking-wide transition-opacity duration-300 ${phase === 'idle' ? 'opacity-100' : 'opacity-0'}`}>
                                         {project.title}
                                     </span>
                                 </div>

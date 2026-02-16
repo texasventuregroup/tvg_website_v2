@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 // ============================================
 // DATA
@@ -96,34 +98,63 @@ export default function Analysts() {
         </div>
       </header>
 
+
+
       {/* ============ WHAT YOU LEARN ============ */}
-      <section id="curriculum" className="py-24 lg:py-32 px-6 md:px-12 lg:px-24 bg-[#fcf7f0]">
+      <section id="curriculum" className="py-24 lg:py-32 px-6 md:px-12 lg:px-24 bg-[#fcf7f0] overflow-hidden">
         <div className="max-w-screen-xl mx-auto">
           {/* Section header */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20" data-animate>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">What You Learn</h2>
-            <div className="h-px bg-[#082820]/10 flex-grow ml-12 mb-4 hidden md:block" />
-            <p className="font-mono text-xs uppercase tracking-widest text-[#082820]/50 mb-2 md:mb-4 mt-4 md:mt-0">Curriculum</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-12 items-center mb-20" data-animate>
+            <div className="max-w-xl">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">What You Learn</h2>
+              <p className="text-lg text-[#082820]/60 leading-relaxed mb-8">
+                Our curriculum is built on the belief that the best way to learn venture is to practice it.
+              </p>
+            </div>
+
+            {/* Images Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-[#082820]/10 group cursor-pointer animate-float">
+                <Image
+                  src="/images/analysts/training-development.jpeg"
+                  alt="TVG analysts collaborating"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+              </div>
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-[#082820]/10 group cursor-pointer animate-float" style={{ animationDelay: '1.5s' }}>
+                <Image
+                  src="/images/analysts/project_work.png"
+                  alt="TVG project work"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+              </div>
+            </div>
           </div>
 
+          <div className="h-px bg-[#082820]/10 w-full mb-12" />
+
           {/* Pillar cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-[#082820]/10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pillars.map((pillar, idx) => (
               <div
                 key={pillar.id}
-                className={`group p-8 md:p-12 relative transition-colors duration-500 hover:bg-white/50 border-b md:border-b-0 ${idx < 2 ? 'md:border-r' : ''} border-[#082820]/10`}
+                className="group p-8 md:p-10 relative bg-white/40 border border-[#082820]/5 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-xl hover:shadow-[#082820]/5 hover:-translate-y-1"
                 data-animate
               >
                 <div className="absolute top-8 right-8 text-xs font-mono border border-[#082820]/20 rounded-full w-8 h-8 flex items-center justify-center group-hover:bg-[#082820] group-hover:text-[#fcf7f0] transition-colors duration-300">
                   {pillar.id}
                 </div>
-                <div className={`h-24 w-24 rounded-full ${pillar.bg} mb-8 flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}>
+                <div className={`h-20 w-20 rounded-2xl ${pillar.bg} mb-8 flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}>
                   {pillar.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300">
+                <h3 className="text-xl md:text-2xl font-bold mb-4">
                   {pillar.title}
                 </h3>
-                <p className="text-[#082820]/60 leading-relaxed">{pillar.description}</p>
+                <p className="text-[#082820]/60 leading-relaxed text-sm md:text-base">{pillar.description}</p>
               </div>
             ))}
           </div>
@@ -131,10 +162,14 @@ export default function Analysts() {
       </section>
 
       {/* ============ SELECTION PROCESS ============ */}
-      <section className="py-24 lg:py-32 px-6 md:px-12 lg:px-24 bg-[#082820] text-[#fcf7f0]">
-        <div className="max-w-screen-xl mx-auto">
-          <div className="mb-16" data-animate>
-            <h2 className="text-4xl md:text-5xl font-bold">Selection Process</h2>
+      <section className="py-24 lg:py-32 px-6 md:px-12 lg:px-24 bg-[#082820] text-[#fcf7f0] relative overflow-hidden">
+
+        <div className="max-w-screen-xl mx-auto relative z-10">
+          <div className="mb-16 md:mb-24 max-w-2xl mx-auto text-center" data-animate>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Selection Process</h2>
+            <p className="text-lg opacity-70 leading-relaxed">
+              We look for curiosity, grit, and a genuine obsession with technology. Our process is designed to mimic the actual work of a VC associate.
+            </p>
           </div>
 
           {/* Animated Timeline */}
@@ -159,7 +194,7 @@ export default function Analysts() {
               </circle>
             </svg>
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-6">
               {process.map((item) => (
                 <div key={item.step} className="relative flex lg:flex-col items-start lg:items-center text-left lg:text-center group" data-animate>
                   <div className="relative z-10 flex-shrink-0">
@@ -169,8 +204,9 @@ export default function Analysts() {
                     </div>
                   </div>
                   <div className="ml-6 lg:ml-0 lg:mt-8 flex-1">
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-[#01A072] transition-colors">{item.title}</h3>
-                    <p className="text-sm opacity-60 leading-relaxed lg:max-w-[200px] lg:mx-auto">{item.description}</p>
+                    <p className="font-mono text-xs text-[#01A072] mb-2">{item.step}</p>
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-[#01A072] transition-colors">{item.title}</h3>
+                    <p className="text-sm opacity-60 leading-relaxed lg:max-w-[220px] lg:mx-auto">{item.description}</p>
                   </div>
                 </div>
               ))}

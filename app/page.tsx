@@ -102,6 +102,7 @@ export default async function Home() {
                   alt={program.title}
                   fill
                   className="card-bg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
 
                 {/* Content */}

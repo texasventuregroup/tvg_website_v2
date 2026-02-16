@@ -50,7 +50,7 @@ export default function NYCTrekPage() {
                 </div>
                 <div className="border-y-[6px] border-[#1a1a1a] py-3 mb-1">
                     <h1 className="text-center font-serif font-black text-[clamp(3rem,10vw,8rem)] leading-[0.85] tracking-[-0.03em]">
-                        THE TVG GAZETTE
+                        THE TVG TIMES
                     </h1>
                 </div>
                 <div className="border-b-[2px] border-[#1a1a1a] mb-1" />
@@ -69,6 +69,7 @@ export default function NYCTrekPage() {
                         alt="New York City Trek"
                         fill
                         className="object-cover grayscale"
+                        priority
                     />
                 </div>
 
@@ -195,7 +196,7 @@ export default function NYCTrekPage() {
                 {/* Back link */}
                 <div className="text-center mb-16">
                     <Link href="/events" className="font-body text-sm text-[#1a1a1a]/50 hover:text-[#1a1a1a] transition-colors">
-                        ← Back to The Gazette
+                        ← Back to The TVG Times
                     </Link>
                 </div>
 
