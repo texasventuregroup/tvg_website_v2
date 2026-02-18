@@ -185,36 +185,18 @@ export default function Navbar() {
               {navItems.map((item) => (
                 <div key={item.label}>
                   {item.dropdown ? (
-                    <>
-                      <button
-                        onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
-                        className="w-full flex items-center justify-between py-3 text-[#fcf7f0] text-base font-medium"
-                      >
-                        {item.label}
-                        <svg className={`w-4 h-4 text-[#fcf7f0]/40 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                      {openDropdown === item.label && (
-                        <div className="pl-4 pb-2 flex flex-col gap-1">
-                          {item.dropdown.map((dropItem) => (
-                            <button
-                              key={dropItem.href}
-                              type="button"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                setIsMenuOpen(false);
-                                router.push(dropItem.href);
-                              }}
-                              className="block w-full text-left py-2 text-[#fcf7f0]/60 text-sm hover:text-[#01A072] transition-colors"
-                            >
-                              {dropItem.label}
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                    </>
+                    <div className="flex flex-col gap-1">
+                      {item.dropdown.map((dropItem) => (
+                        <Link
+                          key={dropItem.href}
+                          href={dropItem.href}
+                          className="block py-3 text-[#fcf7f0] text-base font-medium hover:text-[#01A072] transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {dropItem.label}
+                        </Link>
+                      ))}
+                    </div>
                   ) : (
                     <Link
                       href={item.href!}

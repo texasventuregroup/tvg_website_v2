@@ -12,6 +12,7 @@ interface Domain {
 }
 
 const domains: Domain[] = [
+    { id: 'aiml', title: 'AI & Software', image: '/domains/aiml.png', video: '/videos/aiml.mp4', description: 'Artificial Intelligence & Developer Tools' },
     { id: 'fintech', title: 'Fintech', image: '/domains/fintech.png', video: '/videos/fintech.mp4', description: 'Financial Infrastructure' },
     { id: 'defense', title: 'Defense', image: '/domains/defense.png', video: '/videos/defense.mp4', description: 'National Security & Dual-Use' },
     { id: 'consumer', title: 'Consumer', image: '/domains/consumer.png', video: '/videos/consumer.mp4', description: 'Social, Marketplace, & Media' },
