@@ -18,32 +18,23 @@ function Reveal({
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
-        const parent = el.closest('[style*="visibility: hidden"]');
-        if (parent) {
-            const mo = new MutationObserver(() => {
-                if (!parent.getAttribute('style')?.includes('hidden')) {
-                    mo.disconnect();
-                    startObserving();
-                }
-            });
-            mo.observe(parent, { attributes: true, attributeFilter: ['style'] });
-            return () => mo.disconnect();
-        }
-        startObserving();
-        function startObserving() {
-            const observer = new IntersectionObserver(
-                ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-                { threshold: 0.08 }
-            );
-            observer.observe(el!);
-        }
+        const observer = new IntersectionObserver(
+            ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+            { threshold: 0.08 }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
     }, []);
 
     return (
         <div
             ref={ref}
-            className={`transition-all duration-700 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} ${className}`}
-            style={{ transitionDelay: `${delay}ms` }}
+            className={className}
+            style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? 'translateY(0)' : 'translateY(1.5rem)',
+                transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
+            }}
         >
             {children}
         </div>
@@ -128,10 +119,7 @@ export default function Hackathons() {
             )}
 
             {/* ===== MAIN CONTENT ===== */}
-            <div
-                className={`transition-all duration-1000 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                style={{ visibility: showContent ? 'visible' : 'hidden' }}
-            >
+            {showContent && <div className="animate-fade-up" style={{ animationDuration: '600ms', animationFillMode: 'both' }}>
 
                 {/* ===== HERO ===== */}
                 <section className="relative pt-32 pb-20 min-h-[60vh] flex items-center overflow-hidden bg-[#fcf7f0]">
