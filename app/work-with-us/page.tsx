@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef, useEffect, lazy, Suspense } from 'react';
-import Link from 'next/link';
 import Reveal from '../components/Reveal';
 
 const AsciiVideo = lazy(() => import('../components/AsciiVideo'));
@@ -101,7 +100,7 @@ function RadialCapabilities() {
 
             {/* Detail card — appears after convergence */}
             {activeIndex !== null && (
-                <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] w-[420px] bg-[#016F4E] text-white rounded-3xl p-10 transition-all duration-500 ease-out ${showDetail ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] w-[90vw] max-w-[420px] bg-[#016F4E] text-white rounded-3xl p-8 lg:p-10 transition-all duration-500 ease-out ${showDetail ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
                     }`}>
                     <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#016F4E] mb-5">
                         {services[activeIndex].icon}
@@ -121,16 +120,11 @@ function RadialCapabilities() {
             {/* Nodes */}
             {services.map((svc, i) => {
                 const rad = (nodeAngles[i] * Math.PI) / 180;
-                const normalX = Math.cos(rad) * radius;
-                const normalY = Math.sin(rad) * radius;
+                const normalX = Math.round(Math.cos(rad) * radius * 1000) / 1000;
+                const normalY = Math.round(Math.sin(rad) * radius * 1000) / 1000;
 
-                // When converged, move to a tight cluster around center
-                const convergedRadius = 0;
-                const convergedX = Math.cos(rad) * convergedRadius;
-                const convergedY = Math.sin(rad) * convergedRadius;
-
-                const x = converged ? convergedX : normalX;
-                const y = converged ? convergedY : normalY;
+                const x = converged ? 0 : normalX;
+                const y = converged ? 0 : normalY;
 
                 return (
                     <div key={svc.number}>
@@ -139,8 +133,8 @@ function RadialCapabilities() {
                             className={`absolute font-mono text-[11px] font-bold tracking-[0.15em] uppercase text-[#082820]/40 pointer-events-none transition-all duration-700 ease-out ${converged ? 'opacity-0 scale-75' : 'opacity-100 scale-100'
                                 }`}
                             style={{
-                                top: `calc(50% + ${normalY * 1.35}px)`,
-                                left: `calc(50% + ${normalX * 1.35}px)`,
+                                top: `calc(50% + ${Math.round(normalY * 1.35 * 1000) / 1000}px)`,
+                                left: `calc(50% + ${Math.round(normalX * 1.35 * 1000) / 1000}px)`,
                                 width: '220px',
                                 textAlign: 'center',
                                 zIndex: 100,
@@ -244,10 +238,10 @@ export default function WorkWithUs() {
                         </div>
 
                         {/* Video Content */}
-                        <div className="relative h-[400px] lg:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#082820]/10 group bg-[#fcf7f0]">
+                        <div className="relative h-[260px] sm:h-[360px] lg:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#082820]/10 group bg-[#fcf7f0]">
                             <div className="absolute bottom-4 right-4 z-20 flex gap-2">
                                 <span className="px-2 py-1 bg-[#082820]/80 backdrop-blur text-[10px] font-mono uppercase tracking-wider text-[#fcf7f0] rounded">
-                                    Dreamway, UT Austin
+                                    Speedway 2056
                                 </span>
                             </div>
                             <video
@@ -267,7 +261,7 @@ export default function WorkWithUs() {
             </section>
 
             {/* ===== CAPABILITIES — Radial Layout ===== */}
-            <section className="py-32 md:py-40 bg-[#f8f3eb] relative overflow-hidden">
+            <section className="py-16 md:py-32 lg:py-40 bg-[#f8f3eb] relative overflow-hidden">
                 {/* Dot grid background */}
                 <div
                     className="absolute inset-0 pointer-events-none opacity-[0.03]"
@@ -297,43 +291,29 @@ export default function WorkWithUs() {
 
 
 
-            {/* ===== CTA ===== */}
-            <section className="py-24 md:py-32 text-center relative overflow-hidden"
-                style={{ background: 'linear-gradient(180deg, #fcf7f0 0%, #f0e8dc 100%)' }}
-            >
-                <div className="container mx-auto px-6 lg:px-12 relative z-10">
+            {/* ===== WORK SAMPLE ===== */}
+            <section className="border-t border-[#082820]/10 py-16 md:py-20">
+                <div className="container mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-8">
                     <Reveal>
-                        <h2 className="text-[clamp(2.5rem,6vw,4.5rem)] font-semibold tracking-tight leading-tight mb-8">
-                            Ready to accelerate<br />your firm?
-                        </h2>
-                    </Reveal>
-                    <Reveal delay={100}>
-                        <p className="font-mono text-base md:text-lg text-[#082820]/50 max-w-2xl mx-auto mb-12">
-                            Join the growing list of venture firms leveraging TVG&apos;s top-tier student talent for critical operations.
-                        </p>
-                    </Reveal>
-                    <Reveal delay={200}>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                            <a
-                                href="mailto:partnerships@texasventuregroup.com"
-                                className="px-10 py-4 bg-[#082820] text-[#fcf7f0] font-mono font-bold uppercase tracking-[0.15em] text-sm rounded-sm transition-all hover:bg-[#016F4E] hover:-translate-y-0.5"
-                            >
-                                Get in Touch
-                            </a>
-                            <Link
-                                href="/events"
-                                className="px-10 py-4 border border-[#082820] text-[#082820] font-mono font-bold uppercase tracking-[0.15em] text-sm rounded-sm transition-all hover:bg-[#082820] hover:text-[#fcf7f0] hover:-translate-y-0.5"
-                            >
-                                View Events
-                            </Link>
+                        <div>
+                            <p className="font-mono text-[11px] font-bold tracking-[0.2em] text-[#016F4E] uppercase mb-2">Portfolio</p>
+                            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">See our work</h2>
+                            <p className="text-[#082820]/60 mt-3 max-w-md">
+                                Reach out to get a sample of past deliverables — market maps, memos, and technical builds.
+                            </p>
                         </div>
                     </Reveal>
+                    <Reveal delay={100}>
+                        <a
+                            href="mailto:txventuregroup@gmail.com?subject=Work%20Sample%20Request"
+                            className="shrink-0 px-10 py-4 bg-[#082820] text-[#fcf7f0] font-mono font-bold uppercase tracking-[0.15em] text-sm rounded-sm transition-all hover:bg-[#016F4E] hover:-translate-y-0.5 whitespace-nowrap"
+                        >
+                            Connect →
+                        </a>
+                    </Reveal>
                 </div>
-
-                <svg className="absolute bottom-0 left-0 w-full pointer-events-none opacity-10" height="200">
-                    <path d="M0,100 Q720,200 1440,100" fill="none" stroke="#082820" strokeWidth="2" />
-                </svg>
             </section>
+
         </main >
     );
 }

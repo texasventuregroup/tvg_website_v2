@@ -146,7 +146,7 @@ export default function Navbar() {
                 </div>
               ))}
 
-              {/* Work with Us */}
+              {/* Work With Us */}
               <Link
                 href="/work-with-us"
                 className={`text-sm font-medium transition-colors ${pathname === '/work-with-us'
@@ -154,7 +154,7 @@ export default function Navbar() {
                   : 'text-[#fcf7f0]/70 hover:text-[#fcf7f0]'
                   }`}
               >
-                Work with Us
+                Work With Us
               </Link>
 
               <button
@@ -167,59 +167,77 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden flex flex-col gap-1.5 p-2"
+              className="lg:hidden flex flex-col justify-center gap-1.5 p-3 min-w-[44px] min-h-[44px]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
-              <span className={`w-6 h-0.5 bg-[#fcf7f0] transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`w-6 h-0.5 bg-[#fcf7f0] transition-opacity ${isMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`w-6 h-0.5 bg-[#fcf7f0] transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              <span className={`w-6 h-0.5 bg-[#fcf7f0] transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`w-6 h-0.5 bg-[#fcf7f0] transition-all duration-300 ${isMenuOpen ? 'opacity-0 scale-x-0' : ''}`} />
+              <span className={`w-6 h-0.5 bg-[#fcf7f0] transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-[#082820] border-t border-[#fcf7f0]/10">
-            <div className="px-6 py-4 flex flex-col gap-1">
-              {navItems.map((item) => (
-                <div key={item.label}>
-                  {item.dropdown ? (
-                    <div className="flex flex-col gap-1">
-                      {item.dropdown.map((dropItem) => (
-                        <Link
-                          key={dropItem.href}
-                          href={dropItem.href}
-                          className="block py-3 text-[#fcf7f0] text-base font-medium hover:text-[#01A072] transition-colors"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {dropItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ) : (
-                    <Link
-                      href={item.href!}
-                      className="block py-3 text-[#fcf7f0] text-base font-medium hover:text-[#01A072] transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
-              ))}
+        <div className={`lg:hidden transition-all duration-300 ease-out overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="bg-[#082820] border-t border-[#fcf7f0]/10 px-6 py-6 flex flex-col gap-1">
+            {navItems.map((item) => (
+              <div key={item.label}>
+                {item.dropdown ? (
+                  <div className="flex flex-col">
+                    <span className="py-2 text-[#fcf7f0]/40 text-xs font-mono uppercase tracking-widest">{item.label}</span>
+                    {item.dropdown.map((dropItem) => (
+                      <Link
+                        key={dropItem.href}
+                        href={dropItem.href}
+                        className="block py-3 pl-3 text-[#fcf7f0] text-base font-medium hover:text-[#01A072] transition-colors border-l border-[#fcf7f0]/10"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {dropItem.label}
+                        {dropItem.description && (
+                          <span className="block text-xs text-[#fcf7f0]/40 mt-0.5 font-normal">{dropItem.description}</span>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <Link
+                    href={item.href!}
+                    className="block py-3 text-[#fcf7f0] text-base font-medium hover:text-[#01A072] transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
+            ))}
+            <div className="border-t border-[#fcf7f0]/10 mt-2 pt-4">
               <Link
                 href="/work-with-us"
                 className="block py-3 text-[#fcf7f0] text-base font-medium hover:text-[#01A072] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Work with Us
+                Work With Us
               </Link>
+              <button
+                onClick={() => { setIsMenuOpen(false); setIsTerminalOpen(true); }}
+                className="mt-2 w-full text-left py-3 font-mono text-sm font-medium text-[#01A072] hover:text-[#01A072]/80 transition-colors"
+              >
+                &gt;_ Terminal
+              </button>
             </div>
           </div>
-        )}
-
+        </div>
       </nav>
+
+      {/* Tap-outside overlay to close mobile menu */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 z-[998] lg:hidden"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
+
       {isTerminalOpen && <Terminal onClose={() => setIsTerminalOpen(false)} />}
     </>
   );

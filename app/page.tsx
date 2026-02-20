@@ -156,7 +156,7 @@ export default async function Home() {
         <div className="container mx-auto">
           <span className="label text-[#01A072] mb-6 block">Our Philosophy</span>
           <p className="text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] max-w-[900px] mb-16">
-            No single path into startups. We believe in meeting people where they are—whether
+            There&apos;s no single path to venture. We believe in meeting people where they are—whether
             you want to <span className="text-[#01A072]">invest</span>, <span className="text-[#01A072]">join</span>,
             or <span className="text-[#01A072]">found</span>.
           </p>
