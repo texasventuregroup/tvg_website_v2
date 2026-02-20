@@ -92,7 +92,7 @@ export default function DomainPanels({ variant = 'default' }: DomainPanelsProps)
                                     src={domain.image}
                                     alt={domain.title}
                                     fill
-                                    className={`object-cover ${domain.id === 'health_bio' ? 'scale-[1.35]' : ['defense', 'consumer'].includes(domain.id) ? 'scale-[1.2]' : ''}`}
+                                    className={`object-cover ${domain.id === 'healthcare' ? 'scale-[1.35]' : ['defense', 'consumer'].includes(domain.id) ? 'scale-[1.2]' : ''}`}
                                     sizes="(max-width: 768px) 100vw, 33vw"
                                     priority={domain.id === 'fintech'}
                                 />

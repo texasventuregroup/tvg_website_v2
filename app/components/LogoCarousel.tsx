@@ -76,7 +76,7 @@ export default function LogoCarousel({ logos: logoData, reverse = false }: LogoC
               decoding="async"
               className="w-full h-auto object-contain max-h-10 md:max-h-12"
               style={{
-                filter: 'brightness(0) saturate(100%)',
+                filter: 'grayscale(100%) contrast(200%) brightness(0.35)',
                 ...(logo.scale !== 1 ? { transform: `scale(${logo.scale})` } : {})
               }}
               onError={(e) => {
