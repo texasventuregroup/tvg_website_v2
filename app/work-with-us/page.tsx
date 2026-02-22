@@ -305,7 +305,7 @@ export default function WorkWithUs() {
                     </Reveal>
                     <Reveal delay={100}>
                         <a
-                            href="mailto:txventuregroup@gmail.com?subject=Work%20Sample%20Request"
+                            href="mailto:txventuregroup@gmail.com?subject=Work%20Sample%20Request&body=Hello%2C%0A%0AMy%20name%20is%20%5BYour%20Name%5D%20and%20I%20am%20reaching%20out%20on%20behalf%20of%20%5BFirm%20Name%5D.%20I%20came%20across%20Texas%20Venture%20Group%20and%20am%20interested%20in%20learning%20more%20about%20your%20associate%20program.%0A%0ACould%20you%20please%20share%20a%20sample%20of%20past%20deliverables%20%E2%80%94%20such%20as%20market%20maps%2C%20investment%20memos%2C%20or%20technical%20builds%20%E2%80%94%20so%20I%20can%20better%20evaluate%20a%20potential%20partnership%3F%0A%0AThank%20you%20for%20your%20time.%0A%5BYour%20Name%5D"
                             className="shrink-0 px-10 py-4 bg-[#082820] text-[#fcf7f0] font-mono font-bold uppercase tracking-[0.15em] text-sm rounded-sm transition-all hover:bg-[#016F4E] hover:-translate-y-0.5 whitespace-nowrap"
                         >
                             Connect →

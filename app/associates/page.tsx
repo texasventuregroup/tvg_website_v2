@@ -42,15 +42,47 @@ const scope = [
   },
 ];
 
-const clients = [
-  { name: 'Silverton Partners', type: 'VC' },
-  { name: '8VC', type: 'VC' },
-  { name: 'S3 Ventures', type: 'VC' },
-  { name: 'Founders Fund', type: 'VC' },
-  { name: 'LiveOak Venture Partners', type: 'VC' },
-  { name: 'Capital Factory', type: 'Accelerator' },
-  { name: 'Techstars', type: 'Accelerator' },
-  { name: 'Mercury Fund', type: 'VC' },
+const projects = [
+  {
+    name: 'Earl Grey Capital',
+    type: 'VC',
+    tagline: 'Market mapping and investment analysis across emerging sectors.',
+  },
+  {
+    name: 'BoundaryML',
+    type: 'AI / ML',
+    tagline: 'Technical due diligence and competitive landscape for AI infrastructure.',
+  },
+  {
+    name: 'Learn Capital',
+    type: 'EdTech VC',
+    tagline: 'Venture landscape analysis and impact indexing across the EdTech portfolio.',
+  },
+  {
+    name: 'Silverton Partners',
+    type: 'VC',
+    tagline: 'Deal sourcing and sector screening for early-stage investments.',
+  },
+  {
+    name: '8VC',
+    type: 'VC',
+    tagline: 'Diligence workflows and market research for deep tech bets.',
+  },
+  {
+    name: 'S3 Ventures',
+    type: 'VC',
+    tagline: 'Competitive intelligence and portfolio company analysis.',
+  },
+  {
+    name: 'LiveOak Venture Partners',
+    type: 'VC',
+    tagline: 'Internal tooling and data pipelines for fund operations.',
+  },
+  {
+    name: 'Capital Factory',
+    type: 'Accelerator',
+    tagline: 'Startup diligence and cohort evaluation support.',
+  },
 ];
 
 // ============================================
@@ -182,24 +214,23 @@ export default function Associates() {
 
         <div className="max-w-screen-xl mx-auto relative z-10">
           <div className="mb-20 text-center" data-animate>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">Client Network</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">Past Projects</h2>
             <div className="h-px bg-[#fcf7f0]/10 w-full max-w-xs mx-auto mb-4" />
-            <p className="font-mono text-xs uppercase tracking-widest text-[#fcf7f0]/40">Partners</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-[#fcf7f0]/40">Client Engagements</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#fcf7f0]/10">
-            {clients.map((client) => (
+            {projects.map((project) => (
               <div
-                key={client.name}
-                className="group bg-[#082820] p-8 hover:bg-[#fcf7f0]/5 transition-colors duration-300 flex flex-col justify-between min-h-[140px]"
+                key={project.name}
+                className="group bg-[#082820] p-8 hover:bg-[#fcf7f0]/5 transition-colors duration-300 flex flex-col gap-3 min-h-[160px]"
                 data-animate
               >
-                <span className="font-mono text-xs text-[#01A072] group-hover:text-[#01A072] transition-colors">
-                  {client.type}
+                <span className="font-mono text-xs text-[#01A072]">{project.type}</span>
+                <span className="font-bold text-xl group-hover:translate-x-1 transition-transform duration-300 leading-tight">
+                  {project.name}
                 </span>
-                <span className="font-bold text-xl group-hover:translate-x-1 transition-transform duration-300">
-                  {client.name}
-                </span>
+                <p className="text-xs text-[#fcf7f0]/40 leading-relaxed">{project.tagline}</p>
               </div>
             ))}
           </div>
