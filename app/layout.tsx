@@ -1,33 +1,53 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './reset.css';
-import './style.css';
+import { Outfit, Space_Mono, Playfair_Display, Libre_Baskerville } from 'next/font/google';
+import './globals.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ThemeProvider } from './components/ThemeProvider';
 import { ClientEffects } from './components/ClientComponents';
 import { SignupModalProvider } from './components/SignupModal';
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-outfit',
   display: 'swap',
-  variable: '--font-inter',
+});
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-space-mono',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
+const libre = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-libre',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'Texas Venture Group',
-  description: "UT Austin's hub for venture capital learning and startup building.",
+  title: 'Texas Venture Group | Student Venture Capital & Entrepreneurship',
+  description: 'The ecosystem for student investors and founders at UT Austin. Exploration is not just about where you go, but who you go with.',
   openGraph: {
     type: 'website',
     url: 'https://txventuregroup.com/',
-    title: 'Join Texas Venture Group',
-    description: "Join UT's premier venture capital and startup community. Applications for Fall 2025 cohort due September 7th.",
+    title: 'Texas Venture Group | Student VC & Entrepreneurship',
+    description: 'The ecosystem for student investors and founders at UT Austin.',
     images: [{ url: 'https://txventuregroup.com/images/about/cover.webp' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Join Texas Venture Group',
-    description: "Join UT's premier venture capital and startup community.",
+    title: 'Texas Venture Group',
+    description: 'The ecosystem for student investors and founders at UT Austin.',
     images: ['https://txventuregroup.com/images/about/cover.webp'],
   },
 };
@@ -38,9 +58,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={`${outfit.variable} ${spaceMono.variable} ${playfair.variable} ${libre.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images/logo/logo-small.png" />
+        <link rel="icon" href="/images-rebrand/logo.png" />
         {/* Preconnect to external domains for faster resource loading */}
         <link rel="preconnect" href="https://img.logo.dev" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
@@ -60,7 +80,7 @@ export default function RootLayout({
           fetchPriority="low"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider>
           <SignupModalProvider>
             <ClientEffects />

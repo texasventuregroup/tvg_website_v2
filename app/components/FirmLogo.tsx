@@ -1,0 +1,87 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { LOGO_DEV_TOKEN } from '../config/logos';
+
+interface FirmLogoProps {
+    name: string;
+    domain?: string;
+    logo?: string | null; // Local path
+    size?: number;
+    className?: string;
+}
+
+export default function FirmLogo({ name, domain, logo, size = 48, className = '' }: FirmLogoProps) {
+    const [imgSrc, setImgSrc] = useState<string | null>(null);
+    const [hasError, setHasError] = useState(false);
+
+    useEffect(() => {
+        if (logo) {
+            setImgSrc(logo);
+            return;
+        }
+
+        if (domain) {
+            // If we have a token, try logo.dev
+            if (LOGO_DEV_TOKEN) {
+                const params = new URLSearchParams({
+                    token: LOGO_DEV_TOKEN,
+                    size: String(size * 2), // 2x for retina
+                    format: 'png',
+                });
+                setImgSrc(`https://img.logo.dev/${domain}?${params.toString()}`);
+            } else {
+                // Fallback to Clearbit if no token
+                setImgSrc(`https://logo.clearbit.com/${domain}?size=${size * 2}`);
+            }
+        } else {
+            setImgSrc(null);
+        }
+    }, [logo, domain, size]);
+
+    if (!imgSrc || hasError) {
+        return (
+            <div
+                className={`bg-[#082820]/5 flex items-center justify-center shrink-0 border border-[#082820]/10 rounded-full ${className}`}
+                style={{ width: size, height: size }}
+            >
+                <span className="text-xs font-bold text-[#082820]/50">{name[0]}</span>
+            </div>
+        );
+    }
+
+    // If local image, use Next Image
+    if (imgSrc.startsWith('/') || imgSrc.startsWith('http') === false) { // Local path check
+        return (
+            <div
+                className={`relative shrink-0 ${className}`}
+                style={{ width: size, height: size }}
+            >
+                <Image src={imgSrc} alt={name} fill className="object-contain" />
+            </div>
+        );
+    }
+
+    // Remote image (logo.dev/clearbit) - use img for error handling
+    return (
+        <div
+            className={`relative shrink-0 ${className}`}
+            style={{ width: size, height: size }}
+        >
+            <img
+                src={imgSrc}
+                alt={name}
+                className="w-full h-full object-contain"
+                onError={() => {
+                    // If logo.dev fails, try Clearbit as backup before giving up
+                    if (imgSrc.includes('logo.dev') && domain) {
+                        setImgSrc(`https://logo.clearbit.com/${domain}?size=${size * 2}`);
+                    } else {
+                        setHasError(true);
+                    }
+                }}
+            />
+        </div>
+    );
+}

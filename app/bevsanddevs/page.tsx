@@ -2,30 +2,30 @@ import Image from 'next/image';
 
 export default function BevsAndDevs() {
   return (
-    <>
-      <section className="hero hero--compact">
-        <div className="container">
-          <div className="hero__content animate-in">
-            <div className="hero__logo-container">
+    <main className="min-h-screen bg-tvg-cream text-tvg-forest pt-20">
+      <section className="relative py-20 lg:py-32 overflow-hidden bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col items-center text-center">
+            <div className="mb-8 relative w-48 h-48 rounded-full overflow-hidden shadow-xl ring-4 ring-tvg-orange/20">
               <Image
                 src="/images/logo/bevs-and-devs.jpg"
                 alt="Bevs & Devs Logo"
-                width={200}
-                height={200}
-                className="hero__logo"
+                fill
+                className="object-cover"
                 priority
               />
             </div>
-            <h1 className="hero__title">Bevs & Devs</h1>
-            <p className="hero__text">
-              Biweekly coworking sessions bringing together UT&apos;s top builders and hackers. Join us for
-              coffee, collaboration, and community.
+            <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">For Builders</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 mt-4 text-tvg-forest">Bevs & Devs</h1>
+            <p className="text-xl text-tvg-forest/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Biweekly coworking for student founders. Share what you&apos;re building,
+              get feedback, find your people.
             </p>
-            <div className="button-group">
-              <a href="#schedule" className="button button--primary">
+            <div className="flex gap-4">
+              <a href="#schedule" className="px-8 py-4 rounded-sm bg-tvg-orange text-white font-bold hover:bg-tvg-orange/90 transition-all">
                 View Schedule
               </a>
-              <a href="#join" className="button">
+              <a href="#join" className="px-8 py-4 rounded-sm border border-tvg-forest hover:bg-tvg-forest hover:text-white transition-colors font-bold">
                 Join Us
               </a>
             </div>
@@ -33,112 +33,122 @@ export default function BevsAndDevs() {
         </div>
       </section>
 
-      <section className="content-section">
-        <div className="container">
-          <div
-            className="content-section__inner"
-            style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xl)', flexWrap: 'wrap' }}
-          >
-            <div className="content-section__text-content" style={{ flex: 1, minWidth: '300px' }}>
-              <h2 className="content-section__title">About the Program</h2>
-              <p className="content-section__text">
-                This is a community of UT&apos;s top student founders and hackers. Built by founders for
-                founders, our coworking sessions accelerate growth and make the journey less lonely.
-                We connect students with a fleet of experienced YC-backed mentors and VC firms from
-                Austin to SF such as Sputnik, Antler, 1517, and Pear VC.
+      <section className="py-24 bg-tvg-cream">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+            <div className="md:w-1/2">
+              <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">The Idea</span>
+              <h2 className="text-4xl font-bold mb-6 mt-4 text-tvg-forest">Built By Founders, For Founders</h2>
+              <p className="text-lg text-tvg-forest/80 leading-relaxed mb-6">
+                Building something is hard. Building something alone is harder.
+                We created this to make the journey less lonely.
+              </p>
+              <p className="text-lg text-tvg-forest/80 leading-relaxed">
+                Connect with YC-backed mentors and VCs from Austin to SF—Sputnik,
+                Antler, 1517, Pear VC. Get real feedback from people who&apos;ve done it.
               </p>
             </div>
-            <div className="content-section__image-container" style={{ flex: 1, minWidth: '300px', maxWidth: '500px' }}>
+            <div className="md:w-1/2 relative">
+              <div className="relative rounded-xl overflow-hidden shadow-xl aspect-video">
+                <Image
+                  src="/images/events/bevs-devs-zf.webp"
+                  alt="Bevs and Devs event"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-tvg-forest/10" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white" id="schedule">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">Every Two Weeks</span>
+            <h2 className="text-4xl font-bold mt-4 text-tvg-forest">How It Works</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-tvg-cream p-8 rounded-xl border-l-4 border-tvg-green">
+              <h3 className="text-xl font-bold mb-2 text-tvg-green uppercase tracking-wider">Part 1</h3>
+              <p className="text-3xl font-bold text-tvg-forest">Updates</p>
+              <p className="mt-2 text-tvg-forest/70">Quick wins, blockers, what you need help with.</p>
+            </div>
+            <div className="bg-tvg-cream p-8 rounded-xl border-l-4 border-tvg-orange">
+              <h3 className="text-xl font-bold mb-2 text-tvg-orange uppercase tracking-wider">Part 2</h3>
+              <p className="text-3xl font-bold text-tvg-forest">Work Sprint</p>
+              <p className="mt-2 text-tvg-forest/70">Heads down. Build. No distractions.</p>
+            </div>
+            <div className="bg-tvg-cream p-8 rounded-xl border-l-4 border-tvg-green">
+              <h3 className="text-xl font-bold mb-2 text-tvg-green uppercase tracking-wider">Part 3</h3>
+              <p className="text-3xl font-bold text-tvg-forest">Open Demos</p>
+              <p className="mt-2 text-tvg-forest/70">Show what you made. Get feedback. Iterate.</p>
+            </div>
+          </div>
+
+          <div className="bg-tvg-forest text-white rounded-xl p-8 flex flex-wrap justify-between items-center gap-6 max-w-4xl mx-auto">
+            <div className="flex items-center gap-3">
+              <span className="text-tvg-orange text-xl">⏰</span>
+              <span className="font-semibold">Be on time</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-tvg-orange text-xl">🚫</span>
+              <span className="font-semibold">No schoolwork</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-tvg-orange text-xl">☕</span>
+              <span className="font-semibold">Snacks provided</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-tvg-cream">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">Why Join</span>
+            <h2 className="text-4xl font-bold mt-4 text-tvg-forest">What You Get</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="p-10 bg-white rounded-xl border border-tvg-forest/10">
+              <h3 className="text-2xl font-bold mb-4 text-tvg-orange">Expert Mentorship</h3>
+              <p className="text-tvg-forest/80 leading-relaxed text-lg">
+                YC-backed founders, partners at top funds. People who&apos;ve built
+                what you&apos;re trying to build.
+              </p>
+            </div>
+            <div className="p-10 bg-white rounded-xl border border-tvg-forest/10">
+              <h3 className="text-2xl font-bold mb-4 text-tvg-green">Your Crew</h3>
+              <p className="text-tvg-forest/80 leading-relaxed text-lg">
+                Other student founders building real things. The people you&apos;ll
+                be texting at 2am when something breaks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white" id="join">
+        <div className="container mx-auto px-6 text-center">
+          <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">Sponsored By</span>
+          <h2 className="text-4xl font-bold mt-4 mb-12 text-tvg-forest">Our Partner</h2>
+          <div className="max-w-md mx-auto bg-tvg-cream rounded-xl p-8 border border-tvg-forest/10">
+            <div className="relative h-20 mb-6">
               <Image
-                src="/images/programs/bevs-devs-zf.jpeg"
-                alt="Bevs & Devs Event"
-                width={500}
-                height={350}
-                className="content-section__image"
-                style={{ borderRadius: '12px', boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)' }}
+                src="/images/logo/Teal_Sputnik.png"
+                alt="Sputnik VC Logo"
+                fill
+                className="object-contain"
               />
             </div>
+            <h3 className="text-2xl font-bold mb-3 text-tvg-forest">Sputnik VC</h3>
+            <p className="text-tvg-forest/70">
+              Supporting the next generation of student founders and innovators.
+            </p>
           </div>
         </div>
       </section>
-
-      <section className="content-section" id="schedule">
-        <div className="container">
-          <h2 className="content-section__title">Biweekly Schedule</h2>
-          <div className="cards-horizontal">
-            <div className="card">
-              <h3 className="card__title">Part 1</h3>
-              <p className="card__text">Updates</p>
-            </div>
-            <div className="card">
-              <h3 className="card__title">Part 2</h3>
-              <p className="card__text">Work Sprint</p>
-            </div>
-            <div className="card">
-              <h3 className="card__title">Part 3</h3>
-              <p className="card__text">Casual Open Demos</p>
-            </div>
-          </div>
-          <div className="rules-banner">
-            <div className="rules-banner__item">
-              <i className="fas fa-clock"></i>
-              <span>Be on time</span>
-            </div>
-            <div className="rules-banner__item">
-              <i className="fas fa-ban"></i>
-              <span>No schoolwork allowed</span>
-            </div>
-            <div className="rules-banner__item">
-              <i className="fas fa-coffee"></i>
-              <span>Snacks and Bevs provided</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="content-section">
-        <div className="container">
-          <h2 className="content-section__title">Community Benefits</h2>
-          <div className="cards-grid cards-grid--2col">
-            <div className="card card--featured">
-              <h3 className="card__title">Expert Mentorship</h3>
-              <p className="card__text">
-                Connect with experienced YC-backed mentors and VC firms from Austin to SF including
-                Sputnik, Antler, 1517, and Pear VC.
-              </p>
-            </div>
-            <div className="card">
-              <h3 className="card__title">Founder Community</h3>
-              <p className="card__text">
-                Join a community of UT&apos;s top student founders and hackers. Built by founders for
-                founders, our coworking sessions accelerate growth and make the journey less lonely.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="content-section" id="join">
-        <div className="container">
-          <h2 className="content-section__title">Sponsored By</h2>
-          <div className="card card--sponsor">
-            <Image
-              src="/images/logo/Teal_Sputnik.png"
-              alt="Sputnik VC Logo"
-              width={150}
-              height={60}
-              className="sponsor-logo"
-            />
-            <div className="card__content">
-              <h3 className="card__title">Sputnik VC</h3>
-              <p className="card__text">
-                Proudly sponsored by Sputnik VC, supporting the next generation of student founders
-                and innovators.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    </main>
   );
 }

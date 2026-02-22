@@ -3,35 +3,33 @@
 import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
 
 // ============================================
-// CONFIGURATION - Edit this section to customize
+// CONFIGURATION
 // ============================================
-
 interface SignupConfig {
   title: string;
   subtitle: string;
   deadlineDate: Date;
   deadlineText: string;
-  applyUrl: string | null; // null = applications closed
+  applyUrl: string | null;
   applyButtonText: string;
   closedButtonText: string;
   contactEmail: string;
 }
 
 const DEFAULT_CONFIG: SignupConfig = {
-  title: 'Join TVG',
-  subtitle: 'Applications for the Spring 2026 cohort are now closed. Stay tuned for Fall 2026 opportunities to join UT Austin\'s premier venture capital and startup community.',
+  title: 'Apply to TVG',
+  subtitle: 'Applications for Spring 2026 are closed. Stay tuned for Fall 2026.',
   deadlineDate: new Date('2026-01-22T23:59:00-06:00'),
   deadlineText: 'Thursday 01/22 by 11:59 PM CT',
-  applyUrl: null, // Set to URL string when applications open
+  applyUrl: null,
   applyButtonText: 'Apply Now',
   closedButtonText: 'Applications Closed',
   contactEmail: 'contact.txventuregroup@gmail.com',
 };
 
 // ============================================
-// Context & Hook
+// Context
 // ============================================
-
 interface SignupModalContextType {
   isOpen: boolean;
   openModal: () => void;
@@ -43,52 +41,31 @@ const SignupModalContext = createContext<SignupModalContextType | undefined>(und
 
 export function useSignupModal() {
   const context = useContext(SignupModalContext);
-  if (!context) {
-    throw new Error('useSignupModal must be used within a SignupModalProvider');
-  }
+  if (!context) throw new Error('useSignupModal must be used within SignupModalProvider');
   return context;
 }
 
-// Legacy alias for backwards compatibility
 export const useJoinModal = useSignupModal;
 
 // ============================================
 // Countdown Hook
 // ============================================
-
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
-
-function useCountdown(targetDate: Date): TimeLeft {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+function useCountdown(targetDate: Date) {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
-
-      if (difference <= 0) {
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      }
-
+    const calc = () => {
+      const diff = targetDate.getTime() - Date.now();
+      if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / (1000 * 60)) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
       };
     };
-
-    setTimeLeft(calculateTimeLeft());
-
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
+    setTimeLeft(calc());
+    const timer = setInterval(() => setTimeLeft(calc()), 1000);
     return () => clearInterval(timer);
   }, [targetDate]);
 
@@ -96,34 +73,20 @@ function useCountdown(targetDate: Date): TimeLeft {
 }
 
 // ============================================
-// Provider Component
+// Provider
 // ============================================
-
-interface SignupModalProviderProps {
-  children: ReactNode;
-  config?: Partial<SignupConfig>;
-}
-
-export function SignupModalProvider({ children, config: customConfig }: SignupModalProviderProps) {
+export function SignupModalProvider({ children, config: customConfig }: { children: ReactNode; config?: Partial<SignupConfig> }) {
   const [isOpen, setIsOpen] = useState(false);
   const config = { ...DEFAULT_CONFIG, ...customConfig };
-
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
 
-  // Handle escape key
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        closeModal();
-      }
-    };
-
+    const handleEscape = (e: KeyboardEvent) => { if (e.key === 'Escape' && isOpen) closeModal(); };
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden';
     }
-
     return () => {
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = '';
@@ -138,91 +101,92 @@ export function SignupModalProvider({ children, config: customConfig }: SignupMo
   );
 }
 
-// Legacy alias
 export const JoinModalProvider = SignupModalProvider;
 
 // ============================================
-// Countdown Component (isolated to prevent parent re-renders)
+// Countdown Display
 // ============================================
-
 function CountdownDisplay({ targetDate, deadlineText }: { targetDate: Date; deadlineText: string }) {
   const timeLeft = useCountdown(targetDate);
-  const formatNumber = (num: number) => num.toString().padStart(2, '0');
+  const fmt = (n: number) => n.toString().padStart(2, '0');
 
   return (
-    <div className="signup-modal__countdown-section">
-      <div className="signup-modal__countdown-header">Application Deadline</div>
-      <div className="signup-modal__countdown">
-        <div className="signup-modal__countdown-item">
-          <div className="signup-modal__countdown-value">{formatNumber(timeLeft.days)}</div>
-          <div className="signup-modal__countdown-label">Days</div>
-        </div>
-        <div className="signup-modal__countdown-item">
-          <div className="signup-modal__countdown-value">{formatNumber(timeLeft.hours)}</div>
-          <div className="signup-modal__countdown-label">Hours</div>
-        </div>
-        <div className="signup-modal__countdown-item">
-          <div className="signup-modal__countdown-value">{formatNumber(timeLeft.minutes)}</div>
-          <div className="signup-modal__countdown-label">Minutes</div>
-        </div>
-        <div className="signup-modal__countdown-item">
-          <div className="signup-modal__countdown-value">{formatNumber(timeLeft.seconds)}</div>
-          <div className="signup-modal__countdown-label">Seconds</div>
-        </div>
+    <div className="my-8">
+      <div className="label text-center mb-4">Deadline</div>
+      <div className="grid grid-cols-4 gap-2 max-w-xs mx-auto">
+        {[
+          { val: timeLeft.days, label: 'Days' },
+          { val: timeLeft.hours, label: 'Hours' },
+          { val: timeLeft.minutes, label: 'Min' },
+          { val: timeLeft.seconds, label: 'Sec' },
+        ].map(item => (
+          <div key={item.label} className="border border-[#141414] p-3 text-center">
+            <div className="text-2xl font-light">{fmt(item.val)}</div>
+            <div className="label">{item.label}</div>
+          </div>
+        ))}
       </div>
-      <div className="signup-modal__countdown-deadline">{deadlineText}</div>
+      <div className="label text-center mt-4">{deadlineText}</div>
     </div>
   );
 }
 
 // ============================================
-// Modal Component
+// Modal
 // ============================================
-
-interface SignupModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  config: SignupConfig;
-}
-
-function SignupModal({ isOpen, onClose, config }: SignupModalProps) {
-  const isApplicationOpen = config.applyUrl !== null;
-
+function SignupModal({ isOpen, onClose, config }: { isOpen: boolean; onClose: () => void; config: SignupConfig }) {
   if (!isOpen) return null;
 
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
+  const isApplicationOpen = config.applyUrl !== null;
 
   return (
-    <div className="signup-modal-backdrop" onClick={handleBackdropClick}>
-      <div className="signup-modal">
-        <div className="signup-modal__close" onClick={onClose} role="button" tabIndex={0} aria-label="Close" onKeyDown={(e) => e.key === 'Enter' && onClose()}>
-          <svg className="signup-modal__close-icon" width="10" height="10" viewBox="0 0 10 10" fill="none">
-            <path d="M1 1L9 9M1 9L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </div>
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#141414]/80 backdrop-blur-sm"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+      <div className="bg-[#E4E3E0] text-[#141414] w-full max-w-md border border-[#141414] relative animate-scale-in">
+        {/* Close */}
+        <button
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-[#141414] hover:text-[#E4E3E0] transition-colors"
+          onClick={onClose}
+        >
+          ×
+        </button>
 
-        <div className="signup-modal__content">
-          <h2 className="signup-modal__title">{config.title}</h2>
-          <p className="signup-modal__text">{config.subtitle}</p>
+        <div className="p-8">
+          <div className="label mb-4">Texas Venture Group</div>
+          <h2 className="text-2xl font-light mb-4">{config.title}</h2>
+          <p className="text-sm opacity-60">{config.subtitle}</p>
 
           <CountdownDisplay targetDate={config.deadlineDate} deadlineText={config.deadlineText} />
 
-          {/* Action Buttons */}
-          <div className="signup-modal__actions">
+          <div className="space-y-3">
             {isApplicationOpen ? (
-              <a href={config.applyUrl!} className="button button--primary" target="_blank" rel="noopener noreferrer">
+              <a
+                href={config.applyUrl!}
+                className="btn-primary w-full text-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {config.applyButtonText}
               </a>
             ) : (
-              <span className="button button--primary signup-modal__disabled-btn">
+              <span className="block w-full py-3 px-4 text-center border border-[#141414]/30 opacity-50 cursor-not-allowed text-sm">
                 {config.closedButtonText}
               </span>
             )}
-            <a href={`mailto:${config.contactEmail}`} className="button">
+            <a
+              href="https://ventura.beehiiv.com"
+              className="btn-primary w-full text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join Our Newsletter
+            </a>
+            <a
+              href={`mailto:${config.contactEmail}`}
+              className="btn-secondary w-full text-center"
+            >
               Contact Us
             </a>
           </div>

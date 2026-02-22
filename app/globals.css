@@ -1,0 +1,607 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   TVG DESIGN SYSTEM - Hybrid Approach
+   Sequoia-inspired, Austin-themed
+   ============================================ */
+
+:root {
+  /* Primary Colors - Exact from Design Doc */
+  --tvg-cream: #fcf7f0;
+  --tvg-forest: #082820;
+  --tvg-green: #016F4E;
+  --tvg-teal: #01A072;
+  --tvg-black: #000000;
+  --tvg-white: #FFFFFF;
+
+  /* Secondary Accents */
+  --tvg-orange: #F24108;
+  --tvg-sky: #038BC8;
+  --tvg-muted-teal: #368686;
+  --tvg-deep-blue: #045277;
+
+  /* Typography */
+  --font-heading: var(--font-poppins), 'Poppins', sans-serif;
+  --font-mono: var(--font-space-mono), 'Space Mono', monospace;
+
+  /* Spacing */
+  --pad-sm: 12px;
+  --pad-md: 24px;
+  --pad-lg: 48px;
+  --pad-xl: 96px;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--tvg-cream);
+  color: var(--tvg-forest);
+  font-family: var(--font-heading);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--tvg-green);
+  color: var(--tvg-cream);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tvg-green);
+  font-weight: 500;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ========== BUTTONS - Concept1 Style ========== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--tvg-green);
+  color: var(--tvg-white);
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s var(--ease);
+  text-decoration: none;
+  border: 2px solid var(--tvg-green);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--tvg-teal);
+  border-color: var(--tvg-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(1, 111, 78, 0.25);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--tvg-forest);
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px solid var(--tvg-forest);
+  border-radius: 4px;
+  transition: all 0.3s var(--ease);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--tvg-forest);
+  color: var(--tvg-cream);
+  transform: translateY(-2px);
+}
+
+/* ========== PILLS - Concept1 Style ========== */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1.5px solid var(--tvg-forest);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--tvg-cream);
+  color: var(--tvg-forest);
+  transition: all 0.3s var(--ease);
+}
+
+.pill:hover {
+  background: var(--tvg-forest);
+  color: var(--tvg-cream);
+}
+
+.pill.accent {
+  background: var(--tvg-green);
+  border-color: var(--tvg-green);
+  color: var(--tvg-white);
+}
+
+.pill.accent:hover {
+  background: var(--tvg-teal);
+  border-color: var(--tvg-teal);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--tvg-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ========== CARDS - Premium Style ========== */
+.card {
+  background: var(--tvg-white);
+  border: 1px solid rgba(8, 40, 32, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(8, 40, 32, 0.12);
+  border-color: var(--tvg-green);
+}
+
+.card-dark {
+  background: var(--tvg-forest);
+  color: var(--tvg-cream);
+  border: none;
+}
+
+.card-dark:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== GLASSMORPHISM ========== */
+.glass {
+  background: rgba(252, 247, 240, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(8, 40, 32, 0.1);
+}
+
+.glass-dark {
+  background: rgba(8, 40, 32, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(252, 247, 240, 0.1);
+  color: var(--tvg-cream);
+}
+
+/* ========== DATA BLOCKS - Concept1 Style ========== */
+.data-block {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  padding: 16px 20px;
+  background: rgba(252, 247, 240, 0.9);
+  border: 1px solid rgba(8, 40, 32, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+/* ========== SECTIONS ========== */
+.section {
+  padding: var(--pad-xl) 0;
+}
+
+.section-dark {
+  background: var(--tvg-forest);
+  color: var(--tvg-cream);
+}
+
+.section-dark .label {
+  color: var(--tvg-teal);
+}
+
+/* ========== CONTAINER ========== */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--pad-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--pad-lg);
+  }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out forwards;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ========== HERO SPECIFIC ========== */
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  /* Ensure visibility over 3D background */
+  text-shadow: 0 0 60px var(--tvg-cream),
+    0 0 40px var(--tvg-cream),
+    0 0 20px var(--tvg-cream);
+  position: relative;
+  z-index: 10;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  opacity: 0.8;
+  max-width: 500px;
+  position: relative;
+  z-index: 10;
+}
+
+/* ========== LOGO CAROUSEL ========== */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-33.333%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 40s linear infinite;
+}
+
+.animate-scroll-left:hover,
+.animate-scroll-right:hover {
+  animation-play-state: paused;
+}
+
+/* Logo visibility fix - ensure all logos are visible */
+.logo-light {
+  filter: brightness(0) saturate(100%);
+}
+
+.logo-dark {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .section {
+    padding: var(--pad-lg) 0;
+  }
+}
+
+/* ========== SVG SKYLINE ========== */
+.skyline-path {
+  stroke: var(--tvg-forest);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-line 2s var(--ease) forwards;
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ========== PROGRAM CARDS ========== */
+.program-card {
+  background: var(--tvg-white);
+  border: 1px solid rgba(8, 40, 32, 0.08);
+  border-radius: 12px;
+  padding: 32px;
+  transition: all 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.program-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(8, 40, 32, 0.08);
+  border-color: var(--tvg-green);
+}
+
+.program-card .card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+  z-index: 0;
+  filter: grayscale(100%) contrast(1.2);
+}
+
+.program-card:hover .card-bg {
+  opacity: 0.1;
+}
+
+.card-arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--tvg-forest);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+/* ========== CULTURE CARDS ========== */
+.culture-card {
+  height: 400px;
+  background: #e0ded8;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+}
+
+.culture-card .culture-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  transition: transform 0.6s var(--ease), filter 0.6s var(--ease);
+  filter: grayscale(100%);
+}
+
+.culture-label {
+  position: relative;
+  z-index: 2;
+  background: var(--tvg-cream);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ========== EXPEDITION BUTTON ========== */
+.btn-expedition {
+  display: inline-block;
+  background: var(--tvg-forest);
+  color: var(--tvg-cream);
+  padding: 20px 40px;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  border: 1px solid var(--tvg-forest);
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.btn-expedition:hover {
+  background: var(--tvg-green);
+  border-color: var(--tvg-green);
+  transform: translateY(-2px);
+}
+
+/* ========== FADE UP ANIMATION ========== */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fade-up 0.8s var(--ease) forwards;
+}
+
+/* ========== SCROLLBAR ========== */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(8, 40, 32, 0.15);
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(8, 40, 32, 0.3);
+}
+
+/* ========== TERMINAL ========== */
+.terminal-cursor {
+  animation: terminal-blink 1s step-end infinite;
+}
+
+@keyframes terminal-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-scanlines {
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 4px);
+}

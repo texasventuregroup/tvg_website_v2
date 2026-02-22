@@ -94,7 +94,7 @@
       "name": "Dhilan Shah",
       "role": "Director of Engineering",
       "major": "Computer Science, Philosophy, and Mathematics",
-      "image": "/images/members/dhilan-shah.jpg",
+      "image": "/images/members/dhilan_shah.png",
       "linkedin": "https://www.linkedin.com/in/dhilan-shah-a1326820b/",
       "bio": "I'm a Chicago native (bears/bulls/cubs superfan). Interested in cybersecurity, AI/ML, and blockchain infra. I spend way too much time playing chess and run3. I have a feeling that meaning has ties to craftsmanship.... my goal in life is to build as much cool stuff as I can. ",
       "quote": {
@@ -330,21 +330,6 @@
       "childhoodDream": "As a child, I wanted to be a meteorologist. The idea of covering extreme weather such as hurricanes while being on TV was exciting to me."
     },
     {
-      "name": "Ankit Devalla",
-      "role": "Associate",
-      "major": "Computer Science",
-      "image": "/images/members/ankit-devalla.jpg",
-      "linkedin": "https://www.linkedin.com/in/ankit-devalla/",
-      "bio": "I'm a senior studying computer science here from Plano, Texas. Along with CS, I'm also minoring in philosophy and business. In my free time I love playing and watching sports, and am very involved in intramural sports like basketball, football, volleyball, and soccer.",
-      "quote": {
-        "text": "No pressure, no diamonds.",
-        "author": "Thomas Carlyle"
-      },
-      "favoritePart": "My favorite part of TVG is getting to hear from some of the brightest up and coming minds in the world of startups and venture capital. It's really cool to hear things from their perspective and listen to the advice they bring along with them.",
-      "favoriteBook": "The Midnight Library by Matt Haig",
-      "childhoodDream": "When I was younger I wanted to be an astronaut."
-    },
-    {
       "name": "Anvith Maddipoti",
       "role": "Associate",
       "major": "Informatics",
@@ -455,21 +440,6 @@
       "favoritePart": "My favorite part about TVG is the sheer curiosity displayed by every member. I never walk out of a meeting or event without learning something new from somebody who is genuinely passionate about solving some sort of unique yet relevant problem. The wide variety of interests creates an environment where innovative ideas are constantly bouncing back and forth.",
       "favoriteBook": "Love Matters by Eric Belts",
       "childhoodDream": "I wanted to be a Pokémon trainer."
-    },
-    {
-      "name": "Lawrence Park",
-      "role": "Associate",
-      "major": "Math",
-      "image": "/images/members/lawrence-park.jpg",
-      "linkedin": "https://www.linkedin.com/in/parklawrence/",
-      "bio": "My name is Lawrence, and I'm studying Math and Computer Science at UT Austin. I'm  currently a software engineering intern at Hone Health and a growth equity investment fellow at Glade Brook Capital. I have strong interests in Christopher Nolan films, classic cars, and credit cards.",
-      "quote": {
-        "text": "If you can see it and have the courage to speak it, it will happen.",
-        "author": "Conor McGregor"
-      },
-      "favoritePart": "My favorite part about TVG is being surrounded by a unique group of people interested in entrepreneurship and venture capital and who are extremely driven.",
-      "favoriteBook": "Harry Potter",
-      "childhoodDream": "I wanted to pursue a career path in dentistry or medicine when I was a kid."
     },
     {
       "name": "Mac Wyman",
@@ -792,6 +762,11 @@
   "analysts": [],
   "alumni": [
     {
+      "name": "Ankit Devalla",
+      "linkedin": "https://www.linkedin.com/in/ankit-devalla/",
+      "image": "/images/members/ankit-devalla.jpg"
+    },
+    {
       "name": "Tejas Mehta",
       "linkedin": "https://www.linkedin.com/in/tejasmehta14/",
       "image": "/images/members/tejas-mehta.jpeg"
@@ -890,6 +865,11 @@
       "name": "Jimmy Propper",
       "linkedin": "https://www.linkedin.com/in/lincolnpropper/",
       "image": "/images/members/jimmy-propper.jpeg"
+    },
+    {
+      "name": "Lawrence Park",
+      "linkedin": "https://www.linkedin.com/in/parklawrence/",
+      "image": "/images/members/lawrence-park.jpg"
     }
   ]
 }
