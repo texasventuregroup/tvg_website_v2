@@ -7,57 +7,15 @@ import JoinButton from './components/JoinButton';
 import DomainPanels from './components/DomainPanels';
 import CultureFlipCards from './components/CultureFlipCards';
 import AustinSkylineSVG from './components/AustinSkylineSVG';
+import programs from '@/data/programs.json';
 
 async function getCarouselLogos(): Promise<{ row1: CarouselLogo[]; row2: CarouselLogo[] }> {
-  const filePath = path.join(process.cwd(), 'public', 'data', 'carousel-logos.json');
-  const fileContents = await fs.readFile(filePath, 'utf8');
-  const data = JSON.parse(fileContents);
-  const logos: CarouselLogo[] = data.logos || [];
-  const row1: CarouselLogo[] = [];
-  const row2: CarouselLogo[] = [];
-  logos.forEach((logo, index) => {
-    if (index % 2 === 0) row1.push(logo);
-    else row2.push(logo);
-  });
-  return { row1, row2 };
-}
-
-const programs = [
-  {
-    id: '01',
-    title: 'Analysts',
-    description: 'Fundamental investing education. Market research, diligence, and thesis generation.',
-    link: '/analysts',
-    image: '/images/analysts/tvg_pitch.jpg'
-  },
-  {
-    id: '02',
-    title: 'Associates',
-    description: 'Portfolio management and sourcing. Working directly with partner firms.',
-    link: '/associates',
-    image: '/images/analysts/networking.png'
-  },
-  {
-    id: '03',
-    title: 'Research',
-    description: 'Deep dives into emerging verticals. Publishing white papers and industry maps.',
-    link: '/associates',
-    image: '/images/programs/research.jpeg'
-  },
-  {
-    id: '04',
-    title: 'Hackathons',
-    description: 'Our flagship building events. Join hundreds of students to build, pitch, and win prizes.',
-    link: '/hackathons',
-    image: '/images/events/hackathon-workspace.jpg'
-  },
-];
 
 export default async function Home() {
   const { row1, row2 } = await getCarouselLogos();
 
   return (
-    <main className="bg-[#fcf7f0] text-[#082820]">
+    <main className="bg-[#fcf7f0] text-[#082820] bg-grid">
       {/* ========== HERO SECTION ========== */}
       <header className="min-h-[100svh] relative flex flex-col justify-start lg:justify-center overflow-hidden pt-40 pb-20 lg:py-0">
         <div className="container mx-auto relative z-10">
@@ -73,10 +31,19 @@ export default async function Home() {
               TEXAS<br />VENTURE<br />GROUP
             </h1>
 
-            {/* Tagline */}
-            <p className="font-mono text-base max-w-[400px] leading-relaxed border-l border-[#016F4E] pl-5 animate-fade-up" style={{ animationDelay: '0.6s' }}>
-              Exploration is not just about where you go, but who you go with. The ecosystem for student investors and founders at UT Austin.
-            </p>
+            {/* Tagline - Typewriter Effect */}
+            <div className="max-w-[400px] animate-fade-up" style={{ animationDelay: '0.6s' }}>
+              <p className="font-mono text-base leading-relaxed border-l border-[#016F4E] pl-5 overflow-hidden whitespace-nowrap border-r-2" 
+                 style={{ 
+                   animation: 'typewriter 2.5s steps(40) 1s forwards, blinkTextCursor 0.8s step-end infinite',
+                   width: '0'
+                 }}>
+                Exploration is not just about where you go, but who you go with.
+              </p>
+              <p className="font-mono text-sm mt-4 opacity-70 pl-5">
+                The ecosystem for student investors and founders at UT Austin.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -108,7 +75,7 @@ export default async function Home() {
                 {/* Content */}
                 <div className="relative z-10">
                   <span className="font-mono text-sm text-[#016F4E] mb-4 block">{program.id}</span>
-                  <h3 className="text-[1.75rem] font-semibold mb-3">{program.title}</h3>
+                  <h3 className="text-[1.75rem] font-semibold mb-3 matrix-decode">{program.title}</h3>
                   <p className="text-sm opacity-80 leading-relaxed">{program.description}</p>
                 </div>
 
@@ -152,8 +119,18 @@ export default async function Home() {
       </section>
 
       {/* ========== PHILOSOPHY SECTION ========== */}
-      <section id="philosophy" className="pt-16 pb-[120px] bg-[#082820] text-[#fcf7f0]">
-        <div className="container mx-auto">
+      <section id="philosophy" className="pt-16 pb-[120px] bg-[#082820] text-[#fcf7f0] relative overflow-hidden">
+        {/* Tron Grid Background Effect */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none" 
+             style={{
+               backgroundImage: 'linear-gradient(var(--tvg-teal) 1px, transparent 1px), linear-gradient(90deg, var(--tvg-teal) 1px, transparent 1px)',
+               backgroundSize: '40px 40px',
+               animation: 'move-grid 4s linear infinite',
+               transformOrigin: 'top'
+             }} 
+        />
+        
+        <div className="container mx-auto relative z-10">
           <span className="label text-[#01A072] mb-6 block">Our Philosophy</span>
           <p className="text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] max-w-[900px] mb-16">
             There&apos;s no single path to venture. We believe in meeting people where they are—whether
@@ -209,8 +186,10 @@ export default async function Home() {
           <h2 className="text-[clamp(3rem,6vw,6rem)] font-semibold mb-8 tracking-tight">
             JOIN THE EXPEDITION
           </h2>
-          <JoinButton className="btn-expedition">
-            JOIN OUR NEWSLETTER
+          <JoinButton className="btn-expedition relative overflow-hidden group">
+            {/* Animated snake border effect */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#01A072] to-transparent bg-[length:200%_100%] animate-[snake-border_3s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity" style={{ padding: '2px' }} />
+            <span className="relative z-10">JOIN OUR NEWSLETTER</span>
           </JoinButton>
         </div>
       </section>

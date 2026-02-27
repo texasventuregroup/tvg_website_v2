@@ -671,6 +671,8 @@ export default function Terminal({ onClose }: TerminalProps) {
                   spellCheck={false}
                   autoComplete="off"
                   autoCapitalize="off"
+                  aria-label="Terminal Input"
+                  title="Type 'help' to see commands"
                 />
                 {/* Custom blinking cursor */}
                 <span

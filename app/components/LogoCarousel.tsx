@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export interface CarouselLogo {
   name: string;
@@ -69,26 +70,26 @@ export default function LogoCarousel({ logos: logoData, reverse = false }: LogoC
             key={`${logo.name}-${index}`}
             className="flex flex-col items-center justify-center transition-all duration-300 w-28 md:w-36 flex-shrink-0 hover:scale-105 opacity-80 hover:opacity-100"
           >
-            <img
-              src={logo.image}
-              alt={logo.name}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-auto object-contain max-h-10 md:max-h-12"
-              style={{
-                filter: 'grayscale(100%) contrast(200%) brightness(0.35)',
-                ...(logo.scale !== 1 ? { transform: `scale(${logo.scale})` } : {})
-              }}
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                if (!target.dataset.fallback) {
-                  target.dataset.fallback = 'true';
-                  target.src = logo.fallbackImage;
-                } else {
-                  target.style.display = 'none';
-                }
-              }}
-            />
+            <div className="relative w-full h-10 md:h-12">
+              <Image
+                src={logo.image}
+                alt={`${logo.name} logo`}
+                fill
+                className="object-contain"
+                loading="lazy"
+                style={{
+                  filter: 'grayscale(100%) contrast(200%) brightness(0.35)',
+                  ...(logo.scale !== 1 ? { transform: `scale(${logo.scale})` } : {})
+                }}
+                onError={(e) => {
+                  // Fallback handling for next/image
+                  const target = e.target as HTMLImageElement;
+                  if (target.src !== logo.fallbackImage) {
+                    target.src = logo.fallbackImage;
+                  }
+                }}
+              />
+            </div>
           </div>
         ))}
       </div>

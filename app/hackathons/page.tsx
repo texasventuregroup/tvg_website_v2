@@ -167,7 +167,7 @@ export default function Hackathons() {
                                     stats={[
                                         { label: 'When', value: 'Feb 20', sub: 'Friday' },
                                         { label: 'Time', value: '5 PM', sub: '– 10:30 PM' },
-                                        { label: 'Where', value: 'Gates Dell, UT', sub: 'Register for location', subMono: true, colSpan: true },
+                                        { label: 'Where', value: 'Gates Dell Complex, UT', sub: 'Register for location', subMono: true, colSpan: true },
                                     ]}
                                     judges="Shapol M. (CEO, Entangl YC S24) · Mason F. (Chief of Staff, Interface) · Armel T. (CEO, Miru YC S24) · Varun T. (CEO, Waypoint YC W25)"
                                 />
