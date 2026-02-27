@@ -7,51 +7,9 @@ import JoinButton from './components/JoinButton';
 import DomainPanels from './components/DomainPanels';
 import CultureFlipCards from './components/CultureFlipCards';
 import AustinSkylineSVG from './components/AustinSkylineSVG';
+import programs from '@/data/programs.json';
 
 async function getCarouselLogos(): Promise<{ row1: CarouselLogo[]; row2: CarouselLogo[] }> {
-  const filePath = path.join(process.cwd(), 'public', 'data', 'carousel-logos.json');
-  const fileContents = await fs.readFile(filePath, 'utf8');
-  const data = JSON.parse(fileContents);
-  const logos: CarouselLogo[] = data.logos || [];
-  const row1: CarouselLogo[] = [];
-  const row2: CarouselLogo[] = [];
-  logos.forEach((logo, index) => {
-    if (index % 2 === 0) row1.push(logo);
-    else row2.push(logo);
-  });
-  return { row1, row2 };
-}
-
-const programs = [
-  {
-    id: '01',
-    title: 'Analysts',
-    description: 'Fundamental investing education. Market research, diligence, and thesis generation.',
-    link: '/analysts',
-    image: '/images/analysts/tvg_pitch.jpg'
-  },
-  {
-    id: '02',
-    title: 'Associates',
-    description: 'Portfolio management and sourcing. Working directly with partner firms.',
-    link: '/associates',
-    image: '/images/analysts/networking.png'
-  },
-  {
-    id: '03',
-    title: 'Research',
-    description: 'Deep dives into emerging verticals. Publishing white papers and industry maps.',
-    link: '/associates',
-    image: '/images/programs/research.jpeg'
-  },
-  {
-    id: '04',
-    title: 'Hackathons',
-    description: 'Our flagship building events. Join hundreds of students to build, pitch, and win prizes.',
-    link: '/hackathons',
-    image: '/images/events/hackathon-workspace.jpg'
-  },
-];
 
 export default async function Home() {
   const { row1, row2 } = await getCarouselLogos();

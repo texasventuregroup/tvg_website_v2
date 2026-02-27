@@ -1,0 +1,30 @@
+[
+  {
+    "id": "01",
+    "title": "Analysts",
+    "description": "Fundamental investing education. Market research, diligence, and thesis generation.",
+    "link": "/analysts",
+    "image": "/images/analysts/tvg_pitch.jpg"
+  },
+  {
+    "id": "02",
+    "title": "Associates",
+    "description": "Portfolio management and sourcing. Working directly with partner firms.",
+    "link": "/associates",
+    "image": "/images/analysts/networking.png"
+  },
+  {
+    "id": "03",
+    "title": "Research",
+    "description": "Deep dives into emerging verticals. Publishing white papers and industry maps.",
+    "link": "/associates",
+    "image": "/images/programs/research.jpeg"
+  },
+  {
+    "id": "04",
+    "title": "Hackathons",
+    "description": "Our flagship building events. Join hundreds of students to build, pitch, and win prizes.",
+    "link": "/hackathons",
+    "image": "/images/events/hackathon-workspace.jpg"
+  }
+]
