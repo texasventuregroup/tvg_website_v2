@@ -74,6 +74,7 @@ h6 {
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  text-wrap: balance;
 }
 
 .label {
@@ -87,6 +88,102 @@ h6 {
 
 .mono {
   font-family: var(--font-mono);
+}
+
+/* ========== CUSTOM CURSOR ========== */
+@media (pointer: fine) {
+  body {
+    cursor: crosshair; /* Hacker/Engineering vibe */
+  }
+  
+  a, button, .clickable {
+    cursor: none; /* We'll use a custom block cursor for these later */
+  }
+}
+
+/* ========== FOUNDATION TEXTURE ========== */
+.bg-grid {
+  background-image: radial-gradient(rgba(8, 40, 32, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.bg-grid-dark {
+  background-image: radial-gradient(rgba(1, 160, 114, 0.1) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* ========== ANIMATION KEYFRAMES ========== */
+
+/* Typewriter Effect */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkTextCursor {
+  from { border-right-color: var(--tvg-green); }
+  to { border-right-color: transparent; }
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-1deg); }
+  40% { transform: skew(1deg); }
+  60% { transform: skew(-0.5deg); }
+  80% { transform: skew(0.5deg); }
+  100% { transform: skew(0deg); }
+}
+
+/* Moving Grid (Tron Floor) */
+@keyframes move-grid {
+  0% { transform: perspective(500px) rotateX(20deg) translateY(0); }
+  100% { transform: perspective(500px) rotateX(20deg) translateY(32px); }
+}
+
+/* Snake Border */
+@keyframes snake-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Matrix Decode Hover */
+.matrix-decode {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-decode:hover::after {
+  content: "010101";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--tvg-cream);
+  color: var(--tvg-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  animation: fade-out 0.3s forwards;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 /* ========== BUTTONS - Concept1 Style ========== */

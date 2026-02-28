@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import { ThemeProvider } from './components/ThemeProvider';
 import { ClientEffects } from './components/ClientComponents';
 import { SignupModalProvider } from './components/SignupModal';
+import CustomCursor from './components/CustomCursor';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -35,20 +36,25 @@ const libre = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tvg-react.vercel.app'),
   title: 'Texas Venture Group | Student Venture Capital & Entrepreneurship',
   description: 'The ecosystem for student investors and founders at UT Austin. Exploration is not just about where you go, but who you go with.',
+  keywords: ['Venture Capital', 'Entrepreneurship', 'UT Austin', 'Student Startups', 'Texas Venture Group', 'TVG'],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
-    url: 'https://txventuregroup.com/',
+    url: '/',
     title: 'Texas Venture Group | Student VC & Entrepreneurship',
     description: 'The ecosystem for student investors and founders at UT Austin.',
-    images: [{ url: 'https://txventuregroup.com/images/about/cover.webp' }],
+    images: [{ url: '/images/about/cover.webp' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Texas Venture Group',
     description: 'The ecosystem for student investors and founders at UT Austin.',
-    images: ['https://txventuregroup.com/images/about/cover.webp'],
+    images: ['/images/about/cover.webp'],
   },
 };
 
@@ -83,6 +89,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <ThemeProvider>
           <SignupModalProvider>
+            <CustomCursor />
             <ClientEffects />
             <Navbar />
             <main>{children}</main>
