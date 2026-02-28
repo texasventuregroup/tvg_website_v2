@@ -94,6 +94,24 @@ export default function RootLayout({
             <Navbar />
             <main>{children}</main>
             <Footer />
+            {/* Semantic SEO - Organization Schema */}
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'Organization',
+                  'name': 'Texas Venture Group',
+                  'url': 'https://tvg-react.vercel.app',
+                  'logo': 'https://tvg-react.vercel.app/images-rebrand/logo.png',
+                  'sameAs': [
+                    'https://www.linkedin.com/company/texas-venture-group/',
+                    'https://twitter.com/txventuregroup'
+                  ],
+                  'description': 'The ecosystem for student investors and founders at UT Austin.'
+                })
+              }}
+            />
           </SignupModalProvider>
         </ThemeProvider>
       </body>

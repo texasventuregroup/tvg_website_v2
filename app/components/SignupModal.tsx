@@ -135,9 +135,40 @@ function CountdownDisplay({ targetDate, deadlineText }: { targetDate: Date; dead
 // Modal
 // ============================================
 function SignupModal({ isOpen, onClose, config }: { isOpen: boolean; onClose: () => void; config: SignupConfig }) {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
   if (!isOpen) return null;
 
   const isApplicationOpen = config.applyUrl !== null;
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(data.error || 'Something went wrong');
+      }
+    } catch (err) {
+      setStatus('error');
+      setMessage('Failed to connect to the server');
+    }
+  };
 
   return (
     <div
@@ -155,41 +186,75 @@ function SignupModal({ isOpen, onClose, config }: { isOpen: boolean; onClose: ()
 
         <div className="p-8">
           <div className="label mb-4">Texas Venture Group</div>
-          <h2 className="text-2xl font-light mb-4">{config.title}</h2>
-          <p className="text-sm opacity-60">{config.subtitle}</p>
+          
+          {status === 'success' ? (
+            <div className="py-12 text-center animate-fade-in">
+              <div className="w-16 h-16 bg-[#016F4E] rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl">
+                ✓
+              </div>
+              <h2 className="text-2xl font-light mb-2">Welcome to the Expedition</h2>
+              <p className="text-sm opacity-60 mb-8">You&apos;ve been added to our newsletter list.</p>
+              <button onClick={onClose} className="btn-primary w-full">Close</button>
+            </div>
+          ) : (
+            <>
+              <h2 className="text-2xl font-light mb-4">{config.title}</h2>
+              <p className="text-sm opacity-60">{config.subtitle}</p>
 
-          <CountdownDisplay targetDate={config.deadlineDate} deadlineText={config.deadlineText} />
+              <CountdownDisplay targetDate={config.deadlineDate} deadlineText={config.deadlineText} />
 
-          <div className="space-y-3">
-            {isApplicationOpen ? (
-              <a
-                href={config.applyUrl!}
-                className="btn-primary w-full text-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {config.applyButtonText}
-              </a>
-            ) : (
-              <span className="block w-full py-3 px-4 text-center border border-[#141414]/30 opacity-50 cursor-not-allowed text-sm">
-                {config.closedButtonText}
-              </span>
-            )}
-            <a
-              href="https://ventura.beehiiv.com"
-              className="btn-primary w-full text-center"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Join Our Newsletter
-            </a>
-            <a
-              href={`mailto:${config.contactEmail}`}
-              className="btn-secondary w-full text-center"
-            >
-              Contact Us
-            </a>
-          </div>
+              <div className="space-y-3">
+                {/* Newsletter Form */}
+                <form onSubmit={handleSubscribe} className="mb-6">
+                  <div className="label mb-2 text-[10px]">Join Our Newsletter</div>
+                  <div className="flex gap-2">
+                    <input
+                      type="email"
+                      required
+                      placeholder="Enter your email"
+                      className="flex-1 bg-transparent border border-[#141414]/20 px-4 py-2 text-sm outline-none focus:border-[#016F4E] transition-colors"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={status === 'loading'}
+                    />
+                    <button 
+                      type="submit" 
+                      disabled={status === 'loading'}
+                      className="bg-[#141414] text-[#E4E3E0] px-4 py-2 text-xs font-mono uppercase tracking-widest hover:bg-[#016F4E] transition-colors disabled:opacity-50"
+                    >
+                      {status === 'loading' ? '...' : 'Join'}
+                    </button>
+                  </div>
+                  {status === 'error' && (
+                    <p className="text-xs text-red-600 mt-2 font-mono">{message}</p>
+                  )}
+                </form>
+
+                <div className="h-px bg-[#141414]/10 my-6" />
+
+                {isApplicationOpen ? (
+                  <a
+                    href={config.applyUrl!}
+                    className="btn-primary w-full text-center"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {config.applyButtonText}
+                  </a>
+                ) : (
+                  <span className="block w-full py-3 px-4 text-center border border-[#141414]/30 opacity-50 cursor-not-allowed text-sm">
+                    {config.closedButtonText}
+                  </span>
+                )}
+                <a
+                  href={`mailto:${config.contactEmail}`}
+                  className="btn-secondary w-full text-center"
+                >
+                  Contact Us
+                </a>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

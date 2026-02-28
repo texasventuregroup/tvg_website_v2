@@ -110,7 +110,7 @@ FREQ:    Bi-weekly during semester
         children: {
           'sf.txt': {
             type: 'file',
-            route: '/treks/sf',
+            route: '/treks',
             content: `
 ┌─────────────────────────────────────────┐
 │  SAN FRANCISCO TREK                     │
@@ -130,7 +130,7 @@ FIRMS VISITED: Top-tier VC and growth equity firms.
           },
           'nyc.txt': {
             type: 'file',
-            route: '/treks/nyc',
+            route: '/treks',
             content: `
 ┌─────────────────────────────────────────┐
 │  NEW YORK CITY TREK                     │
