@@ -125,6 +125,21 @@ h6 {
   to { border-right-color: transparent; }
 }
 
+/* Typewriter: only on desktop */
+.typewriter-effect {
+  /* Mobile: normal text display */
+}
+
+@media (min-width: 1024px) {
+  .typewriter-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid;
+    width: 0;
+    animation: typewriter 2.5s steps(40) 1s forwards, blinkTextCursor 0.8s step-end infinite;
+  }
+}
+
 /* Glitch Effect */
 @keyframes glitch {
   0% { transform: translate(0); }

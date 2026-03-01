@@ -73,14 +73,10 @@ export default async function Home() {
               TEXAS<br />VENTURE<br />GROUP
             </h1>
 
-            {/* Tagline - Typewriter Effect */}
-            <div className="max-w-[400px] animate-fade-up" style={{ animationDelay: '0.6s' }}>
-              <p className="font-mono text-base leading-relaxed border-l border-[#016F4E] pl-5 overflow-hidden whitespace-nowrap border-r-2" 
-                 style={{ 
-                   animation: 'typewriter 2.5s steps(40) 1s forwards, blinkTextCursor 0.8s step-end infinite',
-                   width: '0'
-                 }}>
-                Exploration is not just about where you go, but who you go with.
+            {/* Tagline */}
+            <div className="max-w-[500px] animate-fade-up" style={{ animationDelay: '0.6s' }}>
+              <p className="font-mono text-base leading-relaxed border-l border-[#016F4E] pl-5">
+                Exploration isn&apos;t just about where you go, but who you go with.
               </p>
               <p className="font-mono text-sm mt-4 opacity-70 pl-5">
                 The ecosystem for student investors and founders at UT Austin.
