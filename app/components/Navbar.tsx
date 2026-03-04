@@ -146,15 +146,15 @@ export default function Navbar() {
                 </div>
               ))}
 
-              {/* Work With Us */}
+              {/* Partners */}
               <Link
-                href="/work-with-us"
-                className={`text-sm font-medium transition-colors ${pathname === '/work-with-us'
+                href="/partnerships"
+                className={`text-sm font-medium transition-colors ${pathname === '/partnerships'
                   ? 'text-[#01A072]'
                   : 'text-[#fcf7f0]/70 hover:text-[#fcf7f0]'
                   }`}
               >
-                Work With Us
+                Partners
               </Link>
 
               <button
@@ -213,11 +213,11 @@ export default function Navbar() {
             ))}
             <div className="border-t border-[#fcf7f0]/10 mt-2 pt-4">
               <Link
-                href="/work-with-us"
+                href="/partnerships"
                 className="block py-3 text-[#fcf7f0] text-base font-medium hover:text-[#01A072] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Work With Us
+                Partners
               </Link>
               <button
                 onClick={() => { setIsMenuOpen(false); setIsTerminalOpen(true); }}

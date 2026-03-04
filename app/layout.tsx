@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import { ThemeProvider } from './components/ThemeProvider';
 import { ClientEffects } from './components/ClientComponents';
 import { SignupModalProvider } from './components/SignupModal';
-import CustomCursor from './components/CustomCursor';
+
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -89,7 +89,6 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <ThemeProvider>
           <SignupModalProvider>
-            <CustomCursor />
             <ClientEffects />
             <Navbar />
             <main>{children}</main>

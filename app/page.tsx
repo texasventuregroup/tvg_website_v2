@@ -75,10 +75,10 @@ export default async function Home() {
 
             {/* Tagline */}
             <div className="max-w-[500px] animate-fade-up" style={{ animationDelay: '0.6s' }}>
-              <p className="font-mono text-base leading-relaxed border-l border-[#016F4E] pl-5">
-                Exploration isn&apos;t just about where you go, but who you go with.
+              <p className="font-semibold tracking-tight text-[clamp(1rem,2.5vw,1.25rem)] leading-snug border-l border-[#016F4E] pl-5">
+                Exploration isn&apos;t just about where you go,<br />but who you go with.
               </p>
-              <p className="font-mono text-sm mt-4 opacity-70 pl-5">
+              <p className="font-semibold tracking-tight text-[clamp(0.875rem,2vw,1rem)] mt-4 opacity-60 pl-5">
                 The ecosystem for student investors and founders at UT Austin.
               </p>
             </div>
@@ -159,15 +159,15 @@ export default async function Home() {
       {/* ========== PHILOSOPHY SECTION ========== */}
       <section id="philosophy" className="pt-16 pb-[120px] bg-[#082820] text-[#fcf7f0] relative overflow-hidden">
         {/* Tron Grid Background Effect */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none" 
-             style={{
-               backgroundImage: 'linear-gradient(var(--tvg-teal) 1px, transparent 1px), linear-gradient(90deg, var(--tvg-teal) 1px, transparent 1px)',
-               backgroundSize: '40px 40px',
-               animation: 'move-grid 4s linear infinite',
-               transformOrigin: 'top'
-             }} 
+        <div className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: 'linear-gradient(var(--tvg-teal) 1px, transparent 1px), linear-gradient(90deg, var(--tvg-teal) 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
+            animation: 'move-grid 4s linear infinite',
+            transformOrigin: 'top'
+          }}
         />
-        
+
         <div className="container mx-auto relative z-10">
           <span className="label text-[#01A072] mb-6 block">Our Philosophy</span>
           <p className="text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.3] max-w-[900px] mb-16">

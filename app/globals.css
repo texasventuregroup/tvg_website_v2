@@ -90,17 +90,6 @@ h6 {
   font-family: var(--font-mono);
 }
 
-/* ========== CUSTOM CURSOR ========== */
-@media (pointer: fine) {
-  body {
-    cursor: crosshair; /* Hacker/Engineering vibe */
-  }
-  
-  a, button, .clickable {
-    cursor: none; /* We'll use a custom block cursor for these later */
-  }
-}
-
 /* ========== FOUNDATION TEXTURE ========== */
 .bg-grid {
   background-image: radial-gradient(rgba(8, 40, 32, 0.05) 1px, transparent 0);
