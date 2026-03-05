@@ -146,16 +146,6 @@ export default function Navbar() {
                 </div>
               ))}
 
-              {/* Partners */}
-              <Link
-                href="/partnerships"
-                className={`text-sm font-medium transition-colors ${pathname === '/partnerships'
-                  ? 'text-[#01A072]'
-                  : 'text-[#fcf7f0]/70 hover:text-[#fcf7f0]'
-                  }`}
-              >
-                Partners
-              </Link>
 
               <button
                 onClick={() => setIsTerminalOpen(true)}
@@ -212,13 +202,7 @@ export default function Navbar() {
               </div>
             ))}
             <div className="border-t border-[#fcf7f0]/10 mt-2 pt-4">
-              <Link
-                href="/partnerships"
-                className="block py-3 text-[#fcf7f0] text-base font-medium hover:text-[#01A072] transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Partners
-              </Link>
+
               <button
                 onClick={() => { setIsMenuOpen(false); setIsTerminalOpen(true); }}
                 className="mt-2 w-full text-left py-3 font-mono text-sm font-medium text-[#01A072] hover:text-[#01A072]/80 transition-colors"

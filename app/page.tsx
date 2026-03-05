@@ -113,7 +113,7 @@ export default async function Home() {
                 {/* Content */}
                 <div className="relative z-10">
                   <span className="font-mono text-sm text-[#016F4E] mb-4 block">{program.id}</span>
-                  <h3 className="text-[1.75rem] font-semibold mb-3 matrix-decode">{program.title}</h3>
+                  <h3 className="text-[1.75rem] font-semibold mb-3">{program.title}</h3>
                   <p className="text-sm opacity-80 leading-relaxed">{program.description}</p>
                 </div>
 
