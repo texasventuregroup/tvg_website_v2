@@ -181,8 +181,8 @@
         "author": "Jerry Seinfeld"
       },
       "favoritePart": "I love the people I've met through TVG. It's not every day that a college student gets to talk to investors managing multi-million dollar portfolios or founders working on game-changing ideas. And, TVG's social events have allowed me to engage in thought-provoking discussions, share wild experiences, and build friendships with people beyond my usual circle.",
-      "favoriteBook": "Frankenstein by Mary Shelley",
-      "childhoodDream": "Inspired by the Star Wars, Harry Potter, and Lord of the Rings movies, I've always wanted to be an actor when I was young."
+      "favoriteBook": "All The Light We Cannot See by Anthony Doerr",
+      "childhoodDream": "When I was a kid, I think I wanted to be an engineer without really knowing it. Growing up, I was always playing with Legos, doing puzzles, or sketching out random inventions. I loved taking ideas from my imagination and trying to bring them to life in a tangible way."
     },
     {
       "name": "Rushi Yalamanchili",
@@ -191,6 +191,10 @@
       "image": "/images/members/rushi-yalamanchili.jpg",
       "linkedin": "https://www.linkedin.com/in/rushi-yalamanchili/",
       "bio": "I’m majoring in mathematics and have an interest in national security. I like to run and hangout with friends. I think we often repeat history’s mistakes, and I don’t understand why. I joined TVG my fall freshman year, and have seen this organization grow a lot. It is really cool to see how many people have become interested in the organization.",
+      "quote": {
+        "text": "The cure for boredom is curiosity. There is no cure for curiosity.",
+        "author": "Dorothy Parker"
+      },
       "favoritePart": "The community is really niche. Everyone has super specific interests and seem to be subject matter experts in their field.",
       "favoriteBook": "Fair Play by Greg Olsen",
       "childhoodDream": "Bob the Builder. I don’t really need to explain why."
@@ -207,7 +211,7 @@
         "author": "Viktor Frankl"
       },
       "favoritePart": "The people. Everyone has their own background, interests, and skills. But what brings us together is a shared curiosity.",
-      "favoriteBook": "All The Light We Cannot See by Anthony Doerr",
+      "favoriteBook": "All About Love by bell hooks",
       "childhoodDream": "When I was a kid, I think I wanted to be an engineer without really knowing it. Growing up, I was always playing with Legos, doing puzzles, or sketching out random inventions. I loved taking ideas from my imagination and trying to bring them to life in a tangible way."
     },
     {
@@ -222,7 +226,7 @@
         "author": "John McEnroe"
       },
       "favoritePart": "My favorite part about TVG is the ability to get involved in the entrepreneurial landscape at Austin and learn about exciting new products across all industries.",
-      "favoriteBook": "Born a Crime by Trevor Noah",
+      "favoriteBook": "Brave not Perfect By Reshma Saujani",
       "childhoodDream": "Robot Astronaut Film Reviewer Specialist"
     },
     {
@@ -290,7 +294,7 @@
       "major": "Business",
       "image": "/images/members/priya-patel.jpg",
       "linkedin": "https://www.linkedin.com/in/priya-patel-09a38b29a/",
-      "bio": "Hi! I'm from Houston, Texas and am a sophomore majoring in Business. I am involved in Texas Enactus and Texas Political Consulting. In my free time, I love to try new matcha spots, read murder mysteries, research startups in the wellness industry, and travel. Fun fact: I lost most of my sense of smell in high school.",
+      "bio": "Hi! I'm from Houston, Texas and am a sophomore majoring in Business. I am involved in Texas Enactus and Texas Political Consulting. In my free time, I love to try new matcha spots, read murder mysteries, research startups in the wellness industry, and travel. Fun fact: I actually used to live in Australia!",
       "quote": {
         "text": "Disappointments are a result of failed expectations. To have less disappointments, either expect less from other people or demand more from yourself.",
         "author": "Kevin Ngo"
@@ -432,14 +436,14 @@
       "major": "Finance",
       "image": "/images/members/mac-macaul.jpg",
       "linkedin": "https://www.linkedin.com/in/macmacaul/",
-      "bio": "My name is Mac and I’m a senior from Houston studying Finance. I enjoy learning about venture, startups, theology, and real estate. In my free time I love playing sports, watching anime, reading, and serving at my church. I’m also elite at Super Smash Bros Ultimate.",
+      "bio": "My name is Mac and I’m a senior from Houston studying Finance. I enjoy learning about venture, startups, theology, and real estate. I love playing sports, watching anime, reading, and serving at my church. I’m also elite at Super Smash Bros Ultimate.",
       "quote": {
-        "text": "You can’t control the wind but you can adjust the sails.",
-        "author": "Jim Rohn"
+        "text": "Your lack of commitment is an insult to the people who believe in you",
+        "author": "Conor McGregor"
       },
-      "favoritePart": "My favorite part about TVG is the sheer curiosity displayed by every member. I never walk out of a meeting or event without learning something new from somebody who is genuinely passionate about solving some sort of unique yet relevant problem. The wide variety of interests creates an environment where innovative ideas are constantly bouncing back and forth.",
-      "favoriteBook": "Love Matters by Eric Belts",
-      "childhoodDream": "I wanted to be a Pokémon trainer."
+      "favoritePart": "My favorite part about TVG is that it brings together a diverse group of people—different in where they come from, their interests, and their skills. However, despite these differences, we all share core values like ambition, teamwork, and kindness. At UT, it's easy to stay within familiar circles that feel like home, but TVG offers a special community of new people who embody the same principles I hold close.",
+      "favoriteBook": "The Old Man and the Sea - Ernest Hemingway",
+      "childhoodDream": "Whenever I saw a product, I was curious about what was behind it. I wanted to be one of the people creating and distributing it, seeing it stocked in every Walmart. But this aspiration has always clashed with the fact that, since lower school, every teacher, friend, and parent told me I should be a lawyer. Hopefully, one day, these two paths will come together in a way that makes sense for me."
     },
     {
       "name": "Mac Wyman",
@@ -453,8 +457,8 @@
         "author": "Conor McGregor"
       },
       "favoritePart": "My favorite thing about TVG is that it brings together a diverse group of people—different in where they come from, their interests, and their skills. However, despite these differences, we all share core values like ambition, teamwork, and kindness. At UT, it's easy to stay within familiar circles that feel like home, but TVG offers a special community of new people who embody the same principles I hold close.",
-      "favoriteBook": "The Old Man and the Sea - Ernest Hemingway",
-      "childhoodDream": "Whenever I saw a product, I was curious about what was behind it. I wanted to be one of the people creating and distributing it, seeing it stocked in every Walmart. But this aspiration has always clashed with the fact that, since lower school, every teacher, friend, and parent told me I should be a lawyer. Hopefully, one day, these two paths will come together in a way that makes sense for me."
+      "favoriteBook": "The Very Hungry Caterpillar",
+      "childhoodDream": "Cartoonist for PBS Kids (I love Wild Kratts & Fetch with Ruff Ruffman)"
     },
     {
       "name": "Neha Kamble",
@@ -486,12 +490,12 @@
       "linkedin": "https://www.linkedin.com/in/raiaditya1/",
       "bio": "I’m a Senior and work at Saronic Technologies, building boat drones for the US Armed Forces. Outside of work, I enjoy doing math, messing around with new puzzles, studying history, and playing poker / board games.",
       "quote": {
-        "text": "Before enlightenment: chop wood, carry water. After enlightenment: chop wood, carry water.",
-        "author": "Zen Proverb"
+        "text": "A wrong decision is better than indecision.",
+        "author": "Tony Soprano"
       },
       "favoritePart": "Speaker sessions and SIG presentations. They're both pretty great opportunities to peek into an industry I wouldn't have otherwise explored.",
-      "favoriteBook": "The Very Hungry Caterpillar",
-      "childhoodDream": "I wanted to either be a physicist or build mines"
+      "favoriteBook": "The Slight Edge, by Jeff Olson",
+      "childhoodDream": "As a kid, I always wanted to go into streaming and entertainment. That quickly fell apart, but I still love to game with friends whenever I find the time."
     },
     {
       "name": "Shreyas Chennamaraja",
@@ -501,12 +505,12 @@
       "linkedin": "https://www.linkedin.com/in/schennam/",
       "bio": "Hey! I'm a current Senior at UT studying Computer Science and Business. I love researching and learning new things related to AI/Saas, Fintech, and Consumer Tech. Outside of school, I love to travel, attend concerts, and I'm always looking to for new shows to watch.",
       "quote": {
-        "text": "A wrong decision is better than indecision.",
-        "author": "Tony Soprano"
+        "text": "Ideas don't wait. Neither should you.",
+        "author": ""
       },
       "favoritePart": "Being in a space with intellectually curious and ambitious students is my favorite part of TVG. Each week, I'm always learning something new.",
-      "favoriteBook": "The Slight Edge, by Jeff Olson",
-      "childhoodDream": "As a kid, I always wanted to go into streaming and entertainment. That quickly fell apart, but I still love to game with friends whenever I find the time."
+      "favoriteBook": "A Long Way Down - Randall Silvis",
+      "childhoodDream": "Cartoonist for PBS Kids (I love Wild Kratts & Fetch with Ruff Ruffman)"
     },
     {
       "name": "Mehak Arora",
@@ -520,7 +524,7 @@
         "author": "Al Gore"
       },
       "favoritePart": "We always say that we'd like to meet like-minded people...TVG is that in a sense but so much more. I get to sit in a room full of people who each have their own vertical interests and are SO passionate about them. I feel like it's a knowledge bank of people to dumb down and explain any topic so it always feels rewarding to know what's going on in the world.",
-      "favoriteBook": "A Long Way Down - Randall Silvis",
+      "favoriteBook": "Can't Hurt Me by David Goggins",
       "childhoodDream": "Cartoonist for PBS Kids (I love Wild Kratts & Fetch with Ruff Ruffman)"
     },
     {
@@ -559,6 +563,10 @@
       "image": "/images/members/dylan-marciano.jpg",
       "linkedin": "https://www.linkedin.com/in/dylan-marciano/",
       "bio": "I'm from NYC and am currently a sophomore business student at UT. I have a deep passion for learning about tech and business, specifically how the two overlap. I'm also an avid basketball watcher + player, and I enjoy sitting in a sauna after a good workout.",
+      "quote": {
+        "text": "Logic will get you from A to B. Imagination will take you everywhere.",
+        "author": "Albert Einstein"
+      },
       "favoritePart": "My favorite part about TVG is growing with a group of peers who may or may not have similar career goals to me, yet we all have a collective passion for VC and startups. This allows for great discussion on various topics as well as creating a strong place to learn something you may have never thought of before.",
       "favoriteBook": "The Alchemist by Paulo Coelho",
       "childhoodDream": "Growing up, I always wanted to own a business, I just never knew what it would be."
@@ -576,7 +584,7 @@
       },
       "favoritePart": "The people. I can't stress the A+ caliber of the people in TVG — all with unique interests and a ravenous appetite to learn. I strongly believe it's one of the best communities of builders on campus.",
       "favoriteBook": "Sapiens by Yuval Harari",
-      "childhoodDream": "I wanted to be an NFL Quarterback. I loved watching Russell Wilson (as a Seahawks fan), so much so that I attended his Quarterback Academy and gave him 30 handwritten NFL-style plays. I distinctly remember sitting in our living room, imagining I was the Seahawks QB, and throwing footballs at our couches as though they were wide receivers."
+      "childhoodDream": "I wanted to be an NFL Quarterback. I was astonished by how much creativity goes into play-calling and wanted to be the guy who designed the plays. I think the best part of being a coach is getting to see the players on your team grow and being part of an organization that is bigger than you."
     },
     {
       "name": "Nate Kaplan",
@@ -586,12 +594,12 @@
       "linkedin": "https://www.linkedin.com/in/nate-kaplan-947ab6254/",
       "bio": "I'm from South Texas and currently studying chemistry and math here at UT. I'm currently working on math research and building a few side projects. I'm passionate about experimental/explorative science and pushing the limits of what's possible. I also enjoy reading about the social sciences, immersing myself in nature, and cooking in my free time.",
       "quote": {
-        "text": "Logic will get you from A to B. Imagination will take you everywhere.",
-        "author": "Albert Einstein"
+        "text": "The cure for boredom is curiosity. There is no cure for curiosity.",
+        "author": "Dorothy Parker"
       },
       "favoritePart": "Having a close-knit community of driven individuals that are committed to the mindset of overcoming obstacles, challenging paradigms, and creatively redefining solutions, each through their own unique perspective and background. Every time I speak with someone from TVG I have the opportunity to learn, brainstorm, and/or gain inspiration.",
       "favoriteBook": "Thinking Fast and Slow - Daniel Kahneman",
-      "childhoodDream": "I wanted to be a Physician Scientist and do research in cellular engineering."
+      "childhoodDream": "I wanted to be a physician scientist and do research in cellular engineering."
     },
     {
       "name": "Mehran Sarker",
@@ -606,7 +614,7 @@
       },
       "favoritePart": "My favorite part about TVG so far is how welcoming and genuine the people are. I came in not knowing many people and did not really know what to expect. However, the org has well exceeded my expectations. Everyone in the org has made me feel like part of a family and have been so helpful towards the analysts growth. I hope to continue meeting all of the diverse members in the org and building long-lasting friendships.",
       "favoriteBook": "The Last Lecture by Randy Pausch",
-      "childhoodDream": "When I was a kid, I always wanted to be an NFL coach. I was astonished by how much creativity goes into play-calling and wanted to be the guy who designed the plays. I think the best part of being a coach is getting to see the players on your team grow and being part of an organization that is bigger than you."
+      "childhoodDream": "Singular career path? Nah, I wanted to be an academic weapon from day one: an Olympic swimmer, solo violinist, CEO, lawyer, and doctor all in one package. Happy to say I'm working towards three of those!"
     },
     {
       "name": "Karthik Pelleti",
@@ -616,11 +624,11 @@
       "linkedin": "https://www.linkedin.com/in/karthikp-/",
       "bio": "I'm studying Finance and Math at UT Austin. As a kid, I built empires out of Legos—now I build software, deeptech, and startups. When I'm not tinkering, I make chocolate as a chocolatier and sail with the Texas Longhorns Sailing Team. Currently building a stealth AI startup. Always creating, learning, laughing, and connecting.",
       "quote": {
-        "text": "The cure for boredom is curiosity. There is no cure for curiosity.",
-        "author": "Dorothy Parker"
+        "text": "The things you think about determine the quality of your mind. Your soul takes on the color of your thoughts.",
+        "author": "Marcus Aurelius"
       },
-      "favoritePart": "The best part of TVG is, put simply, how it makes me think for myself. As an analyst, I get structure but not hand-holding. I explore different parts of venture and figure out what interests me. The work is real, and so is the learning. Without it, I wouldn't be learning as much or pushing myself as hard.",
-      "favoriteBook": "The Godfather by Mario Puzo",
+      "favoritePart": "My favorite part about TVG is the community of curious, ambitious students that it brings together. While every member has a unique perspective and specific interests, everybody is connected by a shared passion for innovation and unconventional problem-solving. There is always so much to learn from the people around me.",
+      "favoriteBook": "A Gentleman in Moscow by Amor Towles.",
       "childhoodDream": "Ocean conservationist - drawn to marine life and the urgency of protecting fragile ecosystems."
     },
     {
@@ -635,7 +643,7 @@
         "author": "Hasam Al-Basri"
       },
       "favoritePart": "How much we learn! And it's not just from our amazing curriculum, but also our community. Every chat feels like a world status recap. With our diverse community, no conversation is dull and no stone is left unturned.",
-      "favoriteBook": "A Gentleman in Moscow by Amor Towles.",
+      "favoriteBook": "Champion by Marie Lu",
       "childhoodDream": "Singular career path? Nah, I wanted to be an academic weapon from day one: an Olympic swimmer, solo violinist, CEO, lawyer, and doctor all in one package. Happy to say I'm working towards three of those!"
     },
     {
@@ -646,12 +654,12 @@
       "linkedin": "https://www.linkedin.com/in/emilia-kniestedt/",
       "bio": "I am from Monterrey and San Antonio, and am currently studying International Relations, Economics, and Military Leadership. I love learning about the world, from history to politics, national security, and art. In my free time, you can find me on a long run, practicing my yoga flow, or reading four books at a time.  Outside of TVG, I'm involved in Texas CYC and Army ROTC.",
       "quote": {
-        "text": "The things you think about determine the quality of your mind. Your soul takes on the color of your thoughts.",
-        "author": "Marcus Aurelius"
+        "text": "A creative man is motivated by the desire to achieve, not by the desire to beat others.",
+        "author": "Ayn Rand"
       },
-      "favoritePart": "My favorite part about TVG is the community of curious, ambitious students that it brings together. While every member has a unique perspective and specific interests, everybody is connected by a shared passion for innovation and unconventional problem-solving. There is always so much to learn from the people around me.",
-      "favoriteBook": "All About Love by bell hooks",
-      "childhoodDream": "Growing up, I wanted to have my own art gallery or become a professional Irish dancer."
+      "favoritePart": "My favorite part about being in TVG is constantly surrounding myself with not only some of the most intelligent and dedicated students on campus, but also students that empower me to one day be just like them. I found that being a part of TVG brings out the most courageous and passionate side of myself that I never thought I could reach.",
+      "favoriteBook": "The Joy Luck Club by Amy Tan",
+      "childhoodDream": "Growing up, I deeply admired my grandfather who dedicated his life to pediatrics. Attempting to follow in his footsteps, I dreamed of becoming a surgeon, taking courses over many summers to learn more about medicine and surgery. Eventually as I began to mature and grew queasy at the sight of blood, I thought that may not be the best fit for me."
     },
     {
       "name": "Dominic Schwarzenbach",
@@ -671,7 +679,7 @@
     {
       "name": "Arushi Singh",
       "role": "Associate",
-      "major": "Electrical & Computer Engineering",
+      "major": "Computer Science",
       "image": "/images/members/arushi-singh.jpeg",
       "linkedin": "https://www.linkedin.com/in/arushixsingh/",
       "bio": "I’m passionate about AI, cybersecurity, and research. I love exploring how technology shapes the world and finding ways to make it safer and smarter. I’m currently working on research about securing RAG-based LLMs, and have also spent time at startups and in enterprise tech. Outside of that, I’m really into art history and cool science. I have also sneezed inside an ancient Egyptian pot, so basically my DNA is a part of history.",
@@ -679,9 +687,9 @@
         "text": "Build an irrefutable stack of evidence that you are who you say you are",
         "author": ""
       },
-      "favoritePart": "The people. Everyone in TVG has this mix of ambition and curiosity that makes you want to push harder and think bigger. It’s one of the few places where ideas actually turn into action.",
-      "favoriteBook": "The Joy Luck Club by Amy Tan",
-      "childhoodDream": "I wanted to be a teacher!!!"
+      "favoritePart": "The people. Everyone has their own background, interests, and skills. But what brings us together is a shared passion for innovation and unconventional problem-solving. The best part about TVG is the community of driven, ambitious students that it brings together. While every member has a unique perspective and specific interests, everybody is connected by a shared passion for innovation and unconventional problem-solving. There is always so much to learn from the people around me.",
+      "favoriteBook": "The Bell Jar - Sylvia Plath",
+      "childhoodDream": "Cartoonist for PBS Kids (I love Wild Kratts & Fetch with Ruff Ruffman)"
     },
     {
       "name": "Abdullah Usman",
@@ -711,7 +719,7 @@
       },
       "favoritePart": "My favorite part about TVG is how easy it is to connect with the other people in the club. There has been a concerted effort to make analysts feel like they belong, and it has certainly worked.",
       "favoriteBook": "The Brothers Karamazov",
-      "childhoodDream": "I wanted to open a donut shop."
+      "childhoodDream": "I wanted to be a race car driver, and by the time I was in middle school I became fascinated with the idea of autonomous cars and how they could make a real impact on how our society operates."
     },
     {
       "name": "Zeynep Sahin",
@@ -759,7 +767,63 @@
       "childhoodDream": "I wanted to be a race car driver, and by the time I was in middle school I became fascinated with the idea of autonomous cars and how they could make a real impact on how our society operates."
     }
   ],
-  "analysts": [],
+  "analysts": [
+    {
+      "name": "Alan Chen",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Alan Chen.jpg"
+    },
+    {
+      "name": "Alan Schwartz",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Alan Schwartz.jpg"
+    },
+    {
+      "name": "Andrew Li",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Andrew Li.jpeg"
+    },
+    {
+      "name": "Hamza Usman",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Hamza Usman.jpeg"
+    },
+    {
+      "name": "Julia Apuda",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Julia Apuda.jpeg"
+    },
+    {
+      "name": "Luke Henderson",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Luke Henderson.png"
+    },
+    {
+      "name": "Maximilian Sandhu",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Maximilian Sandhu.jpeg"
+    },
+    {
+      "name": "Melinda Dai",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Melinda Dai.jpg"
+    },
+    {
+      "name": "Rachel Coutinho",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Rachel Coutinho.png"
+    },
+    {
+      "name": "Richard Huang",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Richard Huang.jpg"
+    },
+    {
+      "name": "Shrey Birmiwal",
+      "role": "Analyst",
+      "image": "/Analyst S26 Photos/Shrey Birmiwal.JPG"
+    }
+  ],
   "alumni": [
     {
       "name": "Ankit Devalla",
