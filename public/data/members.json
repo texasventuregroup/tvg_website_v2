@@ -369,7 +369,7 @@
       "major": "Accounting",
       "image": "/images/members/isha-dhingra.jpg",
       "linkedin": "https://www.linkedin.com/in/isha-d/",
-      "bio": "I'm from Houston, Texas majoring in accounting as part of the iMPA program. In my free time, I love to explore Austin's coffee scene and am always looking for more recommendations. I also enjoy crocheting, gardening, and reading.",
+      "bio": "I'm a freshman in the Business Analytics program at UT Austin. I'm passionate about finance and accounting, and I enjoy learning about the latest trends in the industry. In my free time, I love to read and explore new places.",
       "quote": {
         "text": "Luck is what happens when preparation meets opportunity.",
         "author": "Seneca"
@@ -386,8 +386,8 @@
       "linkedin": "https://www.linkedin.com/in/kate-ferrer-40621a259/",
       "bio": "I'm a Junior studying Finance with an Economics minor from the Greater Houston area. I love learning about early stage ventures and enjoy meeting new people to share ideas. Outside of TVG, I'm also involved in Alpha Kappa Psi and enjoy running, traveling, and being outdoors.",
       "quote": {
-        "text": "Luck is what happens when preparation meets opportunity.",
-        "author": "Seneca"
+        "text": "The journey of a thousand miles begins with a single step.",
+        "author": "Lao Tzu"
       },
       "favoritePart": "My favorite part of TVG is being immersed in the exciting world of startups and investing alongside ambitious peers that challenge me to grow.",
       "favoriteBook": "The Idiot by Elif Bautman",
@@ -517,7 +517,7 @@
       "role": "Associate",
       "major": "Finance, Sustainability",
       "image": "/images/members/mehak-arora.jpg",
-      "linkedin": "https://www.linkedin.com/in/mehak-arora-3390812aa/",
+      "linkedin": "https://www.linkedin.com/in/mehak-arora-33908b2aa/",
       "bio": "Hey! I'm from Dallas, TX but originally from Iowa 🌽🌽. I love researching at the intersection of sustainability and business and debating on greenwashing ethics. Hiking, painting, and analyzing easter eggs in music albums are some of my favorite things to do. Fun facts: One of my biggest goals in life is to be a cheese connoisseur and I used to have 21 pet slugs.",
       "quote": {
         "text": "When people flirt with despair about the future, they are less likely to take the actions necessary to safeguard it, focusing instead on the short-term.",
@@ -576,7 +576,7 @@
       "role": "Associate",
       "major": "Business, Computer Science",
       "image": "/images/members/venkat-sundaram.jpg",
-      "linkedin": "https://www.linkedin.com/in/vsundaram/",
+      "linkedin": "https://www.linkedin.com/in/venkatsundaram/",
       "bio": "I'm from Seattle, WA, and I'm a Junior in the CS & Business Honors dual-major program (CSB). I'm a huge fan of all things Seattle & Longhorn sports, and enjoy going for long runs. A fun fact is that I lived in South Korea for a year, and picked up on some Korean while I was there.",
       "quote": {
         "text": "If you don't play to win, don't play at all",
@@ -584,7 +584,7 @@
       },
       "favoritePart": "The people. I can't stress the A+ caliber of the people in TVG — all with unique interests and a ravenous appetite to learn. I strongly believe it's one of the best communities of builders on campus.",
       "favoriteBook": "Sapiens by Yuval Harari",
-      "childhoodDream": "I wanted to be an NFL Quarterback. I was astonished by how much creativity goes into play-calling and wanted to be the guy who designed the plays. I think the best part of being a coach is getting to see the players on your team grow and being part of an organization that is bigger than you."
+      "childhoodDream": "I wanted to be a coach. I was always drawn to the idea of being part of an organization that is bigger than you."
     },
     {
       "name": "Nate Kaplan",
@@ -614,7 +614,7 @@
       },
       "favoritePart": "My favorite part about TVG so far is how welcoming and genuine the people are. I came in not knowing many people and did not really know what to expect. However, the org has well exceeded my expectations. Everyone in the org has made me feel like part of a family and have been so helpful towards the analysts growth. I hope to continue meeting all of the diverse members in the org and building long-lasting friendships.",
       "favoriteBook": "The Last Lecture by Randy Pausch",
-      "childhoodDream": "Singular career path? Nah, I wanted to be an academic weapon from day one: an Olympic swimmer, solo violinist, CEO, lawyer, and doctor all in one package. Happy to say I'm working towards three of those!"
+      "childhoodDream": "Robot Astronaut Film Reviewer Specialist"
     },
     {
       "name": "Karthik Pelleti",
@@ -627,7 +627,7 @@
         "text": "The things you think about determine the quality of your mind. Your soul takes on the color of your thoughts.",
         "author": "Marcus Aurelius"
       },
-      "favoritePart": "My favorite part about TVG is the community of curious, ambitious students that it brings together. While every member has a unique perspective and specific interests, everybody is connected by a shared passion for innovation and unconventional problem-solving. There is always so much to learn from the people around me.",
+      "favoritePart": "My favorite part about being in TVG is constantly surrounding myself with not only some of the most intelligent and dedicated students on campus, but also students that empower me to one day be just like them. I found that being a part of TVG brings out the most courageous and passionate side of myself that I never thought I could reach.",
       "favoriteBook": "A Gentleman in Moscow by Amor Towles.",
       "childhoodDream": "Ocean conservationist - drawn to marine life and the urgency of protecting fragile ecosystems."
     },
@@ -644,7 +644,7 @@
       },
       "favoritePart": "How much we learn! And it's not just from our amazing curriculum, but also our community. Every chat feels like a world status recap. With our diverse community, no conversation is dull and no stone is left unturned.",
       "favoriteBook": "Champion by Marie Lu",
-      "childhoodDream": "Singular career path? Nah, I wanted to be an academic weapon from day one: an Olympic swimmer, solo violinist, CEO, lawyer, and doctor all in one package. Happy to say I'm working towards three of those!"
+      "childhoodDream": "Professional soccer player at Liverpool FC!"
     },
     {
       "name": "Emilia Kniestedt",
@@ -697,14 +697,14 @@
       "major": "Business Honors, Finance",
       "image": "/images/members/abdullah-usman.jpeg",
       "linkedin": "https://www.linkedin.com/in/-abdullahusman-/",
-      "bio": "I'm a junior majoring in BHP and Finance. I was born and raised in Pakistan and moved to Houston about 8 years ago. I have experience across Tech IB, startups, and software PE and am currently experimenting with building. Outside of school, I love beating my friends at table tennis, going on 4000 mi road trips with family, and riding my bike on campus without my hands lmaoo",
+      "bio": "I'm from Bordentown, New Jersey, and currently a sophomore at UT Austin studying Canfield Business Honors, Finance, and Math. I'm fascinated by the story behind companies—how numbers reveal strategy, growth, and opportunity, uncovering what makes a business tick. Outside of this, I snowboard (can backflip), scuba dive, lift, and stay hooked on Bollywood movies.",
       "quote": {
-        "text": "Shoot for the moon. Even if you miss, you'll land among the stars",
-        "author": "Norman Vincent Peale"
+        "text": "Originality is nothing but judicious imitation.",
+        "author": "Voltaire"
       },
-      "favoritePart": "Probably the community and passionate mentors who have put in so much into the org and are willing to help out at any time",
-      "favoriteBook": "Kite Runner",
-      "childhoodDream": "My parents are accountants, so I lowk also wanted to be an accountant when I was young lmao"
+      "favoritePart": "Mentorship – As an out-of-state student lost at UT, the upperclassmen at TVG took me under their wing from my first week as an analyst. They shared insights about their internships, how they learned, and how they balanced it all. Mentorship is invaluable, but at TVG, it's plentiful.",
+      "favoriteBook": "The Count of Monte Cristo by Alexandre Dumas",
+      "childhoodDream": "I wanted to be a race car driver, and by the time I was in middle school I became fascinated with the idea of autonomous cars and how they could make a real impact on how our society operates."
     },
     {
       "name": "Asher Feldman",
@@ -732,7 +732,7 @@
         "text": "Great things are done by a series of small things brought together.",
         "author": "Vincent van Gogh"
       },
-      "favoritePart": "The TVG community is unique, uniting people from diverse backgrounds and interests through a shared drive. I love the curiosity and ambition fostered within the TVG community.",
+      "favoritePart": "The TVG community is unique, uniting people from diverse backgrounds and interests through a shared drive. I love the curiosity and ambition fostered within the tvg community.",
       "favoriteBook": "Anna Karenina by Leo Tolstoy",
       "childhoodDream": "Fashion designer. I've been interested in fashion since I was young, although it's more of a hobby than a career path for me now."
     },
@@ -757,7 +757,7 @@
       "major": "Computer Science",
       "image": "/images/members/rishik-kolpekwar.jpeg",
       "linkedin": "https://www.linkedin.com/in/rishik-kolpekwar/",
-      "bio": "I am from Round Rock, Texas. I am involved within the Med-Tech space trying to further pursue my startup, MedMorphIQ. I love working on innovations and projects structured to make a positive impact. Outside of TVG, I am also involved in Texas Guadaloop and I love playing tennis and pickleball in my free time. I love exploring, whether it’s taking long drives with no set destination or going on weekend hikes.",
+      "bio": "I am from Round Rock, Texas. I am involved within the Med-Tech space trying to further pursue my startup, MedMorphIQ. I love working on innovations and projects structured to make a positive impact. Outside of tvg, I am also involved in Texas Guadaloop and I love playing tennis and pickleball in my free time. I love exploring, whether it’s taking long drives with no set destination or going on weekend hikes.",
       "quote": {
         "text": "Some people want it to happen, some wish it would happen, others make it happen.",
         "author": "Michael Jordan"
@@ -771,57 +771,156 @@
     {
       "name": "Alan Chen",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Alan Chen.jpg"
+      "major": "Computer Science, Mathematics (Turing Scholars)",
+      "image": "/Analyst S26 Photos/Alan Chen.jpg",
+      "bio": "Hi, I'm a freshman at UT Austin studying computer science and mathematics in the Turing Scholars Honors program. I'm interested in diffusion models, reinforcement learning, and AI applications for robotics and language models. Currently, I research mobile manipulation with vision-language agents and post-training methods.",
+      "quote": {
+        "text": "Sometimes it is the people who no one imagines anything of, who do the things that no one can imagine.",
+        "author": "Alan Turing"
+      },
+      "favoritePart": "My favorite part of TVG was being able to learn around a bunch of like-minded and ambitious people.",
+      "favoriteBook": "Life of Pi",
+      "childhoodDream": "Yao Ming"
     },
     {
       "name": "Alan Schwartz",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Alan Schwartz.jpg"
+      "major": "Electrical and Computer Engineering",
+      "image": "/Analyst S26 Photos/Alan Schwartz.jpg",
+      "bio": "I'm currently a Sophomore Electrical and Computer Engineering major deeply curious about physics, semiconductors, computer architecture, and building startups. I was born and raised in south Florida (Miami - Fort Lauderdale area) and am half Nicaraguan. Some of the things I love doing include traveling, exploring nature, playing poker chess and soccer, running/track & field, and any water sports.",
+      "quote": {
+        "text": "It's much more interesting to live not knowing than to have answers that might be wrong.",
+        "author": "Richard Feynman"
+      },
+      "favoritePart": "My favorite part of TVG so far has been meeting all the people with such high agency and conviction in what they care about. Its inspiring to be around other truly passionate people.",
+      "favoriteBook": "The Exploits and Triumphs, In Europe, of Paul Morphy, The Chess Champion by Frederick Milnes Edge",
+      "childhoodDream": "Whatever job Mordecai and Rigby had in Regular Show."
     },
     {
       "name": "Andrew Li",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Andrew Li.jpeg"
+      "major": "Computer Science, Business (CSB)",
+      "image": "/Analyst S26 Photos/Andrew Li.jpeg",
+      "bio": "I'm a sophomore in CSB and interested in low-level programming. In my free-time, you'll probably find me running around Austin, learning a new song on the guitar, or watching Spanish YouTubers.",
+      "quote": {
+        "text": "It's not the Destination, It's the journey.",
+        "author": "Ralph Waldo Emerson"
+      },
+      "favoritePart": "My favorite part about TVG is the people. It's not every day you get to meet such a diverse group who all have incredibly interesting ideas and perspectives on the world.",
+      "favoriteBook": "Pride and Prejudice by Jane Austen",
+      "childhoodDream": "POTUS"
     },
     {
       "name": "Hamza Usman",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Hamza Usman.jpeg"
+      "major": "Business Honors, Finance",
+      "image": "/Analyst S26 Photos/Hamza Usman.jpeg",
+      "bio": "Hey guys, my name is Hamza Usman. I'm a freshman studying BHP and finance from Houston. I'm interested in Tech IB and VC. I love to play soccer, go thrifting, and watch movies!",
+      "quote": {
+        "text": "Slow is Smooth, Smooth is Fast",
+        "author": "My middle-school guitar teacher"
+      },
+      "favoritePart": "The community. I love the people in it, and I'm excited to have a great semester with them!",
+      "favoriteBook": "Count of Monte Cristo",
+      "childhoodDream": "Ferrari's F1 Driver"
     },
     {
       "name": "Julia Apuda",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Julia Apuda.jpeg"
+      "major": "Finance",
+      "image": "/Analyst S26 Photos/Julia Apuda.jpeg",
+      "bio": "Growing up in the United Kingdom, then moving to Illinois and now Texas - I love traveling and exploring new cities! I'm passionate about publication, business, and philosophy. Outside of school, I enjoy hiking, trying different food scenes, and playing electric guitar. I'm also part of the University Finance Association (UFA) outside of TVg.",
+      "quote": {
+        "text": "Nothing is as healing as the human touch.",
+        "author": "Bobby Fischer"
+      },
+      "favoritePart": "My favorite part about TVG is being surrounded by people that have unique interests and backgrounds. I love learning from my peers within the org and exploring topics that I am unfamiliar with.",
+      "favoriteBook": "The 50th Law by Robert Greene and 50 Cent",
+      "childhoodDream": "I've always wanted to be a (serial) fiction book author. As a kid, I loved reading and writing."
     },
     {
       "name": "Luke Henderson",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Luke Henderson.png"
+      "major": "Computer Science",
+      "image": "/Analyst S26 Photos/Luke Henderson.png",
+      "bio": "Hi there, I am a sophomore studying Computer Science at UT Austin. I am passionate about bio/healthtech. On campus, I'm also involved with Longhorn Neurotech and the Computational Sensing and Imaging lab. In my free time, I enjoy traveling, going for runs, reading, and exploring Austin!",
+      "quote": {
+        "text": "I shall not waste my days trying to prolong them. I shall use my time.",
+        "author": "Jack London"
+      },
+      "favoritePart": "My favorite part about TVG is the opportunity for direct mentorship and learning from the incredible, experienced founders we host and from other TVG members.",
+      "favoriteBook": "The Count of Monte Cristo",
+      "childhoodDream": "Archeologist"
     },
     {
       "name": "Maximilian Sandhu",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Maximilian Sandhu.jpeg"
+      "major": "Business Honors",
+      "image": "/Analyst S26 Photos/Maximilian Sandhu.jpeg",
+      "bio": "I'm a freshman majoring in BHP with a strong interest in finance and investing. I want to explore careers in investment banking and corporate finance. Outside of school, I love running and playing golf, watching the Pittsburgh Steelers go 9-8, and crushing my friends in poker.",
+      "quote": {
+        "text": "Nothing in life that's worth anything is easy.",
+        "author": "President Theodore Roosevelt"
+      },
+      "favoritePart": "My favorite part about TVG is the people. I love how everyone is extremely passionate and ambitious about their various industries and niches.",
+      "favoriteBook": "The Road",
+      "childhoodDream": "PGA Tour Golfer"
     },
     {
       "name": "Melinda Dai",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Melinda Dai.jpg"
+      "major": "Electrical and Computer Engineering, Business",
+      "image": "/Analyst S26 Photos/Melinda Dai.jpg",
+      "bio": "My name is Melinda and I'm from Austin, Texas. I'm a freshman majoring in ECE + Business and I'm interested in hardware (specifically integrated circuit design) and fintech. Outside of school, I love swimming, playing video games, and side questing/exploring new places to eat.",
+      "quote": {
+        "text": "The only impossible journey is the one you never begin.",
+        "author": "Tony Robbins"
+      },
+      "favoritePart": "My favorite part of TVG is getting exposure to how early ideas turn into real companies, especially hearing directly from founders and learning how investors think about technical products beyond just the tech itself. I also really appreciate how driven and curious everyone in the group is, which makes discussions engaging.",
+      "favoriteBook": "Flowers for Algernon",
+      "childhoodDream": "I wanted to be an Olympic swimmer when I was a kid."
     },
     {
       "name": "Rachel Coutinho",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Rachel Coutinho.png"
+      "major": "Electrical and Computer Engineering, Business Honors",
+      "image": "/Analyst S26 Photos/Rachel Coutinho.png",
+      "bio": "Hi everyone! My name is Rachel Coutinho, and I am a student in the Electrical and Computer Engineering and Business Honors program at UT. I am interested in health tech, specifically brain-computer interfaces and wearable technology for sports. On campus, I am also involved with the Technology Consulting Group. Outside of school, you can find me playing volleyball with friends, playing card games, and going paddleboarding.",
+      "quote": {
+        "text": "It always seems impossible until it's done.",
+        "author": "Nelson Mandela"
+      },
+      "favoritePart": "I love TVG's focus on bringing together like-minded people. The environment that forms when everyone comes together is unbeatable. From learning about YC startups to understanding the intricacies of cancer research, I am always learning something new. TVG has led me to expect the unexpected.",
+      "favoriteBook": "Michael Vey: Battle of the Ampere by Paul Evans",
+      "childhoodDream": "I hoped to be a Taekwondo athlete within the Olympics."
     },
     {
       "name": "Richard Huang",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Richard Huang.jpg"
+      "major": "Electrical and Computer Engineering",
+      "image": "/Analyst S26 Photos/Richard Huang.jpg",
+      "bio": "Inspiring founder in SW/HW codesign who has EDA/AI experiences.",
+      "quote": {
+        "text": "Stay hungry, stay foolish.",
+        "author": "Steve Jobs"
+      },
+      "favoritePart": "Ability to learn and discuss venture capital ideas with dedicated peers.",
+      "favoriteBook": "The Hobbit",
+      "childhoodDream": "Founder of a chip company"
     },
     {
       "name": "Shrey Birmiwal",
       "role": "Analyst",
-      "image": "/Analyst S26 Photos/Shrey Birmiwal.JPG"
+      "major": "Computer Science",
+      "image": "/Analyst S26 Photos/Shrey Birmiwal.JPG",
+      "bio": "Hi! I'm Shrey Birmiwal, a freshman studying Computer Science from Austin Texas. In my free time, I'm into sports (pickleball, tennis and lifting), and music (starting to get into EDM music and enjoy DJing frat parties). Technically, I'm interested in the intersection of hardware and AI (companies like Etched, Groq, Exo, Zettascale), distributed inference (Nvidia Dynamo), and decentralized/crypto AI (Prime Intellect).",
+      "quote": {
+        "text": "Fool me once shame on you, fool me twice shame on me.",
+        "author": ""
+      },
+      "favoritePart": "Meeting all the cracked people in the club!",
+      "favoriteBook": "Boys in the Boat",
+      "childhoodDream": "Hole digger (drill deep holes)"
     }
   ],
   "alumni": [
