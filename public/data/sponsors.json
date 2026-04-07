@@ -1,0 +1,76 @@
+{
+  "featured": [
+    {
+      "name": "Blue Bear Capital",
+      "shortName": "Blue Bear",
+      "description": "Venture capital uniting machine intelligence and human creativity for an intelligent, sustainable, globally competitive energy and industrial economy.",
+      "website": "bluebearcap.com",
+      "logo": "bluebear.png",
+      "links": [
+        { "label": "Website", "url": "https://bluebearcap.com/" },
+        { "label": "Job Board", "url": "https://jobs.bluebearcap.com/jobs" },
+        { "label": "Submit a Deal", "url": "https://bluebearcap.com/submit-a-deal/" }
+      ]
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "NVIDIA",
+      "website": "nvidia.com",
+      "logo": "nvidia.webp"
+    },
+    {
+      "name": "Accenture",
+      "website": "accenture.com",
+      "logo": "accenture.webp"
+    },
+    {
+      "name": "Insight Partners",
+      "website": "insightpartners.com",
+      "logo": "insight.webp"
+    },
+    {
+      "name": "8VC",
+      "website": "8vc.com",
+      "logo": "8vc.webp"
+    },
+    {
+      "name": "Trust Ventures",
+      "website": "trustventures.com",
+      "logo": "trust-ventures.webp"
+    },
+    {
+      "name": "Base Power Company",
+      "shortName": "Base",
+      "website": "basepowercompany.com",
+      "logo": "base.webp"
+    },
+    {
+      "name": "Energy Transition Ventures",
+      "shortName": "ETV",
+      "website": "energytransitionventures.com",
+      "logo": "etv.webp"
+    },
+    {
+      "name": "Team8",
+      "website": "team8.vc",
+      "logo": "team8.webp"
+    },
+    {
+      "name": "Sequoia",
+      "website": "sequoiacap.com",
+      "logo": "sequoia.jpeg"
+    },
+    {
+      "name": "a16z",
+      "website": "a16z.com",
+      "logo": "a16z.svg"
+    },
+    {
+      "name": "Bessemer Venture Partners",
+      "shortName": "BVP",
+      "website": "bvp.com",
+      "logo": "bvp.png"
+    }
+  ]
+}

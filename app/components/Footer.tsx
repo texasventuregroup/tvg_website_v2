@@ -57,6 +57,9 @@ export default function Footer() {
               <Link href="/partnerships" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
                 Partners
               </Link>
+              <Link href="/sponsors" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+                Sponsors
+              </Link>
               <Link href="/members" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
                 Team
               </Link>
