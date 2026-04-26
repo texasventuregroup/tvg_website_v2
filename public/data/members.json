@@ -1,36 +1,6 @@
 {
   "executiveTeam": [
     {
-      "name": "Cameron Llewellyn",
-      "role": "President",
-      "major": "Economics, Finance",
-      "image": "/images/members/cameron-llewellyn.jpg",
-      "linkedin": "https://www.linkedin.com/in/cam-llewellyn/",
-      "bio": "I'm from Logan, Utah, and am currently studying Economics, Finance, Government, and Chinese at UT Austin. On campus, I'm involved with Texas Venture Group, Texas Undergraduate Investment Team, the Queer Business Student Association, and Wall Street for McCombs. Off campus, I've worked on growth teams at startups, covered tech and consumer industries at a hedge fund, and will intern as a summer investment banking analyst at Moelis & Company NYC in summer '26. On a personal note, I'm passionate about education and edtech, especially in the reading and literacy space. In my free time, I enjoy reading books/news, lifting weights, bouldering, watching esports, and being productive.",
-      "quote": {
-        "text": "It is the process of mis-education that inhibits the full potential of a nation.",
-        "author": "Malcom X"
-      },
-      "favoritePart": "My favorite part of TVG is working on projects for VCs and startups. TVG is uniquely positioned to provide legitimate value to firms, and its infrastructure enables extensive experiential learning for students.",
-      "favoriteBook": "The Power Broker by Robert Caro",
-      "childhoodDream": "I wanted to be an \"inventor\". I've always been interested in building economically productive and societally progressive products/solutions."
-    },
-    {
-      "name": "Maya Glenn",
-      "role": "Director of External",
-      "major": "Statistics & Data Science",
-      "image": "/images/members/maya-glenn.jpeg",
-      "linkedin": "https://www.linkedin.com/in/maya-glenn-mgg1968/",
-      "bio": "I'm a senior at UT Austin with a passion for venture capital, technology investing, data science, and product. I have internship experience on the M&A deal team at a TMT holding company and in data science and product at a consumer generative AI startup. I love to read and listen to podcasts about business, technology, politics, wellness, and longevity. My favorite podcasts are All In and the Wellness Process. I also love to workout, cook, hike, and do any types of water sports. ",
-      "quote": {
-        "text": "You don't have to be great to start, but you have to start to be great",
-        "author": "Zig Ziglar"
-      },
-      "favoritePart": "My favorite part about TVG is the endless stream of great reads everyone shares with each other, which sparks lively conversations and debates.",
-      "favoriteBook": "Barbarian Days by William Finnegan",
-      "childhoodDream": "I wanted to be a marine biologist when I was a kid because I loved the ocean."
-    },
-    {
       "name": "Morgan Davis",
       "role": "Director of Operations",
       "major": "Finance",
@@ -104,71 +74,11 @@
       "favoritePart": "The people and culture. TVG is a community of people who want to both define and pursue success. People are curious - not just about venture and technology, but about life and morality.",
       "favoriteBook": "Zen and the Art of Motorcycle Maintenance",
       "childhoodDream": "Professional football player for the Chicago Bears!"
-    },
-    {
-      "name": "Shivam Siddaiya",
-      "role": "Founder, Senior Advisor",
-      "major": "Business Analytics, Philosophy",
-      "image": "/images/members/shivam-siddaiya.jpg",
-      "linkedin": "https://www.linkedin.com/in/shivsid/",
-      "bio": "Born in Toronto and raised in Plano, Texas (still prefer the cold). When I'm not working, you'll find me deep in long-form writing - from philosophy deep-dives to niche blogs. My curiosity extends to testing new products/gadgets, trying Austin's culinary gems (from fine dining to food trucks), hosting board game nights with friends, and chipping away at my endless film watchlist. Outside of TVG, I'm involved in Texas Product Engineering Organization (TPEO).",
-      "quote": {
-        "text": "People are hard to hate close up. Move in.",
-        "author": "Brené Brown"
-      },
-      "favoritePart": "What I love most about TVG is seeing its growth from a scrappy group of 10 students to what it is today. Our members chase wildly different interests but stay genuinely curious about each other's work - this creates an environment that's constantly fresh and hungry for what's next, and inspires me to keep learning.",
-      "favoriteBook": "I have no all single all time favorite. Right now (Feb 2025) i'm enjoying The Anthology of Balaji.",
-      "childhoodDream": "I wanted to be a Fighter Pilot"
-    },
-    {
-      "name": "Ben Sherman",
-      "role": "Senior Advisor",
-      "major": "Human Dimensions of Organizations",
-      "image": "/images/members/ben-sherman.jpg",
-      "linkedin": "https://www.linkedin.com/in/beniansherman/",
-      "bio": "Ben Sherman, a senior at UT Austin from New Jersey, attended Montclair Kimberley Academy and serves on its Alumni Board. He founded Longhorn Students for Israel, the nation's largest independent student-led Israel advocacy group, engaging thousands of students annually. A Birthright Excel Fellow, he was selected as a US representative of the Jewish world's best business leadership program. Ben was the founding hire at Texas Venture Partners, helping secure its inaugural fund for early-stage Israeli defense startups. He interned as an Investment Banking Summer Analyst at Evercore's Israel Coverage team and will join Goldman Sachs' Industrials Investment Banking team in New York this summer. On campus, he is the Professional Chair of Sigma Alpha Mu, a Select Member of TAMID, and a Texas Cowboy.",
-      "quote": {
-        "text": "Surround yourself with relentless humans. People who plan in decades, but live in moments. Train like savages, but create like artists. Obsess in work, relax in life. People who know this is finite, and choose to play infinite games. Find people scaling mountains. Climb together.",
-        "author": "Zach Pogrob"
-      },
-      "favoritePart": "Overseeing the entire new Analyst experience, from recruitment planning and event execution to onboarding and integration, ensuring their first semester [and beyond] in TVG is fun, meaningful, exciting, and memorable!",
-      "favoriteBook": "The Art of War by Sun Tzu",
-      "childhoodDream": "I wanted to be an architect or carpenter"
     }
   ],
   "chairs": [],
   "principals": [],
   "associates": [
-    {
-      "name": "Rafael Reynal",
-      "role": "Associate",
-      "major": "Finance, Plan II",
-      "image": "/images/members/rafael-reynal.jpg",
-      "linkedin": "https://www.linkedin.com/in/rafael-reynal/",
-      "bio": "I'm a senior from Houston, Texas studying Finance and Plan II Honors. Professionally, I've spent the past few summers working in buyout growth equity and investment banking, and during the school year I've been a research assistant studying blockchain and mass fraud and a valuation analyst at local angel investment broker. I love reading, lifting weights, and spending time outside.",
-      "quote": {
-        "text": "For a man to achieve all that is demanded of him, he must regard himself as greater than he is.",
-        "author": "Johann Wolfgang von Goethe"
-      },
-      "favoritePart": "My favorite part about TVG is the people. It's an incredible concentration of ambitious, interesting, and curious people.",
-      "favoriteBook": "War and Peace - Tolstoy",
-      "childhoodDream": "When I was a kid I wanted to be an NFL GM."
-    },
-    {
-      "name": "Shrey Gupta",
-      "role": "Associate",
-      "major": "Computer Science",
-      "image": "/images/members/shrey-gupta.jpg",
-      "linkedin": "https://www.linkedin.com/in/shreygu/",
-      "bio": "Shrey is a fourth year computer science major from Oakton, Virginia. On campus, Shrey is involved in Alpha Kappa Psi and Texas Venture Group. In his free time, you'll see him running pickleball, watching anime, and tryharding on Beli. Ask him about what it's like living in NoVA, the best way to cook a ribeye, and why Dune 2 might be the greatest piece of fiction OAT.",
-      "quote": {
-        "text": "It is ordinary to love the beautiful, but it's beautiful to love the ordinary",
-        "author": "Unknown"
-      },
-      "favoritePart": "TVG has a culture where you become smarter just by being there. Through slack or through sitting at GMs, the collective knowledge of this organization is tremendous.",
-      "favoriteBook": "Pachinko by Min Jin Lee",
-      "childhoodDream": "I wanted to become a mad scientist, like the kind that you would see in shows and movies."
-    },
     {
       "name": "Ravi Tej Guntuku",
       "role": "Associate",
@@ -401,36 +311,6 @@
       "linkedin": "https://www.linkedin.com/in/shray-jain-a35ba6255/"
     },
     {
-      "name": "Abhinav Bandi",
-      "role": "Associate",
-      "major": "MIS",
-      "image": "/images/members/abhinav-bandi.jpg",
-      "linkedin": "https://www.linkedin.com/in/abhi-bandi/",
-      "bio": "I’m a senior MIS major from Frisco, TX. I enjoy spending my time lifting, running, reading and learning. I’m also a big deep-tech, philosophy and coffee enthusiast. I love meeting new people, and always happy to chat over a coffee!",
-      "quote": {
-        "text": "In the midst of winter, I found there was, within me, an invincible summer.",
-        "author": "Albert Camus"
-      },
-      "favoritePart": "What I love about TVG is how tangibly driven everyone in the org is. You’ll always hear about a new win every other day and it’s really inspiring being part of a group of such highly-motivated individuals. This would typically mean sharks in the water, but in TVG everyone is uplifting and always sharing opportunities.",
-      "favoriteBook": "The Red Rising Series by Pierce Brown",
-      "childhoodDream": "Olympic Swimmer (still in the works)"
-    },
-    {
-      "name": "Anisya Nair",
-      "role": "Associate",
-      "major": "Finance",
-      "image": "/images/members/anisya-nair.jpg",
-      "linkedin": "https://www.linkedin.com/in/anisya-nair/",
-      "bio": "I've lived in three different states, learned three languages and mastered three different forms of dance! Coincidentally, I'm also a third year Finance student at UT and chronic workaholic, storyteller and travel enthusiast. I love anything history and entertainment related.",
-      "quote": {
-        "text": "I am not afraid of storms, for I am learning how to sail my ship.",
-        "author": "Louisa May Alcott"
-      },
-      "favoritePart": "I love how intellectually sound everyone is and motivated. I learn something with every interaction that I have with members whether it's analysts, fellow associates and exec.",
-      "favoriteBook": "The Anthropocene Reviewed by John Green",
-      "childhoodDream": "An astronaut! I watched one movie about space and never looked back"
-    },
-    {
       "name": "Mac Macaul",
       "role": "Associate",
       "major": "Finance",
@@ -444,21 +324,6 @@
       "favoritePart": "My favorite part about TVG is that it brings together a diverse group of people—different in where they come from, their interests, and their skills. However, despite these differences, we all share core values like ambition, teamwork, and kindness. At UT, it's easy to stay within familiar circles that feel like home, but TVG offers a special community of new people who embody the same principles I hold close.",
       "favoriteBook": "The Old Man and the Sea - Ernest Hemingway",
       "childhoodDream": "Whenever I saw a product, I was curious about what was behind it. I wanted to be one of the people creating and distributing it, seeing it stocked in every Walmart. But this aspiration has always clashed with the fact that, since lower school, every teacher, friend, and parent told me I should be a lawyer. Hopefully, one day, these two paths will come together in a way that makes sense for me."
-    },
-    {
-      "name": "Mac Wyman",
-      "role": "Associate",
-      "major": "Finance",
-      "image": "/images/members/mac-wyman.jpg",
-      "linkedin": "https://www.linkedin.com/in/mac-wyman-962806266/",
-      "bio": "I'm from Westchester, New York and I am a senior studying Finance at UT. I like to travel, play sports, workout, ski, and play poker. I am also interested in philosophy, specifically how the ideas of thinkers from centuries ago still resonate with people today.",
-      "quote": {
-        "text": "Your lack of commitment is an insult to the people who believe in you",
-        "author": "Conor McGregor"
-      },
-      "favoritePart": "My favorite thing about TVG is that it brings together a diverse group of people—different in where they come from, their interests, and their skills. However, despite these differences, we all share core values like ambition, teamwork, and kindness. At UT, it's easy to stay within familiar circles that feel like home, but TVG offers a special community of new people who embody the same principles I hold close.",
-      "favoriteBook": "The Very Hungry Caterpillar",
-      "childhoodDream": "Cartoonist for PBS Kids (I love Wild Kratts & Fetch with Ruff Ruffman)"
     },
     {
       "name": "Neha Kamble",
@@ -548,13 +413,6 @@
       "major": "Finance",
       "image": "/images/members/justin-shapiro.jpg",
       "linkedin": "https://www.linkedin.com/in/-justin-shapiro-/"
-    },
-    {
-      "name": "Logan Spector",
-      "role": "Associate",
-      "major": "Jewish Studies",
-      "image": "/images/members/logan-spector.jpg",
-      "linkedin": "https://www.linkedin.com/in/loganspector/"
     },
     {
       "name": "Dylan Marciano",
@@ -1033,6 +891,51 @@
       "name": "Lawrence Park",
       "linkedin": "https://www.linkedin.com/in/parklawrence/",
       "image": "/images/members/lawrence-park.jpg"
+    },
+    {
+      "name": "Maya Glenn",
+      "linkedin": "https://www.linkedin.com/in/maya-glenn-mgg1968/",
+      "image": "/images/members/maya-glenn.jpeg"
+    },
+    {
+      "name": "Shivam Siddaiya",
+      "linkedin": "https://www.linkedin.com/in/shivsid/",
+      "image": "/images/members/shivam-siddaiya.jpg"
+    },
+    {
+      "name": "Ben Sherman",
+      "linkedin": "https://www.linkedin.com/in/beniansherman/",
+      "image": "/images/members/ben-sherman.jpg"
+    },
+    {
+      "name": "Rafael Reynal",
+      "linkedin": "https://www.linkedin.com/in/rafael-reynal/",
+      "image": "/images/members/rafael-reynal.jpg"
+    },
+    {
+      "name": "Shrey Gupta",
+      "linkedin": "https://www.linkedin.com/in/shreygu/",
+      "image": "/images/members/shrey-gupta.jpg"
+    },
+    {
+      "name": "Abhinav Bandi",
+      "linkedin": "https://www.linkedin.com/in/abhi-bandi/",
+      "image": "/images/members/abhinav-bandi.jpg"
+    },
+    {
+      "name": "Anisya Nair",
+      "linkedin": "https://www.linkedin.com/in/anisya-nair/",
+      "image": "/images/members/anisya-nair.jpg"
+    },
+    {
+      "name": "Logan Spector",
+      "linkedin": "https://www.linkedin.com/in/loganspector/",
+      "image": "/images/members/logan-spector.jpg"
+    },
+    {
+      "name": "Mac Wyman",
+      "linkedin": "https://www.linkedin.com/in/mac-wyman-962806266/",
+      "image": "/images/members/mac-wyman.jpg"
     }
   ]
 }
