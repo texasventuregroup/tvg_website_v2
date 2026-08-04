@@ -8,8 +8,9 @@ import {
   TILE, drawGrass, drawTallGrass, drawPath, drawWater, drawCliff,
   drawFloor, drawWall, drawRug, drawMat,
   makeTree, makeBush, makeFlower, makeFence, makeSign, makeLamp, makeBarrel,
-  makeRock, makeCrops, makeHouse, makeBridgeH, makeNpc, makePlayer,
+  makeRock, makeCrops, makeHouse, makeBridgeH, makeNpc,
   makeShelf, makeDesk, makePlantIn, makeMachine, makeTableIn, makeStool, makeWindowIn, PAL,
+  makeCharacter, AVATARS,
 } from './tileset';
 import {
   T_GRASS, T_PATH, T_WATER, T_TALL, T_CLIFF, T_BRIDGE, T_FLOOR, T_WALL, T_RUG, T_MAT,
@@ -60,7 +61,7 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
     };
     const bridgeH = makeBridgeH();
     const npcSprites = [makeNpc(0), makeNpc(1), makeNpc(2)];
-    const playerFrames = makePlayer();
+    const playerFrames = makeCharacter(AVATARS[session.avatar % AVATARS.length].pal);
     const houseSpriteCache = new Map<string, HTMLCanvasElement>();
     const houseSprite = (m: GameMap, i: number) => {
       const key = `${m.id}:${i}`;
@@ -412,13 +413,21 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
       if (!stateRef.current.paused && fade.dir === 0) {
         const dx = p.facing === 'left' ? -1 : p.facing === 'right' ? 1 : 0;
         const dy = p.facing === 'up' ? -1 : p.facing === 'down' ? 1 : 0;
-        const fx = p.tx + dx, fy = p.ty + dy;
-        const target =
-          map.signs.some((sg) => sg.x === fx && sg.y === fy) ||
-          map.npcs.some((np) => np.x === fx && np.y === fy);
-        if (target) {
-          const sx = (fx * TILE + TILE / 2 - camX) * scale;
-          const sy = (fy * TILE - 10 - camY) * scale + Math.sin(now / 250) * 2;
+        // same reach rules as tryInteract: adjacent tile, or over a desk/table
+        let tx2 = -1, ty2 = -1;
+        for (let reach = 1; reach <= 2; reach++) {
+          const fx = p.tx + dx * reach, fy = p.ty + dy * reach;
+          if (
+            map.signs.some((sg) => sg.x === fx && sg.y === fy) ||
+            map.npcs.some((np) => np.y === fy && (np.x === fx || (reach === 2 && Math.abs(np.x - fx) <= 1)))
+          ) { tx2 = fx; ty2 = fy; break; }
+          const overDesk = map.objects.some((o) =>
+            (o.kind === 'desk' ? fx >= o.x && fx <= o.x + 1 && fy === o.y : o.x === fx && o.y === fy && o.kind === 'table'));
+          if (!overDesk) break;
+        }
+        if (tx2 >= 0) {
+          const sx = (tx2 * TILE + TILE / 2 - camX) * scale;
+          const sy = (ty2 * TILE - 10 - camY) * scale + Math.sin(now / 250) * 2;
           ctx.fillStyle = '#fff';
           ctx.strokeStyle = '#2b3b2f';
           ctx.lineWidth = 3;

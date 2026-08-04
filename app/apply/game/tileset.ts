@@ -799,6 +799,26 @@ export const PLAYER_PAL: CharPalette = {
   top: '#c25c10', topL: '#e07a2c', topD: '#8f4208', pants: '#3a4a6a', boots: '#4a3729',
 };
 
+// selectable player avatars (chosen at registration)
+export const AVATARS: { name: string; pal: CharPalette }[] = [
+  { name: 'Scout', pal: PLAYER_PAL },
+  {
+    name: 'Sage',
+    pal: { hairL: '#3a3a44', hairD: '#26262e', skin: '#e8c098', skinS: '#c89868',
+      top: '#3f7fb5', topL: '#5f9fd0', topD: '#2c5f8a', pants: '#2f3a2f', boots: '#26201a' },
+  },
+  {
+    name: 'Ember',
+    pal: { hairL: '#d0a848', hairD: '#a07c28', skin: '#f8dcc0', skinS: '#e0b890',
+      top: '#b5455a', topL: '#d0657c', topD: '#8a3242', pants: '#3a4a6a', boots: '#4a3729' },
+  },
+  {
+    name: 'Moss',
+    pal: { hairL: '#7a4a32', hairD: '#573322', skin: '#c8935e', skinS: '#a8744a',
+      top: '#4a9a5f', topL: '#6ab87c', topD: '#357846', pants: '#44405a', boots: '#302a22' },
+  },
+];
+
 const NPC_PALS: CharPalette[] = [
   { hairL: '#4a4a55', hairD: '#30303a', skin: '#f2cda4', skinS: '#d8a878', top: '#3f7fb5', topL: '#5f9fd0', topD: '#2c5f8a', pants: '#5a4a3a', boots: '#3a2f24' },
   { hairL: '#d0a848', hairD: '#a07c28', skin: '#f8dcc0', skinS: '#e0b890', top: '#4a9a5f', topL: '#6ab87c', topD: '#357846', pants: '#3a4a6a', boots: '#4a3729' },
@@ -886,14 +906,40 @@ const CHAR_LEFT = [
   '....OOOO.OOO....',
 ];
 
-// walking frames: shift the leg rows sideways by 1px to suggest a stride
-function legFrame(base: string[], frame: number): string[] {
+// walking frames: alternate lifted/planted legs (front-facing) or a stride (side)
+const FRONT_WALK_A = [ // left leg lifted, right leg planted
+  '...OPPOO.OPPO...',
+  '...OBBO..OBBO...',
+  '...OOOO..OBBO...',
+  '.........OOOO...',
+];
+const FRONT_WALK_B = [ // right leg lifted, left leg planted
+  '...OPPOO.OPPO...',
+  '...OBBO..OBBO...',
+  '...OBBO..OOOO...',
+  '...OOOO.........',
+];
+const SIDE_WALK_A = [ // legs apart mid-stride
+  '...OPPO.OPPO....',
+  '...OBBO..OBO....',
+  '...OOOO..OOO....',
+  '................',
+];
+const SIDE_WALK_B = [ // legs passing, together
+  '.....OPPPPO.....',
+  '.....OBBBBO.....',
+  '.....OOOOOO.....',
+  '................',
+];
+
+function legFrame(base: string[], frame: number, side: boolean): string[] {
   if (frame === 0) return base;
-  const shift = frame === 1 ? 1 : -1;
-  return base.map((row, y) => {
-    if (y < 19) return row;
-    return shift > 0 ? '.' + row.slice(0, 15) : row.slice(1) + '.';
-  });
+  const legs = side
+    ? (frame === 1 ? SIDE_WALK_A : SIDE_WALK_B)
+    : (frame === 1 ? FRONT_WALK_A : FRONT_WALK_B);
+  const m = base.slice();
+  for (let i = 0; i < 4; i++) m[20 + i] = legs[i];
+  return m;
 }
 
 function drawCharMap(g: CanvasRenderingContext2D, rows: string[], pal: CharPalette, mirror: boolean) {
@@ -924,7 +970,7 @@ export function makeCharacter(pal: CharPalette): Record<string, HTMLCanvasElemen
   for (const dir of Object.keys(bases)) {
     out[dir] = [0, 1, 2].map((frame) => {
       const [c, g] = cv(16, 24);
-      const rows = legFrame(bases[dir].rows, frame);
+      const rows = legFrame(bases[dir].rows, frame, dir === 'left' || dir === 'right');
       const bob = frame !== 0 ? -1 : 0;
       g.save();
       g.translate(0, bob);

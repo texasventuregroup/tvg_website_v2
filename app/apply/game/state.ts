@@ -16,6 +16,8 @@ export interface QuestionAnswer {
 export interface ApplySession {
   name: string;
   email: string;
+  avatar: number;
+  registered: boolean; // finished the intro screen (name + avatar)
   startedAt: number;
   // world position
   mapId: string;
@@ -48,6 +50,8 @@ export function defaultSession(): ApplySession {
   return {
     name: '',
     email: '',
+    avatar: 0,
+    registered: false,
     startedAt: Date.now(),
     mapId: 'town',
     px: 24,

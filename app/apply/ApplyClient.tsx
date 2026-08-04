@@ -9,6 +9,7 @@ import {
 import { StationRouter } from './game/Stations';
 import type { Interaction } from './game/Engine';
 import type { Facing } from './game/map';
+import { AVATARS, makeCharacter, CharPalette } from './game/tileset';
 
 const Engine = dynamic(() => import('./game/Engine'), { ssr: false });
 
@@ -87,7 +88,7 @@ export default function ApplyClient() {
     );
   }
 
-  const paused = station !== null || dialog !== null || mode === 'form';
+  const paused = station !== null || dialog !== null || mode === 'form' || !session.registered;
   const required: { id: StationId; label: string }[] = [
     { id: 'welcome', label: 'Visitor Cabin' },
     { id: 'whytvg', label: 'TVG Hall' },
@@ -98,11 +99,14 @@ export default function ApplyClient() {
   return (
     <div className="fixed inset-0 z-[1000] overflow-hidden bg-[#2e6b3f]">
       {mode === 'world' && (
-        <Engine session={session} onInteract={onInteract} onMove={onMove} paused={paused} />
+        <Engine key={session.avatar} session={session} onInteract={onInteract} onMove={onMove} paused={paused} />
       )}
 
       {/* plain form (below the control bar) */}
       {mode === 'form' && <PlainForm session={session} update={update} />}
+
+      {/* registration intro for new applicants */}
+      {!session.registered && <IntroScreen update={update} />}
 
       {/* HUD checklist — hidden inside buildings and while dialog/forms are up */}
       {mode === 'world' && !curMap.startsWith('int-') && !dialog && !station && (
@@ -111,6 +115,9 @@ export default function ApplyClient() {
             <div className="mb-1 font-mono text-xs font-bold uppercase tracking-widest text-[#bf5700]">
               TVG Application · Fall 2026
             </div>
+            <p className="mb-2 max-w-[15rem] font-mono text-xs text-[#2b3b2f]">
+              ▸ {nextObjective(session)}
+            </p>
             <ul className="space-y-0.5 font-mono text-xs text-[#2b3b2f]">
               {required.map((r) => (
                 <li key={r.id}>
@@ -221,9 +228,14 @@ function PlainForm({ session, update }: { session: ApplySession; update: (p: Par
 
         <Section title="1 · About you">
           <input className={pfInput} placeholder="Full name" value={session.name}
-            onChange={(e) => update({ name: e.target.value, welcomeDone: !!e.target.value.trim() && /.+@.+\..+/.test(session.email) })} />
+            onChange={(e) => update({ name: e.target.value })} />
           <input className={pfInput} placeholder="UT email" value={session.email}
-            onChange={(e) => update({ email: e.target.value, welcomeDone: !!session.name.trim() && /.+@.+\..+/.test(e.target.value) })} />
+            onChange={(e) => update({ email: e.target.value })} />
+          <label className="mt-2 flex items-center gap-2 font-mono text-xs text-[#2b3b2f]">
+            <input type="checkbox" checked={session.welcomeDone}
+              onChange={(e) => update({ welcomeDone: e.target.checked })} />
+            I&apos;ve read how the application works (four parts below; puzzles optional).
+          </label>
         </Section>
 
         <Section title="2 · Short answers (2–3 sentences each)">
@@ -271,5 +283,79 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 className="mb-3 border-b-2 border-[#2b3b2f] pb-1 font-mono text-lg font-bold text-[#2b3b2f]">{title}</h2>
       {children}
     </section>
+  );
+}
+
+
+function nextObjective(s: ApplySession): string {
+  if (!stationComplete(s, 'welcome')) return 'Enter the Visitor Cabin (north-west house) to get oriented.';
+  if (!stationComplete(s, 'whytvg')) return 'Head to TVG Hall (big blue-roof house, north-east) for your interview questions.';
+  if (!stationComplete(s, 'artifact')) return 'Visit the Archive House (west) to leave your essay + resume.';
+  if (!stationComplete(s, 'lab')) return 'Go to the Research Lab (south-east) — read the paper, record your video.';
+  if (!s.submitted) return 'All required steps done! Submit below — or try the Puzzle Woods (east road).';
+  return 'Application submitted. The Puzzle Woods are still open if you want the leaderboard.';
+}
+
+function AvatarPreview({ pal, big }: { pal: CharPalette; big?: boolean }) {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const c = ref.current!;
+    const g = c.getContext('2d')!;
+    g.imageSmoothingEnabled = false;
+    g.clearRect(0, 0, c.width, c.height);
+    g.drawImage(makeCharacter(pal).down[0], 0, 0, 16, 24, 0, 0, c.width, c.height);
+  }, [pal]);
+  const w = big ? 64 : 48;
+  return <canvas ref={ref} width={w} height={(w / 16) * 24} style={{ imageRendering: 'pixelated' }} />;
+}
+
+function IntroScreen({ update }: { update: (p: Partial<ApplySession>) => void }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [avatar, setAvatar] = useState(0);
+  const ready = name.trim().length > 1 && /.+@.+\..+/.test(email);
+  return (
+    <div className="absolute inset-0 z-[70] flex items-center justify-center bg-[#10160f]/90 p-4">
+      <div className="w-full max-w-lg border-2 border-[#20242c] bg-[#fdf9ea] p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.5)] outline outline-2 outline-offset-2 outline-[#fdf9ea]">
+        <h1 className="font-mono text-xl font-bold uppercase tracking-widest text-[#bf5700]">TVG Grove</h1>
+        <p className="mb-4 mt-1 font-mono text-xs text-[#2b3b2f]">
+          Fall 2026 application · Explore the town. Four marked houses hold the four parts of
+          your application — walk into a doorway to enter, and talk to the host inside (Z).
+          Everything autosaves, so you can leave and come back.
+        </p>
+        <label className="mb-1 block font-mono text-xs font-bold text-[#2b3b2f]">YOUR NAME</label>
+        <input
+          className="mb-3 w-full border-2 border-[#20242c] bg-white p-2 font-mono text-sm text-[#2b3b2f] focus:outline-none focus:ring-2 focus:ring-[#bf5700]"
+          value={name} onChange={(e) => setName(e.target.value)} placeholder="Bevo Longhorn" autoFocus
+        />
+        <label className="mb-1 block font-mono text-xs font-bold text-[#2b3b2f]">UT EMAIL</label>
+        <input
+          className="mb-3 w-full border-2 border-[#20242c] bg-white p-2 font-mono text-sm text-[#2b3b2f] focus:outline-none focus:ring-2 focus:ring-[#bf5700]"
+          value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@utexas.edu"
+        />
+        <label className="mb-1 block font-mono text-xs font-bold text-[#2b3b2f]">CHOOSE YOUR TRAINER</label>
+        <div className="mb-4 flex gap-3">
+          {AVATARS.map((a, i) => (
+            <button
+              key={a.name}
+              onClick={() => setAvatar(i)}
+              className={`flex flex-col items-center gap-1 border-2 p-2 ${
+                avatar === i ? 'border-[#bf5700] bg-[#fce8d4]' : 'border-[#20242c] bg-white hover:bg-gray-50'
+              }`}
+            >
+              <AvatarPreview pal={a.pal} />
+              <span className="font-mono text-[10px] font-bold text-[#2b3b2f]">{a.name}</span>
+            </button>
+          ))}
+        </div>
+        <button
+          disabled={!ready}
+          onClick={() => update({ name: name.trim(), email: email.trim(), avatar, registered: true })}
+          className="w-full border-2 border-[#20242c] bg-[#c25c10] px-4 py-2 font-mono text-sm font-bold text-white shadow-[3px_3px_0_0_rgba(32,36,44,0.4)] hover:bg-[#d8692a] active:translate-y-[2px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
+        >
+          ▸ ENTER TVG GROVE
+        </button>
+      </div>
+    </div>
   );
 }

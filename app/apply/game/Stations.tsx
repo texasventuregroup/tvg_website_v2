@@ -61,43 +61,30 @@ const inputCls =
 
 // ---------- Welcome ----------
 export function WelcomeStation({ session, update, onClose }: StationProps) {
-  const [name, setName] = useState(session.name);
-  const [email, setEmail] = useState(session.email);
-  const [page, setPage] = useState(0);
   return (
     <Window title="Visitor Cabin" onClose={onClose}>
-      {page === 0 ? (
-        <div className="space-y-3 font-mono text-sm leading-relaxed">
-          <p>
-            Oh! A new face. Welcome to <b>TVG Grove</b>.
-          </p>
-          <p>
-            Here&apos;s how it works: four houses hold the four parts of your application.
-            Visit them in any order. The puzzle district across the east bridge is optional —
-            but the top five solvers go straight to interviews.
-          </p>
-          <p>Everything you type is saved on this device, so you can leave and come back.</p>
-          <p>First — who are you?</p>
-          <button className={btn} onClick={() => setPage(1)}>▸ Next</button>
-        </div>
-      ) : (
-        <div className="space-y-3">
-          <label className="block font-mono text-sm font-bold">Full name</label>
-          <input className={inputCls} value={name} onChange={(e) => setName(e.target.value)} placeholder="Bevo Longhorn" />
-          <label className="block font-mono text-sm font-bold">UT email</label>
-          <input className={inputCls} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@utexas.edu" />
-          <button
-            className={btn}
-            disabled={!name.trim() || !/.+@.+\..+/.test(email)}
-            onClick={() => {
-              update({ name: name.trim(), email: email.trim(), welcomeDone: true });
-              onClose();
-            }}
-          >
-            ▸ Register
-          </button>
-        </div>
-      )}
+      <div className="space-y-3 font-mono text-sm leading-relaxed">
+        <p>
+          Welcome{session.name ? `, ${session.name.split(' ')[0]}` : ''}! You&apos;re checked in. Here&apos;s
+          the lay of the land:
+        </p>
+        <ul className="list-none space-y-1">
+          <li>◆ <b>TVG Hall</b> (blue roof, north-east) — four interview questions, 2–3 sentences each.</li>
+          <li>◆ <b>Archive House</b> (west) — leave an essay on anything you care about, plus your resume.</li>
+          <li>◆ <b>Research Lab</b> (south-east) — read a short paper, then record a 3-minute video explaining it.</li>
+          <li>◆ <b>Puzzle Woods</b> (east road) — optional. Top 5 on the leaderboard go straight to interviews.</li>
+        </ul>
+        <p>Do them in any order. Your progress saves on this device automatically.</p>
+        <button
+          className={btn}
+          onClick={() => {
+            update({ welcomeDone: true });
+            onClose();
+          }}
+        >
+          ▸ Got it — let&apos;s go
+        </button>
+      </div>
     </Window>
   );
 }
