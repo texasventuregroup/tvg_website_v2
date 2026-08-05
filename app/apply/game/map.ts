@@ -116,18 +116,27 @@ function newMap(id: string, name: string, w: number, h: number, outdoor: boolean
   return { m, set, get, rect, block, solid, deco };
 }
 
+// The door graphic is centered on the house's pixel midline: a single tile for
+// odd widths, the middle two tiles (the seam) for even widths.
+export function doorTiles(def: HouseDef): number[] {
+  return def.w % 2 === 0
+    ? [def.x + def.w / 2 - 1, def.x + def.w / 2]
+    : [def.x + Math.floor(def.w / 2)];
+}
+
 // place a house plus its door warp into an interior map
 function placeHouse(b: Builder, def: HouseDef) {
   b.m.houses.push(def);
   for (let y = def.y; y < def.y + def.h; y++)
     for (let x = def.x; x < def.x + def.w; x++) b.block(x, y);
-  const doorX = def.x + Math.floor(def.w / 2);
   const doorY = def.y + def.h - 1; // bottom wall row where the door graphic sits
-  // door tile is walkable and warps inside
-  b.m.collision[doorY * b.m.w + doorX] = 0;
-  b.m.warps.push({ x: doorX, y: doorY, toMap: `int-${def.id}`, toX: 0, toY: 0, facing: 'up' });
-  // path stub below the door
-  b.rect(doorX, def.y + def.h, doorX, def.y + def.h + 1, T_PATH);
+  const dts = doorTiles(def);
+  for (const dx of dts) {
+    b.m.collision[doorY * b.m.w + dx] = 0;
+    b.m.warps.push({ x: dx, y: doorY, toMap: `int-${def.id}`, toX: 0, toY: 0, facing: 'up' });
+  }
+  // path stub below the door, as wide as the doorway
+  b.rect(dts[0], def.y + def.h, dts[dts.length - 1], def.y + def.h + 1, T_PATH);
 }
 
 // decorative house: no interior, door is blocked, a sign explains it
@@ -135,7 +144,8 @@ function placeDecoHouse(b: Builder, def: HouseDef) {
   b.m.houses.push(def);
   for (let y = def.y; y < def.y + def.h; y++)
     for (let x = def.x; x < def.x + def.w; x++) b.block(x, y);
-  b.rect(def.x + Math.floor(def.w / 2), def.y + def.h, def.x + Math.floor(def.w / 2), def.y + def.h + 1, T_PATH);
+  const dts = doorTiles(def);
+  b.rect(dts[0], def.y + def.h, dts[dts.length - 1], def.y + def.h + 1, T_PATH);
 }
 
 // ---------------- TOWN ----------------
@@ -155,7 +165,7 @@ export function buildTown(): GameMap {
   rect(37, 45, 38, 51, T_PATH);  // lane to the south edge
   rect(12, 24, 23, 25, T_PATH);  // west branch to the Archive House
   rect(10, 15, 11, 23, T_PATH);  // northwest lane linking main road to the west branch
-  rect(34, 5, 35, 12, T_PATH);   // TVG Hall drive
+  rect(33, 5, 34, 12, T_PATH);   // TVG Hall drive
   rect(7, 9, 7, 12, T_PATH);     // Visitor Cabin walk
 
   // water
@@ -265,10 +275,10 @@ export function buildTown(): GameMap {
     for (let x = x0 + 1; x < x1; x++) { place(x, y0, 'fenceH'); place(x, y1, 'fenceH'); }
     for (let y = y0 + 1; y < y1; y++) { place(x0, y, 'fenceV'); place(x1, y, 'fenceV'); }
   };
-  fenceYard(28, 2, 39, 10, [[34, 10], [35, 10]]);
+  fenceYard(28, 2, 39, 10, [[33, 10], [34, 10]]);
   fenceYard(3, 3, 12, 10, [[7, 10], [8, 10]]);
   fenceYard(6, 15, 15, 22, [[11, 22], [12, 22]]);
-  fenceYard(47, 5, 58, 12, [[53, 12], [54, 12]]);
+  fenceYard(47, 5, 58, 12, [[52, 12], [53, 12]]);
 
   // decor
   const flowersSpots: [number, number][] = [
@@ -320,7 +330,7 @@ export function buildTown(): GameMap {
         'Your progress saves automatically. Leave and come back anytime.',
       ],
     },
-    { x: 33, y: 10, variant: 1, lines: ['The Hall folks ask real questions. Two to three sentences each - make them count.'] },
+    { x: 32, y: 10, variant: 1, lines: ['The Hall folks ask real questions. Two to three sentences each - make them count.'] },
     { x: 42, y: 32, variant: 2, lines: ['Keep east past the bridge for the Puzzle Woods. The puzzles are hard, but they are worth bonus points on your application.'] },
   ];
   for (const n of b.m.npcs) block(n.x, n.y);
@@ -614,16 +624,19 @@ export function buildAllMaps(): Record<string, GameMap> {
     for (const h of outdoor.houses) {
       if (h.deco) continue;
       const int = maps[`int-${h.id}`];
-      const doorX = h.x + Math.floor(h.w / 2);
+      const dts = doorTiles(h);
       const doorY = h.y + h.h - 1;
       const mx = Math.floor(int.w / 2);
-      const doorWarp = outdoor.warps.find((wp) => wp.x === doorX && wp.y === doorY)!;
-      doorWarp.toX = mx;
-      doorWarp.toY = int.h - 2; // just above the mat
+      for (const wp of outdoor.warps) {
+        if (wp.toMap === `int-${h.id}`) {
+          wp.toX = mx;
+          wp.toY = int.h - 2; // just above the mat
+        }
+      }
       for (const wp of int.warps) {
         if (wp.toMap === '') {
           wp.toMap = outdoor.id;
-          wp.toX = doorX;
+          wp.toX = dts[0];
           wp.toY = doorY + 1; // on the stub below the door
         }
       }
