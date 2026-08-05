@@ -25,7 +25,6 @@ const fileSystem: Record<string, FSNode> = {
 ╚══════════════════════════════════════════════════════╝
 
 The ecosystem for student investors and founders.
-Exploration is not just about where you go, but who you go with.
 
 > Founded at The University of Texas at Austin
 > Domains: Enterprise, Fintech, Healthcare, AI/ML, Consumer, Defense

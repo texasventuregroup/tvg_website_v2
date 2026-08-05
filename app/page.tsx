@@ -75,10 +75,7 @@ export default async function Home() {
 
             {/* Tagline */}
             <div className="max-w-[500px] animate-fade-up" style={{ animationDelay: '0.6s' }}>
-              <p className="font-semibold tracking-tight text-[clamp(1rem,2.5vw,1.25rem)] leading-snug border-l border-[#016F4E] pl-5">
-                Exploration isn&apos;t just about where you go,<br />but who you go with.
-              </p>
-              <p className="font-semibold tracking-tight text-[clamp(0.875rem,2vw,1rem)] mt-4 opacity-60 pl-5">
+              <p className="font-semibold tracking-tight text-[clamp(0.875rem,2vw,1rem)] opacity-60">
                 The ecosystem for student investors and founders at UT Austin.
               </p>
             </div>

@@ -38,7 +38,7 @@ const libre = Libre_Baskerville({
 export const metadata: Metadata = {
   metadataBase: new URL('https://tvg-react.vercel.app'),
   title: 'Texas Venture Group | Student Venture Capital & Entrepreneurship',
-  description: 'The ecosystem for student investors and founders at UT Austin. Exploration is not just about where you go, but who you go with.',
+  description: 'The ecosystem for student investors and founders at UT Austin.',
   keywords: ['Venture Capital', 'Entrepreneurship', 'UT Austin', 'Student Startups', 'Texas Venture Group', 'TVG'],
   alternates: {
     canonical: '/',
