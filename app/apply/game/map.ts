@@ -147,7 +147,7 @@ export function buildTown(): GameMap {
 
   // paths
   rect(24, 0, 25, 13, T_PATH);
-  rect(10, 13, 38, 14, T_PATH);
+  rect(10, 13, 55, 14, T_PATH);
   rect(21, 15, 22, 26, T_PATH);
   rect(12, 24, 21, 25, T_PATH);
   rect(23, 26, 26, 27, T_PATH);
@@ -157,11 +157,9 @@ export function buildTown(): GameMap {
   rect(25, 35, 26, 44, T_PATH);
   rect(15, 43, 25, 44, T_PATH);
   rect(27, 43, 40, 44, T_PATH);
-  rect(16, 45, 17, 47, T_PATH);
-  rect(39, 45, 40, 46, T_PATH);
+
   rect(10, 15, 11, 22, T_PATH);
-  rect(33, 15, 34, 20, T_PATH);
-  rect(34, 20, 35, 21, T_PATH);
+
   rect(34, 5, 35, 13, T_PATH);
   rect(23, 15, 25, 16, T_PATH);
   rect(7, 9, 7, 13, T_PATH);
@@ -184,6 +182,9 @@ export function buildTown(): GameMap {
   rect(47, 38, 47, 41, T_WATER);
   rect(43, 43, 43, 46, T_WATER);
   rect(47, 47, 47, 50, T_WATER);
+  rect(56, 20, 60, 23, T_WATER);
+  rect(55, 21, 56, 22, T_WATER);
+  rect(60, 21, 61, 22, T_WATER);
   rect(44, 33, 46, 34, T_BRIDGE);
   rect(24, 0, 25, 1, T_BRIDGE);
 
@@ -193,10 +194,10 @@ export function buildTown(): GameMap {
   placeHouse(b, { id: 'welcome', label: 'Visitor Cabin', x: 5, y: 5, w: 5, h: 4, roof: 'green', wall: 'wood' });
   placeHouse(b, { id: 'whytvg', label: 'TVG Hall', x: 31, y: 4, w: 6, h: 5, roof: 'blue', wall: 'wood', big: true });
   placeHouse(b, { id: 'artifact', label: 'Archive House', x: 9, y: 17, w: 5, h: 4, roof: 'green', wall: 'gray' });
-  placeHouse(b, { id: 'lab', label: 'Research Lab', x: 32, y: 15, w: 6, h: 5, roof: 'green', wall: 'gray', big: true });
+  placeHouse(b, { id: 'lab', label: 'Research Lab', x: 50, y: 7, w: 6, h: 5, roof: 'green', wall: 'gray', big: true });
 
   // decorative homes in the south district (no interiors)
-  placeDecoHouse(b, { id: 'welcome', label: 'Cottage', x: 12, y: 38, w: 4, h: 4, roof: 'blue', wall: 'wood', deco: true });
+  placeDecoHouse(b, { id: 'welcome', label: 'Cottage', x: 14, y: 38, w: 4, h: 4, roof: 'blue', wall: 'wood', deco: true });
   placeDecoHouse(b, { id: 'welcome', label: 'Cottage', x: 34, y: 38, w: 4, h: 4, roof: 'green', wall: 'wood', deco: true });
 
   // forest border wall
@@ -252,6 +253,9 @@ export function buildTown(): GameMap {
         if (get(x, y) === T_GRASS && !collision[y * W + x] && hash(x, y, 31) < 0.85) set(x, y, T_TALL);
   };
   tallPatch(28, 24, 3, 2);
+  tallPatch(51, 17, 3, 2);
+  tallPatch(58, 27, 3, 2);
+  tallPatch(50, 38, 3, 2);
   tallPatch(15, 30, 3, 2);
   tallPatch(29, 7, 2, 2);
 
@@ -271,6 +275,7 @@ export function buildTown(): GameMap {
   fenceYard(28, 2, 39, 10, [[34, 10], [35, 10]]);
   fenceYard(3, 3, 12, 10, [[7, 10], [8, 10]]);
   fenceYard(6, 15, 15, 22, [[11, 22], [12, 22]]);
+  fenceYard(47, 5, 58, 12, [[53, 12], [54, 12]]);
 
   // decor
   const flowersSpots: [number, number][] = [
@@ -291,7 +296,7 @@ export function buildTown(): GameMap {
       else deco(x, y, 'bush', Math.floor(hash(x, y, 49) * 2));
     }
   const bushSpots: [number, number][] = [
-    [19, 6], [26, 10], [16, 16], [26, 22], [12, 28], [30, 28], [36, 25], [28, 17],
+    [19, 6], [26, 10], [16, 16], [26, 22], [12, 28], [30, 28], [36, 25], [28, 17], [52, 30], [58, 36],
   ];
   for (const [x, y] of bushSpots)
     if (get(x, y) === T_GRASS && !collision[y * W + x]) solid(x, y, 'bush', Math.floor(hash(x, y, 43) * 2));

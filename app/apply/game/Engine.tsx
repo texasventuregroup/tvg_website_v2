@@ -238,9 +238,14 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
       keys.add(k.toLowerCase());
       if (k.toLowerCase() === 'm' && map.outdoor) {
         overview = !overview;
+        window.dispatchEvent(new CustomEvent('tvg-overview', { detail: overview }));
         return;
       }
-      if (overview) { overview = false; return; }
+      if (overview) {
+        overview = false;
+        window.dispatchEvent(new CustomEvent('tvg-overview', { detail: false }));
+        return;
+      }
       if ((k === 'Enter' || k === ' ' || k.toLowerCase() === 'z' || k.toLowerCase() === 'e') && fade.dir === 0) {
         tryInteract();
       }

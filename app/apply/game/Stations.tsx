@@ -79,7 +79,7 @@ export function WelcomeStation({ session, update, onClose }: StationProps) {
         <ul className="list-none space-y-1">
           <li>◆ <b>TVG Hall</b> (blue roof, north-east) - four interview questions, 2-3 sentences each.</li>
           <li>◆ <b>Archive House</b> (west) - leave an essay on anything you care about, plus your resume.</li>
-          <li>◆ <b>Research Lab</b> (south-east) - read a short paper, then record a 3-minute video explaining it.</li>
+          <li>◆ <b>Research Lab</b> (east end of the main road) - read a short paper, then record a 3-minute video explaining it.</li>
           <li>◆ <b>Puzzle Woods</b> (east road) - optional. Top 5 on the leaderboard go straight to interviews.</li>
         </ul>
         <p>Do them in any order. Your progress saves on this device automatically.</p>

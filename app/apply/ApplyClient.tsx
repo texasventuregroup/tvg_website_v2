@@ -20,6 +20,7 @@ export default function ApplyClient() {
   const [dialog, setDialog] = useState<{ lines: string[]; station?: StationId } | null>(null);
   const [dialogIdx, setDialogIdx] = useState(0);
   const [curMap, setCurMap] = useState('town');
+  const [overview, setOverview] = useState(false);
   const sessionRef = useRef<ApplySession | null>(null);
 
   useEffect(() => {
@@ -27,6 +28,9 @@ export default function ApplyClient() {
     sessionRef.current = s;
     setSession(s);
     setCurMap(s.mapId);
+    const h = (e: Event) => setOverview((e as CustomEvent).detail as boolean);
+    window.addEventListener('tvg-overview', h);
+    return () => window.removeEventListener('tvg-overview', h);
   }, []);
 
   const update = useCallback((patch: Partial<ApplySession>) => {
@@ -109,7 +113,7 @@ export default function ApplyClient() {
       {!session.registered && <IntroScreen update={update} />}
 
       {/* HUD checklist - hidden inside buildings and while dialog/forms are up */}
-      {mode === 'world' && !curMap.startsWith('int-') && !dialog && !station && (
+      {mode === 'world' && !curMap.startsWith('int-') && !dialog && !station && !overview && (
         <div className="pointer-events-none absolute left-4 top-4 z-40 select-none">
           <div className="pointer-events-auto border-2 border-[#20242c] bg-[#fffdf4] px-4 py-3 shadow-[4px_4px_0_0_rgba(32,36,44,0.4)] outline outline-2 outline-offset-2 outline-[#fffdf4]">
             <div className="mb-1 font-mono text-xs font-bold uppercase tracking-widest text-[#bf5700]">
@@ -262,7 +266,7 @@ function PlainForm({ session, update }: { session: ApplySession; update: (p: Par
         <Section title="4 · Paper + video">
           <p className="font-mono text-sm text-[#2b3b2f]">
             The reading and 3-minute video recording live in the world - enter the <b>Research Lab</b> (the big house
-            southeast of the crossroads). {session.labVideoSubmitted ? '✓ Done.' : 'Not done yet.'}
+            at the east end of the main road). {session.labVideoSubmitted ? '✓ Done.' : 'Not done yet.'}
           </p>
         </Section>
 
@@ -291,7 +295,7 @@ function nextObjective(s: ApplySession): string {
   if (!stationComplete(s, 'welcome')) return 'Enter the Visitor Cabin (north-west house) to get oriented.';
   if (!stationComplete(s, 'whytvg')) return 'Head to TVG Hall (big blue-roof house, north-east) for your interview questions.';
   if (!stationComplete(s, 'artifact')) return 'Visit the Archive House (west) to leave your essay + resume.';
-  if (!stationComplete(s, 'lab')) return 'Go to the Research Lab (south-east) - read the paper, record your video.';
+  if (!stationComplete(s, 'lab')) return 'Follow the main road east to the Research Lab - read the paper, record your video.';
   if (!s.submitted) return 'All required steps done! Submit below - or try the Puzzle Woods (east road).';
   return 'Application submitted. The Puzzle Woods are still open if you want the leaderboard.';
 }
