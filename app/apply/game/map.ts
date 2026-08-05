@@ -145,26 +145,18 @@ export function buildTown(): GameMap {
   const { rect, set, get, block, solid, deco } = b;
   const collision = b.m.collision;
 
-  // paths
-  rect(24, 0, 25, 13, T_PATH);
-  rect(0, 13, 55, 14, T_PATH); // main road, open to the west edge
-  rect(21, 15, 22, 26, T_PATH);
-  rect(12, 24, 21, 25, T_PATH);
-  rect(23, 26, 26, 27, T_PATH);
-  rect(25, 27, 26, 33, T_PATH);
-  rect(27, 33, 67, 34, T_PATH); // east road runs off the map edge into the Puzzle Woods
-  // south district: promenade down to the lakeside park
-  rect(25, 35, 26, 44, T_PATH);
-  rect(15, 43, 25, 44, T_PATH);
-  rect(27, 43, 40, 44, T_PATH);
-  rect(37, 45, 38, 51, T_PATH); // lane to the south edge
-
-  rect(10, 15, 11, 22, T_PATH);
-
-  rect(34, 5, 35, 13, T_PATH);
-  rect(23, 15, 25, 16, T_PATH);
-  rect(7, 9, 7, 13, T_PATH);
-  rect(11, 21, 11, 24, T_PATH);
+  // paths: every segment is a straight 2-tile ribbon meeting at aligned junctions
+  rect(24, 0, 25, 12, T_PATH);   // north path, from the top bridge
+  rect(0, 13, 55, 14, T_PATH);   // main road, open to the west edge
+  rect(24, 15, 25, 32, T_PATH);  // south street, straight under the north path
+  rect(24, 33, 67, 34, T_PATH);  // east road to the Puzzle Woods
+  rect(24, 35, 25, 42, T_PATH);  // promenade down to the lakeside park
+  rect(15, 43, 40, 44, T_PATH);  // lakeside path
+  rect(37, 45, 38, 51, T_PATH);  // lane to the south edge
+  rect(12, 24, 23, 25, T_PATH);  // west branch to the Archive House
+  rect(10, 15, 11, 23, T_PATH);  // northwest lane linking main road to the west branch
+  rect(34, 5, 35, 12, T_PATH);   // TVG Hall drive
+  rect(7, 9, 7, 12, T_PATH);     // Visitor Cabin walk
 
   // water
   rect(12, 4, 17, 8, T_WATER);
