@@ -200,6 +200,7 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
       p.tx = 24; p.ty = 16; p.x = 24 * TILE; p.y = 16 * TILE;
     }
     const fade = { alpha: 0, dir: 0 as -1 | 0 | 1, pending: null as null | { m: GameMap; x: number; y: number; facing: Facing } };
+    let overview = false;
     const keys = new Set<string>();
 
     const blocked = (x: number, y: number) => {
@@ -235,6 +236,11 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
       const k = e.key;
       if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(k)) e.preventDefault();
       keys.add(k.toLowerCase());
+      if (k.toLowerCase() === 'm' && map.outdoor) {
+        overview = !overview;
+        return;
+      }
+      if (overview) { overview = false; return; }
       if ((k === 'Enter' || k === ' ' || k.toLowerCase() === 'z' || k.toLowerCase() === 'e') && fade.dir === 0) {
         tryInteract();
       }
@@ -287,7 +293,7 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
         }
       }
 
-      if (!stateRef.current.paused && fade.dir === 0) {
+      if (!stateRef.current.paused && fade.dir === 0 && !overview) {
         if (!p.moving) {
           let dir: Facing | null = null;
           if (keys.has('arrowup') || keys.has('w')) dir = 'up';
@@ -328,7 +334,8 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
 
       // ---- render ----
       const debugMap = window.location.search.includes('debugmap');
-      const scale = debugMap
+      const fitAll = debugMap || overview;
+      const scale = fitAll
         ? Math.min(canvas.width / (map.w * TILE), canvas.height / (map.h * TILE))
         : map.outdoor
           ? SCALE
@@ -357,6 +364,7 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
       for (let i = 0; i < map.houses.length; i++) {
         const h = map.houses[i];
         ctx.drawImage(houseSprite(map, i), h.x * TILE, h.y * TILE);
+        if (h.deco) continue;
         const done = stationComplete(stateRef.current.session, h.id);
         const required = ['welcome', 'whytvg', 'artifact', 'lab'].includes(h.id);
         if (!done && !required) continue;
@@ -426,16 +434,48 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
           if (!overDesk) break;
         }
         if (tx2 >= 0) {
+          const isNpc = map.npcs.some((np) => np.y === ty2 && Math.abs(np.x - tx2) <= 1);
+          const label = isNpc ? 'PRESS Z TO TALK' : 'PRESS Z TO READ';
           const sx = (tx2 * TILE + TILE / 2 - camX) * scale;
-          const sy = (ty2 * TILE - 10 - camY) * scale + Math.sin(now / 250) * 2;
-          ctx.fillStyle = '#fff';
-          ctx.strokeStyle = '#2b3b2f';
-          ctx.lineWidth = 3;
-          ctx.font = `bold ${Math.round(7 * scale)}px monospace`;
+          const sy = (ty2 * TILE - 12 - camY) * scale + Math.sin(now / 250) * 2;
+          ctx.font = `bold ${Math.round(4.5 * scale)}px monospace`;
           ctx.textAlign = 'center';
-          ctx.strokeText('Z', sx, sy);
-          ctx.fillText('Z', sx, sy);
+          const tw = ctx.measureText(label).width + 10 * (scale / 2.5);
+          const th = 7 * scale;
+          ctx.fillStyle = 'rgba(32,36,44,0.92)';
+          ctx.fillRect(sx - tw / 2, sy - th / 2, tw, th);
+          ctx.fillStyle = '#fffdf4';
+          ctx.fillRect(sx - tw / 2, sy - th / 2, tw, 1);
+          ctx.fillRect(sx - tw / 2, sy + th / 2 - 1, tw, 1);
+          ctx.fillText(label, sx, sy + 1.6 * scale);
+          // small tail pointing down at the target
+          ctx.fillStyle = 'rgba(32,36,44,0.92)';
+          ctx.beginPath();
+          ctx.moveTo(sx - 3, sy + th / 2);
+          ctx.lineTo(sx + 3, sy + th / 2);
+          ctx.lineTo(sx, sy + th / 2 + 5);
+          ctx.fill();
         }
+      }
+
+      // overview mode: blinking player blip + banner
+      if (overview) {
+        if (Math.floor(now / 350) % 2 === 0) {
+          const bx = (p.x + TILE / 2 - camX) * scale;
+          const by = (p.y + TILE / 2 - camY) * scale;
+          ctx.fillStyle = '#20242c';
+          ctx.fillRect(bx - 5, by - 5, 10, 10);
+          ctx.fillStyle = '#e83a2e';
+          ctx.fillRect(bx - 3, by - 3, 6, 6);
+        }
+        ctx.font = 'bold 13px monospace';
+        ctx.textAlign = 'center';
+        const msg = `${map.name.toUpperCase()} · PRESS M TO CLOSE MAP`;
+        const mw2 = ctx.measureText(msg).width + 24;
+        ctx.fillStyle = 'rgba(32,36,44,0.92)';
+        ctx.fillRect(canvas.width / 2 - mw2 / 2, 14, mw2, 26);
+        ctx.fillStyle = '#fffdf4';
+        ctx.fillText(msg, canvas.width / 2, 31);
       }
 
       // fade overlay

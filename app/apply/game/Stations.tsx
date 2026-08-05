@@ -7,23 +7,31 @@ import { useEffect, useRef, useState } from 'react';
 import { ApplySession, StationId, WHY_TVG_QUESTIONS } from './state';
 
 const PAPER = {
-  title: 'The Power Law: Venture Capital and the Making of the New Future (excerpt)',
-  body: `Venture returns do not follow a normal distribution. They follow a power law: a tiny
-number of investments produce nearly all of a fund's returns, while most return little or
-nothing. If a fund makes twenty investments, history suggests one or two will matter.
+  title: 'Fast Inference from Transformers via Speculative Decoding (Leviathan, Kalman, Matias, 2023)',
+  body: `Large language models generate text one token at a time, and each token requires a full
+forward pass through the model. Because every step depends on the previous one, generation is
+serial: a 70B-parameter model producing 500 tokens must run 500 expensive passes, one after
+another, even though modern accelerators are mostly idle waiting on memory during each pass.
 
-This has strange consequences. A rational venture investor should not ask "is this likely
-to work?" — most things that changed the world looked unlikely. The right question is
-"if this works, how big can it get?" A 95% chance of failure is acceptable if the 5%
-case returns 100x. This is why venture capitalists are systematically drawn to ideas
-that sound unreasonable: reasonable ideas have capped upside, and capped upside cannot
-carry a portfolio governed by a power law.
+Speculative decoding attacks this bottleneck with a simple observation: many tokens are easy.
+Filler words, obvious continuations, and boilerplate do not need a huge model to predict. So the
+method uses two models. A small, fast "draft" model races ahead and proposes several tokens
+(say, 5) in a row. Then the large "target" model checks all of those proposals in a single
+batched forward pass, which costs roughly the same as generating one token normally.
 
-The discipline this demands is emotional, not analytical. Power-law investing means being
-wrong most of the time in public, and staying in the game long enough for the tail event
-to arrive. Funds that cut their winners early — or that diversify into comfort — convert
-a power-law portfolio back into a mediocre one. The math rewards conviction held over
-years, which is precisely what most humans, and most institutions, find hardest to do.`,
+The clever part is the verification rule. For each drafted token, the target model compares its
+own probability for that token against the draft model's. Tokens the target model agrees with
+are accepted; at the first disagreement, the drafted token is rejected and replaced with a
+token sampled from a corrected distribution. This acceptance-rejection scheme is constructed so
+the final output has exactly the same distribution as sampling from the large model alone. The
+speedup is real but the text is provably unchanged in distribution: no quality is sacrificed.
+
+In practice, if the draft model guesses well, several tokens are accepted per expensive pass,
+yielding 2-3x faster generation with identical outputs. The technique costs extra compute
+(the draft model runs too, and rejected work is discarded) but saves what actually matters:
+wall-clock latency, which is dominated by the serial passes of the large model. It has become a
+standard serving optimization, and the core idea, spend cheap speculation to fill an expensive
+serial pipeline, shows up across computer architecture, from branch prediction to prefetching.`,
 };
 
 function Window({ title, children, onClose, wide }: {
@@ -69,10 +77,10 @@ export function WelcomeStation({ session, update, onClose }: StationProps) {
           the lay of the land:
         </p>
         <ul className="list-none space-y-1">
-          <li>◆ <b>TVG Hall</b> (blue roof, north-east) — four interview questions, 2–3 sentences each.</li>
-          <li>◆ <b>Archive House</b> (west) — leave an essay on anything you care about, plus your resume.</li>
-          <li>◆ <b>Research Lab</b> (south-east) — read a short paper, then record a 3-minute video explaining it.</li>
-          <li>◆ <b>Puzzle Woods</b> (east road) — optional. Top 5 on the leaderboard go straight to interviews.</li>
+          <li>◆ <b>TVG Hall</b> (blue roof, north-east) - four interview questions, 2-3 sentences each.</li>
+          <li>◆ <b>Archive House</b> (west) - leave an essay on anything you care about, plus your resume.</li>
+          <li>◆ <b>Research Lab</b> (south-east) - read a short paper, then record a 3-minute video explaining it.</li>
+          <li>◆ <b>Puzzle Woods</b> (east road) - optional. Top 5 on the leaderboard go straight to interviews.</li>
         </ul>
         <p>Do them in any order. Your progress saves on this device automatically.</p>
         <button
@@ -82,7 +90,7 @@ export function WelcomeStation({ session, update, onClose }: StationProps) {
             onClose();
           }}
         >
-          ▸ Got it — let&apos;s go
+          ▸ Got it - let&apos;s go
         </button>
       </div>
     </Window>
@@ -101,12 +109,12 @@ export function WhyTvgStation({ session, update, onClose }: StationProps) {
     update({ whyTvg: next });
   };
   return (
-    <Window title={`TVG Hall — question ${idx + 1} of ${WHY_TVG_QUESTIONS.length}`} onClose={() => { save(); onClose(); }} wide>
+    <Window title={`TVG Hall - question ${idx + 1} of ${WHY_TVG_QUESTIONS.length}`} onClose={() => { save(); onClose(); }} wide>
       <div className="space-y-3">
         <p className="font-mono text-sm leading-relaxed">
           <b>Interviewer:</b> {qa.q}
         </p>
-        <p className="font-mono text-xs text-gray-600">Answer in 2–3 sentences. ({words} words)</p>
+        <p className="font-mono text-xs text-gray-600">Answer in 2-3 sentences. ({words} words)</p>
         <textarea
           className={`${inputCls} h-28`}
           value={draft}
@@ -147,13 +155,13 @@ export function ArtifactStation({ session, update, onClose }: StationProps) {
   const fileRef = useRef<HTMLInputElement>(null);
   const words = essay.trim() ? essay.trim().split(/\s+/).length : 0;
   return (
-    <Window title="Archive House — your artifact" onClose={onClose} wide>
+    <Window title="Archive House - your artifact" onClose={onClose} wide>
       <div className="space-y-3">
         <p className="font-mono text-sm leading-relaxed">
           The archivist slides a blank page across the desk. <b>&quot;Leave something behind.
           An essay on any topic you actually care about. And your resume, for the record.&quot;</b>
         </p>
-        <p className="font-mono text-xs text-gray-600">Essay — any topic, ~300–500 words. ({words} words)</p>
+        <p className="font-mono text-xs text-gray-600">Essay - any topic, ~300-500 words. ({words} words)</p>
         <textarea
           className={`${inputCls} h-56`}
           value={essay}
@@ -196,14 +204,31 @@ export function LabStation({ session, update, onClose }: StationProps) {
     session.labVideoSubmitted ? 'done' : session.labPaperOpened ? 'record' : 'paper',
   );
   const videoRef = useRef<HTMLVideoElement>(null);
+  const boardRef = useRef<HTMLCanvasElement>(null);       // the whiteboard the candidate draws on
+  const compositeRef = useRef<HTMLCanvasElement | null>(null); // board + camera PiP, what gets recorded
+  const rafRef = useRef(0);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
+  const drawingRef = useRef(false);
+  const lastPtRef = useRef<{ x: number; y: number } | null>(null);
   const [recording, setRecording] = useState(false);
+  const [camOn, setCamOn] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [blobUrl, setBlobUrl] = useState<string | null>(null);
   const [err, setErr] = useState('');
+  const [pen, setPen] = useState<'black' | 'red' | 'blue' | 'eraser'>('black');
   const MAX = 180;
+  const BW = 1024, BH = 576, PIP_W = 256, PIP_H = 192;
+
+  // init whiteboard surface once
+  useEffect(() => {
+    const b = boardRef.current;
+    if (!b) return;
+    const g = b.getContext('2d')!;
+    g.fillStyle = '#ffffff';
+    g.fillRect(0, 0, BW, BH);
+  }, [phase]);
 
   useEffect(() => {
     let t: ReturnType<typeof setInterval>;
@@ -217,6 +242,7 @@ export function LabStation({ session, update, onClose }: StationProps) {
   }, [seconds, recording]);
 
   useEffect(() => () => {
+    cancelAnimationFrame(rafRef.current);
     streamRef.current?.getTracks().forEach((tr) => tr.stop());
     if (blobUrl) URL.revokeObjectURL(blobUrl);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -232,17 +258,80 @@ export function LabStation({ session, update, onClose }: StationProps) {
         videoRef.current.play();
       }
       setErr('');
+      setCamOn(true);
     } catch {
       setErr('Camera/mic access denied. Enable permissions and try again.');
     }
   };
 
+  // draw on the board with the pointer
+  const boardPos = (e: React.PointerEvent) => {
+    const b = boardRef.current!;
+    const r = b.getBoundingClientRect();
+    return { x: ((e.clientX - r.left) / r.width) * BW, y: ((e.clientY - r.top) / r.height) * BH };
+  };
+  const penDown = (e: React.PointerEvent) => {
+    drawingRef.current = true;
+    lastPtRef.current = boardPos(e);
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  };
+  const penMove = (e: React.PointerEvent) => {
+    if (!drawingRef.current) return;
+    const b = boardRef.current!;
+    const g = b.getContext('2d')!;
+    const pt = boardPos(e);
+    const last = lastPtRef.current ?? pt;
+    g.strokeStyle = pen === 'eraser' ? '#ffffff' : pen === 'red' ? '#c8341e' : pen === 'blue' ? '#2c5f8a' : '#20242c';
+    g.lineWidth = pen === 'eraser' ? 36 : 4;
+    g.lineCap = 'round';
+    g.beginPath();
+    g.moveTo(last.x, last.y);
+    g.lineTo(pt.x, pt.y);
+    g.stroke();
+    lastPtRef.current = pt;
+  };
+  const penUp = () => {
+    drawingRef.current = false;
+    lastPtRef.current = null;
+  };
+  const clearBoard = () => {
+    const g = boardRef.current!.getContext('2d')!;
+    g.fillStyle = '#ffffff';
+    g.fillRect(0, 0, BW, BH);
+  };
+
+  // recording captures a composite: whiteboard + camera picture-in-picture + mic audio
   const startRecording = () => {
-    if (!streamRef.current) return;
+    if (!streamRef.current || !boardRef.current) return;
+    const composite = document.createElement('canvas');
+    composite.width = BW;
+    composite.height = BH;
+    compositeRef.current = composite;
+    const cg = composite.getContext('2d')!;
+    const paint = () => {
+      cg.drawImage(boardRef.current!, 0, 0);
+      if (videoRef.current && videoRef.current.readyState >= 2) {
+        cg.save();
+        // mirror the PiP so it matches the on-screen preview
+        cg.translate(BW - 12, BH - PIP_H - 12);
+        cg.scale(-1, 1);
+        cg.drawImage(videoRef.current, -0, 0, PIP_W, PIP_H);
+        cg.restore();
+        cg.strokeStyle = '#20242c';
+        cg.lineWidth = 3;
+        cg.strokeRect(BW - PIP_W - 12, BH - PIP_H - 12, PIP_W, PIP_H);
+      }
+      rafRef.current = requestAnimationFrame(paint);
+    };
+    paint();
+    const stream = composite.captureStream(30);
+    const audio = streamRef.current.getAudioTracks()[0];
+    if (audio) stream.addTrack(audio);
     chunksRef.current = [];
-    const rec = new MediaRecorder(streamRef.current);
+    const rec = new MediaRecorder(stream, { mimeType: 'video/webm' });
     rec.ondataavailable = (e) => chunksRef.current.push(e.data);
     rec.onstop = () => {
+      cancelAnimationFrame(rafRef.current);
       const blob = new Blob(chunksRef.current, { type: 'video/webm' });
       setBlobUrl(URL.createObjectURL(blob));
     };
@@ -263,7 +352,7 @@ export function LabStation({ session, update, onClose }: StationProps) {
         <div className="space-y-3">
           <p className="font-mono text-sm">
             The researcher hands you a paper. <b>&quot;Read this. Then explain it back to me on
-            camera — three minutes, your own words. I care that you understood it, not that
+            camera - three minutes, your own words. I care that you understood it, not that
             you memorized it.&quot;</b>
           </p>
           <div className="border-2 border-[#20242c] bg-white p-4">
@@ -274,20 +363,57 @@ export function LabStation({ session, update, onClose }: StationProps) {
             className={btn}
             onClick={() => { update({ labPaperOpened: true }); setPhase('record'); }}
           >
-            ▸ I&apos;ve read it — set up the camera
+            ▸ I&apos;ve read it - set up the camera
           </button>
         </div>
       )}
       {phase === 'record' && (
         <div className="space-y-3">
           <p className="font-mono text-sm">
-            Explain the core idea of the paper in up to <b>3 minutes</b>. One take is fine.
-            You can re-read the paper anytime.
+            Explain the core idea of the paper in up to <b>3 minutes</b>. Draw on the whiteboard
+            as you talk; the recording captures the board, your camera, and your voice together.
           </p>
-          <video ref={videoRef} className="aspect-video w-full rounded border-2 border-[#2b3b2f] bg-black" />
+          <div className="relative">
+            <canvas
+              ref={boardRef}
+              width={BW}
+              height={BH}
+              className="w-full touch-none border-2 border-[#20242c] bg-white"
+              style={{ cursor: 'crosshair' }}
+              onPointerDown={penDown}
+              onPointerMove={penMove}
+              onPointerUp={penUp}
+              onPointerLeave={penUp}
+            />
+            <video
+              ref={videoRef}
+              className="pointer-events-none absolute bottom-2 right-2 w-1/4 border-2 border-[#20242c] bg-black"
+              style={{ transform: 'scaleX(-1)', display: camOn ? 'block' : 'none' }}
+            />
+            {recording && (
+              <span className="absolute left-2 top-2 border-2 border-[#20242c] bg-[#c8341e] px-2 py-0.5 font-mono text-xs font-bold text-white">
+                ● REC {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}
+              </span>
+            )}
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-mono text-xs font-bold">PEN:</span>
+            {(['black', 'red', 'blue', 'eraser'] as const).map((p) => (
+              <button
+                key={p}
+                onClick={() => setPen(p)}
+                className={`border-2 px-2 py-1 font-mono text-xs font-bold ${
+                  pen === p ? 'border-[#bf5700] bg-[#fce8d4]' : 'border-[#20242c] bg-white'
+                }`}
+              >
+                {p === 'eraser' ? '◻ eraser' : p}
+              </button>
+            ))}
+            <button className={btnGhost} onClick={clearBoard}>✕ Clear board</button>
+          </div>
           {err && <p className="font-mono text-xs text-red-700">{err}</p>}
           <div className="flex flex-wrap items-center gap-2">
-            {!streamRef.current?.active && <button className={btnGhost} onClick={startCamera}>◉ Enable camera</button>}
+            {!camOn && <button className={btnGhost} onClick={startCamera}>◉ Enable camera + mic</button>}
             {!recording && !blobUrl && (
               <button className={btn} onClick={startRecording} disabled={!streamRef.current}>
                 ● Start recording
@@ -300,6 +426,7 @@ export function LabStation({ session, update, onClose }: StationProps) {
             )}
             {blobUrl && (
               <>
+                <video src={blobUrl} controls className="w-full border-2 border-[#20242c] bg-black" />
                 <a className={btnGhost} href={blobUrl} download={`tvg-video-${session.name || 'applicant'}.webm`}>
                   ⇩ Download my take
                 </a>
@@ -317,7 +444,7 @@ export function LabStation({ session, update, onClose }: StationProps) {
             <button className={btnGhost} onClick={() => setPhase('paper')}>☰ Re-read paper</button>
           </div>
           <p className="font-mono text-xs text-gray-600">
-            Recording stops automatically at 3:00. Download a copy for yourself — you&apos;ll
+            Recording stops automatically at 3:00. Download a copy for yourself - you&apos;ll
             attach it when you submit.
           </p>
         </div>
@@ -359,7 +486,7 @@ export function PuzzleStation({ session, update, onClose, which }: StationProps 
         {!solved ? (
           <>
             <input className={inputCls} value={answer} onChange={(e) => { setAnswer(e.target.value); setWrong(false); }} placeholder="Your answer" />
-            {wrong && <p className="text-xs text-red-700">Not quite. Sit with it — that&apos;s the point.</p>}
+            {wrong && <p className="text-xs text-red-700">Not quite. Sit with it - that&apos;s the point.</p>}
             <button
               className={btn}
               onClick={() => {

@@ -521,20 +521,49 @@ export function makeHouse(opts: {
   g.fillStyle = PAL.outline;
   g.fillRect(0, roofH - 1, W, 1);
 
-  // door centered at bottom
+  // door centered at bottom, framed, with a lintel and stone step
   const doorW = 12;
   const doorX = Math.floor(W / 2 - doorW / 2);
   const doorH = Math.min(18, H - roofH - 2);
+  const doorTop = H - doorH - 2;
   g.fillStyle = PAL.doorDark;
-  g.fillRect(doorX - 1, H - doorH - 2, doorW + 2, doorH);
+  g.fillRect(doorX - 2, doorTop - 1, doorW + 4, doorH + 1);
+  g.fillStyle = '#e0c890';
+  g.fillRect(doorX - 2, doorTop - 3, doorW + 4, 2); // lintel beam
+  g.fillStyle = PAL.outline;
+  g.fillRect(doorX - 3, doorTop - 4, doorW + 6, 1);
   g.fillStyle = PAL.door;
-  g.fillRect(doorX, H - doorH - 1, doorW, doorH - 1);
+  g.fillRect(doorX, doorTop + 1, doorW, doorH - 2);
+  g.fillStyle = '#b86038';
+  g.fillRect(doorX, doorTop + 1, doorW, 2); // door top rail
+  g.fillStyle = PAL.doorDark;
+  g.fillRect(doorX + doorW / 2 - 1, doorTop + 1, 1, doorH - 2); // double-door split
   g.fillStyle = '#f2c94c';
-  g.fillRect(doorX + doorW - 3, H - Math.floor(doorH / 2) - 2, 1, 2);
+  g.fillRect(doorX + doorW - 4, H - Math.floor(doorH / 2) - 2, 2, 2);
+  // stone step under the door
+  g.fillStyle = '#a8ada4';
+  g.fillRect(doorX - 2, H - 3, doorW + 4, 2);
+  g.fillStyle = '#6f746c';
+  g.fillRect(doorX - 2, H - 1, doorW + 4, 1);
 
-  // windows either side of door
+  // striped awning over the door
+  const awY = doorTop - 9;
+  g.fillStyle = PAL.outline;
+  g.fillRect(doorX - 4, awY - 1, doorW + 8, 6);
+  for (let i = 0; i < doorW + 6; i += 4) {
+    g.fillStyle = i % 8 === 0 ? roofL : '#f2ecd8';
+    g.fillRect(doorX - 3 + i, awY, Math.min(4, doorW + 3 - i + 3), 4);
+  }
+  g.fillStyle = roofD;
+  g.fillRect(doorX - 4, awY + 4, doorW + 8, 1);
+
+  // windows either side of door: shutters + flower box
   const winY = roofH + 4;
   const win = (x: number) => {
+    // shutters
+    g.fillStyle = roofD;
+    g.fillRect(x - 3, winY - 1, 2, 10);
+    g.fillRect(x + 9, winY - 1, 2, 10);
     g.fillStyle = PAL.outline;
     g.fillRect(x - 1, winY - 1, 10, 10);
     g.fillStyle = PAL.window;
@@ -544,6 +573,16 @@ export function makeHouse(opts: {
     g.fillRect(x + 4, winY, 1, 8);
     g.fillStyle = '#ffffff';
     g.fillRect(x + 1, winY + 1, 2, 1);
+    // flower box
+    g.fillStyle = '#8a5f3a';
+    g.fillRect(x - 2, winY + 9, 12, 3);
+    g.fillStyle = PAL.outline;
+    g.fillRect(x - 2, winY + 12, 12, 1);
+    g.fillStyle = '#e86a6a';
+    g.fillRect(x, winY + 8, 2, 2);
+    g.fillRect(x + 6, winY + 8, 2, 2);
+    g.fillStyle = PAL.tree3;
+    g.fillRect(x + 3, winY + 8, 2, 2);
   };
   // stone foundation strip
   g.fillStyle = '#8f948c';

@@ -36,6 +36,7 @@ export interface HouseDef {
   roof: 'blue' | 'green';
   wall: 'wood' | 'gray';
   big?: boolean;
+  deco?: boolean; // decorative only: no interior, no completion marker
 }
 
 export interface WarpDef {
@@ -129,9 +130,17 @@ function placeHouse(b: Builder, def: HouseDef) {
   b.rect(doorX, def.y + def.h, doorX, def.y + def.h + 1, T_PATH);
 }
 
+// decorative house: no interior, door is blocked, a sign explains it
+function placeDecoHouse(b: Builder, def: HouseDef) {
+  b.m.houses.push(def);
+  for (let y = def.y; y < def.y + def.h; y++)
+    for (let x = def.x; x < def.x + def.w; x++) b.block(x, y);
+  b.rect(def.x + Math.floor(def.w / 2), def.y + def.h, def.x + Math.floor(def.w / 2), def.y + def.h + 1, T_PATH);
+}
+
 // ---------------- TOWN ----------------
 export function buildTown(): GameMap {
-  const W = 56, H = 42;
+  const W = 68, H = 52;
   const b = newMap('town', 'TVG Grove', W, H, true, T_GRASS);
   const { rect, set, get, block, solid, deco } = b;
   const collision = b.m.collision;
@@ -143,7 +152,13 @@ export function buildTown(): GameMap {
   rect(12, 24, 21, 25, T_PATH);
   rect(23, 26, 26, 27, T_PATH);
   rect(25, 27, 26, 33, T_PATH);
-  rect(27, 33, 55, 34, T_PATH); // east road runs off the map edge into the Puzzle Woods
+  rect(27, 33, 67, 34, T_PATH); // east road runs off the map edge into the Puzzle Woods
+  // south district: promenade down to the lakeside park
+  rect(25, 35, 26, 44, T_PATH);
+  rect(15, 43, 25, 44, T_PATH);
+  rect(27, 43, 40, 44, T_PATH);
+  rect(16, 45, 17, 47, T_PATH);
+  rect(39, 45, 40, 46, T_PATH);
   rect(10, 15, 11, 22, T_PATH);
   rect(33, 15, 34, 20, T_PATH);
   rect(34, 20, 35, 21, T_PATH);
@@ -158,17 +173,18 @@ export function buildTown(): GameMap {
   rect(17, 5, 18, 6, T_WATER);
   rect(13, 3, 16, 3, T_WATER);
   rect(14, 9, 16, 9, T_WATER);
-  rect(21, 37, 28, 41, T_WATER);
-  rect(19, 38, 21, 41, T_WATER);
-  rect(28, 39, 31, 41, T_WATER);
-  rect(23, 36, 26, 36, T_WATER);
-  rect(38, 26, 40, 41, T_WATER);
-  rect(38, 24, 39, 26, T_WATER);
-  rect(41, 28, 41, 31, T_WATER);
-  rect(37, 29, 37, 32, T_WATER);
-  rect(41, 36, 41, 38, T_WATER);
-  rect(37, 39, 37, 41, T_WATER);
-  rect(38, 33, 40, 34, T_BRIDGE);
+  rect(20, 47, 33, 51, T_WATER);
+  rect(18, 48, 20, 51, T_WATER);
+  rect(33, 49, 36, 51, T_WATER);
+  rect(22, 46, 30, 46, T_WATER);
+  rect(44, 26, 46, 51, T_WATER);
+  rect(44, 24, 45, 26, T_WATER);
+  rect(47, 28, 47, 31, T_WATER);
+  rect(43, 29, 43, 32, T_WATER);
+  rect(47, 38, 47, 41, T_WATER);
+  rect(43, 43, 43, 46, T_WATER);
+  rect(47, 47, 47, 50, T_WATER);
+  rect(44, 33, 46, 34, T_BRIDGE);
   rect(24, 0, 25, 1, T_BRIDGE);
 
   for (let i = 0; i < W * H; i++) if (b.m.terrain[i] === T_WATER) collision[i] = 1;
@@ -178,6 +194,10 @@ export function buildTown(): GameMap {
   placeHouse(b, { id: 'whytvg', label: 'TVG Hall', x: 31, y: 4, w: 6, h: 5, roof: 'blue', wall: 'wood', big: true });
   placeHouse(b, { id: 'artifact', label: 'Archive House', x: 9, y: 17, w: 5, h: 4, roof: 'green', wall: 'gray' });
   placeHouse(b, { id: 'lab', label: 'Research Lab', x: 32, y: 15, w: 6, h: 5, roof: 'green', wall: 'gray', big: true });
+
+  // decorative homes in the south district (no interiors)
+  placeDecoHouse(b, { id: 'welcome', label: 'Cottage', x: 12, y: 38, w: 4, h: 4, roof: 'blue', wall: 'wood', deco: true });
+  placeDecoHouse(b, { id: 'welcome', label: 'Cottage', x: 34, y: 38, w: 4, h: 4, roof: 'green', wall: 'wood', deco: true });
 
   // forest border wall
   const clearOfPath = (x: number, y: number, pad = 1) => {
@@ -286,10 +306,10 @@ export function buildTown(): GameMap {
     if (get(x, y) === T_GRASS && !collision[y * W + x]) solid(x, y, 'crops');
 
   const signs = [
-    { x: 23, y: 17, text: 'TVG GROVE — Visit every marked house to complete your application.' },
+    { x: 23, y: 17, text: 'TVG GROVE - Visit every marked house to complete your application.' },
     { x: 26, y: 12, text: 'NORTH: TVG Hall (interview questions)  ·  WEST: Visitor Cabin (start here)' },
-    { x: 36, y: 32, text: 'EAST: Puzzle Woods — optional brain-teasers. Top solvers make the leaderboard.' },
-    { x: 13, y: 23, text: 'Archive House — submit your artifact: an essay on anything you care about, plus your resume.' },
+    { x: 36, y: 32, text: 'EAST: Puzzle Woods - optional brain-teasers. Top solvers make the leaderboard.' },
+    { x: 13, y: 23, text: 'Archive House - submit your artifact: an essay on anything you care about, plus your resume.' },
   ];
   for (const s of signs) { solid(s.x, s.y, 'sign'); b.m.signs.push(s); }
 
@@ -298,11 +318,11 @@ export function buildTown(): GameMap {
       x: 26, y: 17, variant: 0,
       lines: [
         'Welcome to TVG Grove! Four houses hold your application: the Visitor Cabin, TVG Hall, the Archive House, and the Research Lab.',
-        'Step into a doorway to go inside. The road east leads to the Puzzle Woods — optional, but the top solvers get auto-interviews.',
+        'Step into a doorway to go inside. The road east leads to the Puzzle Woods - optional, but the top solvers get auto-interviews.',
         'Your progress saves automatically. Leave and come back anytime.',
       ],
     },
-    { x: 33, y: 10, variant: 1, lines: ['The Hall folks ask real questions. Two to three sentences each — make them count.'] },
+    { x: 33, y: 10, variant: 1, lines: ['The Hall folks ask real questions. Two to three sentences each - make them count.'] },
     { x: 42, y: 32, variant: 2, lines: ['Keep east past the bridge for the Puzzle Woods. No pressure. Well, some pressure.'] },
   ];
   for (const n of b.m.npcs) block(n.x, n.y);
@@ -379,12 +399,12 @@ export function buildWoods(): GameMap {
   solid(18, 5, 'barrel');
 
   const signs = [
-    { x: 4, y: 9, text: 'PUZZLE WOODS — Two dens, two puzzles. Solve them, claim a leaderboard alias, and the top 5 skip to interviews.' },
+    { x: 4, y: 9, text: 'PUZZLE WOODS - Two dens, two puzzles. Solve them, claim a leaderboard alias, and the top 5 skip to interviews.' },
   ];
   for (const s of signs) { solid(s.x, s.y, 'sign'); b.m.signs.push(s); }
 
   b.m.npcs = [
-    { x: 28, y: 13, variant: 2, lines: ['The Den up north hides a cipher. The Trading Post asks a nastier question than it looks. Take your time — thinking is the whole point.'] },
+    { x: 28, y: 13, variant: 2, lines: ['The Den up north hides a cipher. The Trading Post asks a nastier question than it looks. Take your time - thinking is the whole point.'] },
   ];
   for (const n of b.m.npcs) block(n.x, n.y);
 
@@ -463,7 +483,7 @@ export function buildAllMaps(): Record<string, GameMap> {
     },
     {
       id: 'whytvg', name: 'TVG Hall', w: 12, h: 9, rug: 1, npcVariant: 1,
-      npcLines: ['Take a seat. I have four questions for you. Answer like you mean it — two or three sentences each.'],
+      npcLines: ['Take a seat. I have four questions for you. Answer like you mean it - two or three sentences each.'],
       furnish: (b) => {
         b.solid(1, 2, 'shelf'); b.solid(2, 2, 'shelf');
         b.solid(9, 2, 'shelf'); b.solid(10, 2, 'shelf');
@@ -474,7 +494,7 @@ export function buildAllMaps(): Record<string, GameMap> {
     },
     {
       id: 'artifact', name: 'Archive House', w: 10, h: 8, rug: 2, npcVariant: 2,
-      npcLines: ['The archive keeps what people leave behind. Leave something worth keeping — an essay you care about, and your resume for the record.'],
+      npcLines: ['The archive keeps what people leave behind. Leave something worth keeping - an essay you care about, and your resume for the record.'],
       furnish: (b) => {
         for (let x = 1; x <= 3; x++) b.solid(x, 2, 'shelf');
         for (let x = 6; x <= 8; x++) b.solid(x, 2, 'shelf');
@@ -485,7 +505,7 @@ export function buildAllMaps(): Record<string, GameMap> {
     },
     {
       id: 'lab', name: 'Research Lab', w: 12, h: 9, rug: 3, npcVariant: 1,
-      npcLines: ['Ah, the applicant. I have a paper for you — power laws in venture returns. Read it, then explain it back to me on camera. Three minutes.'],
+      npcLines: ['Ah, the applicant. I have a paper for you - power laws in venture returns. Read it, then explain it back to me on camera. Three minutes.'],
       furnish: (b) => {
         b.solid(1, 2, 'machine'); b.solid(2, 2, 'machine');
         b.solid(9, 2, 'machine'); b.solid(10, 2, 'machine');
@@ -523,6 +543,7 @@ export function buildAllMaps(): Record<string, GameMap> {
   // wire door warps: exterior door → interior mat position; interior mats → outside the door
   for (const outdoor of [town, woods]) {
     for (const h of outdoor.houses) {
+      if (h.deco) continue;
       const int = maps[`int-${h.id}`];
       const doorX = h.x + Math.floor(h.w / 2);
       const doorY = h.y + h.h - 1;
