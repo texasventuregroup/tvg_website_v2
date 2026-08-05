@@ -54,10 +54,10 @@ export function WelcomeStation({ session, update, onClose }: StationProps) {
           the lay of the land:
         </p>
         <ul className="list-none space-y-1">
-          <li>◆ <b>TVG Hall</b> (blue roof, north-east) - four interview questions, 2-3 sentences each.</li>
-          <li>◆ <b>Archive House</b> (west) - leave an essay on anything you care about, plus your resume.</li>
-          <li>◆ <b>Research Lab</b> (east end of the main road) - read a short paper, then record a 3-minute video explaining it.</li>
-          <li>◆ <b>Puzzle Woods</b> (east road) - optional puzzles worth bonus points on your application. Top 5 on the leaderboard go straight to interviews.</li>
+          <li>◆ <b>TVG Hall</b> (blue roof, north-east): four interview questions, 2 to 3 sentences each.</li>
+          <li>◆ <b>Archive House</b> (west): leave an essay on anything you care about, plus your resume.</li>
+          <li>◆ <b>Research Lab</b> (east end of the main road): read a short paper, then record a 3-minute video explaining it.</li>
+          <li>◆ <b>Puzzle Woods</b> (east road): optional puzzles worth bonus points on your application. Top 5 on the leaderboard go straight to interviews.</li>
         </ul>
         <p>Do them in any order. Your progress saves on this device automatically.</p>
         <button
@@ -67,7 +67,7 @@ export function WelcomeStation({ session, update, onClose }: StationProps) {
             onClose();
           }}
         >
-          ▸ Got it - let&apos;s go
+          ▸ Got it, let&apos;s go
         </button>
       </div>
     </Window>
@@ -86,12 +86,12 @@ export function WhyTvgStation({ session, update, onClose }: StationProps) {
     update({ whyTvg: next });
   };
   return (
-    <Window title={`TVG Hall - question ${idx + 1} of ${WHY_TVG_QUESTIONS.length}`} onClose={() => { save(); onClose(); }} wide>
+    <Window title={`TVG Hall · question ${idx + 1} of ${WHY_TVG_QUESTIONS.length}`} onClose={() => { save(); onClose(); }} wide>
       <div className="space-y-3">
         <p className="font-mono text-sm leading-relaxed">
           <b>Interviewer:</b> {qa.q}
         </p>
-        <p className="font-mono text-xs text-gray-600">Answer in 2-3 sentences. ({words} words)</p>
+        <p className="font-mono text-xs text-gray-600">Answer in 2 to 3 sentences. ({words} words)</p>
         <textarea
           className={`${inputCls} h-28`}
           value={draft}
@@ -132,13 +132,13 @@ export function ArtifactStation({ session, update, onClose }: StationProps) {
   const fileRef = useRef<HTMLInputElement>(null);
   const words = essay.trim() ? essay.trim().split(/\s+/).length : 0;
   return (
-    <Window title="Archive House - your artifact" onClose={onClose} wide>
+    <Window title="Archive House · your artifact" onClose={onClose} wide>
       <div className="space-y-3">
         <p className="font-mono text-sm leading-relaxed">
           The archivist slides a blank page across the desk. <b>&quot;Leave something behind.
           An essay on any topic you actually care about. And your resume, for the record.&quot;</b>
         </p>
-        <p className="font-mono text-xs text-gray-600">Essay - any topic, ~300-500 words. ({words} words)</p>
+        <p className="font-mono text-xs text-gray-600">Essay on any topic, roughly 300 to 500 words. ({words} words)</p>
         <textarea
           className={`${inputCls} h-56`}
           value={essay}
@@ -329,7 +329,7 @@ export function LabStation({ session, update, onClose }: StationProps) {
         <div className="space-y-3">
           <p className="font-mono text-sm">
             The researcher hands you a paper. <b>&quot;Read this. Then explain it back to me on
-            camera - three minutes, your own words. I care that you understood it, not that
+            camera. Three minutes, your own words. I care that you understood it, not that
             you memorized it.&quot;</b>
           </p>
           <div className="border-2 border-[#20242c] bg-white">
@@ -345,7 +345,7 @@ export function LabStation({ session, update, onClose }: StationProps) {
             className={btn}
             onClick={() => { update({ labPaperOpened: true }); setPhase('record'); }}
           >
-            ▸ I&apos;ve read it - set up the camera
+            ▸ I&apos;ve read it, set up the camera
           </button>
         </div>
       )}
@@ -426,7 +426,7 @@ export function LabStation({ session, update, onClose }: StationProps) {
             <button className={btnGhost} onClick={() => setPhase('paper')}>☰ Re-read paper</button>
           </div>
           <p className="font-mono text-xs text-gray-600">
-            Recording stops automatically at 3:00. Download a copy for yourself - you&apos;ll
+            Recording stops automatically at 3:00. Download a copy for yourself. You&apos;ll
             attach it when you submit.
           </p>
         </div>

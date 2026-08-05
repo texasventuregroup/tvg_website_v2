@@ -314,10 +314,10 @@ export function buildTown(): GameMap {
     if (get(x, y) === T_GRASS && !collision[y * W + x]) solid(x, y, 'crops');
 
   const signs = [
-    { x: 23, y: 17, text: 'TVG GROVE - Visit every marked house to complete your application.' },
+    { x: 23, y: 17, text: 'TVG GROVE: visit every marked house to complete your application.' },
     { x: 26, y: 12, text: 'NORTH: TVG Hall (interview questions)  ·  WEST: Visitor Cabin (start here)' },
-    { x: 36, y: 32, text: 'EAST: Puzzle Woods - optional puzzles worth BONUS POINTS on your application. Top 5 solvers earn auto-interviews.' },
-    { x: 13, y: 23, text: 'Archive House - submit your artifact: an essay on anything you care about, plus your resume.' },
+    { x: 36, y: 32, text: 'EAST: Puzzle Woods. Optional puzzles worth BONUS POINTS on your application. Top 5 solvers earn auto-interviews.' },
+    { x: 13, y: 23, text: 'Archive House: submit your artifact, an essay on anything you care about, plus your resume.' },
   ];
   for (const s of signs) { solid(s.x, s.y, 'sign'); b.m.signs.push(s); }
 
@@ -326,11 +326,11 @@ export function buildTown(): GameMap {
       x: 26, y: 17, variant: 0,
       lines: [
         'Welcome to TVG Grove! Four houses hold your application: the Visitor Cabin, TVG Hall, the Archive House, and the Research Lab.',
-        'Step into a doorway to go inside. The road east leads to the Puzzle Woods - optional, but the top solvers get auto-interviews.',
+        'Step into a doorway to go inside. The road east leads to the Puzzle Woods, which are optional but worth bonus points. Top solvers get auto-interviews.',
         'Your progress saves automatically. Leave and come back anytime.',
       ],
     },
-    { x: 32, y: 10, variant: 1, lines: ['The Hall folks ask real questions. Two to three sentences each - make them count.'] },
+    { x: 32, y: 10, variant: 1, lines: ['The Hall folks ask real questions. Two to three sentences each. Make them count.'] },
     { x: 42, y: 32, variant: 2, lines: ['Keep east past the bridge for the Puzzle Woods. The puzzles are hard, but they are worth bonus points on your application.'] },
   ];
   for (const n of b.m.npcs) block(n.x, n.y);
@@ -410,12 +410,12 @@ export function buildWoods(): GameMap {
   solid(18, 5, 'barrel');
 
   const signs = [
-    { x: 4, y: 9, text: 'PUZZLE WOODS - Two dens, two puzzles, real bonus points. Solve them, claim a leaderboard alias, and the top 5 skip to interviews.' },
+    { x: 4, y: 9, text: 'PUZZLE WOODS: two dens, two puzzles, real bonus points. Solve them, claim a leaderboard alias, and the top 5 skip to interviews.' },
   ];
   for (const s of signs) { solid(s.x, s.y, 'sign'); b.m.signs.push(s); }
 
   b.m.npcs = [
-    { x: 28, y: 13, variant: 2, lines: ['The Den up north has a racing puzzle. The Trading Post asks a nastier question than it looks. Both are worth bonus points. Take your time - thinking is the whole point.'] },
+    { x: 28, y: 13, variant: 2, lines: ['The Den up north has a racing puzzle. The Trading Post asks a nastier question than it looks. Both are worth bonus points. Take your time. Thinking is the whole point.'] },
   ];
   for (const n of b.m.npcs) block(n.x, n.y);
 
@@ -553,7 +553,7 @@ export function buildAllMaps(): Record<string, GameMap> {
     },
     {
       id: 'whytvg', name: 'TVG Hall', w: 12, h: 9, rug: 1, npcVariant: 1,
-      npcLines: ['Take a seat. I have four questions for you. Answer like you mean it - two or three sentences each.'],
+      npcLines: ['Take a seat. I have four questions for you. Answer like you mean it: two or three sentences each.'],
       furnish: (b) => {
         b.solid(1, 2, 'shelf'); b.solid(2, 2, 'shelf');
         b.solid(9, 2, 'shelf'); b.solid(10, 2, 'shelf');
@@ -564,7 +564,7 @@ export function buildAllMaps(): Record<string, GameMap> {
     },
     {
       id: 'artifact', name: 'Archive House', w: 10, h: 8, rug: 2, npcVariant: 2,
-      npcLines: ['The archive keeps what people leave behind. Leave something worth keeping - an essay you care about, and your resume for the record.'],
+      npcLines: ['The archive keeps what people leave behind. Leave something worth keeping: an essay you care about, and your resume for the record.'],
       furnish: (b) => {
         for (let x = 1; x <= 3; x++) b.solid(x, 2, 'shelf');
         for (let x = 6; x <= 8; x++) b.solid(x, 2, 'shelf');
@@ -575,7 +575,7 @@ export function buildAllMaps(): Record<string, GameMap> {
     },
     {
       id: 'lab', name: 'Research Lab', w: 12, h: 9, rug: 3, npcVariant: 1,
-      npcLines: ['Ah, the applicant. I have a paper for you - power laws in venture returns. Read it, then explain it back to me on camera. Three minutes.'],
+      npcLines: ['Ah, the applicant. I have a paper for you: the Hennessy and Patterson Turing Lecture on computer architecture. Read it, then explain it back to me on camera. Three minutes, and the whiteboard is yours.'],
       furnish: (b) => {
         b.solid(1, 2, 'machine'); b.solid(2, 2, 'machine');
         b.solid(9, 2, 'machine'); b.solid(10, 2, 'machine');
@@ -587,7 +587,7 @@ export function buildAllMaps(): Record<string, GameMap> {
     },
     {
       id: 'puzzle-cipher', name: 'Puzzle Den', w: 10, h: 8, rug: 1, npcVariant: 2,
-      npcLines: ['Sssh. The note on my desk has been driving people mad all week. Think you can read it?'],
+      npcLines: ['Sssh. The racing problem on my desk has been driving people mad all week. Twenty-five horses, five lanes, no stopwatch. Care to try?'],
       furnish: (b) => {
         b.solid(1, 2, 'shelf'); b.solid(2, 2, 'shelf');
         b.solid(8, 2, 'plant');
@@ -597,7 +597,7 @@ export function buildAllMaps(): Record<string, GameMap> {
     },
     {
       id: 'puzzle-market', name: 'Trading Post', w: 10, h: 8, rug: 0, npcVariant: 0,
-      npcLines: ['Everything here has a price, and most people compute it wrong. Care to try a little allocation problem?'],
+      npcLines: ['Everything here has a price, and most people compute it wrong. I will quote you three prices. Know when to take one.'],
       furnish: (b) => {
         b.solid(1, 2, 'barrel'); b.solid(2, 2, 'barrel');
         b.solid(7, 2, 'shelf'); b.solid(8, 2, 'shelf');

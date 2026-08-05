@@ -225,7 +225,7 @@ function PlainForm({ session, update }: { session: ApplySession; update: (p: Par
   return (
     <div className="absolute inset-0 z-20 overflow-y-auto bg-[#f8f4e0] pt-20">
       <div className="mx-auto max-w-2xl px-6 pb-24">
-        <h1 className="mb-1 font-mono text-2xl font-bold text-[#2b3b2f]">TVG Application - Fall 2026</h1>
+        <h1 className="mb-1 font-mono text-2xl font-bold text-[#2b3b2f]">TVG Application · Fall 2026</h1>
         <p className="mb-8 font-mono text-sm text-gray-600">
           Same application, no walking required. Progress syncs with the world.
         </p>
@@ -242,7 +242,7 @@ function PlainForm({ session, update }: { session: ApplySession; update: (p: Par
           </label>
         </Section>
 
-        <Section title="2 · Short answers (2-3 sentences each)">
+        <Section title="2 · Short answers (2 to 3 sentences each)">
           {session.whyTvg.map((qa, i) => (
             <div key={i} className="mb-4">
               <label className="mb-1 block font-mono text-sm font-bold text-[#2b3b2f]">{qa.q}</label>
@@ -254,7 +254,7 @@ function PlainForm({ session, update }: { session: ApplySession; update: (p: Par
 
         <Section title="3 · Artifact">
           <p className="mb-2 font-mono text-xs text-gray-600">
-            An essay on any topic you genuinely care about (~300-500 words · currently {words(session.artifactEssay)}), plus your resume.
+            An essay on any topic you genuinely care about (roughly 300 to 500 words · currently {words(session.artifactEssay)}), plus your resume.
           </p>
           <textarea className={`${pfInput} h-56`} value={session.artifactEssay}
             onChange={(e) => update({ artifactEssay: e.target.value })} />
@@ -265,7 +265,7 @@ function PlainForm({ session, update }: { session: ApplySession; update: (p: Par
 
         <Section title="4 · Paper + video">
           <p className="font-mono text-sm text-[#2b3b2f]">
-            The reading and 3-minute video recording live in the world - enter the <b>Research Lab</b> (the big house
+            The reading and 3-minute video recording live in the world. Enter the <b>Research Lab</b> (the big house
             at the east end of the main road). {session.labVideoSubmitted ? '✓ Done.' : 'Not done yet.'}
           </p>
         </Section>
@@ -295,7 +295,7 @@ function nextObjective(s: ApplySession): string {
   if (!stationComplete(s, 'welcome')) return 'Enter the Visitor Cabin (north-west house) to get oriented.';
   if (!stationComplete(s, 'whytvg')) return 'Head to TVG Hall (big blue-roof house, north-east) for your interview questions.';
   if (!stationComplete(s, 'artifact')) return 'Visit the Archive House (west) to leave your essay + resume.';
-  if (!stationComplete(s, 'lab')) return 'Follow the main road east to the Research Lab - read the paper, record your video.';
+  if (!stationComplete(s, 'lab')) return 'Follow the main road east to the Research Lab. Read the paper, then record your video.';
   if (!s.submitted) return 'All required steps done! Submit below, or earn bonus points in the Puzzle Woods (east road).';
   return 'Application submitted. The Puzzle Woods still count for bonus points and the leaderboard.';
 }
@@ -324,7 +324,7 @@ function IntroScreen({ update }: { update: (p: Partial<ApplySession>) => void })
         <h1 className="font-mono text-xl font-bold uppercase tracking-widest text-[#bf5700]">TVG Grove</h1>
         <p className="mb-4 mt-1 font-mono text-xs text-[#2b3b2f]">
           Fall 2026 application · Explore the town. Four marked houses hold the four parts of
-          your application - walk into a doorway to enter, and talk to the host inside (Z).
+          your application. Walk into a doorway to enter, and talk to the host inside (Z).
           Everything autosaves, so you can leave and come back.
         </p>
         <label className="mb-1 block font-mono text-xs font-bold text-[#2b3b2f]">YOUR NAME</label>
