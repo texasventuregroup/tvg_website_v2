@@ -5,6 +5,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ApplySession, StationId, WHY_TVG_QUESTIONS } from './state';
+import { PUZZLE_BY_ID } from './puzzles';
 
 const PAPER = {
   title: 'A New Golden Age for Computer Architecture (Hennessy & Patterson, Turing Lecture, CACM 2019)',
@@ -57,7 +58,7 @@ export function WelcomeStation({ session, update, onClose }: StationProps) {
           <li>◆ <b>TVG Hall</b> (blue roof, north-east): four interview questions, 2 to 3 sentences each.</li>
           <li>◆ <b>Archive House</b> (west): leave an essay on anything you care about, plus your resume.</li>
           <li>◆ <b>Research Lab</b> (east end of the main road): read a short paper, then record a 3-minute video explaining it.</li>
-          <li>◆ <b>Puzzle Woods</b> (east road): optional puzzles worth bonus points on your application. Top 5 on the leaderboard go straight to interviews.</li>
+          <li>◆ <b>The outer world</b>: every road out of town leads somewhere with puzzles. Puzzle Woods east, Summit Hollow north, Mirror Lake west, Driftwood Landing south. All optional, all worth bonus points. Top 5 on the leaderboard go straight to interviews.</li>
         </ul>
         <p>Do them in any order. Your progress saves on this device automatically.</p>
         <button
@@ -442,48 +443,30 @@ export function LabStation({ session, update, onClose }: StationProps) {
 }
 
 // ---------- Puzzles ----------
-const CIPHER = {
-  prompt:
-    'A note is pinned to the wall: "You have 25 horses and a track with 5 lanes. Races give you ' +
-    'finishing order only, no times. What is the minimum number of races that GUARANTEES you can ' +
-    'name the fastest three horses, in order?" Answer with a single number.',
-  check: (a: string) => a.trim().replace(/races?/i, '').trim() === '7',
-};
-const MARKET = {
-  prompt:
-    'The trader slides you a game: "I will show you up to three prices, one at a time, each drawn ' +
-    'uniformly from 0 to 100. When you see a price you must take it or wave it off forever; if you ' +
-    'wave off the first two, you are stuck with the third. Play optimally. What is your expected ' +
-    'payoff?" Answer as an exact decimal or fraction.',
-  check: (a: string) => {
-    const t = a.trim().replace(/\$/g, '');
-    if (t === '2225/32') return true;
-    const v = parseFloat(t);
-    return !isNaN(v) && Math.abs(v - 69.53125) < 0.005;
-  },
-};
+// puzzle definitions live in puzzles.ts
 
-export function PuzzleStation({ session, update, onClose, which }: StationProps & { which: 'cipher' | 'market' }) {
-  const puzzle = which === 'cipher' ? CIPHER : MARKET;
-  const solvedAlready = !!session.puzzleAnswers[which];
-  const [answer, setAnswer] = useState(session.puzzleAnswers[which] ?? '');
+export function PuzzleStation({ session, update, onClose, id }: StationProps & { id: string }) {
+  const puzzle = PUZZLE_BY_ID[id];
+  const solvedAlready = !!session.puzzleAnswers[id];
+  const [answer, setAnswer] = useState(session.puzzleAnswers[id] ?? '');
   const [alias, setAlias] = useState(session.leaderboardAlias);
   const [wrong, setWrong] = useState(false);
   const [solved, setSolved] = useState(solvedAlready);
+  if (!puzzle) return null;
   return (
-    <Window title={which === 'cipher' ? 'Puzzle Den' : 'Trading Post'} onClose={onClose}>
+    <Window title={`${puzzle.house} · ${puzzle.points} bonus points`} onClose={onClose}>
       <div className="space-y-3 font-mono text-sm">
         <p className="leading-relaxed">{puzzle.prompt}</p>
         {!solved ? (
           <>
-            <input className={inputCls} value={answer} onChange={(e) => { setAnswer(e.target.value); setWrong(false); }} placeholder="Your answer" />
+            <input className={inputCls} value={answer} onChange={(e) => { setAnswer(e.target.value); setWrong(false); }} placeholder={puzzle.answerHint} />
             {wrong && <p className="text-xs text-red-700">Not quite. These are meant to be sat with. Scratch paper helps.</p>}
             <button
               className={btn}
               onClick={() => {
                 if (puzzle.check(answer)) {
                   setSolved(true);
-                  update({ puzzleAnswers: { ...session.puzzleAnswers, [which]: answer } });
+                  update({ puzzleAnswers: { ...session.puzzleAnswers, [id]: answer } });
                 } else setWrong(true);
               }}
             >
@@ -492,7 +475,7 @@ export function PuzzleStation({ session, update, onClose, which }: StationProps 
           </>
         ) : (
           <>
-            <p className="text-green-800">✓ Solved. Bonus points banked for your application.</p>
+            <p className="text-green-800">✓ Solved. {puzzle.points} bonus points banked for your application.</p>
             <label className="block text-xs font-bold">Leaderboard alias (anonymous)</label>
             <input className={inputCls} value={alias} onChange={(e) => setAlias(e.target.value)} placeholder="e.g. night_owl_42" />
             <button className={btn} onClick={() => { update({ leaderboardAlias: alias }); onClose(); }}>
@@ -518,7 +501,6 @@ export function StationRouter({ id, ...props }: StationProps & { id: StationId }
     case 'whytvg': return <WhyTvgStation {...props} />;
     case 'artifact': return <ArtifactStation {...props} />;
     case 'lab': return <LabStation {...props} />;
-    case 'puzzle-cipher': return <PuzzleStation {...props} which="cipher" />;
-    case 'puzzle-market': return <PuzzleStation {...props} which="market" />;
+    default: return id.startsWith('puzzle-') ? <PuzzleStation {...props} id={id} /> : null;
   }
 }

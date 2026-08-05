@@ -10,6 +10,7 @@ import { StationRouter } from './game/Stations';
 import type { Interaction } from './game/Engine';
 import type { Facing } from './game/map';
 import { AVATARS, makeCharacter, CharPalette } from './game/tileset';
+import { PUZZLES, TOTAL_PUZZLE_POINTS, puzzleScore, puzzlesSolved } from './game/puzzles';
 
 const Engine = dynamic(() => import('./game/Engine'), { ssr: false });
 
@@ -128,8 +129,8 @@ export default function ApplyClient() {
                   {stationComplete(session, r.id) ? '☑' : '☐'} {r.label}
                 </li>
               ))}
-              <li className="pt-1 text-gray-500">
-                ◆ Puzzle Woods (east): bonus points · {Object.keys(session.puzzleAnswers).length}/2 solved
+              <li className="pt-1 font-bold text-[#bf5700]">
+                ★ {puzzleScore(session.puzzleAnswers)}/{TOTAL_PUZZLE_POINTS} bonus pts · {puzzlesSolved(session.puzzleAnswers)}/{PUZZLES.length} puzzles
               </li>
             </ul>
             {requiredComplete(session) && !session.submitted && (
@@ -271,7 +272,7 @@ function PlainForm({ session, update }: { session: ApplySession; update: (p: Par
         </Section>
 
         <p className="font-mono text-xs text-gray-500">
-          Optional puzzles are only in the world (follow the east road into the Puzzle Woods). Everything autosaves to this device.
+          Optional puzzles live only in the world: follow any road out of town. Everything autosaves to this device.
         </p>
       </div>
     </div>
@@ -296,8 +297,8 @@ function nextObjective(s: ApplySession): string {
   if (!stationComplete(s, 'whytvg')) return 'Head to TVG Hall (big blue-roof house, north-east) for your interview questions.';
   if (!stationComplete(s, 'artifact')) return 'Visit the Archive House (west) to leave your essay + resume.';
   if (!stationComplete(s, 'lab')) return 'Follow the main road east to the Research Lab. Read the paper, then record your video.';
-  if (!s.submitted) return 'All required steps done! Submit below, or earn bonus points in the Puzzle Woods (east road).';
-  return 'Application submitted. The Puzzle Woods still count for bonus points and the leaderboard.';
+  if (!s.submitted) return 'All required steps done! Submit below, or roam the outer world: every road out of town leads to bonus-point puzzles.';
+  return 'Application submitted. The outer villages still count for bonus points and the leaderboard.';
 }
 
 function AvatarPreview({ pal, big }: { pal: CharPalette; big?: boolean }) {

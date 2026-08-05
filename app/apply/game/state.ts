@@ -5,8 +5,7 @@ export type StationId =
   | 'whytvg'       // short-answer conversation house
   | 'artifact'     // essay + resume house
   | 'lab'          // paper + video house
-  | 'puzzle-cipher'
-  | 'puzzle-market';
+  | `puzzle-${string}`; // any puzzle house in the outer world
 
 export interface QuestionAnswer {
   q: string;
@@ -74,7 +73,15 @@ export function loadSession(): ApplySession {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return defaultSession();
-    return { ...defaultSession(), ...JSON.parse(raw) };
+    const parsed = { ...defaultSession(), ...JSON.parse(raw) };
+    // migrate legacy puzzle keys to full station ids
+    for (const legacy of ['cipher', 'market']) {
+      if (parsed.puzzleAnswers[legacy]) {
+        parsed.puzzleAnswers[`puzzle-${legacy}`] = parsed.puzzleAnswers[legacy];
+        delete parsed.puzzleAnswers[legacy];
+      }
+    }
+    return parsed;
   } catch {
     return defaultSession();
   }
@@ -95,10 +102,8 @@ export function stationComplete(s: ApplySession, id: StationId): boolean {
       return s.artifactEssay.trim().length > 0 && s.artifactResumeName.length > 0;
     case 'lab':
       return s.labVideoSubmitted;
-    case 'puzzle-cipher':
-      return !!s.puzzleAnswers['cipher'];
-    case 'puzzle-market':
-      return !!s.puzzleAnswers['market'];
+    default:
+      return id.startsWith('puzzle-') ? !!s.puzzleAnswers[id] : false;
   }
 }
 

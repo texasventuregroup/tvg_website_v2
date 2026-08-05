@@ -1,6 +1,7 @@
 // Multi-map world: the town, the puzzle woods (east map connection), and one
 // furnished interior per building. Maps are generated in code.
 import { StationId } from './state';
+import { PUZZLES, PuzzleDef } from './puzzles';
 
 // terrain codes
 export const T_GRASS = 0;
@@ -326,12 +327,12 @@ export function buildTown(): GameMap {
       x: 26, y: 17, variant: 0,
       lines: [
         'Welcome to TVG Grove! Four houses hold your application: the Visitor Cabin, TVG Hall, the Archive House, and the Research Lab.',
-        'Step into a doorway to go inside. The road east leads to the Puzzle Woods, which are optional but worth bonus points. Top solvers get auto-interviews.',
+        'Step into a doorway to go inside. Every road out of town leads to a puzzle village: woods east, Summit Hollow north, Mirror Lake west, Driftwood Landing south. All optional, all bonus points.',
         'Your progress saves automatically. Leave and come back anytime.',
       ],
     },
     { x: 32, y: 10, variant: 1, lines: ['The Hall folks ask real questions. Two to three sentences each. Make them count.'] },
-    { x: 42, y: 32, variant: 2, lines: ['Keep east past the bridge for the Puzzle Woods. The puzzles are hard, but they are worth bonus points on your application.'] },
+    { x: 42, y: 32, variant: 2, lines: ['Keep east past the bridge for the Puzzle Woods. And that is not the only village out there: try the north, west, and south roads too. Every puzzle is bonus points.'] },
   ];
   for (const n of b.m.npcs) block(n.x, n.y);
 
@@ -476,11 +477,12 @@ function buildInterior(spec: InteriorSpec): GameMap {
   return b.m;
 }
 
-// A quiet forest route off one edge of town. Mostly scenery; ends at a sign.
+// A forest route off one edge of town, leading onward to a village.
 function buildRoute(
   id: string, name: string, w: number, h: number, vertical: boolean,
   back: { edge: 'top' | 'bottom' | 'left' | 'right'; toX: number; toY: number; facing: Facing },
   signText: string,
+  forward?: { toMap: string; toX: number; toY: number; facing: Facing },
 ): GameMap {
   const b = newMap(id, name, w, h, true, T_GRASS);
   const { rect, set, get, block, solid } = b;
@@ -519,8 +521,18 @@ function buildRoute(
     : { x: back.edge === 'right' ? 2 : w - 3, y: c0 - 1 };
   solid(signPos.x, signPos.y, 'sign');
   b.m.signs.push({ ...signPos, text: signText });
-  // block the far end of the trail so the route dead-ends at the sign
-  if (vertical) {
+  // far end: either open onward to a village, or dead-end at the sign
+  if (forward) {
+    if (vertical) {
+      const yEnd = back.edge === 'bottom' ? 0 : h - 1;
+      for (const x of [c0, c0 + 1])
+        b.m.warps.push({ x, y: yEnd, toMap: forward.toMap, toX: forward.toX + (x - c0), toY: forward.toY, facing: forward.facing });
+    } else {
+      const xEnd = back.edge === 'right' ? 0 : w - 1;
+      for (const y of [c0, c0 + 1])
+        b.m.warps.push({ x: xEnd, y, toMap: forward.toMap, toX: forward.toX, toY: forward.toY + (y - c0), facing: forward.facing });
+    }
+  } else if (vertical) {
     const yEnd = back.edge === 'bottom' ? 0 : h - 1;
     block(c0, yEnd); block(c0 + 1, yEnd);
   } else {
@@ -532,6 +544,125 @@ function buildRoute(
   if (back.edge === 'top') for (const x of [c0, c0 + 1]) b.m.warps.push({ x, y: 0, toMap: 'town', toX: back.toX + (x - c0), toY: back.toY, facing: back.facing });
   if (back.edge === 'right') for (const y of [c0, c0 + 1]) b.m.warps.push({ x: w - 1, y, toMap: 'town', toX: back.toX, toY: back.toY + (y - c0), facing: back.facing });
   if (back.edge === 'left') for (const y of [c0, c0 + 1]) b.m.warps.push({ x: 0, y, toMap: 'town', toX: back.toX, toY: back.toY + (y - c0), facing: back.facing });
+  return b.m;
+}
+
+
+// ---------------- PUZZLE VILLAGES ----------------
+// A small settlement holding two puzzle houses. `entry` is the edge the road
+// arrives from; houses always sit north of the road so their doors face it.
+interface VillageCfg {
+  id: string;
+  name: string;
+  entry: 'top' | 'bottom' | 'right';
+  puzzles: [PuzzleDef, PuzzleDef];
+  roofs: ['blue' | 'green', 'blue' | 'green'];
+  backRoute: { toMap: string; toX: number; toY: number; facing: Facing };
+  signText: string;
+}
+
+function buildVillage(cfg: VillageCfg): GameMap {
+  const W = 36, H = 24;
+  const b = newMap(cfg.id, cfg.name, W, H, true, T_GRASS);
+  const { rect, set, get, block, solid, deco } = b;
+  const collision = b.m.collision;
+
+  const CY = cfg.entry === 'top' ? 13 : cfg.entry === 'bottom' ? 10 : 11;
+  // cross street + entry street
+  rect(6, CY, 31, CY + 1, T_PATH);
+  if (cfg.entry === 'bottom') rect(17, CY, 18, H - 1, T_PATH);
+  if (cfg.entry === 'top') rect(17, 0, 18, CY, T_PATH);
+  if (cfg.entry === 'right') rect(6, CY, W - 1, CY + 1, T_PATH);
+
+  // pond, placed away from the street
+  const py = CY + 4;
+  rect(26, py, 31, py + 3, T_WATER);
+  rect(25, py + 1, 26, py + 2, T_WATER);
+  rect(31, py + 1, 32, py + 2, T_WATER);
+  for (let i = 0; i < W * H; i++) if (b.m.terrain[i] === T_WATER) collision[i] = 1;
+
+  // the two puzzle houses, north of the street
+  const hy = CY - 5;
+  placeHouse(b, { id: cfg.puzzles[0].id as StationId, label: cfg.puzzles[0].house, x: 8, y: hy, w: 5, h: 4, roof: cfg.roofs[0], wall: 'wood' });
+  placeHouse(b, { id: cfg.puzzles[1].id as StationId, label: cfg.puzzles[1].house, x: 23, y: hy, w: 5, h: 4, roof: cfg.roofs[1], wall: 'gray' });
+
+  // forest border + scatter
+  const clearOfPath = (x: number, y: number, pad = 0) => {
+    for (let dy = -pad; dy <= pad; dy++)
+      for (let dx = -pad; dx <= pad + 1; dx++) {
+        const t = get(x + dx, y + dy);
+        if (t === T_PATH || t === T_WATER) return false;
+      }
+    for (const h of b.m.houses)
+      if (x + 1 >= h.x - 1 && x <= h.x + h.w && y >= h.y - 1 && y <= h.y + h.h + 1) return false;
+    return true;
+  };
+  const nearWater = (x: number, y: number) => {
+    for (let dy = -2; dy <= 0; dy++)
+      for (let dx = 0; dx <= 1; dx++)
+        if (get(x + dx, y + dy) === T_WATER) return true;
+    return false;
+  };
+  const treeAt = (x: number, y: number) => {
+    if (nearWater(x, y)) return;
+    b.m.above.push({ x, y, kind: 'tree', variant: Math.floor(hash(x, y, 8) * 3), ox: (y % 2) * 8 });
+    block(x, y);
+    block(x + 1, y);
+  };
+  for (let ring = 0; ring < 3; ring++) {
+    for (let x = -1 + (ring % 2); x < W; x += 1) {
+      if (clearOfPath(x, ring * 2 - 1)) treeAt(x, ring * 2 - 1);
+      if (clearOfPath(x, H - 2 - ring * 2)) treeAt(x, H - 2 - ring * 2);
+    }
+    for (let y = -1; y < H; y += 1) {
+      const xL = ring * 2 - 1 + (y % 2 ? 1 : 0);
+      const xR = W - 3 - ring * 2 - (y % 2 ? 1 : 0);
+      if (clearOfPath(xL, y)) treeAt(xL, y);
+      if (clearOfPath(xR, y)) treeAt(xR, y);
+    }
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = 4 + Math.floor(hash(i, 4, 51) * (W - 10));
+    const y = 4 + Math.floor(hash(i, 5, 53) * (H - 10));
+    if (hash(i, 6, 55) < 0.3 && clearOfPath(x, y, 1)) treeAt(x, y);
+  }
+
+  // accents
+  for (let i = 0; i < 25; i++) {
+    const x = 3 + Math.floor(hash(i, 7, 61) * (W - 8));
+    const y = 3 + Math.floor(hash(i, 8, 63) * (H - 8));
+    if (get(x, y) !== T_GRASS || collision[y * W + x]) continue;
+    const r = hash(x, y, 65);
+    if (r < 0.3) deco(x, y, 'flower', Math.floor(r * 12));
+    else if (r < 0.5) set(x, y, T_TALL);
+  }
+  solid(15, CY - 2, 'lamp');
+  solid(21, CY + 2, 'rock');
+
+  // welcome sign beside the street near the entry
+  const signPos =
+    cfg.entry === 'bottom' ? { x: 15, y: H - 4 } :
+    cfg.entry === 'top' ? { x: 15, y: 3 } :
+    { x: W - 5, y: CY - 1 };
+  if (get(signPos.x, signPos.y) === T_GRASS && !collision[signPos.y * W + signPos.x]) {
+    solid(signPos.x, signPos.y, 'sign');
+    b.m.signs.push({ ...signPos, text: cfg.signText });
+  }
+
+  // greeter
+  const npc = { x: 20, y: CY + 3, variant: Math.floor(hash(CY, W, 71) * 3), lines: [
+    `Welcome to ${cfg.name}. Two houses, two puzzles, ${cfg.puzzles[0].points + cfg.puzzles[1].points} bonus points if you crack them both.`,
+  ] };
+  if (!collision[npc.y * W + npc.x] && get(npc.x, npc.y) !== T_WATER) {
+    b.m.npcs.push(npc);
+    block(npc.x, npc.y);
+  }
+
+  // warps back to the route along the entry edge
+  if (cfg.entry === 'bottom') for (const x of [17, 18]) b.m.warps.push({ x, y: H - 1, toMap: cfg.backRoute.toMap, toX: cfg.backRoute.toX + (x - 17), toY: cfg.backRoute.toY, facing: cfg.backRoute.facing });
+  if (cfg.entry === 'top') for (const x of [17, 18]) b.m.warps.push({ x, y: 0, toMap: cfg.backRoute.toMap, toX: cfg.backRoute.toX + (x - 17), toY: cfg.backRoute.toY, facing: cfg.backRoute.facing });
+  if (cfg.entry === 'right') for (const y of [CY, CY + 1]) b.m.warps.push({ x: W - 1, y, toMap: cfg.backRoute.toMap, toX: cfg.backRoute.toX, toY: cfg.backRoute.toY + (y - CY), facing: cfg.backRoute.facing });
+
   return b.m;
 }
 
@@ -585,42 +716,59 @@ export function buildAllMaps(): Record<string, GameMap> {
         b.solid(8, 4, 'plant');
       },
     },
-    {
-      id: 'puzzle-cipher', name: 'Puzzle Den', w: 10, h: 8, rug: 1, npcVariant: 2,
-      npcLines: ['Sssh. The racing problem on my desk has been driving people mad all week. Twenty-five horses, five lanes, no stopwatch. Care to try?'],
-      furnish: (b) => {
-        b.solid(1, 2, 'shelf'); b.solid(2, 2, 'shelf');
-        b.solid(8, 2, 'plant');
-        b.solid(2, 5, 'table');
-        b.solid(7, 5, 'barrel');
-      },
-    },
-    {
-      id: 'puzzle-market', name: 'Trading Post', w: 10, h: 8, rug: 0, npcVariant: 0,
-      npcLines: ['Everything here has a price, and most people compute it wrong. I will quote you three prices. Know when to take one.'],
-      furnish: (b) => {
-        b.solid(1, 2, 'barrel'); b.solid(2, 2, 'barrel');
-        b.solid(7, 2, 'shelf'); b.solid(8, 2, 'shelf');
-        b.solid(1, 5, 'table');
-        b.solid(8, 5, 'plant');
-      },
-    },
   ];
+  // one interior per puzzle house, furnished from a rotating set
+  PUZZLES.forEach((pz, i) => {
+    const furnishes: ((b: Builder) => void)[] = [
+      (b) => { b.solid(1, 2, 'shelf'); b.solid(2, 2, 'shelf'); b.solid(8, 2, 'plant'); b.solid(2, 5, 'table'); b.solid(7, 5, 'barrel'); },
+      (b) => { b.solid(1, 2, 'barrel'); b.solid(2, 2, 'barrel'); b.solid(7, 2, 'shelf'); b.solid(8, 2, 'shelf'); b.solid(1, 5, 'table'); b.solid(8, 5, 'plant'); },
+      (b) => { b.solid(1, 2, 'plant'); b.solid(7, 2, 'shelf'); b.solid(8, 2, 'shelf'); b.solid(2, 5, 'stool'); b.solid(7, 5, 'table'); },
+      (b) => { b.solid(1, 2, 'machine'); b.solid(8, 2, 'shelf'); b.solid(1, 5, 'barrel'); b.solid(8, 5, 'plant'); },
+    ];
+    interiors.push({
+      id: pz.id as StationId, name: pz.house, w: 10, h: 8, rug: i % 4, npcVariant: i % 3,
+      npcLines: [pz.hostLine],
+      furnish: furnishes[i % furnishes.length],
+    });
+  });
 
   const maps: Record<string, GameMap> = { town, woods };
   maps['route-north'] = buildRoute('route-north', 'North Trail', 14, 26, true,
     { edge: 'bottom', toX: 24, toY: 1, facing: 'down' },
-    'NORTH TRAIL: The path is overgrown past here. It reopens next semester.');
+    'NORTH TRAIL: Summit Hollow ahead. Two puzzle houses, 45 bonus points.',
+    { toMap: 'summit', toX: 17, toY: 22, facing: 'up' });
   maps['route-west'] = buildRoute('route-west', 'West Trail', 30, 14, false,
     { edge: 'right', toX: 1, toY: 13, facing: 'right' },
-    'WEST TRAIL: Nothing out here but trees. For now.');
+    'WEST TRAIL: Mirror Lake ahead. Two puzzle houses, 45 bonus points.',
+    { toMap: 'mirror', toX: 33, toY: 11, facing: 'left' });
   maps['route-south'] = buildRoute('route-south', 'South Trail', 14, 24, true,
     { edge: 'top', toX: 37, toY: 50, facing: 'up' },
-    'SOUTH TRAIL: The lake feeds a river somewhere down there. Trail closed.');
+    'SOUTH TRAIL: Driftwood Landing ahead. Two puzzle houses, 50 bonus points.',
+    { toMap: 'drift', toX: 17, toY: 1, facing: 'down' });
+
+  const byId = (id: string) => PUZZLES.find((pz) => pz.id === id)!;
+  maps['summit'] = buildVillage({
+    id: 'summit', name: 'Summit Hollow', entry: 'bottom',
+    puzzles: [byId('puzzle-cube'), byId('puzzle-lockers')], roofs: ['blue', 'green'],
+    backRoute: { toMap: 'route-north', toX: 6, toY: 1, facing: 'down' },
+    signText: 'SUMMIT HOLLOW: home of the House of Steps and the Locker Lodge. 45 bonus points on the table.',
+  });
+  maps['mirror'] = buildVillage({
+    id: 'mirror', name: 'Mirror Lake', entry: 'right',
+    puzzles: [byId('puzzle-dice'), byId('puzzle-coin')], roofs: ['green', 'blue'],
+    backRoute: { toMap: 'route-west', toX: 1, toY: 6, facing: 'right' },
+    signText: 'MIRROR LAKE: home of the Dice Lodge and the Coin Cabin. 45 bonus points on the table.',
+  });
+  maps['drift'] = buildVillage({
+    id: 'drift', name: 'Driftwood Landing', entry: 'top',
+    puzzles: [byId('puzzle-plane'), byId('puzzle-ace')], roofs: ['blue', 'blue'],
+    backRoute: { toMap: 'route-south', toX: 6, toY: 22, facing: 'up' },
+    signText: 'DRIFTWOOD LANDING: home of the Ferry House and the Card House. 50 bonus points on the table.',
+  });
   for (const spec of interiors) maps[`int-${spec.id}`] = buildInterior(spec);
 
   // wire door warps: exterior door → interior mat position; interior mats → outside the door
-  for (const outdoor of [town, woods]) {
+  for (const outdoor of [town, woods, maps['summit'], maps['mirror'], maps['drift']]) {
     for (const h of outdoor.houses) {
       if (h.deco) continue;
       const int = maps[`int-${h.id}`];
