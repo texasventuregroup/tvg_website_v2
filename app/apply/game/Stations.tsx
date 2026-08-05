@@ -7,31 +7,8 @@ import { useEffect, useRef, useState } from 'react';
 import { ApplySession, StationId, WHY_TVG_QUESTIONS } from './state';
 
 const PAPER = {
-  title: 'Fast Inference from Transformers via Speculative Decoding (Leviathan, Kalman, Matias, 2023)',
-  body: `Large language models generate text one token at a time, and each token requires a full
-forward pass through the model. Because every step depends on the previous one, generation is
-serial: a 70B-parameter model producing 500 tokens must run 500 expensive passes, one after
-another, even though modern accelerators are mostly idle waiting on memory during each pass.
-
-Speculative decoding attacks this bottleneck with a simple observation: many tokens are easy.
-Filler words, obvious continuations, and boilerplate do not need a huge model to predict. So the
-method uses two models. A small, fast "draft" model races ahead and proposes several tokens
-(say, 5) in a row. Then the large "target" model checks all of those proposals in a single
-batched forward pass, which costs roughly the same as generating one token normally.
-
-The clever part is the verification rule. For each drafted token, the target model compares its
-own probability for that token against the draft model's. Tokens the target model agrees with
-are accepted; at the first disagreement, the drafted token is rejected and replaced with a
-token sampled from a corrected distribution. This acceptance-rejection scheme is constructed so
-the final output has exactly the same distribution as sampling from the large model alone. The
-speedup is real but the text is provably unchanged in distribution: no quality is sacrificed.
-
-In practice, if the draft model guesses well, several tokens are accepted per expensive pass,
-yielding 2-3x faster generation with identical outputs. The technique costs extra compute
-(the draft model runs too, and rejected work is discarded) but saves what actually matters:
-wall-clock latency, which is dominated by the serial passes of the large model. It has become a
-standard serving optimization, and the core idea, spend cheap speculation to fill an expensive
-serial pipeline, shows up across computer architecture, from branch prediction to prefetching.`,
+  title: 'A New Golden Age for Computer Architecture (Hennessy & Patterson, Turing Lecture, CACM 2019)',
+  pdf: '/apply/a-new-golden-age-for-computer-architecture.pdf',
 };
 
 function Window({ title, children, onClose, wide }: {
@@ -80,7 +57,7 @@ export function WelcomeStation({ session, update, onClose }: StationProps) {
           <li>◆ <b>TVG Hall</b> (blue roof, north-east) - four interview questions, 2-3 sentences each.</li>
           <li>◆ <b>Archive House</b> (west) - leave an essay on anything you care about, plus your resume.</li>
           <li>◆ <b>Research Lab</b> (east end of the main road) - read a short paper, then record a 3-minute video explaining it.</li>
-          <li>◆ <b>Puzzle Woods</b> (east road) - optional. Top 5 on the leaderboard go straight to interviews.</li>
+          <li>◆ <b>Puzzle Woods</b> (east road) - optional puzzles worth bonus points on your application. Top 5 on the leaderboard go straight to interviews.</li>
         </ul>
         <p>Do them in any order. Your progress saves on this device automatically.</p>
         <button
@@ -355,9 +332,14 @@ export function LabStation({ session, update, onClose }: StationProps) {
             camera - three minutes, your own words. I care that you understood it, not that
             you memorized it.&quot;</b>
           </p>
-          <div className="border-2 border-[#20242c] bg-white p-4">
-            <h3 className="mb-2 font-mono text-sm font-bold">{PAPER.title}</h3>
-            <div className="whitespace-pre-line font-serif text-sm leading-relaxed">{PAPER.body}</div>
+          <div className="border-2 border-[#20242c] bg-white">
+            <div className="flex items-center justify-between border-b-2 border-[#20242c] bg-[#f2ecd8] px-3 py-2">
+              <h3 className="font-mono text-xs font-bold">{PAPER.title}</h3>
+              <a href={PAPER.pdf} target="_blank" rel="noreferrer" className="ml-3 shrink-0 font-mono text-xs font-bold text-[#bf5700] underline">
+                open in new tab ↗
+              </a>
+            </div>
+            <iframe src={PAPER.pdf} title={PAPER.title} className="h-[60vh] w-full" />
           </div>
           <button
             className={btn}
@@ -462,14 +444,23 @@ export function LabStation({ session, update, onClose }: StationProps) {
 // ---------- Puzzles ----------
 const CIPHER = {
   prompt:
-    'A note is pinned to the wall: "GUR ORFG GVZR GB CYNAG N GERR JNF GJRAGL LRNEF NTB." Decode it.',
-  check: (a: string) => a.toLowerCase().includes('twenty years ago'),
+    'A note is pinned to the wall: "You have 25 horses and a track with 5 lanes. Races give you ' +
+    'finishing order only, no times. What is the minimum number of races that GUARANTEES you can ' +
+    'name the fastest three horses, in order?" Answer with a single number.',
+  check: (a: string) => a.trim().replace(/races?/i, '').trim() === '7',
 };
 const MARKET = {
   prompt:
-    'You can invest $100 across two startups. Startup A returns 0x with prob 0.9 and 50x with prob 0.1. ' +
-    'Startup B returns 2x with certainty. To maximize EXPECTED value, how much goes into A? (just the number)',
-  check: (a: string) => /^\$?\s*100\s*$/.test(a.trim()),
+    'The trader slides you a game: "I will show you up to three prices, one at a time, each drawn ' +
+    'uniformly from 0 to 100. When you see a price you must take it or wave it off forever; if you ' +
+    'wave off the first two, you are stuck with the third. Play optimally. What is your expected ' +
+    'payoff?" Answer as an exact decimal or fraction.',
+  check: (a: string) => {
+    const t = a.trim().replace(/\$/g, '');
+    if (t === '2225/32') return true;
+    const v = parseFloat(t);
+    return !isNaN(v) && Math.abs(v - 69.53125) < 0.005;
+  },
 };
 
 export function PuzzleStation({ session, update, onClose, which }: StationProps & { which: 'cipher' | 'market' }) {
@@ -486,7 +477,7 @@ export function PuzzleStation({ session, update, onClose, which }: StationProps 
         {!solved ? (
           <>
             <input className={inputCls} value={answer} onChange={(e) => { setAnswer(e.target.value); setWrong(false); }} placeholder="Your answer" />
-            {wrong && <p className="text-xs text-red-700">Not quite. Sit with it - that&apos;s the point.</p>}
+            {wrong && <p className="text-xs text-red-700">Not quite. These are meant to be sat with. Scratch paper helps.</p>}
             <button
               className={btn}
               onClick={() => {
@@ -501,7 +492,7 @@ export function PuzzleStation({ session, update, onClose, which }: StationProps 
           </>
         ) : (
           <>
-            <p className="text-green-800">✓ Solved. Nicely done.</p>
+            <p className="text-green-800">✓ Solved. Bonus points banked for your application.</p>
             <label className="block text-xs font-bold">Leaderboard alias (anonymous)</label>
             <input className={inputCls} value={alias} onChange={(e) => setAlias(e.target.value)} placeholder="e.g. night_owl_42" />
             <button className={btn} onClick={() => { update({ leaderboardAlias: alias }); onClose(); }}>

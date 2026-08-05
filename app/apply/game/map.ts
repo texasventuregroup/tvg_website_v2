@@ -147,7 +147,7 @@ export function buildTown(): GameMap {
 
   // paths
   rect(24, 0, 25, 13, T_PATH);
-  rect(10, 13, 55, 14, T_PATH);
+  rect(0, 13, 55, 14, T_PATH); // main road, open to the west edge
   rect(21, 15, 22, 26, T_PATH);
   rect(12, 24, 21, 25, T_PATH);
   rect(23, 26, 26, 27, T_PATH);
@@ -157,6 +157,7 @@ export function buildTown(): GameMap {
   rect(25, 35, 26, 44, T_PATH);
   rect(15, 43, 25, 44, T_PATH);
   rect(27, 43, 40, 44, T_PATH);
+  rect(37, 45, 38, 51, T_PATH); // lane to the south edge
 
   rect(10, 15, 11, 22, T_PATH);
 
@@ -313,7 +314,7 @@ export function buildTown(): GameMap {
   const signs = [
     { x: 23, y: 17, text: 'TVG GROVE - Visit every marked house to complete your application.' },
     { x: 26, y: 12, text: 'NORTH: TVG Hall (interview questions)  ·  WEST: Visitor Cabin (start here)' },
-    { x: 36, y: 32, text: 'EAST: Puzzle Woods - optional brain-teasers. Top solvers make the leaderboard.' },
+    { x: 36, y: 32, text: 'EAST: Puzzle Woods - optional puzzles worth BONUS POINTS on your application. Top 5 solvers earn auto-interviews.' },
     { x: 13, y: 23, text: 'Archive House - submit your artifact: an essay on anything you care about, plus your resume.' },
   ];
   for (const s of signs) { solid(s.x, s.y, 'sign'); b.m.signs.push(s); }
@@ -328,12 +329,15 @@ export function buildTown(): GameMap {
       ],
     },
     { x: 33, y: 10, variant: 1, lines: ['The Hall folks ask real questions. Two to three sentences each - make them count.'] },
-    { x: 42, y: 32, variant: 2, lines: ['Keep east past the bridge for the Puzzle Woods. No pressure. Well, some pressure.'] },
+    { x: 42, y: 32, variant: 2, lines: ['Keep east past the bridge for the Puzzle Woods. The puzzles are hard, but they are worth bonus points on your application.'] },
   ];
   for (const n of b.m.npcs) block(n.x, n.y);
 
-  // east edge connection → puzzle woods
+  // edge connections: east to the puzzle woods, trails off every other side
   for (const y of [33, 34]) b.m.warps.push({ x: W - 1, y, toMap: 'woods', toX: 1, toY: y - 23, facing: 'right' });
+  for (const x of [24, 25]) b.m.warps.push({ x, y: 0, toMap: 'route-north', toX: x - 18, toY: 24, facing: 'up' });
+  for (const y of [13, 14]) b.m.warps.push({ x: 0, y, toMap: 'route-west', toX: 28, toY: y - 7, facing: 'left' });
+  for (const x of [37, 38]) b.m.warps.push({ x, y: H - 1, toMap: 'route-south', toX: x - 31, toY: 1, facing: 'down' });
 
   return b.m;
 }
@@ -404,17 +408,17 @@ export function buildWoods(): GameMap {
   solid(18, 5, 'barrel');
 
   const signs = [
-    { x: 4, y: 9, text: 'PUZZLE WOODS - Two dens, two puzzles. Solve them, claim a leaderboard alias, and the top 5 skip to interviews.' },
+    { x: 4, y: 9, text: 'PUZZLE WOODS - Two dens, two puzzles, real bonus points. Solve them, claim a leaderboard alias, and the top 5 skip to interviews.' },
   ];
   for (const s of signs) { solid(s.x, s.y, 'sign'); b.m.signs.push(s); }
 
   b.m.npcs = [
-    { x: 28, y: 13, variant: 2, lines: ['The Den up north hides a cipher. The Trading Post asks a nastier question than it looks. Take your time - thinking is the whole point.'] },
+    { x: 28, y: 13, variant: 2, lines: ['The Den up north has a racing puzzle. The Trading Post asks a nastier question than it looks. Both are worth bonus points. Take your time - thinking is the whole point.'] },
   ];
   for (const n of b.m.npcs) block(n.x, n.y);
 
   // west edge back to town
-  for (const y of [10, 11]) b.m.warps.push({ x: 0, y, toMap: 'town', toX: 54, toY: y + 23, facing: 'left' });
+  for (const y of [10, 11]) b.m.warps.push({ x: 0, y, toMap: 'town', toX: 66, toY: y + 23, facing: 'left' });
 
   return b.m;
 }
@@ -467,6 +471,65 @@ function buildInterior(spec: InteriorSpec): GameMap {
   b.m.warps.push({ x: mx - 1, y: h - 1, toMap: '', toX: 0, toY: 0, facing: 'down' });
   b.m.warps.push({ x: mx, y: h - 1, toMap: '', toX: 0, toY: 0, facing: 'down' });
 
+  return b.m;
+}
+
+// A quiet forest route off one edge of town. Mostly scenery; ends at a sign.
+function buildRoute(
+  id: string, name: string, w: number, h: number, vertical: boolean,
+  back: { edge: 'top' | 'bottom' | 'left' | 'right'; toX: number; toY: number; facing: Facing },
+  signText: string,
+): GameMap {
+  const b = newMap(id, name, w, h, true, T_GRASS);
+  const { rect, set, get, block, solid } = b;
+  const collision = b.m.collision;
+  const c0 = Math.floor((vertical ? w : h) / 2) - 1;
+  if (vertical) rect(c0, 0, c0 + 1, h - 1, T_PATH);
+  else rect(0, c0, w - 1, c0 + 1, T_PATH);
+
+  const clear = (x: number, y: number) => {
+    for (let dy = -1; dy <= 0; dy++)
+      for (let dx = 0; dx <= 1; dx++)
+        if (get(x + dx, y + dy) === T_PATH) return false;
+    return true;
+  };
+  const treeAt = (x: number, y: number) => {
+    b.m.above.push({ x, y, kind: 'tree', variant: Math.floor(hash(x, y, 7) * 3), ox: (y % 2) * 8 });
+    block(x, y);
+    block(x + 1, y);
+  };
+  for (let y = -1; y < h; y++)
+    for (let x = -1 + (y % 2); x < w; x += 2)
+      if (clear(x, y)) treeAt(x, y);
+  // second offset pass fills the strip left bare beside the trail
+  for (let y = 0; y < h; y++)
+    for (let x = (y + 1) % 2; x < w; x += 2)
+      if (clear(x, y) && !collision[y * w + x] && !collision[y * w + Math.min(w - 1, x + 1)]) treeAt(x, y);
+  // tall grass along the trail
+  for (let i = 0; i < 30; i++) {
+    const x = Math.floor(hash(i, 9, 91) * w);
+    const y = Math.floor(hash(i, 8, 93) * h);
+    if (get(x, y) === T_GRASS && !collision[y * w + x] && hash(x, y, 95) < 0.5) set(x, y, T_TALL);
+  }
+  // sign at the far end of the trail
+  const signPos = vertical
+    ? { x: c0 - 1, y: back.edge === 'bottom' ? 2 : h - 3 }
+    : { x: back.edge === 'right' ? 2 : w - 3, y: c0 - 1 };
+  solid(signPos.x, signPos.y, 'sign');
+  b.m.signs.push({ ...signPos, text: signText });
+  // block the far end of the trail so the route dead-ends at the sign
+  if (vertical) {
+    const yEnd = back.edge === 'bottom' ? 0 : h - 1;
+    block(c0, yEnd); block(c0 + 1, yEnd);
+  } else {
+    const xEnd = back.edge === 'right' ? 0 : w - 1;
+    block(xEnd, c0); block(xEnd, c0 + 1);
+  }
+  // warps back to town along the entry edge
+  if (back.edge === 'bottom') for (const x of [c0, c0 + 1]) b.m.warps.push({ x, y: h - 1, toMap: 'town', toX: back.toX + (x - c0), toY: back.toY, facing: back.facing });
+  if (back.edge === 'top') for (const x of [c0, c0 + 1]) b.m.warps.push({ x, y: 0, toMap: 'town', toX: back.toX + (x - c0), toY: back.toY, facing: back.facing });
+  if (back.edge === 'right') for (const y of [c0, c0 + 1]) b.m.warps.push({ x: w - 1, y, toMap: 'town', toX: back.toX, toY: back.toY + (y - c0), facing: back.facing });
+  if (back.edge === 'left') for (const y of [c0, c0 + 1]) b.m.warps.push({ x: 0, y, toMap: 'town', toX: back.toX, toY: back.toY + (y - c0), facing: back.facing });
   return b.m;
 }
 
@@ -543,6 +606,15 @@ export function buildAllMaps(): Record<string, GameMap> {
   ];
 
   const maps: Record<string, GameMap> = { town, woods };
+  maps['route-north'] = buildRoute('route-north', 'North Trail', 14, 26, true,
+    { edge: 'bottom', toX: 24, toY: 1, facing: 'down' },
+    'NORTH TRAIL: The path is overgrown past here. It reopens next semester.');
+  maps['route-west'] = buildRoute('route-west', 'West Trail', 30, 14, false,
+    { edge: 'right', toX: 1, toY: 13, facing: 'right' },
+    'WEST TRAIL: Nothing out here but trees. For now.');
+  maps['route-south'] = buildRoute('route-south', 'South Trail', 14, 24, true,
+    { edge: 'top', toX: 37, toY: 50, facing: 'up' },
+    'SOUTH TRAIL: The lake feeds a river somewhere down there. Trail closed.');
   for (const spec of interiors) maps[`int-${spec.id}`] = buildInterior(spec);
 
   // wire door warps: exterior door → interior mat position; interior mats → outside the door

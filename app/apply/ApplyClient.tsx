@@ -129,7 +129,7 @@ export default function ApplyClient() {
                 </li>
               ))}
               <li className="pt-1 text-gray-500">
-                ◆ Puzzles solved: {Object.keys(session.puzzleAnswers).length}/2 (optional)
+                ◆ Puzzle Woods (east): bonus points · {Object.keys(session.puzzleAnswers).length}/2 solved
               </li>
             </ul>
             {requiredComplete(session) && !session.submitted && (
@@ -296,8 +296,8 @@ function nextObjective(s: ApplySession): string {
   if (!stationComplete(s, 'whytvg')) return 'Head to TVG Hall (big blue-roof house, north-east) for your interview questions.';
   if (!stationComplete(s, 'artifact')) return 'Visit the Archive House (west) to leave your essay + resume.';
   if (!stationComplete(s, 'lab')) return 'Follow the main road east to the Research Lab - read the paper, record your video.';
-  if (!s.submitted) return 'All required steps done! Submit below - or try the Puzzle Woods (east road).';
-  return 'Application submitted. The Puzzle Woods are still open if you want the leaderboard.';
+  if (!s.submitted) return 'All required steps done! Submit below, or earn bonus points in the Puzzle Woods (east road).';
+  return 'Application submitted. The Puzzle Woods still count for bonus points and the leaderboard.';
 }
 
 function AvatarPreview({ pal, big }: { pal: CharPalette; big?: boolean }) {
