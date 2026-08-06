@@ -11,6 +11,7 @@ import {
   makeTree, makePine, makeBigTree, makeBush, makeFlower, makeFence, makeSign, makeLamp, makeBarrel,
   makeRock, makeCrops, makeHouse, makeBridgeH, makeNpc,
   makeMushroom, makeLog, makeShell, makeBoat, makePierPost,
+  makeHearth, makeBed, makeCrate, makePainting, makeBanner, makeFishMount, makePelt,
   makeShelf, makeDesk, makePlantIn, makeMachine, makeTableIn, makeStool, makeWindowIn, PAL,
   makeCharacter, AVATARS,
 } from './tileset';
@@ -61,11 +62,17 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
     const sprites: Record<string, HTMLCanvasElement> = {
       fenceH: makeFence('h'), fenceV: makeFence('v'), fencePost: makeFence('post'),
       sign: makeSign(), lamp: makeLamp(), barrel: makeBarrel(), rock: makeRock(),
-      crops: makeCrops(), shelf: makeShelf(), desk: makeDesk(), plant: makePlantIn(),
+      crops: makeCrops(), shelf: makeShelf(), plant: makePlantIn(),
       mushroom: makeMushroom(), log: makeLog(), shell: makeShell(), boat: makeBoat(), pierpost: makePierPost(),
+      hearth: makeHearth(), bed: makeBed(), crate: makeCrate(), painting: makePainting(0),
+      painting2: makePainting(1), banner: makeBanner(), fishmount: makeFishMount(), pelt: makePelt(),
       machine: makeMachine(), table: makeTableIn(), stool: makeStool(), window: makeWindowIn(),
     };
     const bridgeH = makeBridgeH();
+    const desks: Record<string, HTMLCanvasElement> = {
+      wood: makeDesk('wood'), metal: makeDesk('metal'), felt: makeDesk('felt'),
+      drift: makeDesk('drift'), lectern: makeDesk('lectern'),
+    };
     const npcSprites = [makeNpc(0), makeNpc(1), makeNpc(2)];
     const playerFrames = makeCharacter(AVATARS[session.avatar % AVATARS.length].pal);
     const houseSpriteCache = new Map<string, HTMLCanvasElement>();
@@ -79,10 +86,6 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
     };
 
     // ---- per-map prerendered layers ----
-    const rugVariant: Record<string, number> = {
-      'int-welcome': 0, 'int-whytvg': 1, 'int-artifact': 2, 'int-lab': 3,
-      'int-puzzle-cipher': 1, 'int-puzzle-market': 0,
-    };
     const terrainCache = new Map<string, HTMLCanvasElement[]>();
     const groundCache = new Map<string, HTMLCanvasElement>();
 
@@ -146,10 +149,16 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
               drawSea(tg, maskOf(x, y, T_SEA), x, y, frame * 5, d);
             }
             else if (t === T_BRIDGE) tg.drawImage(bridgeH, 0, 0);
-            else if (t === T_FLOOR) drawFloor(tg, x, y);
-            else if (t === T_WALL) drawWall(tg, y);
-            else if (t === T_RUG) drawRug(tg, maskOf(x, y, T_RUG), rugVariant[m.id] ?? 0);
-            else if (t === T_MAT) { drawFloor(tg, x, y); drawMat(tg); }
+            else if (t === T_FLOOR) drawFloor(tg, x, y, m.floorStyle);
+            else if (t === T_WALL) drawWall(tg, y, m.wallStyle, y >= 2 ? (x === 0 ? 'left' : x === m.w - 1 ? 'right' : undefined) : undefined);
+            else if (t === T_RUG) drawRug(tg, maskOf(x, y, T_RUG), m.rugVar ?? 0);
+            else if (t === T_MAT) {
+              drawFloor(tg, x, y, m.floorStyle);
+              const matStyle = m.floorStyle === 'stone' || m.floorStyle === 'moss' ? 'stone'
+                : m.floorStyle === 'sand' ? 'rope'
+                : m.floorStyle === 'wood' ? 'woven' : 'green';
+              drawMat(tg, matStyle);
+            }
             g.drawImage(tileC, x * TILE, y * TILE);
           }
         }
@@ -175,11 +184,20 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
       // darker forest floor beneath tree canopies
       g.fillStyle = 'rgba(28, 66, 40, 0.30)';
       for (const t of m.above) g.fillRect(t.x * TILE + t.ox, t.y * TILE, TILE * 2, TILE);
+      const GROUNDED = new Set(['shelf', 'table', 'crate', 'barrel', 'machine', 'plant', 'bed', 'stool', 'rock', 'log', 'mushroom', 'desk']);
       for (const o of m.objects) {
         const X = o.x * TILE, Y = o.y * TILE;
+        if (!m.outdoor && GROUNDED.has(o.kind)) {
+          const spr = o.kind === 'desk' ? desks[m.deskStyle ?? 'wood'] : o.kind === 'bed' ? sprites.bed : sprites[o.kind];
+          if (spr) {
+            g.fillStyle = 'rgba(32,36,44,0.22)';
+            g.fillRect(X + 1, Y + spr.height - 1, Math.min(spr.width, TILE * 2) - 2, 2);
+          }
+        }
         if (o.kind === 'flower') g.drawImage(flowers[(o.variant ?? 0) % flowers.length], X, Y);
+        else if (o.kind === 'painting') g.drawImage((o.variant ?? 0) % 2 === 0 ? sprites.painting : sprites.painting2, X, Y);
         else if (o.kind === 'bush') g.drawImage(bushes[(o.variant ?? 0) % 2], X, Y);
-        else if (o.kind === 'desk') g.drawImage(sprites.desk, X, Y);
+        else if (o.kind === 'desk') g.drawImage(desks[m.deskStyle ?? 'wood'], X, Y);
         else if (sprites[o.kind]) g.drawImage(sprites[o.kind], X, Y);
       }
       for (const h of m.houses) {
@@ -482,7 +500,8 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
         }
         if (tx2 >= 0) {
           const isNpc = map.npcs.some((np) => np.y === ty2 && Math.abs(np.x - tx2) <= 1);
-          const label = isNpc ? 'PRESS Z TO TALK' : 'PRESS Z TO READ';
+          const touch = window.matchMedia('(pointer: coarse)').matches;
+          const label = isNpc ? (touch ? 'TAP A TO TALK' : 'PRESS Z TO TALK') : (touch ? 'TAP A TO READ' : 'PRESS Z TO READ');
           const sx = (tx2 * TILE + TILE / 2 - camX) * scale;
           const sy = (ty2 * TILE - 12 - camY) * scale + Math.sin(now / 250) * 2;
           ctx.font = `bold ${Math.round(4.5 * scale)}px monospace`;

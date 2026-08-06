@@ -161,8 +161,10 @@ export default function ApplyClient() {
         </button>
       </div>
 
+      {mode === 'world' && <TouchControls />}
+
       {mode === 'world' && !dialog && !station && (
-        <div className="pointer-events-none absolute bottom-4 right-4 z-40 border-2 border-[#20242c] bg-[#fffdf4]/95 px-3 py-2 font-mono text-[10px] text-[#20242c] shadow-[3px_3px_0_0_rgba(32,36,44,0.4)]">
+        <div className="pointer-events-none absolute bottom-4 right-4 z-40 border-2 border-[#20242c] bg-[#fffdf4]/95 px-3 py-2 font-mono text-[10px] text-[#20242c] shadow-[3px_3px_0_0_rgba(32,36,44,0.4)] [@media(pointer:coarse)]:hidden">
           ARROWS / WASD move · Z / ENTER interact · M map overview · walk into doorways to enter
         </div>
       )}
@@ -420,5 +422,94 @@ function GateScreen({ onUnlock }: { onUnlock: () => void }) {
         </button>
       </div>
     </div>
+  );
+}
+
+
+// On-screen joystick + buttons for touch devices. Feeds the existing keyboard
+// pipeline with synthetic key events, so every handler works unchanged.
+const DIR_KEYS: Record<string, string> = { up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' };
+
+function TouchControls() {
+  const [isTouch, setIsTouch] = useState(false);
+  const baseRef = useRef<HTMLDivElement>(null);
+  const thumbRef = useRef<HTMLDivElement>(null);
+  const activeDirRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window);
+  }, []);
+
+  useEffect(() => () => {
+    if (activeDirRef.current) {
+      window.dispatchEvent(new KeyboardEvent('keyup', { key: DIR_KEYS[activeDirRef.current] }));
+    }
+  }, []);
+
+  if (!isTouch) return null;
+
+  const setDir = (dir: string | null) => {
+    const prev = activeDirRef.current;
+    if (prev === dir) return;
+    if (prev) window.dispatchEvent(new KeyboardEvent('keyup', { key: DIR_KEYS[prev] }));
+    if (dir) window.dispatchEvent(new KeyboardEvent('keydown', { key: DIR_KEYS[dir] }));
+    activeDirRef.current = dir;
+  };
+
+  const handlePointer = (e: React.PointerEvent) => {
+    const base = baseRef.current!;
+    const r = base.getBoundingClientRect();
+    const dx = e.clientX - (r.left + r.width / 2);
+    const dy = e.clientY - (r.top + r.height / 2);
+    const dist = Math.hypot(dx, dy);
+    const thumb = thumbRef.current!;
+    const cap = r.width / 2 - 18;
+    const k = dist > cap ? cap / dist : 1;
+    thumb.style.transform = `translate(${dx * k}px, ${dy * k}px)`;
+    if (dist < r.width * 0.12) { setDir(null); return; }
+    const dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
+    setDir(dir);
+  };
+  const release = () => {
+    setDir(null);
+    if (thumbRef.current) thumbRef.current.style.transform = 'translate(0px, 0px)';
+  };
+  const press = (key: string) => {
+    window.dispatchEvent(new KeyboardEvent('keydown', { key }));
+    setTimeout(() => window.dispatchEvent(new KeyboardEvent('keyup', { key })), 80);
+  };
+
+  return (
+    <>
+      {/* joystick */}
+      <div
+        ref={baseRef}
+        className="absolute bottom-6 left-6 z-[70] flex h-32 w-32 touch-none select-none items-center justify-center rounded-full border-2 border-[#20242c] bg-[#fffdf4]/35 backdrop-blur-[1px]"
+        onPointerDown={(e) => { (e.target as HTMLElement).setPointerCapture(e.pointerId); handlePointer(e); }}
+        onPointerMove={(e) => { if (e.buttons) handlePointer(e); }}
+        onPointerUp={release}
+        onPointerCancel={release}
+      >
+        <div
+          ref={thumbRef}
+          className="pointer-events-none h-12 w-12 rounded-full border-2 border-[#20242c] bg-[#fffdf4]/85 shadow-[2px_2px_0_0_rgba(32,36,44,0.4)]"
+        />
+      </div>
+      {/* action buttons */}
+      <div className="absolute bottom-8 right-6 z-[70] flex items-end gap-3">
+        <button
+          className="h-11 w-11 touch-none select-none rounded-full border-2 border-[#20242c] bg-[#fffdf4]/70 font-mono text-xs font-bold text-[#20242c] active:translate-y-[2px]"
+          onPointerDown={() => press('m')}
+        >
+          MAP
+        </button>
+        <button
+          className="h-16 w-16 touch-none select-none rounded-full border-2 border-[#20242c] bg-[#c25c10]/90 font-mono text-lg font-bold text-white shadow-[3px_3px_0_0_rgba(32,36,44,0.4)] active:translate-y-[2px] active:shadow-none"
+          onPointerDown={() => press('z')}
+        >
+          A
+        </button>
+      </div>
+    </>
   );
 }

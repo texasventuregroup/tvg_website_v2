@@ -575,11 +575,16 @@ export function makeLog(): HTMLCanvasElement {
 
 export function makeShell(): HTMLCanvasElement {
   const [c, g] = cv(16, 16);
-  px(g, 5, 7, '#e8b8c8', 6, 4);
-  px(g, 6, 6, '#f2d0da', 4, 1);
+  // outlined scallop: fan shape with ribs and a hinge
+  px(g, 4, 5, '#20242c', 8, 6);
+  px(g, 5, 4, '#20242c', 6, 1);
+  px(g, 6, 11, '#20242c', 4, 2);
+  px(g, 5, 5, '#f2d0da', 6, 5);
+  px(g, 6, 4, '#f8e0e8', 4, 2);
+  px(g, 6, 6, '#d8a0b4', 1, 4);
+  px(g, 8, 5, '#d8a0b4', 1, 5);
+  px(g, 10, 6, '#d8a0b4', 1, 4);
   px(g, 7, 11, '#c890a4', 2, 1);
-  px(g, 6, 8, '#c890a4', 1, 2);
-  px(g, 9, 8, '#c890a4', 1, 2);
   return c;
 }
 
@@ -903,10 +908,93 @@ export function makeHouse(opts: {
 
 // ---- interior tiles ----
 
-export function drawFloor(g: CanvasRenderingContext2D, tx: number, ty: number) {
+export type FloorStyle = 'wood' | 'stone' | 'dark' | 'sand' | 'moss';
+
+export function drawFloor(g: CanvasRenderingContext2D, tx: number, ty: number, style: FloorStyle = 'wood') {
+  if (style === 'stone') {
+    // cool flagstone tile for halls and labs
+    g.fillStyle = (tx + ty) % 2 === 0 ? '#c2c6bd' : '#b6bab0';
+    g.fillRect(0, 0, TILE, TILE);
+    g.fillStyle = '#a3a89d';
+    g.fillRect(0, TILE - 1, TILE, 1);
+    g.fillRect(TILE - 1, 0, 1, TILE);
+    g.fillStyle = '#d2d6cc';
+    g.fillRect(0, 0, TILE, 1);
+    g.fillRect(0, 0, 1, TILE);
+    if (hash(tx, ty, 220) < 0.2) {
+      g.fillStyle = '#aaafa2';
+      g.fillRect(4 + Math.floor(hash(tx, ty, 221) * 8), 4 + Math.floor(hash(tx, ty, 222) * 8), 3, 1);
+    }
+    return;
+  }
+  if (style === 'dark') {
+    // aged dark planks for dens and lodges
+    g.fillStyle = '#8a6a4a';
+    g.fillRect(0, 0, TILE, TILE);
+    g.fillStyle = '#79593c';
+    g.fillRect(0, 7, TILE, 1);
+    g.fillRect(0, 15, TILE, 1);
+    const off = (tx + ty) % 2 === 0 ? 5 : 12;
+    g.fillStyle = '#6b4e33';
+    g.fillRect(off, 0, 1, 7);
+    g.fillRect((off + 7) % 16, 8, 1, 7);
+    g.fillStyle = '#96755a';
+    g.fillRect(1, 1, 4, 1);
+    return;
+  }
+  if (style === 'sand') {
+    // sand-dusted boards for the shore shack
+    g.fillStyle = '#d8bc8a';
+    g.fillRect(0, 0, TILE, TILE);
+    g.fillStyle = '#c4a875';
+    g.fillRect(0, 7, TILE, 1);
+    g.fillRect(0, 15, TILE, 1);
+    const off = (tx + ty) % 2 === 0 ? 4 : 11;
+    g.fillStyle = '#b6996a';
+    g.fillRect(off, 0, 1, 7);
+    if (hash(tx, ty, 224) < 0.35) {
+      g.fillStyle = '#ecdcb0';
+      g.fillRect(3 + Math.floor(hash(tx, ty, 225) * 9), 3 + Math.floor(hash(tx, ty, 226) * 9), 3, 1);
+    }
+    return;
+  }
+  if (style === 'moss') {
+    // damp flagstone reclaimed by moss: organic patches cross the tile seams
+    g.fillStyle = (tx + ty) % 2 === 0 ? '#98a18c' : '#8f9883';
+    g.fillRect(0, 0, TILE, TILE);
+    g.fillStyle = '#79826e';
+    g.fillRect(0, TILE - 1, TILE, 1);
+    g.fillRect(TILE - 1, 0, 1, TILE);
+    // cracks and damp stains
+    if (hash(tx, ty, 230) < 0.25) {
+      g.fillStyle = '#6d7663';
+      const cx2 = 2 + Math.floor(hash(tx, ty, 231) * 10);
+      g.fillRect(cx2, 3, 1, 6);
+      g.fillRect(cx2 + 1, 8, 3, 1);
+    }
+    if (hash(tx, ty, 232) < 0.2) {
+      g.fillStyle = 'rgba(60,72,54,0.35)';
+      g.fillRect(1 + Math.floor(hash(tx, ty, 233) * 8), 1 + Math.floor(hash(tx, ty, 234) * 8), 6, 5);
+    }
+    // moss blobs anchored per-corner so patches continue across neighboring tiles
+    const mossBlob = (cx2: number, cy2: number, r: number) => {
+      for (let y = -r; y <= r; y++)
+        for (let x = -r; x <= r; x++)
+          if (x * x + y * y <= r * r) {
+            g.fillStyle = (x + y) % 2 === 0 ? '#6fae6a' : '#5f9e5c';
+            g.fillRect(cx2 + x, cy2 + y, 1, 1);
+          }
+    };
+    for (const [ax, ay, ox, oy] of [[tx, ty, 0, 0], [tx + 1, ty, TILE, 0], [tx, ty + 1, 0, TILE], [tx + 1, ty + 1, TILE, TILE]] as [number, number, number, number][]) {
+      if (hash(ax, ay, 235) < 0.4) {
+        mossBlob(ox + Math.floor(hash(ax, ay, 236) * 5) - 2, oy + Math.floor(hash(ax, ay, 237) * 5) - 2, 3 + Math.floor(hash(ax, ay, 238) * 3));
+      }
+    }
+    return;
+  }
+  // warm wood (default)
   g.fillStyle = '#d8b27e';
   g.fillRect(0, 0, TILE, TILE);
-  // plank rows with staggered seams
   g.fillStyle = '#c49c66';
   g.fillRect(0, 7, TILE, 1);
   g.fillRect(0, 15, TILE, 1);
@@ -922,9 +1010,93 @@ export function drawFloor(g: CanvasRenderingContext2D, tx: number, ty: number) {
   }
 }
 
-export function drawWall(g: CanvasRenderingContext2D, ty: number) {
+export type WallStyle = 'wood' | 'stone' | 'log';
+
+export function drawWall(
+  g: CanvasRenderingContext2D, ty: number, style: WallStyle = 'wood',
+  side?: 'left' | 'right',
+) {
+  if (side && ty !== 0) {
+    // side wall face: quieter texture, bright inner edge, a break every few tiles
+    const base = style === 'stone' ? '#8b9086' : style === 'log' ? '#79593c' : '#6b523d';
+    const dark = style === 'stone' ? '#6f746c' : style === 'log' ? '#5c452f' : '#5a4433';
+    const lite = style === 'stone' ? '#aab0a4' : style === 'log' ? '#a8875f' : '#96755a';
+    g.fillStyle = base;
+    g.fillRect(0, 0, TILE, TILE);
+    g.fillStyle = dark;
+    for (let y = 3; y < TILE; y += 6) g.fillRect(side === 'left' ? 0 : 8, y, 8, 1);
+    // inner edge highlight
+    g.fillStyle = lite;
+    g.fillRect(side === 'left' ? TILE - 2 : 0, 0, 2, TILE);
+    g.fillStyle = '#20242c';
+    g.fillRect(side === 'left' ? TILE - 3 : 2, 0, 1, TILE);
+    // small candle-shelf break
+    if (ty % 3 === 2) {
+      const x0 = side === 'left' ? 4 : 3;
+      g.fillStyle = '#4a3729';
+      g.fillRect(x0, 9, 9, 2);
+      g.fillStyle = '#f2d98c';
+      g.fillRect(x0 + 3, 5, 2, 4);
+      g.fillStyle = '#e8702a';
+      g.fillRect(x0 + 3, 4, 2, 1);
+    }
+    return;
+  }
+
+  if (style === 'stone') {
+    if (ty === 0) {
+      g.fillStyle = '#6f746c';
+      g.fillRect(0, 0, TILE, TILE);
+      g.fillStyle = '#7e837a';
+      for (let x = 0; x < TILE; x += 8) g.fillRect(x + 1, 1, 6, 6);
+      for (let x = 4; x < TILE; x += 8) g.fillRect(x + 1 - 4, 8, 6, 6);
+      g.fillStyle = '#585d55';
+      g.fillRect(0, 14, TILE, 2);
+    } else {
+      g.fillStyle = '#9a9f95';
+      g.fillRect(0, 0, TILE, TILE);
+      g.fillStyle = '#8b9086';
+      for (let x = 0; x < TILE; x += 8) g.fillRect(x + 1, 2, 6, 5);
+      for (let x = 4; x < TILE; x += 8) g.fillRect(x + 1 - 4, 8, 6, 4);
+      g.fillStyle = '#aab0a4';
+      g.fillRect(0, 0, TILE, 2);
+      g.fillStyle = '#565b52';
+      g.fillRect(0, 13, TILE, 3);
+      g.fillStyle = '#787d73';
+      g.fillRect(0, 13, TILE, 1);
+    }
+    return;
+  }
+  if (style === 'log') {
+    if (ty === 0) {
+      g.fillStyle = '#5c452f';
+      g.fillRect(0, 0, TILE, TILE);
+      g.fillStyle = '#6e5238';
+      g.fillRect(0, 2, TILE, 4);
+      g.fillRect(0, 9, TILE, 4);
+      g.fillStyle = '#4a3729';
+      g.fillRect(0, 6, TILE, 1);
+      g.fillRect(0, 13, TILE, 3);
+    } else {
+      g.fillStyle = '#8a6a4a';
+      g.fillRect(0, 0, TILE, TILE);
+      // stacked round logs
+      for (let y = 0; y < 12; y += 4) {
+        g.fillStyle = '#96755a';
+        g.fillRect(0, y, TILE, 3);
+        g.fillStyle = '#a8875f';
+        g.fillRect(0, y, TILE, 1);
+        g.fillStyle = '#6b4e33';
+        g.fillRect(0, y + 3, TILE, 1);
+      }
+      g.fillStyle = '#3a2c20';
+      g.fillRect(0, 13, TILE, 3);
+      g.fillStyle = '#6b523d';
+      g.fillRect(0, 13, TILE, 1);
+    }
+    return;
+  }
   if (ty === 0) {
-    // upper wall: dark panels
     g.fillStyle = '#5a4433';
     g.fillRect(0, 0, TILE, TILE);
     g.fillStyle = '#6b523d';
@@ -932,7 +1104,6 @@ export function drawWall(g: CanvasRenderingContext2D, ty: number) {
     g.fillStyle = '#4a3729';
     g.fillRect(0, 14, TILE, 2);
   } else {
-    // lower wall: warm paneling with baseboard where it meets the floor
     g.fillStyle = '#8a6a4a';
     g.fillRect(0, 0, TILE, TILE);
     g.fillStyle = '#79593c';
@@ -989,7 +1160,43 @@ export function drawRug(g: CanvasRenderingContext2D, mask: number, variant: numb
   }
 }
 
-export function drawMat(g: CanvasRenderingContext2D) {
+export type MatStyle = 'green' | 'woven' | 'stone' | 'rope';
+
+export function drawMat(g: CanvasRenderingContext2D, style: MatStyle = 'green') {
+  if (style === 'stone') {
+    g.fillStyle = '#9a9f95';
+    g.fillRect(0, 0, TILE, TILE);
+    g.fillStyle = '#aab0a4';
+    g.fillRect(0, 0, TILE, 2);
+    g.fillStyle = '#787d73';
+    g.fillRect(0, TILE - 2, TILE, 2);
+    g.fillStyle = '#8b9086';
+    for (let x = 1; x < TILE; x += 5) g.fillRect(x, 5, 3, 6);
+    return;
+  }
+  if (style === 'woven') {
+    g.fillStyle = '#b5824a';
+    g.fillRect(0, 0, TILE, TILE);
+    g.fillStyle = '#9a6a38';
+    g.fillRect(0, 0, TILE, 2);
+    g.fillRect(0, TILE - 2, TILE, 2);
+    g.fillStyle = '#cf9c5f';
+    for (let x = 1; x < TILE; x += 4) g.fillRect(x, 4, 2, 8);
+    g.fillStyle = '#7d5427';
+    g.fillRect(0, 2, TILE, 1);
+    g.fillRect(0, TILE - 3, TILE, 1);
+    return;
+  }
+  if (style === 'rope') {
+    g.fillStyle = '#c9bda0';
+    g.fillRect(0, 0, TILE, TILE);
+    g.fillStyle = '#a89a7c';
+    for (let y = 1; y < TILE; y += 4) g.fillRect(0, y, TILE, 2);
+    g.fillStyle = '#8a7d62';
+    g.fillRect(0, 0, TILE, 1);
+    g.fillRect(0, TILE - 1, TILE, 1);
+    return;
+  }
   g.fillStyle = '#6fae6a';
   g.fillRect(0, 0, TILE, TILE);
   g.fillStyle = '#5c9a58';
@@ -1016,25 +1223,41 @@ export function makeShelf(): HTMLCanvasElement {
   return c;
 }
 
-export function makeDesk(): HTMLCanvasElement {
+export type DeskStyle = 'wood' | 'metal' | 'felt' | 'drift' | 'lectern';
+
+export function makeDesk(style: DeskStyle = 'wood'): HTMLCanvasElement {
   const [c, g] = cv(32, 16);
-  // outline
+  const scheme = {
+    wood:    { top: '#b08655', topL: '#c69a68', face: '#8a5f3a', faceL: '#9a6f45', line: '#775231' },
+    metal:   { top: '#8b9096', topL: '#a4a9af', face: '#6a6f75', faceL: '#7a7f85', line: '#54585e' },
+    felt:    { top: '#3f7d4f', topL: '#4f9160', face: '#8a5f3a', faceL: '#9a6f45', line: '#775231' },
+    drift:   { top: '#c9bda0', topL: '#dcd2b8', face: '#a89a7c', faceL: '#b8ab8d', line: '#8a7d62' },
+    lectern: { top: '#6b4a2f', topL: '#7d5a3c', face: '#59391f', faceL: '#6b4a2f', line: '#48301c' },
+  }[style];
   px(g, 0, 1, '#20242c', 32, 14);
-  // top plane (lighter, catches light)
-  px(g, 1, 2, '#b08655', 30, 6);
-  px(g, 1, 2, '#c69a68', 30, 2);
-  // front face (darker, 2-tone with panel lines)
-  px(g, 1, 8, '#8a5f3a', 30, 6);
-  px(g, 1, 8, '#9a6f45', 30, 1);
-  px(g, 8, 9, '#775231', 1, 5);
-  px(g, 16, 9, '#775231', 1, 5);
-  px(g, 24, 9, '#775231', 1, 5);
-  // floor shadow
+  px(g, 1, 2, scheme.top, 30, 6);
+  px(g, 1, 2, scheme.topL, 30, 2);
+  px(g, 1, 8, scheme.face, 30, 6);
+  px(g, 1, 8, scheme.faceL, 30, 1);
+  px(g, 8, 9, scheme.line, 1, 5);
+  px(g, 16, 9, scheme.line, 1, 5);
+  px(g, 24, 9, scheme.line, 1, 5);
   px(g, 1, 14, 'rgba(0,0,0,0.35)', 30, 1);
-  // papers on the top plane
-  px(g, 4, 3, '#f0e8d8', 6, 4);
-  px(g, 5, 4, '#b0a890', 4, 1);
-  px(g, 22, 3, '#f0e8d8', 5, 4);
+  if (style === 'metal') {
+    px(g, 4, 10, '#2ecc71', 2, 2); px(g, 8, 10, '#e74c3c', 2, 2); px(g, 26, 10, '#8fd0e8', 3, 2);
+    px(g, 4, 3, '#c8ecf8', 8, 3); px(g, 5, 4, '#5a616b', 6, 1);
+  } else if (style === 'felt') {
+    px(g, 6, 4, '#f2f2f2', 3, 3); px(g, 7, 5, '#20242c', 1, 1); // die
+    px(g, 22, 3, '#f0e8d8', 5, 4); px(g, 23, 4, '#c8341e', 3, 1); // cards
+  } else if (style === 'drift') {
+    px(g, 5, 3, '#e8b8c8', 4, 3); px(g, 24, 4, '#527d94', 5, 2); // shell + fish
+  } else if (style === 'lectern') {
+    px(g, 10, 2, '#f0e8d8', 12, 5); px(g, 15, 2, '#b0a890', 1, 5); // open ledger
+    px(g, 11, 3, '#b0a890', 4, 1); px(g, 17, 4, '#b0a890', 4, 1);
+  } else {
+    px(g, 4, 3, '#f0e8d8', 6, 4); px(g, 5, 4, '#b0a890', 4, 1);
+    px(g, 22, 3, '#f0e8d8', 5, 4);
+  }
   return c;
 }
 
@@ -1091,6 +1314,127 @@ export function makeWindowIn(): HTMLCanvasElement {
   px(g, 7, 2, '#4a3729', 2, 10);
   px(g, 4, 3, '#e0f4fc', 3, 2);
   px(g, 2, 13, '#6b523d', 12, 2);
+  return c;
+}
+
+// ---- interior furniture, continued ----
+
+// stone hearth with a glowing fire, 32x32 (drawn against the back wall)
+export function makeHearth(): HTMLCanvasElement {
+  const [c, g] = cv(32, 32);
+  px(g, 1, 0, '#585d55', 30, 26);
+  px(g, 3, 2, '#7e837a', 26, 22);
+  for (let y = 2; y < 22; y += 6) {
+    px(g, 3, y, '#8b9086', 26, 1);
+    for (let x = 5; x < 27; x += 8) px(g, x, y + 1, '#6f746c', 1, 5);
+  }
+  // firebox
+  px(g, 8, 10, '#20242c', 16, 14);
+  px(g, 10, 14, '#c8341e', 12, 9);
+  px(g, 12, 12, '#e8702a', 8, 10);
+  px(g, 14, 11, '#f2c94c', 4, 9);
+  px(g, 15, 10, '#fff0c0', 2, 4);
+  // logs
+  px(g, 9, 22, '#4a3729', 14, 2);
+  // mantle
+  px(g, 0, 5, '#4a3729', 32, 3);
+  px(g, 0, 5, '#6b523d', 32, 1);
+  // hearthstone
+  px(g, 4, 26, '#9a9f95', 24, 4);
+  px(g, 4, 29, '#6f746c', 24, 1);
+  return c;
+}
+
+export function makeBed(): HTMLCanvasElement {
+  const [c, g] = cv(16, 28);
+  px(g, 1, 0, '#20242c', 14, 27);
+  px(g, 2, 1, '#8a5f3a', 12, 25);
+  // pillow
+  px(g, 3, 2, '#f0e8d8', 10, 6);
+  px(g, 4, 3, '#ffffff', 8, 3);
+  // blanket
+  px(g, 2, 9, '#b5455a', 12, 15);
+  px(g, 2, 9, '#d0657c', 12, 2);
+  px(g, 2, 15, '#8a3242', 12, 1);
+  px(g, 2, 20, '#8a3242', 12, 1);
+  // footboard
+  px(g, 2, 24, '#6b4a2f', 12, 2);
+  return c;
+}
+
+export function makeCrate(): HTMLCanvasElement {
+  const [c, g] = cv(16, 16);
+  px(g, 1, 1, '#20242c', 14, 14);
+  px(g, 2, 2, '#b08655', 12, 12);
+  px(g, 2, 2, '#c69a68', 12, 2);
+  px(g, 2, 7, '#8a5f3a', 12, 1);
+  px(g, 7, 2, '#8a5f3a', 1, 12);
+  px(g, 3, 12, '#8a5f3a', 10, 1);
+  return c;
+}
+
+// framed painting for the back wall
+export function makePainting(variant: number): HTMLCanvasElement {
+  const [c, g] = cv(16, 16);
+  px(g, 1, 2, '#4a3729', 14, 11);
+  px(g, 2, 3, '#e0c890', 12, 9);
+  px(g, 3, 4, '#8fd0e8', 10, 7);
+  if (variant % 2 === 0) {
+    px(g, 3, 8, '#54a763', 10, 3); // meadow scene
+    px(g, 5, 5, '#f2c94c', 2, 2);  // sun
+  } else {
+    px(g, 3, 7, '#3a77a8', 10, 4); // sea scene
+    px(g, 6, 5, '#f0e8d8', 4, 1);  // sail
+    px(g, 7, 6, '#8a5f3a', 2, 2);
+  }
+  return c;
+}
+
+// wall banner with the TVG mark
+export function makeBanner(): HTMLCanvasElement {
+  const [c, g] = cv(16, 24);
+  px(g, 2, 0, '#4a3729', 12, 2);
+  px(g, 3, 2, '#c25c10', 10, 18);
+  px(g, 3, 18, '#c25c10', 4, 3);
+  px(g, 9, 18, '#c25c10', 4, 3);
+  px(g, 4, 3, '#e07a2c', 8, 2);
+  px(g, 5, 8, '#fffdf4', 6, 2);
+  px(g, 7, 10, '#fffdf4', 2, 5);
+  return c;
+}
+
+// mounted fish trophy for the shore shack
+export function makeFishMount(): HTMLCanvasElement {
+  const [c, g] = cv(16, 16);
+  // plaque
+  px(g, 0, 3, '#20242c', 16, 10);
+  px(g, 1, 4, '#6b4a2f', 14, 8);
+  px(g, 2, 5, '#8a6242', 12, 6);
+  // fish: outlined body, tail, eye, fin
+  px(g, 3, 6, '#20242c', 9, 4);
+  px(g, 4, 7, '#5a9ab5', 7, 2);
+  px(g, 4, 6, '#7ab8cf', 6, 1);
+  px(g, 11, 5, '#20242c', 3, 6);
+  px(g, 12, 6, '#5a9ab5', 1, 4);
+  px(g, 5, 7, '#fffdf4', 1, 1);
+  px(g, 7, 5, '#20242c', 2, 1);
+  return c;
+}
+
+// pelt rug for lodges, 32x16
+export function makePelt(): HTMLCanvasElement {
+  const [c, g] = cv(32, 16);
+  const blob = (cx: number, cy: number, rx: number, ry: number, col: string) => {
+    g.fillStyle = col;
+    for (let y = -ry; y <= ry; y++)
+      for (let x = -rx; x <= rx; x++)
+        if ((x * x) / (rx * rx) + (y * y) / (ry * ry) <= 1) g.fillRect(cx + x, cy + y, 1, 1);
+  };
+  blob(16, 8, 13, 6, '#6b4a30');
+  blob(16, 8, 11, 5, '#8a6242');
+  blob(12, 7, 4, 3, '#a58057');
+  px(g, 2, 6, '#6b4a30', 3, 4);
+  px(g, 27, 6, '#6b4a30', 3, 4);
   return c;
 }
 

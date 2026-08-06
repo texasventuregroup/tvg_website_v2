@@ -28,6 +28,7 @@ export interface ObjDef {
     | 'tree' | 'bush' | 'flower' | 'fenceH' | 'fenceV' | 'fencePost'
     | 'sign' | 'lamp' | 'barrel' | 'rock' | 'crops'
     | 'mushroom' | 'log' | 'shell' | 'boat' | 'pierpost'
+    | 'hearth' | 'bed' | 'crate' | 'painting' | 'banner' | 'fishmount' | 'pelt'
     | 'desk' | 'shelf' | 'plant' | 'machine' | 'table' | 'stool' | 'window';
   x: number;
   y: number;
@@ -69,6 +70,10 @@ export interface GameMap {
   id: string;
   name: string;
   tint?: string; // ambient overlay color (e.g. Deepwood gloom)
+  floorStyle?: 'wood' | 'stone' | 'dark' | 'sand' | 'moss';
+  wallStyle?: 'wood' | 'stone' | 'log';
+  deskStyle?: 'wood' | 'metal' | 'felt' | 'drift' | 'lectern';
+  rugVar?: number;
   w: number;
   h: number;
   outdoor: boolean;
@@ -443,7 +448,12 @@ interface InteriorSpec {
   name: string;
   w: number;
   h: number;
-  rug: number; // rug variant
+  rug: number | null; // rug variant, or null for no rug
+  floor?: 'wood' | 'stone' | 'dark' | 'sand' | 'moss';
+  wall?: 'wood' | 'stone' | 'log';
+  desk?: 'wood' | 'metal' | 'felt' | 'drift' | 'lectern';
+  deskX?: number; // left tile of the desk (default: room center)
+  matX?: number;  // left tile of the exit mat (default: room center)
   npcVariant: number;
   npcLines: string[];
   furnish: (b: Builder) => void;
@@ -453,6 +463,8 @@ function buildInterior(spec: InteriorSpec): GameMap {
   const { w, h } = spec;
   const b = newMap(`int-${spec.id}`, spec.name, w, h, false, T_FLOOR);
   const { rect, block, solid } = b;
+  b.m.floorStyle = spec.floor ?? 'wood';
+  b.m.wallStyle = spec.wall ?? 'wood';
 
   // back wall: two rows of paneling; side columns are wall trim
   rect(0, 0, w - 1, 1, T_WALL);
@@ -464,26 +476,31 @@ function buildInterior(spec: InteriorSpec): GameMap {
   b.deco(2, 1, 'window');
   b.deco(w - 3, 1, 'window');
 
-  // rug in the middle
-  const rw = Math.min(4, w - 6), rh = 2;
-  rect(Math.floor(w / 2 - rw / 2), Math.floor(h / 2), Math.floor(w / 2 + rw / 2) - 1, Math.floor(h / 2) + rh - 1, T_RUG);
+  // rug in the middle (unless the room opts out)
+  if (spec.rug !== null) {
+    const rw = Math.min(4, w - 6), rh = 2;
+    rect(Math.floor(w / 2 - rw / 2), Math.floor(h / 2), Math.floor(w / 2 + rw / 2) - 1, Math.floor(h / 2) + rh - 1, T_RUG);
+  }
 
-  // host NPC behind a desk at top-center
+  // host NPC behind their desk; position and desk style vary per room
   const cx = Math.floor(w / 2);
-  solid(cx - 1, 3, 'desk');
-  block(cx, 3); // desk sprite spans two tiles
-  b.m.npcs.push({ x: cx - 1, y: 2, variant: spec.npcVariant, lines: spec.npcLines, station: spec.id });
-  block(cx - 1, 2);
+  const dx = spec.deskX ?? cx - 1;
+  b.m.deskStyle = spec.desk ?? 'wood';
+  b.m.rugVar = spec.rug ?? 0;
+  solid(dx, 3, 'desk');
+  block(dx + 1, 3); // desk sprite spans two tiles
+  b.m.npcs.push({ x: dx, y: 2, variant: spec.npcVariant, lines: spec.npcLines, station: spec.id });
+  block(dx, 2);
 
   spec.furnish(b);
 
-  // exit mat at bottom-center (2 tiles), warps back outside; toX/toY patched later
-  const mx = Math.floor(w / 2);
-  rect(mx - 1, h - 1, mx, h - 1, T_MAT);
-  b.m.collision[(h - 1) * w + (mx - 1)] = 0;
-  b.m.collision[(h - 1) * w + mx] = 0;
-  b.m.warps.push({ x: mx - 1, y: h - 1, toMap: '', toX: 0, toY: 0, facing: 'down' });
-  b.m.warps.push({ x: mx, y: h - 1, toMap: '', toX: 0, toY: 0, facing: 'down' });
+  // exit mat (2 tiles), warps back outside; toX/toY patched later
+  const mx0 = spec.matX ?? cx - 1;
+  rect(mx0, h - 1, mx0 + 1, h - 1, T_MAT);
+  b.m.collision[(h - 1) * w + mx0] = 0;
+  b.m.collision[(h - 1) * w + mx0 + 1] = 0;
+  b.m.warps.push({ x: mx0, y: h - 1, toMap: '', toX: 0, toY: 0, facing: 'down' });
+  b.m.warps.push({ x: mx0 + 1, y: h - 1, toMap: '', toX: 0, toY: 0, facing: 'down' });
 
   return b.m;
 }
@@ -1001,67 +1018,182 @@ export function buildAllMaps(): Record<string, GameMap> {
   const town = buildTown();
   const woods = buildWoods();
 
+  // every building has a hand-crafted room. Wall-hangings sit on the wall row
+  // (already solid); floor furniture is solid; big sprites get extra blocking.
   const interiors: InteriorSpec[] = [
     {
-      id: 'welcome', name: 'Visitor Cabin', w: 10, h: 8, rug: 0, npcVariant: 0,
+      id: 'welcome', name: 'Visitor Cabin', w: 10, h: 8, rug: 0, floor: 'wood', wall: 'wood', desk: 'wood', matX: 3, npcVariant: 0,
       npcLines: ['Oh! A new face. Welcome to TVG Grove. Let me get you registered.'],
       furnish: (b) => {
-        b.solid(1, 2, 'plant');
-        b.solid(8, 2, 'shelf');
-        b.solid(7, 2, 'shelf');
-        b.solid(1, 5, 'table');
-        b.deco(2, 5, 'stool');
+        b.deco(1, 1, 'hearth'); b.block(1, 2); b.block(2, 2);
+        b.deco(6, 1, 'painting', 0);
+        b.deco(8, 2, 'bed'); b.block(8, 2); b.block(8, 3);
+        b.solid(1, 5, 'table'); b.deco(2, 5, 'stool');
+        b.solid(8, 5, 'plant');
       },
     },
     {
-      id: 'whytvg', name: 'TVG Hall', w: 12, h: 9, rug: 1, npcVariant: 1,
+      id: 'whytvg', name: 'TVG Hall', w: 14, h: 10, rug: 1, floor: 'stone', wall: 'stone', desk: 'lectern', npcVariant: 1,
       npcLines: ['Take a seat. I have four questions for you. Answer like you mean it: two or three sentences each.'],
       furnish: (b) => {
-        b.solid(1, 2, 'shelf'); b.solid(2, 2, 'shelf');
-        b.solid(9, 2, 'shelf'); b.solid(10, 2, 'shelf');
-        b.solid(1, 6, 'plant'); b.solid(10, 6, 'plant');
-        b.solid(2, 4, 'table'); b.deco(3, 4, 'stool');
-        b.solid(9, 4, 'table'); b.deco(8, 4, 'stool');
+        b.deco(2, 1, 'banner'); b.deco(11, 1, 'banner');
+        b.deco(4, 1, 'painting', 0); b.deco(9, 1, 'painting', 1);
+        b.solid(1, 2, 'shelf'); b.solid(12, 2, 'shelf');
+        b.solid(2, 4, 'table'); b.solid(3, 4, 'table'); b.deco(2, 5, 'stool'); b.deco(3, 5, 'stool');
+        b.solid(10, 4, 'table'); b.solid(11, 4, 'table'); b.deco(10, 5, 'stool'); b.deco(11, 5, 'stool');
+        b.solid(1, 7, 'plant'); b.solid(12, 7, 'plant');
       },
     },
     {
-      id: 'artifact', name: 'Archive House', w: 10, h: 8, rug: 2, npcVariant: 2,
+      id: 'artifact', name: 'Archive House', w: 12, h: 9, rug: 2, floor: 'dark', wall: 'wood', desk: 'lectern', deskX: 5, matX: 7, npcVariant: 2,
       npcLines: ['The archive keeps what people leave behind. Leave something worth keeping: an essay you care about, and your resume for the record.'],
       furnish: (b) => {
         for (let x = 1; x <= 3; x++) b.solid(x, 2, 'shelf');
-        for (let x = 6; x <= 8; x++) b.solid(x, 2, 'shelf');
-        b.solid(1, 4, 'shelf'); b.solid(1, 5, 'shelf');
-        b.solid(8, 4, 'shelf'); b.solid(8, 5, 'shelf');
-        b.solid(6, 5, 'table');
+        for (let x = 8; x <= 10; x++) b.solid(x, 2, 'shelf');
+        b.solid(1, 4, 'shelf'); b.solid(1, 5, 'shelf'); b.solid(1, 6, 'shelf');
+        b.solid(10, 4, 'shelf'); b.solid(10, 5, 'shelf'); b.solid(10, 6, 'shelf');
+        b.solid(3, 6, 'crate'); b.solid(8, 6, 'table');
+        b.deco(5, 1, 'painting', 0);
       },
     },
     {
-      id: 'lab', name: 'Research Lab', w: 12, h: 9, rug: 3, npcVariant: 1,
+      id: 'lab', name: 'Research Lab', w: 13, h: 9, rug: null, floor: 'stone', wall: 'stone', desk: 'metal', deskX: 2, matX: 8, npcVariant: 1,
       npcLines: ['Ah, the applicant. I have a paper for you: the Hennessy and Patterson Turing Lecture on computer architecture. Read it, then explain it back to me on camera. Three minutes, and the whiteboard is yours.'],
       furnish: (b) => {
-        b.solid(1, 2, 'machine'); b.solid(2, 2, 'machine');
-        b.solid(9, 2, 'machine'); b.solid(10, 2, 'machine');
-        b.solid(1, 5, 'machine');
-        b.solid(10, 5, 'shelf');
-        b.solid(3, 6, 'table'); b.deco(4, 6, 'stool');
-        b.solid(8, 4, 'plant');
+        b.solid(5, 2, 'machine'); b.solid(6, 2, 'machine'); b.solid(7, 2, 'machine');
+        b.solid(9, 2, 'machine'); b.solid(10, 2, 'machine'); b.solid(11, 2, 'machine');
+        b.solid(1, 5, 'shelf');
+        b.solid(11, 4, 'machine'); b.solid(11, 5, 'shelf');
+        b.solid(4, 6, 'table'); b.solid(5, 6, 'table'); b.deco(6, 6, 'stool');
+        b.solid(9, 6, 'crate');
+      },
+    },
+    {
+      id: 'puzzle-cipher', name: 'Puzzle Den', w: 10, h: 8, rug: 3, floor: 'dark', wall: 'log', desk: 'wood', deskX: 6, matX: 2, npcVariant: 2,
+      npcLines: [byId('puzzle-cipher').hostLine],
+      furnish: (b) => {
+        b.solid(1, 2, 'shelf'); b.solid(2, 2, 'shelf');
+        b.deco(7, 1, 'painting', 0);
+        b.solid(8, 2, 'barrel');
+        b.solid(1, 5, 'crate'); b.solid(2, 5, 'crate');
+        b.solid(8, 5, 'plant');
+      },
+    },
+    {
+      id: 'puzzle-market', name: 'Trading Post', w: 11, h: 8, rug: null, floor: 'wood', wall: 'wood', desk: 'wood', deskX: 3, matX: 6, npcVariant: 0,
+      npcLines: [byId('puzzle-market').hostLine],
+      furnish: (b) => {
+        b.solid(1, 2, 'crate'); b.solid(2, 2, 'crate'); b.solid(1, 3, 'barrel');
+        b.solid(8, 2, 'shelf'); b.solid(9, 2, 'shelf');
+        b.solid(9, 4, 'crate'); b.solid(9, 5, 'crate'); b.solid(8, 5, 'barrel');
+        b.solid(2, 5, 'table');
+        b.deco(5, 1, 'painting', 1);
+      },
+    },
+    {
+      id: 'puzzle-cube', name: 'House of Steps', w: 10, h: 8, rug: null, floor: 'stone', wall: 'stone', desk: 'wood', matX: 6, npcVariant: 0,
+      npcLines: [byId('puzzle-cube').hostLine],
+      furnish: (b) => {
+        b.deco(1, 1, 'hearth'); b.block(1, 2); b.block(2, 2);
+        b.deco(4, 4, 'pelt');
+        b.solid(8, 2, 'shelf');
+        b.solid(1, 5, 'crate'); b.solid(8, 5, 'rock');
+      },
+    },
+    {
+      id: 'puzzle-lockers', name: 'Locker Lodge', w: 12, h: 8, rug: null, floor: 'dark', wall: 'log', desk: 'wood', deskX: 6, matX: 3, npcVariant: 1,
+      npcLines: [byId('puzzle-lockers').hostLine],
+      furnish: (b) => {
+        b.deco(1, 1, 'hearth'); b.block(1, 2); b.block(2, 2);
+        b.deco(5, 4, 'pelt');
+        b.solid(9, 2, 'shelf'); b.solid(10, 2, 'shelf');
+        b.solid(10, 4, 'bed'); b.block(10, 4); b.block(10, 5);
+        b.solid(1, 5, 'barrel'); b.solid(2, 5, 'crate');
+      },
+    },
+    {
+      id: 'puzzle-dice', name: 'Dice Lodge', w: 10, h: 8, rug: 3, floor: 'wood', wall: 'log', desk: 'felt', deskX: 5, matX: 3, npcVariant: 2,
+      npcLines: [byId('puzzle-dice').hostLine],
+      furnish: (b) => {
+        b.solid(2, 4, 'table'); b.deco(1, 4, 'stool'); b.deco(3, 4, 'stool');
+        b.solid(7, 4, 'table'); b.deco(8, 4, 'stool');
+        b.solid(1, 2, 'barrel'); b.solid(8, 2, 'shelf');
+        b.deco(5, 1, 'painting', 1);
+        b.solid(8, 6, 'plant');
+      },
+    },
+    {
+      id: 'puzzle-coin', name: 'Coin Cabin', w: 10, h: 8, rug: 2, floor: 'wood', wall: 'wood', desk: 'wood', deskX: 5, matX: 6, npcVariant: 0,
+      npcLines: [byId('puzzle-coin').hostLine],
+      furnish: (b) => {
+        b.deco(1, 2, 'bed'); b.block(1, 2); b.block(1, 3);
+        b.deco(7, 1, 'hearth'); b.block(7, 2); b.block(8, 2);
+        b.solid(1, 5, 'crate');
+        b.deco(4, 1, 'painting', 0);
+        b.solid(8, 5, 'plant');
+      },
+    },
+    {
+      id: 'puzzle-plane', name: 'Ferry House', w: 11, h: 8, rug: null, floor: 'dark', wall: 'wood', desk: 'drift', deskX: 4, matX: 7, npcVariant: 1,
+      npcLines: [byId('puzzle-plane').hostLine],
+      furnish: (b) => {
+        b.deco(2, 1, 'fishmount'); b.deco(8, 1, 'painting', 1);
+        b.solid(1, 2, 'crate'); b.solid(1, 3, 'crate'); b.solid(2, 2, 'barrel');
+        b.solid(9, 2, 'crate'); b.solid(9, 3, 'barrel');
+        b.solid(2, 5, 'log'); b.solid(9, 5, 'crate');
+      },
+    },
+    {
+      id: 'puzzle-ace', name: 'Card House', w: 10, h: 8, rug: 1, floor: 'dark', wall: 'wood', desk: 'felt', matX: 2, npcVariant: 2,
+      npcLines: [byId('puzzle-ace').hostLine],
+      furnish: (b) => {
+        b.solid(2, 4, 'table'); b.deco(1, 4, 'stool'); b.deco(3, 4, 'stool'); b.deco(2, 5, 'stool');
+        b.solid(7, 4, 'table'); b.deco(8, 4, 'stool'); b.deco(7, 5, 'stool');
+        b.deco(4, 1, 'painting', 0); b.deco(6, 1, 'painting', 1);
+        b.solid(1, 2, 'shelf'); b.solid(8, 2, 'barrel');
+      },
+    },
+    {
+      id: 'puzzle-bridge', name: "Bridge Keeper's Hut", w: 10, h: 8, rug: null, floor: 'stone', wall: 'stone', desk: 'wood', deskX: 3, matX: 5, npcVariant: 1,
+      npcLines: [byId('puzzle-bridge').hostLine],
+      furnish: (b) => {
+        b.deco(7, 1, 'hearth'); b.block(7, 2); b.block(8, 2);
+        b.deco(4, 4, 'pelt');
+        b.solid(1, 2, 'crate'); b.solid(1, 3, 'rock');
+        b.solid(1, 5, 'barrel'); b.solid(8, 5, 'log');
+      },
+    },
+    {
+      id: 'puzzle-ants', name: 'Marsh Hut', w: 10, h: 8, rug: null, floor: 'moss', wall: 'log', desk: 'drift', deskX: 3, matX: 6, npcVariant: 2,
+      npcLines: [byId('puzzle-ants').hostLine],
+      furnish: (b) => {
+        b.solid(8, 2, 'plant');
+        b.solid(7, 5, 'mushroom'); b.solid(8, 5, 'mushroom'); b.solid(8, 4, 'mushroom');
+        b.solid(1, 4, 'log'); b.solid(1, 5, 'crate');
+        b.deco(6, 1, 'painting', 0);
+      },
+    },
+    {
+      id: 'puzzle-monty', name: 'Shore Shack', w: 10, h: 8, rug: null, floor: 'sand', wall: 'wood', desk: 'drift', deskX: 5, matX: 3, npcVariant: 0,
+      npcLines: [byId('puzzle-monty').hostLine],
+      furnish: (b) => {
+        b.deco(2, 1, 'fishmount'); b.deco(7, 1, 'fishmount');
+        b.solid(1, 2, 'crate'); b.solid(2, 2, 'crate'); b.solid(1, 3, 'crate');
+        b.solid(2, 5, 'table'); b.deco(2, 5, 'shell');
+        b.solid(8, 5, 'log');
+      },
+    },
+    {
+      id: 'puzzle-egg', name: "Hermit's Hut", w: 10, h: 8, rug: null, floor: 'moss', wall: 'log', desk: 'wood', deskX: 3, matX: 6, npcVariant: 1,
+      npcLines: [byId('puzzle-egg').hostLine],
+      furnish: (b) => {
+        b.deco(1, 2, 'bed'); b.block(1, 2); b.block(1, 3);
+        b.deco(7, 1, 'hearth'); b.block(7, 2); b.block(8, 2);
+        b.solid(1, 5, 'mushroom'); b.solid(2, 5, 'mushroom'); b.solid(1, 4, 'mushroom');
+        b.solid(8, 5, 'log');
       },
     },
   ];
-  // one interior per puzzle house, furnished from a rotating set
-  PUZZLES.forEach((pz, i) => {
-    const furnishes: ((b: Builder) => void)[] = [
-      (b) => { b.solid(1, 2, 'shelf'); b.solid(2, 2, 'shelf'); b.solid(8, 2, 'plant'); b.solid(2, 5, 'table'); b.solid(7, 5, 'barrel'); },
-      (b) => { b.solid(1, 2, 'barrel'); b.solid(2, 2, 'barrel'); b.solid(7, 2, 'shelf'); b.solid(8, 2, 'shelf'); b.solid(1, 5, 'table'); b.solid(8, 5, 'plant'); },
-      (b) => { b.solid(1, 2, 'plant'); b.solid(7, 2, 'shelf'); b.solid(8, 2, 'shelf'); b.solid(2, 5, 'stool'); b.solid(7, 5, 'table'); },
-      (b) => { b.solid(1, 2, 'machine'); b.solid(8, 2, 'shelf'); b.solid(1, 5, 'barrel'); b.solid(8, 5, 'plant'); },
-    ];
-    interiors.push({
-      id: pz.id as StationId, name: pz.house, w: 10, h: 8, rug: i % 4, npcVariant: i % 3,
-      npcLines: [pz.hostLine],
-      furnish: furnishes[i % furnishes.length],
-    });
-  });
 
   const maps: Record<string, GameMap> = { town, woods };
   maps['route-north'] = buildRoute('route-north', 'North Trail', 14, 26, true,
@@ -1095,9 +1227,12 @@ export function buildAllMaps(): Record<string, GameMap> {
       const dts = doorTiles(h);
       const doorY = h.y + h.h - 1;
       const mx = Math.floor(int.w / 2);
+      // find the interior's mat and land just above it
+      let matX = mx;
+      for (let i = 0; i < int.w * int.h; i++) if (int.terrain[i] === T_MAT) { matX = i % int.w; break; }
       for (const wp of outdoor.warps) {
         if (wp.toMap === `int-${h.id}`) {
-          wp.toX = mx;
+          wp.toX = matX;
           wp.toY = int.h - 2; // just above the mat
         }
       }
