@@ -22,6 +22,7 @@ export default function ApplyClient() {
   const [dialogIdx, setDialogIdx] = useState(0);
   const [curMap, setCurMap] = useState('town');
   const [overview, setOverview] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
   const sessionRef = useRef<ApplySession | null>(null);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function ApplyClient() {
     sessionRef.current = s;
     setSession(s);
     setCurMap(s.mapId);
+    setUnlocked(localStorage.getItem('tvg-apply-gate') === GATE_HASH);
     const h = (e: Event) => setOverview((e as CustomEvent).detail as boolean);
     window.addEventListener('tvg-overview', h);
     return () => window.removeEventListener('tvg-overview', h);
@@ -93,7 +95,7 @@ export default function ApplyClient() {
     );
   }
 
-  const paused = station !== null || dialog !== null || mode === 'form' || !session.registered;
+  const paused = station !== null || dialog !== null || mode === 'form' || !session.registered || !unlocked;
   const required: { id: StationId; label: string }[] = [
     { id: 'welcome', label: 'Visitor Cabin' },
     { id: 'whytvg', label: 'TVG Hall' },
@@ -110,8 +112,9 @@ export default function ApplyClient() {
       {/* plain form (below the control bar) */}
       {mode === 'form' && <PlainForm session={session} update={update} />}
 
-      {/* registration intro for new applicants */}
-      {!session.registered && <IntroScreen update={update} />}
+      {/* password gate, then registration intro for new applicants */}
+      {!unlocked && <GateScreen onUnlock={() => setUnlocked(true)} />}
+      {unlocked && !session.registered && <IntroScreen update={update} />}
 
       {/* HUD checklist - hidden inside buildings and while dialog/forms are up */}
       {mode === 'world' && !curMap.startsWith('int-') && !dialog && !station && !overview && (
@@ -359,6 +362,61 @@ function IntroScreen({ update }: { update: (p: Partial<ApplySession>) => void })
           className="w-full border-2 border-[#20242c] bg-[#c25c10] px-4 py-2 font-mono text-sm font-bold text-white shadow-[3px_3px_0_0_rgba(32,36,44,0.4)] hover:bg-[#d8692a] active:translate-y-[2px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
         >
           ▸ ENTER TVG GROVE
+        </button>
+      </div>
+    </div>
+  );
+}
+
+
+// Access gate: recruiting-cycle password, checked as a SHA-256 hash so the
+// plaintext never ships in the bundle. Unlock persists on this device.
+const GATE_HASH = 'b34a8dd8637c2d933200dc4218ac53b623f331a4197409efeddcadc89d2cd424';
+
+async function sha256Hex(text: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+function GateScreen({ onUnlock }: { onUnlock: () => void }) {
+  const [pw, setPw] = useState('');
+  const [wrong, setWrong] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const submit = async () => {
+    if (busy) return;
+    setBusy(true);
+    const h = await sha256Hex(pw.trim());
+    if (h === GATE_HASH) {
+      localStorage.setItem('tvg-apply-gate', GATE_HASH);
+      onUnlock();
+    } else {
+      setWrong(true);
+    }
+    setBusy(false);
+  };
+  return (
+    <div className="absolute inset-0 z-[80] flex items-center justify-center bg-[#10160f]/95 p-4">
+      <div className="w-full max-w-sm border-2 border-[#20242c] bg-[#fdf9ea] p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.5)] outline outline-2 outline-offset-2 outline-[#fdf9ea]">
+        <h1 className="font-mono text-xl font-bold uppercase tracking-widest text-[#bf5700]">TVG Grove</h1>
+        <p className="mb-4 mt-1 font-mono text-xs text-[#2b3b2f]">
+          Applications are invite-only for now. Enter the recruiting password from our channels.
+        </p>
+        <label className="mb-1 block font-mono text-xs font-bold text-[#2b3b2f]">PASSWORD</label>
+        <input
+          type="password"
+          className="mb-2 w-full border-2 border-[#20242c] bg-white p-2 font-mono text-sm text-[#2b3b2f] focus:outline-none focus:ring-2 focus:ring-[#bf5700]"
+          value={pw}
+          onChange={(e) => { setPw(e.target.value); setWrong(false); }}
+          onKeyDown={(e) => { if (e.key === 'Enter') submit(); }}
+          autoFocus
+        />
+        {wrong && <p className="mb-2 font-mono text-xs text-red-700">Not it. Check the recruiting post and try again.</p>}
+        <button
+          onClick={submit}
+          disabled={busy || !pw.trim()}
+          className="w-full border-2 border-[#20242c] bg-[#c25c10] px-4 py-2 font-mono text-sm font-bold text-white shadow-[3px_3px_0_0_rgba(32,36,44,0.4)] hover:bg-[#d8692a] active:translate-y-[2px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
+        >
+          ▸ ENTER
         </button>
       </div>
     </div>
