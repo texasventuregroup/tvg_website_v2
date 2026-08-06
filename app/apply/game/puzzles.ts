@@ -135,6 +135,68 @@ export const PUZZLES: PuzzleDef[] = [
       return !isNaN(v) && Math.abs(v - 10.6) < 0.005;
     },
   },
+  {
+    id: 'puzzle-bridge',
+    house: "Bridge Keeper's Hut",
+    village: 'The Overlook',
+    points: 30,
+    hostLine: 'Four hikers came through at midnight once. One flashlight between them, and the rope bridge holds two at a time. I still think about how fast they managed it.',
+    prompt:
+      'Four people must cross a rope bridge at night with one flashlight. The bridge holds at most two at ' +
+      'a time, and any crossing party must carry the flashlight, walking at the slower pace. Alone they cross ' +
+      'in 1, 2, 5, and 10 minutes. What is the minimum total time, in minutes, for all four to cross?',
+    answerHint: 'Minutes',
+    check: (a) => a.trim().replace(/min(utes)?/i, '').trim() === '17',
+  },
+  {
+    id: 'puzzle-ants',
+    house: 'Marsh Hut',
+    village: 'Fern Marsh',
+    points: 20,
+    hostLine: 'Three fire ants live on my table. They sit at the corners of a triangle and, on my signal, each one just picks a direction and marches. Chaos, usually.',
+    prompt:
+      'Three ants sit on the corners of an equilateral triangle. Each ant simultaneously picks one of the two ' +
+      'edges at its corner, uniformly at random, and walks along it. What is the probability that no two ants ' +
+      'collide?',
+    answerHint: 'Probability',
+    check: (a) => {
+      const t = a.trim();
+      if (t === '1/4' || t === '25%' || t === '.25') return true;
+      const v = parseFloat(t.replace('%', ''));
+      return !isNaN(v) && (Math.abs(v - 0.25) < 0.001 || Math.abs(v - 25) < 0.05);
+    },
+  },
+  {
+    id: 'puzzle-monty',
+    house: 'Shore Shack',
+    village: 'South Shore',
+    points: 20,
+    hostLine: 'Three crates wash up every tide. One has treasure. Pick one, I crack open an empty one of the others, and then I always offer you the switch. Most people refuse. Most people are wrong.',
+    prompt:
+      'Three crates; one holds a prize. You pick one. The host, who knows where the prize is, opens one of the ' +
+      'other two crates showing it empty, then offers to let you switch to the remaining crate. What is the ' +
+      'probability you win if you switch?',
+    answerHint: 'Probability',
+    check: (a) => {
+      const t = a.trim();
+      if (t === '2/3') return true;
+      const v = parseFloat(t.replace('%', ''));
+      return !isNaN(v) && (Math.abs(v - 2 / 3) < 0.005 || Math.abs(v - 66.7) < 0.5);
+    },
+  },
+  {
+    id: 'puzzle-egg',
+    house: "Hermit's Hut",
+    village: 'Deepwood',
+    points: 30,
+    hostLine: 'I retired out here with two perfectly identical eggs and a hundred-floor tower back in the city. Long story. The question still keeps me up at night.',
+    prompt:
+      'You have two identical eggs and a 100-floor building. An egg breaks if dropped from at or above some ' +
+      'unknown critical floor, and survives below it (a surviving egg is reusable). What is the minimum number ' +
+      'of drops that guarantees you can find the critical floor in the worst case?',
+    answerHint: 'Number of drops',
+    check: (a) => a.trim().replace(/drops?/i, '').trim() === '14',
+  },
 ];
 
 export const PUZZLE_BY_ID: Record<string, PuzzleDef> = Object.fromEntries(PUZZLES.map((p) => [p.id, p]));

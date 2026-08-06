@@ -6,14 +6,17 @@
 import { useEffect, useRef } from 'react';
 import {
   TILE, drawGrass, drawTallGrass, drawPath, drawWater, drawCliff,
+  drawAlpine, drawMarshWater, drawMud, drawSand, drawSea, drawTarn,
   drawFloor, drawWall, drawRug, drawMat,
-  makeTree, makeBush, makeFlower, makeFence, makeSign, makeLamp, makeBarrel,
+  makeTree, makePine, makeBigTree, makeBush, makeFlower, makeFence, makeSign, makeLamp, makeBarrel,
   makeRock, makeCrops, makeHouse, makeBridgeH, makeNpc,
+  makeMushroom, makeLog, makeShell, makeBoat, makePierPost,
   makeShelf, makeDesk, makePlantIn, makeMachine, makeTableIn, makeStool, makeWindowIn, PAL,
   makeCharacter, AVATARS,
 } from './tileset';
 import {
   T_GRASS, T_PATH, T_WATER, T_TALL, T_CLIFF, T_BRIDGE, T_FLOOR, T_WALL, T_RUG, T_MAT,
+  T_ALPINE, T_MARSHW, T_SAND, T_SEA, T_MUD, T_TARN,
   buildAllMaps, GameMap, Facing,
 } from './map';
 import { ApplySession, StationId, stationComplete } from './state';
@@ -51,12 +54,15 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
 
     // ---- sprites ----
     const trees = [makeTree(0), makeTree(1), makeTree(2)];
+    const pines = [makePine(0), makePine(1)];
+    const bigTrees = [makeBigTree(0), makeBigTree(1)];
     const bushes = [makeBush(0), makeBush(1)];
     const flowers = [makeFlower(0), makeFlower(1), makeFlower(2), makeFlower(3)];
     const sprites: Record<string, HTMLCanvasElement> = {
       fenceH: makeFence('h'), fenceV: makeFence('v'), fencePost: makeFence('post'),
       sign: makeSign(), lamp: makeLamp(), barrel: makeBarrel(), rock: makeRock(),
       crops: makeCrops(), shelf: makeShelf(), desk: makeDesk(), plant: makePlantIn(),
+      mushroom: makeMushroom(), log: makeLog(), shell: makeShell(), boat: makeBoat(), pierpost: makePierPost(),
       machine: makeMachine(), table: makeTableIn(), stool: makeStool(), window: makeWindowIn(),
     };
     const bridgeH = makeBridgeH();
@@ -118,9 +124,27 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
                 (samePath(x + 1, y - 1) ? 1 : 0) | (samePath(x + 1, y + 1) ? 2 : 0) |
                 (samePath(x - 1, y + 1) ? 4 : 0) | (samePath(x - 1, y - 1) ? 8 : 0);
               drawPath(tg, maskOf(x, y, T_PATH), x, y, dmask);
+              // stair treads where a path cuts through a cliff line
+              if (terrAt(x - 1, y) === T_CLIFF || terrAt(x + 1, y) === T_CLIFF) {
+                tg.fillStyle = '#cbb479';
+                for (let sy = 2; sy < TILE; sy += 4) tg.fillRect(1, sy, TILE - 2, 1);
+                tg.fillStyle = '#f2e5b8';
+                for (let sy = 3; sy < TILE; sy += 4) tg.fillRect(1, sy, TILE - 2, 1);
+              }
             }
             else if (t === T_WATER) drawWater(tg, maskOf(x, y, T_WATER), x, y, frame * 5);
             else if (t === T_CLIFF) drawCliff(tg, maskOf(x, y, T_CLIFF), x, y);
+            else if (t === T_ALPINE) drawAlpine(tg, x, y);
+            else if (t === T_MARSHW) drawMarshWater(tg, maskOf(x, y, T_MARSHW), x, y, frame * 5);
+            else if (t === T_MUD) drawMud(tg, x, y);
+            else if (t === T_TARN) drawTarn(tg, maskOf(x, y, T_TARN), x, y, frame * 5);
+            else if (t === T_SAND) drawSand(tg, terrAt(x, y + 1) === T_SEA, x, y);
+            else if (t === T_SEA) {
+              // depth = rows below the surf line
+              let d = 0;
+              while (terrAt(x, y - d - 1) === T_SEA) d++;
+              drawSea(tg, maskOf(x, y, T_SEA), x, y, frame * 5, d);
+            }
             else if (t === T_BRIDGE) tg.drawImage(bridgeH, 0, 0);
             else if (t === T_FLOOR) drawFloor(tg, x, y);
             else if (t === T_WALL) drawWall(tg, y);
@@ -159,8 +183,19 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
         else if (sprites[o.kind]) g.drawImage(sprites[o.kind], X, Y);
       }
       for (const h of m.houses) {
-        g.fillStyle = 'rgba(20,35,20,0.20)';
-        g.fillRect(h.x * TILE + 2, (h.y + h.h) * TILE - 3, h.w * TILE - 4, 8);
+        if (h.stilt) {
+          g.fillStyle = '#4a3729';
+          for (let i = 0; i < 3; i++) {
+            const px2 = h.x * TILE + 6 + i * ((h.w * TILE - 14) / 2);
+            g.fillRect(px2, (h.y + h.h) * TILE - 4, 4, 12);
+            g.fillStyle = 'rgba(255,255,255,0.25)';
+            g.fillRect(px2 - 1, (h.y + h.h) * TILE + 7, 6, 1);
+            g.fillStyle = '#4a3729';
+          }
+        } else {
+          g.fillStyle = 'rgba(20,35,20,0.20)';
+          g.fillRect(h.x * TILE + 2, (h.y + h.h) * TILE - 3, h.w * TILE - 4, 8);
+        }
       }
       groundCache.set(m.id, c);
       return c;
@@ -416,8 +451,15 @@ export default function Engine({ session, onInteract, onMove, paused }: Props) {
       if (map.above.length) {
         const sorted = [...map.above].sort((a, b) => a.y - b.y);
         for (const t of sorted) {
-          ctx.drawImage(trees[t.variant % 3], t.x * TILE + t.ox, (t.y + 1) * TILE - 40);
+          if (t.kind === 'pine') ctx.drawImage(pines[t.variant % 2], t.x * TILE + t.ox + 4, (t.y + 1) * TILE - 36);
+          else if (t.kind === 'bigtree') ctx.drawImage(bigTrees[t.variant % 2], t.x * TILE + t.ox - 4, (t.y + 1) * TILE - 48);
+          else ctx.drawImage(trees[t.variant % 3], t.x * TILE + t.ox, (t.y + 1) * TILE - 40);
         }
+      }
+
+      if (map.tint) {
+        ctx.fillStyle = map.tint;
+        ctx.fillRect(0, 0, map.w * TILE, map.h * TILE);
       }
 
       ctx.restore();

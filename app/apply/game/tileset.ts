@@ -40,6 +40,9 @@ export const PAL = {
   roofBlue: '#4a7fa6',
   roofBlueDark: '#38617f',
   roofBlueLight: '#6b9cbf',
+  roofRed: '#b5524a',
+  roofRedDark: '#8a3c36',
+  roofRedLight: '#cf7069',
   roofGreen: '#4e9b62',
   roofGreenDark: '#3a7a4a',
   roofGreenLight: '#6fb87e',
@@ -240,20 +243,183 @@ export function drawWater(
   if (!s && !e) corner(TILE - 1, TILE - 1, -1, -1);
 }
 
-// Dirt cliff ridge tile (the brown trails around the SE house in the reference)
+// Rock cliff face. Tiles stack two rows tall: a lit cap on top, shadowed base below.
 export function drawCliff(g: CanvasRenderingContext2D, mask: number, tx: number, ty: number) {
-  g.fillStyle = PAL.grass;
+  const n = mask & 1, sN = mask & 4;
+  g.fillStyle = '#9c8468';
   g.fillRect(0, 0, TILE, TILE);
-  g.fillStyle = PAL.cliff;
-  g.fillRect(0, 3, TILE, TILE - 6);
-  g.fillStyle = PAL.cliffLight;
-  g.fillRect(0, 3, TILE, 2);
-  g.fillStyle = PAL.cliffDark;
-  g.fillRect(0, TILE - 4, TILE, 2);
+  // vertical cracks
+  for (let i = 0; i < 3; i++) {
+    const x = 2 + Math.floor(hash(tx, ty, 100 + i) * 12);
+    g.fillStyle = '#7d6750';
+    g.fillRect(x, 2 + Math.floor(hash(tx, ty, 104 + i) * 6), 1, 5 + Math.floor(hash(tx, ty, 108 + i) * 6));
+  }
+  g.fillStyle = '#b59a7c';
   for (let i = 0; i < 2; i++) {
-    const x = Math.floor(hash(tx, ty, 100 + i) * 13);
-    const y = 6 + Math.floor(hash(tx, ty, 110 + i) * 6);
-    px(g, x, y, PAL.cliffDark, 2, 1);
+    const x = 1 + Math.floor(hash(tx, ty, 112 + i) * 12);
+    const y = 3 + Math.floor(hash(tx, ty, 116 + i) * 9);
+    g.fillRect(x, y, 3, 1);
+  }
+  if (!n) {
+    // lit cap where the cliff meets upper ground
+    g.fillStyle = '#c9b190';
+    g.fillRect(0, 0, TILE, 3);
+    g.fillStyle = '#e0cbaa';
+    g.fillRect(0, 0, TILE, 1);
+    g.fillStyle = '#6b5843';
+    g.fillRect(0, 3, TILE, 1);
+  }
+  if (!sN) {
+    // shadowed footing where it meets lower ground
+    g.fillStyle = '#6b5843';
+    g.fillRect(0, TILE - 3, TILE, 2);
+    g.fillStyle = '#4f4131';
+    g.fillRect(0, TILE - 1, TILE, 1);
+  }
+}
+
+// High-altitude grass: desaturated, cooler, sparse.
+export function drawAlpine(g: CanvasRenderingContext2D, tx: number, ty: number) {
+  g.fillStyle = (tx + ty) % 2 === 0 ? '#9cc4a0' : '#a4cba7';
+  g.fillRect(0, 0, TILE, TILE);
+  const v = hash(tx, ty, 131);
+  if (v < 0.12) {
+    g.fillStyle = '#8ab08d';
+    g.fillRect(3 + Math.floor(v * 80) % 9, 4, 3, 1);
+    g.fillRect(6, 9, 2, 1);
+  }
+  if (v > 0.9) {
+    g.fillStyle = '#b8b4a8';
+    g.fillRect(4 + Math.floor(hash(tx, ty, 133) * 8), 5 + Math.floor(hash(tx, ty, 135) * 7), 2, 1);
+  }
+}
+
+// Murky marsh water: desaturated green-blue, reedy edges.
+export function drawMarshWater(g: CanvasRenderingContext2D, mask: number, tx: number, ty: number, frame: number) {
+  g.fillStyle = '#a5d6a0';
+  g.fillRect(0, 0, TILE, TILE);
+  const n = mask & 1, e = mask & 2, sN = mask & 4, w = mask & 8;
+  g.fillStyle = '#5d8a7a';
+  g.fillRect(0, 0, TILE, TILE);
+  g.fillStyle = '#54806f';
+  for (let y = (ty * 3 + frame) % 5; y < TILE; y += 5) g.fillRect(0, y, TILE, 1);
+  g.fillStyle = '#6f9c8a';
+  for (let i = 0; i < 3; i++) {
+    if (hash(tx, ty, 140 + i) < 0.5) {
+      g.fillRect(Math.floor(hash(tx, ty, 144 + i) * 12), (Math.floor(hash(tx, ty, 148 + i) * 12) + frame) % 14, 3, 1);
+    }
+  }
+  // mud lip + reeds on exposed banks
+  g.fillStyle = '#8a7a55';
+  if (!n) g.fillRect(0, 0, TILE, 2);
+  if (!sN) g.fillRect(0, TILE - 2, TILE, 2);
+  if (!w) g.fillRect(0, 0, 2, TILE);
+  if (!e) g.fillRect(TILE - 2, 0, 2, TILE);
+  g.fillStyle = '#42665a';
+  if (!n) g.fillRect(0, 2, TILE, 1);
+  if (!sN) g.fillRect(0, TILE - 3, TILE, 1);
+  if (!w) g.fillRect(2, 0, 1, TILE);
+  if (!e) g.fillRect(TILE - 3, 0, 1, TILE);
+  // cattails
+  if (!n && hash(tx, ty, 152) < 0.6) {
+    const x = 3 + Math.floor(hash(tx, ty, 154) * 9);
+    g.fillStyle = '#5c9a58';
+    g.fillRect(x, 0, 1, 4);
+    g.fillStyle = '#8a5f3a';
+    g.fillRect(x, 0, 1, 2);
+  }
+}
+
+// Mud patch ground for the marsh.
+export function drawMud(g: CanvasRenderingContext2D, tx: number, ty: number) {
+  g.fillStyle = '#8a7a55';
+  g.fillRect(0, 0, TILE, TILE);
+  g.fillStyle = '#79694a';
+  for (let i = 0; i < 4; i++) {
+    const x = Math.floor(hash(tx, ty, 160 + i) * 13);
+    const y = Math.floor(hash(tx, ty, 164 + i) * 13);
+    g.fillRect(x, y, 3, 2);
+  }
+  g.fillStyle = '#9c8c66';
+  g.fillRect(2 + Math.floor(hash(tx, ty, 168) * 10), 3 + Math.floor(hash(tx, ty, 169) * 9), 4, 1);
+}
+
+// Cold alpine tarn: slate-teal water with rocky gray banks.
+export function drawTarn(g: CanvasRenderingContext2D, mask: number, tx: number, ty: number, frame: number) {
+  g.fillStyle = '#9cc4a0';
+  g.fillRect(0, 0, TILE, TILE);
+  const n = mask & 1, e = mask & 2, sN = mask & 4, w = mask & 8;
+  g.fillStyle = '#527d94';
+  g.fillRect(0, 0, TILE, TILE);
+  g.fillStyle = '#48708a';
+  for (let y = (ty * 3 + frame) % 5; y < TILE; y += 5) g.fillRect(0, y, TILE, 1);
+  g.fillStyle = '#6d97ab';
+  for (let i = 0; i < 3; i++) {
+    if (hash(tx, ty, 200 + i) < 0.4) {
+      g.fillRect(Math.floor(hash(tx, ty, 204 + i) * 12), (Math.floor(hash(tx, ty, 208 + i) * 12) + frame) % 14, 3, 1);
+    }
+  }
+  // rocky banks
+  g.fillStyle = '#8f948c';
+  if (!n) g.fillRect(0, 0, TILE, 2);
+  if (!sN) g.fillRect(0, TILE - 2, TILE, 2);
+  if (!w) g.fillRect(0, 0, 2, TILE);
+  if (!e) g.fillRect(TILE - 2, 0, 2, TILE);
+  g.fillStyle = '#c0c4bb';
+  if (!n) g.fillRect(0, 0, TILE, 1);
+  if (!w) g.fillRect(0, 0, 1, TILE);
+  g.fillStyle = '#33546b';
+  if (!n) g.fillRect(0, 2, TILE, 1);
+  if (!sN) g.fillRect(0, TILE - 3, TILE, 1);
+  if (!w) g.fillRect(2, 0, 1, TILE);
+  if (!e) g.fillRect(TILE - 3, 0, 1, TILE);
+}
+
+// Beach sand; wet strip drawn on tiles adjacent to sea (mask bit 4 = sea to the south).
+export function drawSand(g: CanvasRenderingContext2D, seaSouth: boolean, tx: number, ty: number) {
+  g.fillStyle = '#ecdcb0';
+  g.fillRect(0, 0, TILE, TILE);
+  g.fillStyle = '#dcc998';
+  for (let i = 0; i < 3; i++) {
+    const x = Math.floor(hash(tx, ty, 170 + i) * 13);
+    const y = Math.floor(hash(tx, ty, 174 + i) * 13);
+    g.fillRect(x, y, 2, 1);
+  }
+  g.fillStyle = '#f6ecc8';
+  g.fillRect(2 + Math.floor(hash(tx, ty, 178) * 9), 2 + Math.floor(hash(tx, ty, 179) * 9), 3, 1);
+  if (seaSouth) {
+    g.fillStyle = '#cbb488';
+    g.fillRect(0, TILE - 4, TILE, 4); // wet sand
+    g.fillStyle = '#b9a173';
+    g.fillRect(0, TILE - 2, TILE, 2);
+  }
+}
+
+// Open sea: deeper blue with depth banding and foam where it meets sand.
+export function drawSea(g: CanvasRenderingContext2D, mask: number, tx: number, ty: number, frame: number, depth: number) {
+  const n = mask & 1;
+  const base = depth < 1 ? '#4f96c8' : depth < 3 ? '#4488ba' : '#3a77a8';
+  g.fillStyle = base;
+  g.fillRect(0, 0, TILE, TILE);
+  g.fillStyle = depth < 1 ? '#5ba2d2' : '#4f94c2';
+  for (let y = (ty * 3 + frame) % 4; y < TILE; y += 4) g.fillRect(0, y, TILE, 1);
+  g.fillStyle = '#6fb2dc';
+  for (let i = 0; i < 3; i++) {
+    if (hash(tx, ty, 180 + i) < 0.4) {
+      g.fillRect(Math.floor(hash(tx, ty, 184 + i) * 12), (Math.floor(hash(tx, ty, 188 + i) * 12) + frame) % 14, 3, 1);
+    }
+  }
+  if (!n) {
+    // surf line: animated foam
+    g.fillStyle = '#ffffff';
+    for (let x = 0; x < TILE; x += 4) {
+      const o = (Math.floor(hash(tx, x, 190) * 2) + frame) % 2;
+      g.fillRect(x, o, 3, 1);
+    }
+    g.fillStyle = '#d8ecf8';
+    g.fillRect(0, 1, TILE, 1);
+    g.fillStyle = '#a8d0e8';
+    g.fillRect(0, 2, TILE, 1);
   }
 }
 
@@ -315,6 +481,126 @@ export function makeTree(variant: number): HTMLCanvasElement {
   blob(14, 6, 3, 2, shades[3]);
   blob(12, 12, 2, 2, shades[3]);
   blob(20, 10, 2, 1, shades[3]);
+  return c;
+}
+
+// Conifer pine, 24x36: pointed layered canopy for alpine and deep forest.
+export function makePine(variant: number): HTMLCanvasElement {
+  const W = 24, H = 36;
+  const [c, g] = cv(W, H);
+  const shades = variant % 2 === 0
+    ? ['#1f4a35', '#2e6647', '#417f58', '#5a9a6b']
+    : ['#243f2e', '#35573d', '#4a7050', '#618a64'];
+  // trunk
+  px(g, 10, 30, PAL.trunkDark, 4, 6);
+  px(g, 11, 30, PAL.trunk, 2, 5);
+  // stacked triangle tiers, widest at the bottom
+  const tier = (cy: number, half: number, hgt: number, col: string) => {
+    g.fillStyle = col;
+    for (let r = 0; r < hgt; r++) {
+      const w2 = Math.round((half * (r + 1)) / hgt);
+      g.fillRect(12 - w2, cy + r, w2 * 2, 1);
+    }
+  };
+  tier(20, 11, 11, shades[0]);
+  tier(19, 10, 10, shades[1]);
+  tier(12, 9, 10, shades[0]);
+  tier(11, 8, 9, shades[1]);
+  tier(5, 7, 9, shades[0]);
+  tier(4, 6, 8, shades[2]);
+  tier(0, 4, 7, shades[1]);
+  // snow/light dusting on the left edges
+  g.fillStyle = shades[3];
+  px(g, 8, 8, shades[3], 3, 1);
+  px(g, 6, 15, shades[3], 3, 1);
+  px(g, 4, 24, shades[3], 4, 1);
+  px(g, 11, 2, shades[3], 2, 1);
+  return c;
+}
+
+// Old-growth tree, 40x48: darker, wider canopy for the Deepwood.
+export function makeBigTree(variant: number): HTMLCanvasElement {
+  const W = 40, H = 48;
+  const [c, g] = cv(W, H);
+  const shades = variant % 2 === 0
+    ? ['#1d4030', '#2a5a40', '#3a7050', '#4f8a60']
+    : ['#1a3a2c', '#265038', '#356348', '#487a55'];
+  px(g, 16, 40, PAL.trunkDark, 8, 8);
+  px(g, 17, 40, '#5a4030', 6, 7);
+  const blob = (cx: number, cy: number, rx: number, ry: number, col: string) => {
+    g.fillStyle = col;
+    for (let y = -ry; y <= ry; y++)
+      for (let x = -rx; x <= rx; x++)
+        if ((x * x) / (rx * rx) + (y * y) / (ry * ry) <= 1) g.fillRect(cx + x, cy + y, 1, 1);
+  };
+  blob(20, 22, 19, 19, shades[0]);
+  blob(10, 32, 8, 7, shades[0]);
+  blob(30, 32, 8, 7, shades[0]);
+  blob(20, 20, 16, 16, shades[1]);
+  blob(11, 30, 5, 5, shades[1]);
+  blob(29, 30, 5, 5, shades[1]);
+  blob(18, 14, 11, 10, shades[2]);
+  blob(10, 22, 5, 5, shades[2]);
+  blob(28, 21, 5, 4, shades[2]);
+  g.fillStyle = shades[3];
+  blob(11, 10, 4, 3, shades[3]);
+  blob(19, 7, 4, 2, shades[3]);
+  blob(7, 17, 3, 2, shades[3]);
+  return c;
+}
+
+export function makeMushroom(): HTMLCanvasElement {
+  const [c, g] = cv(16, 16);
+  px(g, 6, 9, '#e8dcc8', 4, 5);
+  px(g, 4, 5, '#20242c', 8, 5);
+  px(g, 5, 4, '#c8443a', 6, 5);
+  px(g, 4, 6, '#c8443a', 8, 3);
+  px(g, 6, 5, '#f0e8d8', 2, 1);
+  px(g, 9, 7, '#f0e8d8', 1, 1);
+  px(g, 5, 14, 'rgba(0,0,0,0.2)', 6, 1);
+  return c;
+}
+
+export function makeLog(): HTMLCanvasElement {
+  const [c, g] = cv(16, 16);
+  px(g, 1, 6, '#4a3729', 14, 7);
+  px(g, 2, 7, '#6b4a30', 12, 4);
+  px(g, 2, 7, '#8a6242', 12, 1);
+  px(g, 13, 6, '#a58057', 2, 7);
+  px(g, 13, 8, '#6b4a30', 1, 3);
+  px(g, 3, 9, '#4a3729', 4, 1);
+  px(g, 2, 13, 'rgba(0,0,0,0.2)', 12, 1);
+  return c;
+}
+
+export function makeShell(): HTMLCanvasElement {
+  const [c, g] = cv(16, 16);
+  px(g, 5, 7, '#e8b8c8', 6, 4);
+  px(g, 6, 6, '#f2d0da', 4, 1);
+  px(g, 7, 11, '#c890a4', 2, 1);
+  px(g, 6, 8, '#c890a4', 1, 2);
+  px(g, 9, 8, '#c890a4', 1, 2);
+  return c;
+}
+
+// small rowboat, 32x16, drawn on water
+export function makeBoat(): HTMLCanvasElement {
+  const [c, g] = cv(32, 16);
+  px(g, 2, 4, '#20242c', 28, 9);
+  px(g, 4, 5, '#8a6242', 24, 6);
+  px(g, 5, 6, '#a58057', 22, 2);
+  px(g, 8, 8, '#6b4a30', 16, 2);
+  px(g, 14, 5, '#4a3729', 3, 6);
+  px(g, 3, 12, 'rgba(255,255,255,0.35)', 26, 1);
+  return c;
+}
+
+export function makePierPost(): HTMLCanvasElement {
+  const [c, g] = cv(16, 16);
+  px(g, 6, 2, '#6b4a30', 4, 12);
+  px(g, 6, 2, '#8a6242', 2, 12);
+  px(g, 5, 1, '#4a3729', 6, 2);
+  px(g, 5, 13, 'rgba(255,255,255,0.3)', 6, 1);
   return c;
 }
 
@@ -449,16 +735,16 @@ export function makeCrops(): HTMLCanvasElement {
 export function makeHouse(opts: {
   wTiles: number;
   hTiles: number;
-  roof: 'blue' | 'green';
+  roof: 'blue' | 'green' | 'red';
   wall: 'wood' | 'gray';
   big?: boolean;
 }): HTMLCanvasElement {
   const W = opts.wTiles * TILE;
   const H = opts.hTiles * TILE;
   const [c, g] = cv(W, H);
-  const roofC = opts.roof === 'blue' ? PAL.roofBlue : PAL.roofGreen;
-  const roofD = opts.roof === 'blue' ? PAL.roofBlueDark : PAL.roofGreenDark;
-  const roofL = opts.roof === 'blue' ? PAL.roofBlueLight : PAL.roofGreenLight;
+  const roofC = opts.roof === 'blue' ? PAL.roofBlue : opts.roof === 'red' ? PAL.roofRed : PAL.roofGreen;
+  const roofD = opts.roof === 'blue' ? PAL.roofBlueDark : opts.roof === 'red' ? PAL.roofRedDark : PAL.roofGreenDark;
+  const roofL = opts.roof === 'blue' ? PAL.roofBlueLight : opts.roof === 'red' ? PAL.roofRedLight : PAL.roofGreenLight;
   const wallC = opts.wall === 'wood' ? PAL.wallWood : PAL.wallGray;
   const wallD = opts.wall === 'wood' ? PAL.wallWoodDark : PAL.wallGrayDark;
 
