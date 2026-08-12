@@ -5,7 +5,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ApplySession, StationId, WHY_TVG_QUESTIONS } from './state';
-import { PUZZLE_BY_ID } from './puzzles';
+import { PUZZLE_BY_ID, puzzleScore, puzzlesSolved } from './puzzles';
+import { track } from './analytics';
 
 const PAPER = {
   title: 'A New Golden Age for Computer Architecture (Hennessy & Patterson, Turing Lecture, CACM 2019)',
@@ -317,6 +318,7 @@ export function LabStation({ session, update, onClose }: StationProps) {
     recorderRef.current = rec;
     setSeconds(0);
     setRecording(true);
+    track('apply_video_recording_started');
   };
 
   const stopRecording = () => {
@@ -344,7 +346,7 @@ export function LabStation({ session, update, onClose }: StationProps) {
           </div>
           <button
             className={btn}
-            onClick={() => { update({ labPaperOpened: true }); setPhase('record'); }}
+            onClick={() => { track('apply_paper_opened'); update({ labPaperOpened: true }); setPhase('record'); }}
           >
             ▸ I&apos;ve read it, set up the camera
           </button>
@@ -418,7 +420,11 @@ export function LabStation({ session, update, onClose }: StationProps) {
                 </button>
                 <button
                   className={btn}
-                  onClick={() => { update({ labVideoSubmitted: true }); setPhase('done'); }}
+                  onClick={() => {
+                    track('apply_video_submitted', { seconds });
+                    update({ labVideoSubmitted: true });
+                    setPhase('done');
+                  }}
                 >
                   ▸ Submit this take
                 </button>
@@ -464,9 +470,19 @@ export function PuzzleStation({ session, update, onClose, id }: StationProps & {
             <button
               className={btn}
               onClick={() => {
-                if (puzzle.check(answer)) {
+                const correct = puzzle.check(answer);
+                track('apply_puzzle_attempted', { puzzle_id: id, puzzle_house: puzzle.house, correct });
+                if (correct) {
+                  const nextAnswers = { ...session.puzzleAnswers, [id]: answer };
+                  track('apply_puzzle_solved', {
+                    puzzle_id: id,
+                    puzzle_house: puzzle.house,
+                    points: puzzle.points,
+                    total_bonus_points: puzzleScore(nextAnswers),
+                    puzzles_solved: puzzlesSolved(nextAnswers),
+                  });
                   setSolved(true);
-                  update({ puzzleAnswers: { ...session.puzzleAnswers, [id]: answer } });
+                  update({ puzzleAnswers: nextAnswers });
                 } else setWrong(true);
               }}
             >

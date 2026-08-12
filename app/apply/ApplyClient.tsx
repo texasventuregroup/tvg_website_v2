@@ -11,6 +11,7 @@ import type { Interaction } from './game/Engine';
 import type { Facing } from './game/map';
 import { AVATARS, makeCharacter, CharPalette } from './game/tileset';
 import { PUZZLES, TOTAL_PUZZLE_POINTS, puzzleScore, puzzlesSolved } from './game/puzzles';
+import { track, identifyApplicant, mapName } from './game/analytics';
 
 const Engine = dynamic(() => import('./game/Engine'), { ssr: false });
 
@@ -31,7 +32,12 @@ export default function ApplyClient() {
     setSession(s);
     setCurMap(s.mapId);
     setUnlocked(localStorage.getItem('tvg-apply-gate') === GATE_HASH);
-    const h = (e: Event) => setOverview((e as CustomEvent).detail as boolean);
+    if (s.registered && s.email) identifyApplicant(s.email, s.name, String(s.avatar));
+    const h = (e: Event) => {
+      const open = (e as CustomEvent).detail as boolean;
+      setOverview(open);
+      track('apply_map_overview_toggled', { open });
+    };
     window.addEventListener('tvg-overview', h);
     return () => window.removeEventListener('tvg-overview', h);
   }, []);
@@ -45,9 +51,26 @@ export default function ApplyClient() {
     });
   }, []);
 
+  const buildingEnteredAtRef = useRef<number | null>(null);
+
   const onMove = useCallback((mapId: string, px: number, py: number, facing: Facing) => {
     const prev = sessionRef.current ?? defaultSession();
-    if (prev.mapId !== mapId) setCurMap(mapId);
+    if (prev.mapId !== mapId) {
+      setCurMap(mapId);
+      track('apply_map_entered', { map_id: mapId, map_name: mapName(mapId), from_map: prev.mapId });
+      if (mapId.startsWith('int-')) {
+        buildingEnteredAtRef.current = Date.now();
+        track('apply_building_entered', { building_id: mapId.slice(4), building_name: mapName(mapId) });
+      } else if (prev.mapId.startsWith('int-')) {
+        const enteredAt = buildingEnteredAtRef.current;
+        buildingEnteredAtRef.current = null;
+        track('apply_building_exited', {
+          building_id: prev.mapId.slice(4),
+          building_name: mapName(prev.mapId),
+          seconds_inside: enteredAt ? Math.round((Date.now() - enteredAt) / 1000) : null,
+        });
+      }
+    }
     const next = { ...prev, mapId, px, py, facing };
     sessionRef.current = next;
     saveSession(next);
@@ -62,6 +85,17 @@ export default function ApplyClient() {
       setDialogIdx(0);
     }
   }, []);
+
+  const stationOpenedAtRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (station) {
+      stationOpenedAtRef.current = Date.now();
+      track('apply_station_opened', { station_id: station });
+    } else if (stationOpenedAtRef.current) {
+      // station just closed; the id is gone, so read it from the last open event's ref pair
+      stationOpenedAtRef.current = null;
+    }
+  }, [station]);
 
   const advanceDialog = useCallback(() => {
     setDialog((d) => {
@@ -78,6 +112,7 @@ export default function ApplyClient() {
 
   const toggleMode = useCallback(() => {
     setMode((m) => {
+      track('apply_mode_toggled', { mode: m === 'form' ? 'world' : 'form' });
       if (m === 'form') {
         // re-sync React session from the ref so the engine remounts at the latest position
         if (sessionRef.current) setSession({ ...sessionRef.current });
@@ -139,7 +174,13 @@ export default function ApplyClient() {
             {requiredComplete(session) && !session.submitted && (
               <button
                 className="mt-2 w-full border-2 border-[#20242c] bg-[#2e7d32] px-2 py-1 font-mono text-xs font-bold text-white hover:bg-[#3a9440]"
-                onClick={() => update({ submitted: true })}
+                onClick={() => {
+                  track('apply_submitted', {
+                    bonus_points: puzzleScore(session.puzzleAnswers),
+                    puzzles_solved: puzzlesSolved(session.puzzleAnswers),
+                  });
+                  update({ submitted: true });
+                }}
               >
                 ▸ SUBMIT APPLICATION
               </button>
@@ -180,7 +221,19 @@ export default function ApplyClient() {
 
       {/* station interiors */}
       {station && (
-        <StationRouter id={station} session={session} update={update} onClose={() => setStation(null)} />
+        <StationRouter
+          id={station}
+          session={session}
+          update={update}
+          onClose={() => {
+            const openedAt = stationOpenedAtRef.current;
+            track('apply_station_closed', {
+              station_id: station,
+              seconds_open: openedAt ? Math.round((Date.now() - openedAt) / 1000) : null,
+            });
+            setStation(null);
+          }}
+        />
       )}
     </div>
   );
@@ -360,7 +413,11 @@ function IntroScreen({ update }: { update: (p: Partial<ApplySession>) => void })
         </div>
         <button
           disabled={!ready}
-          onClick={() => update({ name: name.trim(), email: email.trim(), avatar, registered: true })}
+          onClick={() => {
+            identifyApplicant(email.trim(), name.trim(), AVATARS[avatar].name);
+            track('apply_registered', { avatar: AVATARS[avatar].name });
+            update({ name: name.trim(), email: email.trim(), avatar, registered: true });
+          }}
           className="w-full border-2 border-[#20242c] bg-[#c25c10] px-4 py-2 font-mono text-sm font-bold text-white shadow-[3px_3px_0_0_rgba(32,36,44,0.4)] hover:bg-[#d8692a] active:translate-y-[2px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
         >
           ▸ ENTER TVG GROVE
@@ -390,6 +447,7 @@ function GateScreen({ onUnlock }: { onUnlock: () => void }) {
     const h = await sha256Hex(pw.trim());
     if (h === GATE_HASH) {
       localStorage.setItem('tvg-apply-gate', GATE_HASH);
+      track('apply_gate_unlocked');
       onUnlock();
     } else {
       setWrong(true);
