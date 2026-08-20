@@ -1,0 +1,5 @@
+---
+description: Include screenshots in PRs that change the website UI
+---
+
+When creating or updating a pull request for website or visual UI changes, include screenshots in the PR description. Prefer before/after crops of the affected section.

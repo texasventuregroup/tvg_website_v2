@@ -68,14 +68,13 @@ export default async function Home() {
               <span className="pill">UT Austin</span>
             </div>
 
-            {/* Title */}
-            <h1 className="text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.95] tracking-tight mb-8 max-w-[900px] animate-fade-up" style={{ animationDelay: '0.4s' }}>
-              TEXAS<br />VENTURE<br />GROUP
-            </h1>
+            {/* Title + tagline share one left edge; tagline is optically nudged to match the display T */}
+            <div className="hero-copy">
+              <h1 className="text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.95] tracking-tight mb-8 max-w-[900px] animate-fade-up" style={{ animationDelay: '0.4s' }}>
+                TEXAS<br />VENTURE<br />GROUP
+              </h1>
 
-            {/* Tagline */}
-            <div className="max-w-[680px] animate-fade-up" style={{ animationDelay: '0.6s' }}>
-              <p className="font-semibold tracking-tight leading-snug text-[clamp(1.375rem,3vw,1.875rem)] opacity-60">
+              <p className="hero-tagline max-w-[680px] animate-fade-up font-semibold tracking-tight leading-snug text-[clamp(1.375rem,3vw,1.875rem)] opacity-60" style={{ animationDelay: '0.6s' }}>
                 The ecosystem for student investors and founders at UT Austin.
               </p>
             </div>
