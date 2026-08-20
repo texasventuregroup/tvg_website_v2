@@ -74,8 +74,8 @@ export default async function Home() {
             </h1>
 
             {/* Tagline */}
-            <div className="max-w-[500px] animate-fade-up" style={{ animationDelay: '0.6s' }}>
-              <p className="font-semibold tracking-tight text-[clamp(0.875rem,2vw,1rem)] opacity-60">
+            <div className="max-w-[680px] animate-fade-up" style={{ animationDelay: '0.6s' }}>
+              <p className="font-semibold tracking-tight leading-snug text-[clamp(1.375rem,3vw,1.875rem)] opacity-60">
                 The ecosystem for student investors and founders at UT Austin.
               </p>
             </div>
