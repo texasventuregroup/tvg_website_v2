@@ -1,8 +1,23 @@
 {
   "executiveTeam": [
     {
+      "name": "Arya Mujumdar",
+      "role": "President",
+      "major": "Math",
+      "image": "/images/members/arya-mujumdar.jpg",
+      "linkedin": "https://www.linkedin.com/in/arya-mujumdar-25708b169/",
+      "bio": "I'm from Morris County, New Jersey, and I'm super interested in all things biotech. Last summer, I worked at Pfizer, and this summer, I'm excited to explore early stage biotech investing in Austin. A fun fact about me is that I've been to all 50 states, and something I'm looking forward to is going python hunting in Florida.",
+      "quote": {
+        "text": "Some people graduate with honors. I am just honored to graduate.",
+        "author": "John McEnroe"
+      },
+      "favoritePart": "My favorite part about TVG is the ability to get involved in the entrepreneurial landscape at Austin and learn about exciting new products across all industries.",
+      "favoriteBook": "Brave not Perfect By Reshma Saujani",
+      "childhoodDream": "Robot Astronaut Film Reviewer Specialist"
+    },
+    {
       "name": "Morgan Davis",
-      "role": "Director of Operations",
+      "role": "Vice President",
       "major": "Finance",
       "image": "/images/members/morgan-davis.jpg",
       "linkedin": "https://www.linkedin.com/in/morgan-davis-a6aa89292/",
@@ -16,23 +31,8 @@
       "childhoodDream": "I wanted to be a singer/songwriter and go on a world tour. :)"
     },
     {
-      "name": "Aarav Kansupada",
-      "role": "Director of Funding",
-      "major": "Business, Computer Science",
-      "image": "/images/members/aarav-kansupada.jpeg",
-      "linkedin": "https://www.linkedin.com/in/aaravkansupada/",
-      "bio": "Hi there, I'm Aarav! I'm from Irving, TX, and majoring in Computer Science Honors and Canfield Business Honors. On campus, I'm also involved with the Texas Undergraduate Investment Team. In my free time, I enjoy critiquing movies on my LetterBoxd, watching Ferrari continually lose in Formula 1, finding the optimal Catan strategy, vibecoding, and exploring Austin's food scene.",
-      "quote": {
-        "text": "It is not enough to be busy. So are the ants. The question is: What are we busy about?",
-        "author": "Henry David Thoreau"
-      },
-      "favoritePart": "How intellectually stimulating it is. TVG members are some of the most interesting people I've met, and they push me to see the world in different ways. To be honest, I didn't expect to be discussing philosophy as part of a venture club, but it's pushed me to think deeper and really reflect. That's kind of what venture is about: questioning the status quo and creating your own unique perspective on what the future looks like.",
-      "favoriteBook": "The Count of Monte Cristo by Alexandre Dumas",
-      "childhoodDream": "Growing up right outside DFW International Airport, I really wanted to be an aerospace engineer."
-    },
-    {
       "name": "Hollis Griffin",
-      "role": "Director of Education",
+      "role": "Director of External Relations",
       "major": "Philosophy, Entrepreneurship",
       "image": "/images/members/hollis-griffin.jpeg",
       "linkedin": "https://www.linkedin.com/in/hollis-griffin/",
@@ -46,8 +46,56 @@
       "childhoodDream": "I wanted to be an Astronaut. It's still a dream of mine to go to space."
     },
     {
+      "name": "Dhilan Shah",
+      "role": "Director of Education",
+      "major": "Computer Science, Philosophy, and Mathematics",
+      "image": "/images/members/dhilan_shah.png",
+      "linkedin": "https://www.linkedin.com/in/dhilan-shah-a1326820b/",
+      "bio": "I'm a Chicago native (bears/bulls/cubs superfan). Interested in cybersecurity, AI/ML, and blockchain infra. I spend way too much time playing chess and run3. I have a feeling that meaning has ties to craftsmanship.... my goal in life is to build as much cool stuff as I can. ",
+      "quote": {
+        "text": "Still wouldst thou sing, and I have ears in vain— To thy high requiem become a sod",
+        "author": "John Keats"
+      },
+      "favoritePart": "The people and culture. TVG is a community of people who want to both define and pursue success. People are curious - not just about venture and technology, but about life and morality.",
+      "favoriteBook": "Zen and the Art of Motorcycle Maintenance",
+      "childhoodDream": "Professional football player for the Chicago Bears!"
+    },
+    {
+      "name": "Julia Apuda",
+      "role": "Director of Marketing",
+      "major": "Finance",
+      "image": "/Analyst S26 Photos/Julia Apuda.jpeg",
+      "bio": "Growing up in the United Kingdom, then moving to Illinois and now Texas - I love traveling and exploring new cities! I'm passionate about publication, business, and philosophy. Outside of school, I enjoy hiking, trying different food scenes, and playing electric guitar. I'm also part of the University Finance Association (UFA) outside of TVg.",
+      "quote": {
+        "text": "Nothing is as healing as the human touch.",
+        "author": "Bobby Fischer"
+      },
+      "favoritePart": "My favorite part about TVG is being surrounded by people that have unique interests and backgrounds. I love learning from my peers within the org and exploring topics that I am unfamiliar with.",
+      "favoriteBook": "The 50th Law by Robert Greene and 50 Cent",
+      "childhoodDream": "I've always wanted to be a (serial) fiction book author. As a kid, I loved reading and writing."
+    }
+  ],
+  "chairs": [],
+  "principals": [],
+  "associates": [
+    {
+      "name": "Aarav Kansupada",
+      "role": "Associate",
+      "major": "Business, Computer Science",
+      "image": "/images/members/aarav-kansupada.jpeg",
+      "linkedin": "https://www.linkedin.com/in/aaravkansupada/",
+      "bio": "Hi there, I'm Aarav! I'm from Irving, TX, and majoring in Computer Science Honors and Canfield Business Honors. On campus, I'm also involved with the Texas Undergraduate Investment Team. In my free time, I enjoy critiquing movies on my LetterBoxd, watching Ferrari continually lose in Formula 1, finding the optimal Catan strategy, vibecoding, and exploring Austin's food scene.",
+      "quote": {
+        "text": "It is not enough to be busy. So are the ants. The question is: What are we busy about?",
+        "author": "Henry David Thoreau"
+      },
+      "favoritePart": "How intellectually stimulating it is. TVG members are some of the most interesting people I've met, and they push me to see the world in different ways. To be honest, I didn't expect to be discussing philosophy as part of a venture club, but it's pushed me to think deeper and really reflect. That's kind of what venture is about: questioning the status quo and creating your own unique perspective on what the future looks like.",
+      "favoriteBook": "The Count of Monte Cristo by Alexandre Dumas",
+      "childhoodDream": "Growing up right outside DFW International Airport, I really wanted to be an aerospace engineer."
+    },
+    {
       "name": "Judi Aly",
-      "role": "Director of Recruitment",
+      "role": "Associate",
       "major": "Business Honors",
       "image": "/images/members/judi-aly.jpeg",
       "linkedin": "https://www.linkedin.com/in/judi-aly-631099375/",
@@ -60,25 +108,6 @@
       "favoriteBook": "Crime and Punishment by Fyodor Dostoevsky",
       "childhoodDream": "I wanted to be president. Never say never but I don't think that's something I'll pursue"
     },
-    {
-      "name": "Dhilan Shah",
-      "role": "Director of Engineering",
-      "major": "Computer Science, Philosophy, and Mathematics",
-      "image": "/images/members/dhilan_shah.png",
-      "linkedin": "https://www.linkedin.com/in/dhilan-shah-a1326820b/",
-      "bio": "I'm a Chicago native (bears/bulls/cubs superfan). Interested in cybersecurity, AI/ML, and blockchain infra. I spend way too much time playing chess and run3. I have a feeling that meaning has ties to craftsmanship.... my goal in life is to build as much cool stuff as I can. ",
-      "quote": {
-        "text": "Still wouldst thou sing, and I have ears in vain— To thy high requiem become a sod",
-        "author": "John Keats"
-      },
-      "favoritePart": "The people and culture. TVG is a community of people who want to both define and pursue success. People are curious - not just about venture and technology, but about life and morality.",
-      "favoriteBook": "Zen and the Art of Motorcycle Maintenance",
-      "childhoodDream": "Professional football player for the Chicago Bears!"
-    }
-  ],
-  "chairs": [],
-  "principals": [],
-  "associates": [
     {
       "name": "Ravi Tej Guntuku",
       "role": "Associate",
@@ -123,21 +152,6 @@
       "favoritePart": "The people. Everyone has their own background, interests, and skills. But what brings us together is a shared curiosity.",
       "favoriteBook": "All About Love by bell hooks",
       "childhoodDream": "When I was a kid, I think I wanted to be an engineer without really knowing it. Growing up, I was always playing with Legos, doing puzzles, or sketching out random inventions. I loved taking ideas from my imagination and trying to bring them to life in a tangible way."
-    },
-    {
-      "name": "Arya Mujumdar",
-      "role": "Associate",
-      "major": "Math",
-      "image": "/images/members/arya-mujumdar.jpg",
-      "linkedin": "https://www.linkedin.com/in/arya-mujumdar-25708b169/",
-      "bio": "I'm from Morris County, New Jersey, and I'm super interested in all things biotech. Last summer, I worked at Pfizer, and this summer, I'm excited to explore early stage biotech investing in Austin. A fun fact about me is that I've been to all 50 states, and something I'm looking forward to is going python hunting in Florida.",
-      "quote": {
-        "text": "Some people graduate with honors. I am just honored to graduate.",
-        "author": "John McEnroe"
-      },
-      "favoritePart": "My favorite part about TVG is the ability to get involved in the entrepreneurial landscape at Austin and learn about exciting new products across all industries.",
-      "favoriteBook": "Brave not Perfect By Reshma Saujani",
-      "childhoodDream": "Robot Astronaut Film Reviewer Specialist"
     },
     {
       "name": "Leni Brooks",
@@ -681,20 +695,6 @@
       "favoritePart": "The community. I love the people in it, and I'm excited to have a great semester with them!",
       "favoriteBook": "Count of Monte Cristo",
       "childhoodDream": "Ferrari's F1 Driver"
-    },
-    {
-      "name": "Julia Apuda",
-      "role": "Analyst",
-      "major": "Finance",
-      "image": "/Analyst S26 Photos/Julia Apuda.jpeg",
-      "bio": "Growing up in the United Kingdom, then moving to Illinois and now Texas - I love traveling and exploring new cities! I'm passionate about publication, business, and philosophy. Outside of school, I enjoy hiking, trying different food scenes, and playing electric guitar. I'm also part of the University Finance Association (UFA) outside of TVg.",
-      "quote": {
-        "text": "Nothing is as healing as the human touch.",
-        "author": "Bobby Fischer"
-      },
-      "favoritePart": "My favorite part about TVG is being surrounded by people that have unique interests and backgrounds. I love learning from my peers within the org and exploring topics that I am unfamiliar with.",
-      "favoriteBook": "The 50th Law by Robert Greene and 50 Cent",
-      "childhoodDream": "I've always wanted to be a (serial) fiction book author. As a kid, I loved reading and writing."
     },
     {
       "name": "Luke Henderson",
