@@ -178,13 +178,12 @@ PRIZES:  Cash prizes + mentorship from sponsors
 └─────────────────────────────────────────┘
 
 TVG is led by a team of passionate students
-across Executive Board, Chairs, Principals,
+across Executive Board, Senior Advisors,
 Associates, and Analysts.
 
 STRUCTURE:
   /exec      → Executive leadership
-  /chairs    → Program & event chairs
-  /principals→ Senior members
+  /advisors  → Senior advisors
   /associates→ Active deal team
   /analysts  → Current cohort
 

@@ -75,6 +75,53 @@
       "childhoodDream": "I've always wanted to be a (serial) fiction book author. As a kid, I loved reading and writing."
     }
   ],
+  "seniorAdvisors": [
+    {
+      "name": "Jack Golten",
+      "role": "Senior Advisor",
+      "major": "History",
+      "image": "/images/members/jack-golten.jpg",
+      "linkedin": "https://www.linkedin.com/in/jack-golten2024/",
+      "bio": "I'm a Junior majoring in History with a Business minor, originally from NYC. Outside of my time with Texas Venture Group, I serve as the Academic Chair for Zeta Beta Tau and am in the fund team within TAMID. I'm always eager to meet new people, exchange fresh ideas, and dive into research on emerging industry trends. In my free time, I play jazz saxophone and am currently learning how to golf.",
+      "quote": {
+        "text": "When we are no longer able to change a situation - we are challenged to change ourselves.",
+        "author": "Viktor Frankl"
+      },
+      "favoritePart": "The people. Everyone has their own background, interests, and skills. But what brings us together is a shared curiosity.",
+      "favoriteBook": "All About Love by bell hooks",
+      "childhoodDream": "When I was a kid, I think I wanted to be an engineer without really knowing it. Growing up, I was always playing with Legos, doing puzzles, or sketching out random inventions. I loved taking ideas from my imagination and trying to bring them to life in a tangible way."
+    },
+    {
+      "name": "Ria Mehrotra",
+      "role": "Senior Advisor",
+      "major": "Business",
+      "image": "/images/members/ria-mehrotra.jpg",
+      "linkedin": "https://www.linkedin.com/in/riamehrotraa/",
+      "bio": "Hi! I'm Ria, a Junior studying Finance and Entrepreneurship at UT Austin. On campus, I'm involved in Texas Venture Group, Social Entrepreneurship Learning Lab, and Texas Angels. I love to play tennis, read, travel, and hang out with friends. Fun fact, I actually used to live in Australia!",
+      "quote": {
+        "text": "No knowledge is ever wasted.",
+        "author": "Unknown"
+      },
+      "favoritePart": "I love TVG for the community of driven, ambitious people. There's no other place on campus that has such people with such unique interests and perspectives and that's what makes TVG so special.",
+      "favoriteBook": "Pride and Prejudice by Jane Austen",
+      "childhoodDream": "I wanted to be a teacher or a vet!"
+    },
+    {
+      "name": "Kate Ferrer",
+      "role": "Senior Advisor",
+      "major": "Finance",
+      "image": "/images/members/kate-ferrer.jpg",
+      "linkedin": "https://www.linkedin.com/in/kate-ferrer-40621a259/",
+      "bio": "I'm a Junior studying Finance with an Economics minor from the Greater Houston area. I love learning about early stage ventures and enjoy meeting new people to share ideas. Outside of TVG, I'm also involved in Alpha Kappa Psi and enjoy running, traveling, and being outdoors.",
+      "quote": {
+        "text": "The journey of a thousand miles begins with a single step.",
+        "author": "Lao Tzu"
+      },
+      "favoritePart": "My favorite part of TVG is being immersed in the exciting world of startups and investing alongside ambitious peers that challenge me to grow.",
+      "favoriteBook": "The Idiot by Elif Bautman",
+      "childhoodDream": "I wanted to be an Architect, I was obsessed with Architectural Digest"
+    }
+  ],
   "chairs": [],
   "principals": [],
   "associates": [
@@ -137,21 +184,6 @@
       "favoritePart": "The community is really niche. Everyone has super specific interests and seem to be subject matter experts in their field.",
       "favoriteBook": "Fair Play by Greg Olsen",
       "childhoodDream": "Bob the Builder. I don’t really need to explain why."
-    },
-    {
-      "name": "Jack Golten",
-      "role": "Associate",
-      "major": "History",
-      "image": "/images/members/jack-golten.jpg",
-      "linkedin": "https://www.linkedin.com/in/jack-golten2024/",
-      "bio": "I'm a Junior majoring in History with a Business minor, originally from NYC. Outside of my time with Texas Venture Group, I serve as the Academic Chair for Zeta Beta Tau and am in the fund team within TAMID. I'm always eager to meet new people, exchange fresh ideas, and dive into research on emerging industry trends. In my free time, I play jazz saxophone and am currently learning how to golf.",
-      "quote": {
-        "text": "When we are no longer able to change a situation - we are challenged to change ourselves.",
-        "author": "Viktor Frankl"
-      },
-      "favoritePart": "The people. Everyone has their own background, interests, and skills. But what brings us together is a shared curiosity.",
-      "favoriteBook": "All About Love by bell hooks",
-      "childhoodDream": "When I was a kid, I think I wanted to be an engineer without really knowing it. Growing up, I was always playing with Legos, doing puzzles, or sketching out random inventions. I loved taking ideas from my imagination and trying to bring them to life in a tangible way."
     },
     {
       "name": "Leni Brooks",
@@ -228,21 +260,6 @@
       "childhoodDream": "I wanted to own my own patisserie in Paris."
     },
     {
-      "name": "Ria Mehrotra",
-      "role": "Associate",
-      "major": "Business",
-      "image": "/images/members/ria-mehrotra.jpg",
-      "linkedin": "https://www.linkedin.com/in/riamehrotraa/",
-      "bio": "Hi! I'm Ria, a Junior studying Finance and Entrepreneurship at UT Austin. On campus, I'm involved in Texas Venture Group, Social Entrepreneurship Learning Lab, and Texas Angels. I love to play tennis, read, travel, and hang out with friends. Fun fact, I actually used to live in Australia!",
-      "quote": {
-        "text": "No knowledge is ever wasted.",
-        "author": "Unknown"
-      },
-      "favoritePart": "I love TVG for the community of driven, ambitious people. There's no other place on campus that has such people with such unique interests and perspectives and that's what makes TVG so special.",
-      "favoriteBook": "Pride and Prejudice by Jane Austen",
-      "childhoodDream": "I wanted to be a teacher or a vet!"
-    },
-    {
       "name": "Shanaya Kabnur",
       "role": "Associate",
       "major": "Finance",
@@ -301,21 +318,6 @@
       "favoritePart": "My favorite part about TVG have been the people I have met as well as the associate projects I have had the opportunity to participate in.",
       "favoriteBook": "The Namesake by Jhumpa Lahiri",
       "childhoodDream": "Growing up, I wanted to be a doctor."
-    },
-    {
-      "name": "Kate Ferrer",
-      "role": "Associate",
-      "major": "Finance",
-      "image": "/images/members/kate-ferrer.jpg",
-      "linkedin": "https://www.linkedin.com/in/kate-ferrer-40621a259/",
-      "bio": "I'm a Junior studying Finance with an Economics minor from the Greater Houston area. I love learning about early stage ventures and enjoy meeting new people to share ideas. Outside of TVG, I'm also involved in Alpha Kappa Psi and enjoy running, traveling, and being outdoors.",
-      "quote": {
-        "text": "The journey of a thousand miles begins with a single step.",
-        "author": "Lao Tzu"
-      },
-      "favoritePart": "My favorite part of TVG is being immersed in the exciting world of startups and investing alongside ambitious peers that challenge me to grow.",
-      "favoriteBook": "The Idiot by Elif Bautman",
-      "childhoodDream": "I wanted to be an Architect, I was obsessed with Architectural Digest"
     },
     {
       "name": "Shray Jain",
