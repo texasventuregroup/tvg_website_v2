@@ -21,6 +21,7 @@ interface Member {
 
 interface MembersData {
   executiveTeam: Member[];
+  seniorAdvisors: Member[];
   chairs: Member[];
   principals: Member[];
   associates: Member[];

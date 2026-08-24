@@ -20,6 +20,7 @@ interface Member {
 
 interface MembersData {
   executiveTeam: Member[];
+  seniorAdvisors: Member[];
   chairs: Member[];
   principals: Member[];
   associates: Member[];
@@ -46,6 +47,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
   // Section filter tabs
   const allMembers = [
     ...(members.executiveTeam || []),
+    ...(members.seniorAdvisors || []),
     ...(members.associates || []),
     ...(members.analysts || []),
     ...(members.alumni || []),
@@ -54,6 +56,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
   const sections = [
     { id: 'all', label: 'All', count: allMembers.length },
     { id: 'exec', label: 'Executive', count: members.executiveTeam?.length || 0 },
+    { id: 'advisors', label: 'Senior Advisors', count: members.seniorAdvisors?.length || 0 },
     { id: 'associates', label: 'Associates', count: members.associates?.length || 0 },
     { id: 'analysts', label: 'Analysts', count: members.analysts?.length || 0 },
     { id: 'alumni', label: 'Alumni', count: members.alumni?.length || 0 },
@@ -63,6 +66,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
     switch (activeSection) {
       case 'all': return allMembers;
       case 'exec': return members.executiveTeam || [];
+      case 'advisors': return members.seniorAdvisors || [];
       case 'associates': return members.associates || [];
       case 'analysts': return members.analysts || [];
       case 'alumni': return members.alumni || [];
