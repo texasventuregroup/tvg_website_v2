@@ -27,7 +27,7 @@ const fileSystem: Record<string, FSNode> = {
 The ecosystem for student investors and founders.
 
 > Founded at The University of Texas at Austin
-> Domains: Enterprise, Fintech, Healthcare, AI/ML, Consumer, Defense
+> Domains: Enterprise, Fintech, Healthcare, AI/ML, Consumer
 > Programs: Analysts, Associates, Research, Hackathons
 
 Type 'ls' to explore directories.
@@ -347,7 +347,7 @@ const BOOT_LINES = [
   '',
   '  System Status: ONLINE',
   '  Location:      UT Austin',
-  '  Domains:       Enterprise | Fintech | Healthcare | AI/ML | Consumer | Defense',
+  '  Domains:       Enterprise | Fintech | Healthcare | AI/ML | Consumer',
   '',
   "  Type 'help' for available commands.",
   "  Type 'ls' to browse the directory.",

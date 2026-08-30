@@ -14,7 +14,6 @@ interface Domain {
 const domains: Domain[] = [
     { id: 'aiml', title: 'AI & Software', image: '/domains/aiml.png', video: '/videos/aiml.mp4', description: 'Artificial Intelligence & Developer Tools' },
     { id: 'fintech', title: 'Fintech', image: '/domains/fintech.png', video: '/videos/fintech.mp4', description: 'Financial Infrastructure' },
-    { id: 'defense', title: 'Defense', image: '/domains/defense.png', video: '/videos/defense.mp4', description: 'National Security & Dual-Use' },
     { id: 'consumer', title: 'Consumer', image: '/domains/consumer.png', video: '/videos/consumer.mp4', description: 'Social, Marketplace, & Media' },
     { id: 'healthcare', title: 'Health & Bio', image: '/domains/healthcare.png', video: '/videos/healthcare.mp4', description: 'Biotech, Healthtech, & Life Sciences' },
 ];
@@ -40,18 +39,9 @@ export default function DomainPanels({ variant = 'default' }: DomainPanelsProps)
             {/* Header */}
             {!isNews && (
                 <div className="container mx-auto px-6 pt-12 pb-8 lg:pt-16 lg:pb-12">
-                    <span className="block font-mono text-xs uppercase tracking-widest text-[#01A072] mb-3">
-                        Specialized Domains
-                    </span>
                     <h2 className="text-3xl md:text-4xl font-semibold leading-[1.1] tracking-tight text-[#fcf7f0]">
                         Where We Invest
                     </h2>
-                </div>
-            )}
-
-            {isNews && (
-                <div className="w-full border-t border-[#fcf7f0]/20 py-1.5 mb-3 text-center font-sans font-bold uppercase text-[10px] tracking-[0.3em] text-[#fcf7f0]/60">
-                    Specialized Domains
                 </div>
             )}
 
@@ -92,7 +82,7 @@ export default function DomainPanels({ variant = 'default' }: DomainPanelsProps)
                                     src={domain.image}
                                     alt={domain.title}
                                     fill
-                                    className={`object-cover ${domain.id === 'healthcare' ? 'scale-[1.35]' : ['defense', 'consumer'].includes(domain.id) ? 'scale-[1.2]' : ''}`}
+                                    className={`object-cover ${domain.id === 'healthcare' ? 'scale-[1.35]' : domain.id === 'consumer' ? 'scale-[1.2]' : ''}`}
                                     sizes="(max-width: 768px) 100vw, 33vw"
                                     priority={domain.id === 'fintech'}
                                 />

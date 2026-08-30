@@ -4,19 +4,16 @@ import { useState } from 'react';
 
 const values = [
     {
-        num: '01',
         title: 'Curiosity',
         statement: 'We ask the hard questions.',
         detail: 'We dig deeper than the headline. Genuine intellectual curiosity is the only competitive advantage that lasts.',
     },
     {
-        num: '02',
         title: 'Agency',
         statement: 'We don\'t wait for permission.',
         detail: 'High-agency individuals see a problem and solve it, without needing to be told how or when.',
     },
     {
-        num: '03',
         title: 'Critical Thinking',
         statement: 'Focused effort to tackle complex problems.',
         detail: 'Our members have this relentless drive to find the best solution.',
@@ -32,7 +29,7 @@ export default function CultureValues() {
                 const isActive = active === idx;
                 return (
                     <div
-                        key={value.num}
+                        key={value.title}
                         className={`
                             group relative p-8 rounded-2xl border transition-all duration-500 ease-out overflow-hidden
                             ${isActive
@@ -44,9 +41,6 @@ export default function CultureValues() {
                     >
                         <div className="relative z-10 h-full flex flex-col justify-between min-h-[280px]">
                             <div>
-                                <span className={`font-mono text-xs font-bold mb-6 block transition-colors duration-300 ${isActive ? 'text-[#01A072]' : 'text-[#082820]/40'}`}>
-                                    {value.num}
-                                </span>
                                 <h3 className={`text-3xl font-bold tracking-tight mb-4 transition-colors duration-300 ${isActive ? 'text-[#fcf7f0]' : 'text-[#082820]'}`}>
                                     {value.title}
                                 </h3>

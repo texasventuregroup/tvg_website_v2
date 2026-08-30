@@ -23,7 +23,7 @@
   --tvg-deep-blue: #045277;
 
   /* Typography */
-  --font-heading: var(--font-poppins), 'Poppins', sans-serif;
+  --font-heading: var(--font-outfit), 'Outfit', sans-serif;
   --font-mono: var(--font-space-mono), 'Space Mono', monospace;
 
   /* Spacing */
