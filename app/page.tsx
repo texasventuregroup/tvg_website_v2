@@ -64,7 +64,7 @@ export default async function Home() {
                 TEXAS<br />VENTURE<br />GROUP
               </h1>
 
-              <p className="hero-tagline font-semibold tracking-tight leading-snug text-[clamp(1.375rem,3vw,1.875rem)] opacity-60">
+              <p className="hero-tagline text-right font-semibold tracking-tight leading-snug text-[clamp(1.375rem,3vw,1.875rem)] opacity-60">
                 The ecosystem for student investors and founders at UT Austin.
               </p>
             </div>

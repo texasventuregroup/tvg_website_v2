@@ -494,24 +494,18 @@ h6 {
   z-index: 10;
 }
 
-/* Size the hero stack to the title so the tagline can share its right edge. */
+/* Column is the title's longest line (VENTURE). Tagline wraps and shares that right edge. */
 .hero-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  width: max-content;
+  display: grid;
+  grid-template-columns: min-content;
+  justify-items: stretch;
 }
 
-.hero-copy h1,
-.hero-copy .hero-tagline {
-  margin-left: 0;
-  padding-left: 0;
-  text-indent: 0;
+.hero-copy h1 {
+  white-space: nowrap;
 }
 
 .hero-copy .hero-tagline {
-  width: 0;
-  min-width: 100%;
   text-align: right;
 }
 
