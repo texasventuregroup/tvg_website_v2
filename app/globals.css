@@ -494,11 +494,12 @@ h6 {
   z-index: 10;
 }
 
-/* Keep the stacked title and tagline on one left axis. */
+/* Size the hero stack to the title so the tagline can share its right edge. */
 .hero-copy {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
+  width: max-content;
 }
 
 .hero-copy h1,
@@ -508,12 +509,10 @@ h6 {
   text-indent: 0;
 }
 
-/*
-  Outfit's display-size T has a heavier left crossbar than the tagline T.
-  The smaller stem reads as indented; hang the tagline so the ink lines up.
-*/
 .hero-copy .hero-tagline {
-  margin-left: -0.1em;
+  width: 0;
+  min-width: 100%;
+  text-align: right;
 }
 
 /* ========== LOGO CAROUSEL ========== */
