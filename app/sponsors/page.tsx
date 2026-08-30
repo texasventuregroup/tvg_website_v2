@@ -43,9 +43,6 @@ export default async function Sponsors() {
       {/* Hero */}
       <section className="">
         <div className="container mx-auto px-6">
-          <span className="block font-mono text-xs md:text-sm text-[#082820]/60 mb-6 tracking-widest uppercase">
-            Support &amp; Sponsorship
-          </span>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#082820] mb-8 leading-[1.1]">
             Our Sponsors
           </h1>
@@ -59,8 +56,7 @@ export default async function Sponsors() {
       <section className="py-24 bg-tvg-cream">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">Featured</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-3 text-tvg-forest">Current Sponsors</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-tvg-forest">Current Sponsors</h2>
           </div>
 
           {featured.map((sponsor) => (
@@ -126,8 +122,7 @@ export default async function Sponsors() {
       <section className="py-24 bg-[#f8f3eb]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">Thank You</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-3 text-tvg-forest">Past Sponsors</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-tvg-forest">Past Sponsors</h2>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
@@ -159,8 +154,7 @@ export default async function Sponsors() {
       <section className="py-24 bg-tvg-forest">
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-3xl mx-auto">
-            <span className="font-mono text-sm text-tvg-teal uppercase tracking-wider">Get Involved</span>
-            <h2 className="text-4xl font-bold mt-4 mb-6 text-white">Become a Sponsor</h2>
+            <h2 className="text-4xl font-bold mb-6 text-white">Become a Sponsor</h2>
             <p className="text-xl text-white/70 mb-10 leading-relaxed">
               Support the next generation of venture talent at UT Austin.
               Reach out to learn about sponsorship opportunities.

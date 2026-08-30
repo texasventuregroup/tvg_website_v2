@@ -23,7 +23,7 @@
   --tvg-deep-blue: #045277;
 
   /* Typography */
-  --font-heading: var(--font-poppins), 'Poppins', sans-serif;
+  --font-heading: var(--font-outfit), 'Outfit', sans-serif;
   --font-mono: var(--font-space-mono), 'Space Mono', monospace;
 
   /* Spacing */
@@ -494,26 +494,19 @@ h6 {
   z-index: 10;
 }
 
-/* Keep the stacked title and tagline on one left axis. */
+/* Column is the title's longest line (VENTURE). Tagline wraps and shares that right edge. */
 .hero-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: min-content;
+  justify-items: stretch;
 }
 
-.hero-copy h1,
-.hero-copy .hero-tagline {
-  margin-left: 0;
-  padding-left: 0;
-  text-indent: 0;
+.hero-copy h1 {
+  white-space: nowrap;
 }
 
-/*
-  Outfit's display-size T has a heavier left crossbar than the tagline T.
-  The smaller stem reads as indented; hang the tagline so the ink lines up.
-*/
 .hero-copy .hero-tagline {
-  margin-left: -0.1em;
+  text-align: right;
 }
 
 /* ========== LOGO CAROUSEL ========== */

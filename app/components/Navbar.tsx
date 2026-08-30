@@ -70,7 +70,6 @@ export default function Navbar() {
       ]
     },
     { href: '/events', label: 'Events' },
-    { href: '/hackathons', label: 'Hackathons' },
     { href: '/sponsors', label: 'Sponsors' },
     { href: '/members', label: 'Team' },
   ];
