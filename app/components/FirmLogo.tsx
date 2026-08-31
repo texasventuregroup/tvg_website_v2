@@ -43,7 +43,7 @@ export default function FirmLogo({ name, domain, logo, size = 48, className = ''
     if (!imgSrc || hasError) {
         return (
             <div
-                className={`bg-[#082820]/5 flex items-center justify-center shrink-0 border border-[#082820]/10 rounded-full overflow-hidden ${className}`}
+                className={`bg-[#082820]/5 flex items-center justify-center shrink-0 border border-[#082820]/10 overflow-hidden ${className}`}
                 style={{ width: size, height: size }}
             >
                 <span className="text-xs font-bold text-[#082820]/50">{name[0]}</span>

@@ -146,7 +146,7 @@ export default function Events() {
                       <div className="flex items-center gap-1.5">
                         {event.logos.map((logo) => {
                           const props = logoProps(logo);
-                          return <FirmLogo key={props.domain} {...props} size={36} className="rounded-full overflow-hidden" />;
+                          return <FirmLogo key={props.domain} {...props} size={36} />;
                         })}
                       </div>
                     )}
@@ -173,7 +173,7 @@ export default function Events() {
                         <div className="flex items-center gap-1">
                           {event.logos.map((logo) => {
                             const props = logoProps(logo);
-                            return <FirmLogo key={props.domain} {...props} size={24} className="rounded-full overflow-hidden" />;
+                            return <FirmLogo key={props.domain} {...props} size={24} />;
                           })}
                         </div>
                       )}
@@ -199,7 +199,7 @@ export default function Events() {
                 <div className="space-y-4 font-body text-sm">
                   <div className="flex justify-between border-b border-[#1a1a1a]/10 pb-2">
                     <span className="text-[#1a1a1a]/60">Total Events</span>
-                    <span className="font-black">{events.length}+</span>
+                    <span className="font-black">{events.length}</span>
                   </div>
                   <div className="flex justify-between border-b border-[#1a1a1a]/10 pb-2">
                     <span className="text-[#1a1a1a]/60">Semesters</span>
