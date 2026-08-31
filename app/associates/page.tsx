@@ -51,7 +51,7 @@ const projects = [
   {
     name: 'BoundaryML',
     type: 'AI / ML',
-    tagline: 'Technical due diligence and competitive landscape for AI infrastructure.',
+    tagline: 'Language bridging for the BAML programming language',
   },
   {
     name: 'Learn Capital',

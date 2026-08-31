@@ -121,6 +121,9 @@ export default async function Home() {
 
       {/* ========== PLACEMENT / ALUMNI SECTION ========== */}
       <section className="py-16 lg:py-[120px]">
+        <div className="container mx-auto mb-12 lg:mb-24">
+          <h2 className="label">Placement</h2>
+        </div>
         <div className="space-y-8">
           <LogoCarousel logos={row1} />
           <LogoCarousel logos={row2} reverse />
@@ -130,6 +133,7 @@ export default async function Home() {
       {/* ========== CULTURE SECTION ========== */}
       <section id="culture" className="py-16 lg:py-[120px] bg-white">
         <div className="container mx-auto">
+          <h2 className="label mb-12">Core Values</h2>
           <CultureFlipCards />
         </div>
       </section>
