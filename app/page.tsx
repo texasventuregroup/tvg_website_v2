@@ -4,7 +4,6 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import LogoCarousel, { CarouselLogo } from './components/LogoCarousel';
 import JoinButton from './components/JoinButton';
-import DomainPanels from './components/DomainPanels';
 import CultureFlipCards from './components/CultureFlipCards';
 import AustinSkylineSVG from './components/AustinSkylineSVG';
 
@@ -182,13 +181,6 @@ export default async function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ========== DOMAINS SECTION ========== */}
-      <section id="domains" className="pt-8 pb-[120px] bg-[#082820] text-[#fcf7f0]">
-        <div className="container mx-auto px-6">
-          <DomainPanels variant="newspaper" />
         </div>
       </section>
 
