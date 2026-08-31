@@ -6,7 +6,10 @@
       "image": "/images/events/skyfi-servitium.jpeg",
       "description": "Speaker Series conversation with Mike Panos, Chief Operating Officer at SkyFi, and Victoria Nguyen, Co-Founder & CEO of Servitium Cyber. Mike shared how SkyFi is transforming access to Earth observation data, making satellite imagery more accessible and actionable for businesses, governments, and individuals. Victoria walked through her journey building Servitium Cyber and the realities of building in a high-stakes, rapidly evolving industry. The conversation covered early-stage challenges and opportunities at the intersection of space tech, cybersecurity, and national security.",
       "year": "S26",
-      "logos": ["skyfi.com", "servitiumcyber.com"]
+      "logos": [
+        { "name": "SkyFi", "domain": "skyfi.com", "logo": "/images/logos/skyfi.png" },
+        { "name": "Servitium Cyber", "domain": "servitiumcyber.com", "logo": "/images/logos/servitium.png" }
+      ]
     },
     {
       "title": "TVG x Realm Alliance",
@@ -14,7 +17,9 @@
       "image": "/images/events/realm-alliance.jpeg",
       "description": "Fireside chat with Eugene Marinelli, Co-Founder & CEO of Realm Alliance, an Austin-based AI platform that predicts equipment failures and unsafe behavior to protect critical industrial operations. Previously, he co-founded Blend, serving as CTO and helping scale the lending platform to a $1B+ valuation and a NYSE IPO. Before that, he was a software engineer at Palantir and holds a B.S. and M.S. in Computer Science from Carnegie Mellon. Eugene is also an active angel investor and a Forbes 30 Under 30 alumnus.",
       "year": "S26",
-      "logos": ["realmalliance.com"]
+      "logos": [
+        { "name": "Realm Alliance", "domain": "realmalliance.com", "logo": "/images/logos/realm.png" }
+      ]
     },
     {
       "title": "TVG x Sapien",
@@ -22,7 +27,9 @@
       "image": "/images/events/sapien.jpeg",
       "description": "Fireside chat with Arya Grayeli, Co-Founder & Chief Scientist of Sapien, joined by Shrey Gupta. Sapien builds AI systems to run finance and operations across manufacturers, pizza chains, and Fortune 500 companies, and has raised $15M+ from General Catalyst, Neo, and angel investors. A former Turing scholar who published at NeurIPS, ICLR, and ICML, Arya dropped out after sophomore year to start Sapien and shared his journey founding a startup and the nuances of building production-level systems.",
       "year": "S26",
-      "logos": ["getsapien.com"]
+      "logos": [
+        { "name": "Sapien", "domain": "getsapien.com", "logo": "/images/logos/sapien.png" }
+      ]
     },
     {
       "title": "TVG x 1517 Fund",
@@ -30,7 +37,9 @@
       "image": "/images/events/1517-fund.jpeg",
       "description": "Speaker Series with 1517 Fund featuring Zak Slayback, Partner, and Michael Gibson, Co-Founder & GP. 1517 backs dropouts, hackers, and makers, and gives out 200+ $1,000 cash grants every year with no pitch deck and no strings. Zak is an investor, author, and advisor focused on pre-seed bets on technical builders working outside traditional institutions. Michael co-founded the Thiel Fellowship with Peter Thiel and backed Loom, Luminar, and Figma at inception.",
       "year": "S26",
-      "logos": ["1517.fund"]
+      "logos": [
+        { "name": "1517 Fund", "domain": "1517.fund", "logo": "/images/logos/1517.png" }
+      ]
     },
     {
       "title": "TVG x Augment",
@@ -38,7 +47,9 @@
       "image": "/images/events/augment.jpeg",
       "description": "Speaker Series conversation on AI and logistics with Augment, a Series A company that has raised $110M and has $35B in freight under management. Augment is building AI teammates that transform how logistics operators work, automating the fragmented workflows behind freight. Founded by Harish Abbott, co-founder of Deliverr (acquired by Shopify for $2.5B), and backed by Redpoint, 8VC, and Shopify Ventures.",
       "year": "S26",
-      "logos": ["goaugment.com"]
+      "logos": [
+        { "name": "Augment", "domain": "goaugment.com", "logo": "/images/logos/augment.png" }
+      ]
     },
     {
       "title": "TVG San Francisco Trek",

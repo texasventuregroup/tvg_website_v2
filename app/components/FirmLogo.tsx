@@ -43,7 +43,7 @@ export default function FirmLogo({ name, domain, logo, size = 48, className = ''
     if (!imgSrc || hasError) {
         return (
             <div
-                className={`bg-[#082820]/5 flex items-center justify-center shrink-0 border border-[#082820]/10 rounded-full ${className}`}
+                className={`bg-[#082820]/5 flex items-center justify-center shrink-0 border border-[#082820]/10 rounded-full overflow-hidden ${className}`}
                 style={{ width: size, height: size }}
             >
                 <span className="text-xs font-bold text-[#082820]/50">{name[0]}</span>
@@ -55,7 +55,7 @@ export default function FirmLogo({ name, domain, logo, size = 48, className = ''
     if (imgSrc.startsWith('/') || imgSrc.startsWith('http') === false) { // Local path check
         return (
             <div
-                className={`relative shrink-0 ${className}`}
+                className={`relative shrink-0 overflow-hidden ${className}`}
                 style={{ width: size, height: size }}
             >
                 <Image src={imgSrc} alt={name} fill className="object-contain" />
@@ -66,7 +66,7 @@ export default function FirmLogo({ name, domain, logo, size = 48, className = ''
     // Remote image (logo.dev/clearbit) - use img for error handling
     return (
         <div
-            className={`relative shrink-0 ${className}`}
+            className={`relative shrink-0 overflow-hidden ${className}`}
             style={{ width: size, height: size }}
         >
             <img

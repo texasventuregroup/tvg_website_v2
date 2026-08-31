@@ -6,13 +6,22 @@ import Image from 'next/image';
 import eventsData from '../../public/data/events.json';
 import FirmLogo from '../components/FirmLogo';
 
+type EventLogo = string | { name: string; domain: string; logo?: string };
+
 interface Event {
   title: string;
   date: string;
   image: string;
   description: string;
   year: string;
-  logos?: string[];
+  logos?: EventLogo[];
+}
+
+function logoProps(logo: EventLogo) {
+  if (typeof logo === 'string') {
+    return { name: logo.split('.')[0], domain: logo };
+  }
+  return { name: logo.name, domain: logo.domain, logo: logo.logo };
 }
 
 const treks = [
@@ -135,9 +144,10 @@ export default function Events() {
                     <span className="font-body text-[10px] uppercase tracking-[0.2em] text-[#1a1a1a]/40">{event.date}</span>
                     {event.logos && event.logos.length > 0 && (
                       <div className="flex items-center gap-1.5">
-                        {event.logos.map((domain) => (
-                          <FirmLogo key={domain} name={domain.split('.')[0]} domain={domain} size={36} className="rounded-full" />
-                        ))}
+                        {event.logos.map((logo) => {
+                          const props = logoProps(logo);
+                          return <FirmLogo key={props.domain} {...props} size={36} className="rounded-full overflow-hidden" />;
+                        })}
                       </div>
                     )}
                   </div>
@@ -161,9 +171,10 @@ export default function Events() {
                       <span className="font-body text-[9px] uppercase tracking-[0.2em] text-[#1a1a1a]/40">{event.date}</span>
                       {event.logos && event.logos.length > 0 && (
                         <div className="flex items-center gap-1">
-                          {event.logos.map((domain) => (
-                            <FirmLogo key={domain} name={domain.split('.')[0]} domain={domain} size={24} className="rounded-full" />
-                          ))}
+                          {event.logos.map((logo) => {
+                            const props = logoProps(logo);
+                            return <FirmLogo key={props.domain} {...props} size={24} className="rounded-full overflow-hidden" />;
+                          })}
                         </div>
                       )}
                     </div>
