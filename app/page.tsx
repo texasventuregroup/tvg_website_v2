@@ -58,13 +58,13 @@ export default async function Home() {
       <header className="min-h-[100svh] relative flex flex-col justify-start lg:justify-center overflow-hidden pt-40 pb-20 lg:py-0">
         <div className="container mx-auto relative z-10">
           <div className="hero-content">
-            {/* Title + tagline share the title's right edge */}
+            {/* Title + tagline share the title's width (capped at VENTURE). Tagline is left-aligned. */}
             <div className="hero-copy">
               <h1 className="text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.95] tracking-tight mb-8">
                 TEXAS<br />VENTURE<br />GROUP
               </h1>
 
-              <p className="hero-tagline text-right font-semibold tracking-tight leading-snug text-[clamp(1.375rem,3vw,1.875rem)] opacity-60">
+              <p className="hero-tagline text-left font-semibold tracking-tight leading-snug text-[clamp(1.375rem,3vw,1.875rem)] opacity-60">
                 The ecosystem for student investors and founders at UT Austin.
               </p>
             </div>
