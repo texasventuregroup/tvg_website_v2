@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 export default function Footer() {
   const pathname = usePathname();
 
-  if (pathname === '/work-with-us') return null;
+  if (pathname === '/work-with-us' || pathname === '/apply/grove') return null;
 
   return (
     <footer className="bg-[#082820] text-[#fcf7f0]">
@@ -62,6 +62,9 @@ export default function Footer() {
               </Link>
               <Link href="/members" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
                 Team
+              </Link>
+              <Link href="/apply" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+                Apply
               </Link>
             </div>
           </div>

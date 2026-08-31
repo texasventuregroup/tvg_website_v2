@@ -238,7 +238,7 @@ We work with VCs, startups, and corporates.
 │  JOIN TVG                               │
 └─────────────────────────────────────────┘
 
-Applications open each semester.
+Applications for Fall 2026 are now open.
 
 PROCESS:
   1. Written application

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { promises as fs } from 'fs';
 import path from 'path';
 import LogoCarousel, { CarouselLogo } from './components/LogoCarousel';
-import JoinButton from './components/JoinButton';
 import CultureFlipCards from './components/CultureFlipCards';
 import AustinSkylineSVG from './components/AustinSkylineSVG';
 
@@ -193,11 +192,11 @@ export default async function Home() {
           <h2 className="text-[clamp(3rem,6vw,6rem)] font-semibold mb-8 tracking-tight">
             JOIN THE EXPEDITION
           </h2>
-          <JoinButton className="btn-expedition relative overflow-hidden group">
+          <Link href="/apply" className="btn-expedition relative overflow-hidden group inline-flex items-center justify-center">
             {/* Animated snake border effect */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#01A072] to-transparent bg-[length:200%_100%] animate-[snake-border_3s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity" style={{ padding: '2px' }} />
-            <span className="relative z-10">JOIN OUR NEWSLETTER</span>
-          </JoinButton>
+            <span className="relative z-10">APPLY NOW</span>
+          </Link>
         </div>
       </section>
     </main>

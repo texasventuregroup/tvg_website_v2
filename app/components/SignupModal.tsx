@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
+import { APPLY_PORTAL_PATH } from '../config/apply';
 
 // ============================================
 // CONFIGURATION
@@ -8,7 +9,7 @@ import { createContext, useContext, useState, useCallback, useEffect, ReactNode 
 interface SignupConfig {
   title: string;
   subtitle: string;
-  deadlineDate: Date;
+  deadlineDate: Date | null;
   deadlineText: string;
   applyUrl: string | null;
   applyButtonText: string;
@@ -18,10 +19,10 @@ interface SignupConfig {
 
 const DEFAULT_CONFIG: SignupConfig = {
   title: 'Apply to TVG',
-  subtitle: 'Applications for Spring 2026 are closed. Stay tuned for Fall 2026.',
-  deadlineDate: new Date('2026-01-22T23:59:00-06:00'),
-  deadlineText: 'Thursday 01/22 by 11:59 PM CT',
-  applyUrl: null,
+  subtitle: 'Applications for Fall 2026 are now open.',
+  deadlineDate: null,
+  deadlineText: '',
+  applyUrl: APPLY_PORTAL_PATH,
   applyButtonText: 'Apply Now',
   closedButtonText: 'Applications Closed',
   contactEmail: 'contact.txventuregroup@gmail.com',
@@ -158,15 +159,18 @@ function SignupModal({ isOpen, onClose, config }: { isOpen: boolean; onClose: ()
           <h2 className="text-2xl font-light mb-4">{config.title}</h2>
           <p className="text-sm opacity-60">{config.subtitle}</p>
 
-          <CountdownDisplay targetDate={config.deadlineDate} deadlineText={config.deadlineText} />
+          {config.deadlineDate && (
+            <CountdownDisplay targetDate={config.deadlineDate} deadlineText={config.deadlineText} />
+          )}
 
-          <div className="space-y-3">
+          <div className={`space-y-3 ${config.deadlineDate ? '' : 'mt-8'}`}>
             {isApplicationOpen ? (
               <a
                 href={config.applyUrl!}
                 className="btn-primary w-full text-center"
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(config.applyUrl!.startsWith('http')
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
               >
                 {config.applyButtonText}
               </a>

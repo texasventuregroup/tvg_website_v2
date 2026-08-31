@@ -143,7 +143,11 @@ export default function MembersClient({ members }: { members: MembersData }) {
               <p className="text-sm opacity-60 max-w-md mx-auto">
                 {activeSection === 'analysts' ? (
                   <>
-                    Recruitment for Spring 2026 is complete. Check back for Fall 2026 or{' '}
+                    Fall 2026 analyst applications are open.{' '}
+                    <a href="/apply" className="underline hover:opacity-100 transition-opacity">
+                      Apply now
+                    </a>
+                    {' '}or{' '}
                     <button onClick={openModal} className="underline hover:opacity-100 transition-opacity">
                       stay updated
                     </button>.

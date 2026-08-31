@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
-import { useJoinModal } from './SignupModal';
+import { usePathname } from 'next/navigation';
 import Terminal from './Terminal';
 
 interface DropdownItem {
@@ -24,9 +23,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
-  const { openModal } = useJoinModal();
   const pathname = usePathname();
-  const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -153,6 +150,13 @@ export default function Navbar() {
               >
                 &gt;_ Terminal
               </button>
+
+              <Link
+                href="/apply"
+                className="text-sm font-medium bg-[#01A072] text-[#fcf7f0] px-4 py-2 rounded hover:bg-[#01A072]/90 transition-colors"
+              >
+                Apply
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -209,6 +213,13 @@ export default function Navbar() {
               >
                 &gt;_ Terminal
               </button>
+              <Link
+                href="/apply"
+                className="mt-3 block w-full text-center py-3 text-sm font-medium bg-[#01A072] text-[#fcf7f0] rounded hover:bg-[#01A072]/90 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Apply
+              </Link>
             </div>
           </div>
         </div>
