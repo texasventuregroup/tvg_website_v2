@@ -494,7 +494,7 @@ h6 {
   z-index: 10;
 }
 
-/* Column is the title's longest line (VENTURE). Tagline wraps and shares that right edge. */
+/* Column is the title's longest line (VENTURE). Tagline wraps inside that width, left-aligned. */
 .hero-copy {
   display: grid;
   grid-template-columns: min-content;
@@ -506,7 +506,7 @@ h6 {
 }
 
 .hero-copy .hero-tagline {
-  text-align: right;
+  text-align: left;
 }
 
 /* ========== LOGO CAROUSEL ========== */
