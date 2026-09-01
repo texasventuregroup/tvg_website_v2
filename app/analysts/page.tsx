@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { APPLY_FORM_URL } from '../config/apply';
 
 
 // ============================================
@@ -225,12 +226,14 @@ export default function Analysts() {
           <p className="text-xl text-[#082820]/60 mb-12">Applications for Fall 2026 are now open.</p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Link
-              href="/apply"
+            <a
+              href={APPLY_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 rounded-full bg-[#01A072] text-[#fcf7f0] font-medium hover:bg-[#016F4E] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1"
             >
               Apply Now
-            </Link>
+            </a>
             <Link
               href="/events"
               className="group px-8 py-4 rounded-full bg-[#082820] text-[#fcf7f0] font-medium hover:bg-[#01A072] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center gap-2"

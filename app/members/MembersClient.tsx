@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useJoinModal } from '../components/SignupModal';
+import { APPLY_FORM_URL } from '../config/apply';
 
 interface Member {
   name: string;
@@ -144,7 +145,12 @@ export default function MembersClient({ members }: { members: MembersData }) {
                 {activeSection === 'analysts' ? (
                   <>
                     Fall 2026 analyst applications are open.{' '}
-                    <a href="/apply" className="underline hover:opacity-100 transition-opacity">
+                    <a
+                      href={APPLY_FORM_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:opacity-100 transition-opacity"
+                    >
                       Apply now
                     </a>
                     {' '}or{' '}

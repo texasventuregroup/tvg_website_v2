@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import LogoCarousel, { CarouselLogo } from '../components/LogoCarousel';
-import { APPLY_PORTAL_PATH } from '../config/apply';
+import { APPLY_FORM_URL } from '../config/apply';
 
 async function getCarouselLogos(): Promise<CarouselLogo[]> {
   const filePath = path.join(process.cwd(), 'public', 'data', 'carousel-logos.json');
@@ -35,7 +35,7 @@ export default async function Join() {
             </div>
 
             <div className="flex justify-center gap-4 mt-12">
-              <a href={APPLY_PORTAL_PATH} className="px-8 py-4 rounded-sm bg-tvg-forest text-white font-bold hover:bg-tvg-forest/90 transition-all">
+              <a href={APPLY_FORM_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-sm bg-tvg-forest text-white font-bold hover:bg-tvg-forest/90 transition-all">
                 Apply Now
               </a>
               <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-tvg-forest/20 bg-white font-semibold hover:border-tvg-forest/40 transition-all">
@@ -119,7 +119,7 @@ export default async function Join() {
             <div className="p-8 bg-white rounded-xl border border-tvg-forest/10">
               <h3 className="text-xl font-bold mb-4 text-tvg-orange">How do I join?</h3>
               <p className="text-tvg-forest/80 leading-relaxed">
-                Apply through the Fall 2026 application portal. Come to info sessions first—meet us, see if it&apos;s right for you.
+                Apply when applications open each semester. Come to info sessions first—meet us, see if it&apos;s right for you.
               </p>
             </div>
             <div className="p-8 bg-white rounded-xl border border-tvg-forest/10">
@@ -153,7 +153,7 @@ export default async function Join() {
               Fall 2026 applications are open. Submit yours through the portal, or reach out with questions.
             </p>
             <div className="flex justify-center gap-4">
-              <a href={APPLY_PORTAL_PATH} className="px-8 py-4 rounded-sm bg-tvg-orange text-white font-bold hover:bg-tvg-orange/90 transition-all">
+              <a href={APPLY_FORM_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-sm bg-tvg-orange text-white font-bold hover:bg-tvg-orange/90 transition-all">
                 Apply Now
               </a>
               <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-white/20 font-semibold hover:bg-white/10 transition-all">

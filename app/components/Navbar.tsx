@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Terminal from './Terminal';
+import { APPLY_FORM_URL } from '../config/apply';
 
 interface DropdownItem {
   href: string;
@@ -73,7 +74,16 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-300 ${isScrolled
+      <div className="fixed top-0 left-0 right-0 z-[999]">
+      <a
+        href={APPLY_FORM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block w-full bg-[#01A072] text-[#fcf7f0] text-center text-xs sm:text-sm font-medium py-2 px-4 hover:bg-[#016F4E] transition-colors"
+      >
+        Apply for the Fall 2026 Analyst Class
+      </a>
+      <nav className={`transition-all duration-300 ${isScrolled
         ? 'bg-[#082820]/90 backdrop-blur-md shadow-sm'
         : 'bg-[#082820]/80 backdrop-blur-sm'
         }`}>
@@ -151,12 +161,14 @@ export default function Navbar() {
                 &gt;_ Terminal
               </button>
 
-              <Link
-                href="/apply"
+              <a
+                href={APPLY_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm font-medium bg-[#01A072] text-[#fcf7f0] px-4 py-2 rounded hover:bg-[#01A072]/90 transition-colors"
               >
                 Apply
-              </Link>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -213,17 +225,20 @@ export default function Navbar() {
               >
                 &gt;_ Terminal
               </button>
-              <Link
-                href="/apply"
+              <a
+                href={APPLY_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-3 block w-full text-center py-3 text-sm font-medium bg-[#01A072] text-[#fcf7f0] rounded hover:bg-[#01A072]/90 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Apply
-              </Link>
+              </a>
             </div>
           </div>
         </div>
       </nav>
+      </div>
 
       {/* Tap-outside overlay to close mobile menu */}
       {isMenuOpen && (

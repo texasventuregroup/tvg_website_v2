@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
-import { APPLY_PORTAL_PATH } from '../config/apply';
+import { APPLY_FORM_URL } from '../config/apply';
 
 // ============================================
 // CONFIGURATION
@@ -22,7 +22,7 @@ const DEFAULT_CONFIG: SignupConfig = {
   subtitle: 'Applications for Fall 2026 are now open.',
   deadlineDate: null,
   deadlineText: '',
-  applyUrl: APPLY_PORTAL_PATH,
+  applyUrl: APPLY_FORM_URL,
   applyButtonText: 'Apply Now',
   closedButtonText: 'Applications Closed',
   contactEmail: 'contact.txventuregroup@gmail.com',
