@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useJoinModal } from '../components/SignupModal';
+import { APPLY_FORM_URL } from '../config/apply';
 
 interface Member {
   name: string;
@@ -143,7 +144,16 @@ export default function MembersClient({ members }: { members: MembersData }) {
               <p className="text-sm opacity-60 max-w-md mx-auto">
                 {activeSection === 'analysts' ? (
                   <>
-                    Recruitment for Spring 2026 is complete. Check back for Fall 2026 or{' '}
+                    Fall 2026 analyst applications are open.{' '}
+                    <a
+                      href={APPLY_FORM_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:opacity-100 transition-opacity"
+                    >
+                      Apply now
+                    </a>
+                    {' '}or{' '}
                     <button onClick={openModal} className="underline hover:opacity-100 transition-opacity">
                       stay updated
                     </button>.

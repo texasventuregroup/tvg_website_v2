@@ -1,9 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import LogoCarousel, { CarouselLogo } from '../components/LogoCarousel';
-import Countdown from '../components/Countdown';
-
-const APPLICATION_DEADLINE = new Date('2026-01-22T23:59:00-06:00');
+import { APPLY_FORM_URL } from '../config/apply';
 
 async function getCarouselLogos(): Promise<CarouselLogo[]> {
   const filePath = path.join(process.cwd(), 'public', 'data', 'carousel-logos.json');
@@ -23,29 +21,24 @@ export default async function Join() {
             <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">Ready to Explore?</span>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 mt-4 text-tvg-forest">Join the Expedition</h1>
             <p className="text-xl text-tvg-forest/80 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Applications for Spring 2026 are closed. Stay tuned for Fall 2026.
+              Applications for Fall 2026 are now open.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <div className="flex items-center gap-2 px-6 py-2 bg-tvg-orange/10 border border-tvg-orange/20 rounded-full text-tvg-orange font-semibold">
-                <span>📅</span>
-                <span>Applications Closed</span>
-              </div>
               <div className="flex items-center gap-2 px-6 py-2 bg-tvg-green/10 border border-tvg-green/20 rounded-full text-tvg-green font-semibold">
+                <span>📅</span>
+                <span>Applications Open</span>
+              </div>
+              <div className="flex items-center gap-2 px-6 py-2 bg-tvg-orange/10 border border-tvg-orange/20 rounded-full text-tvg-orange font-semibold">
                 <span>🚀</span>
-                <span>Spring 2026 Cohort</span>
+                <span>Fall 2026 Cohort</span>
               </div>
             </div>
 
-            <Countdown
-              targetDate={APPLICATION_DEADLINE}
-              deadlineText="Thursday 01/22 by 11:59 PM CT"
-            />
-
             <div className="flex justify-center gap-4 mt-12">
-              <span className="px-8 py-4 rounded-sm border border-tvg-forest/20 bg-white font-semibold cursor-not-allowed text-tvg-forest/50">
-                Applications Closed
-              </span>
-              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm bg-tvg-forest text-white font-bold hover:bg-tvg-forest/90 transition-all">
+              <a href={APPLY_FORM_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-sm bg-tvg-forest text-white font-bold hover:bg-tvg-forest/90 transition-all">
+                Apply Now
+              </a>
+              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-tvg-forest/20 bg-white font-semibold hover:border-tvg-forest/40 transition-all">
                 Contact Us
               </a>
             </div>
@@ -155,15 +148,15 @@ export default async function Join() {
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-3xl mx-auto">
             <span className="font-mono text-sm text-tvg-teal uppercase tracking-wider">Stay Connected</span>
-            <h2 className="text-4xl font-bold mt-4 mb-6">Applications Closed</h2>
+            <h2 className="text-4xl font-bold mt-4 mb-6">Ready to Apply?</h2>
             <p className="text-xl text-white/70 mb-10 leading-relaxed">
-              Check back for Fall 2026. In the meantime, follow us and come to events.
+              Fall 2026 applications are open. Submit yours through the portal, or reach out with questions.
             </p>
             <div className="flex justify-center gap-4">
-              <span className="px-8 py-4 rounded-sm border border-white/20 font-semibold cursor-not-allowed text-white/50">
-                Applications Closed
-              </span>
-              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm bg-tvg-orange text-white font-bold hover:bg-tvg-orange/90 transition-all">
+              <a href={APPLY_FORM_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-sm bg-tvg-orange text-white font-bold hover:bg-tvg-orange/90 transition-all">
+                Apply Now
+              </a>
+              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-white/20 font-semibold hover:bg-white/10 transition-all">
                 Questions? Reach Out
               </a>
             </div>

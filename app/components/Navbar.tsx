@@ -3,9 +3,9 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
-import { useJoinModal } from './SignupModal';
+import { usePathname } from 'next/navigation';
 import Terminal from './Terminal';
+import { APPLY_FORM_URL } from '../config/apply';
 
 interface DropdownItem {
   href: string;
@@ -24,9 +24,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
-  const { openModal } = useJoinModal();
   const pathname = usePathname();
-  const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -76,7 +74,16 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-300 ${isScrolled
+      <div className="fixed top-0 left-0 right-0 z-[999]">
+      <a
+        href={APPLY_FORM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="apply-accent block w-full text-[#082820] text-center text-xs sm:text-sm font-medium py-2 px-4 transition-colors"
+      >
+        Apply for the Fall 2026 Analyst Class
+      </a>
+      <nav className={`transition-all duration-300 ${isScrolled
         ? 'bg-[#082820]/90 backdrop-blur-md shadow-sm'
         : 'bg-[#082820]/80 backdrop-blur-sm'
         }`}>
@@ -153,6 +160,15 @@ export default function Navbar() {
               >
                 &gt;_ Terminal
               </button>
+
+              <a
+                href={APPLY_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="apply-accent text-sm font-medium text-[#082820] px-4 py-2 rounded transition-colors"
+              >
+                Apply
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -209,10 +225,20 @@ export default function Navbar() {
               >
                 &gt;_ Terminal
               </button>
+              <a
+                href={APPLY_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="apply-accent mt-3 block w-full text-center py-3 text-sm font-medium text-[#082820] rounded transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Apply
+              </a>
             </div>
           </div>
         </div>
       </nav>
+      </div>
 
       {/* Tap-outside overlay to close mobile menu */}
       {isMenuOpen && (
