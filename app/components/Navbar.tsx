@@ -79,7 +79,7 @@ export default function Navbar() {
         href={APPLY_FORM_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="block w-full bg-[#fcf7f0] text-[#082820] text-center text-xs sm:text-sm font-medium py-2 px-4 hover:bg-[#f2eadf] transition-colors"
+        className="apply-accent block w-full text-[#082820] text-center text-xs sm:text-sm font-medium py-2 px-4 transition-colors"
       >
         Apply for the Fall 2026 Analyst Class
       </a>
@@ -165,7 +165,7 @@ export default function Navbar() {
                 href={APPLY_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium bg-[#fcf7f0] text-[#082820] px-4 py-2 rounded hover:bg-[#f2eadf] transition-colors"
+                className="apply-accent text-sm font-medium text-[#082820] px-4 py-2 rounded transition-colors"
               >
                 Apply
               </a>
@@ -229,7 +229,7 @@ export default function Navbar() {
                 href={APPLY_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 block w-full text-center py-3 text-sm font-medium bg-[#fcf7f0] text-[#082820] rounded hover:bg-[#f2eadf] transition-colors"
+                className="apply-accent mt-3 block w-full text-center py-3 text-sm font-medium text-[#082820] rounded transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Apply

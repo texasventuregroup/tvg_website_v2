@@ -223,6 +223,14 @@ h6 {
 
 
 
+.apply-accent {
+  background: linear-gradient(90deg, #efe4d2 0%, #f7f1e6 50%, #e6eee6 100%);
+}
+
+.apply-accent:hover {
+  background: linear-gradient(90deg, #e8d9c4 0%, #f0e8d8 50%, #dce8de 100%);
+}
+
 /* ========== BUTTONS - Concept1 Style ========== */
 .btn-primary {
   display: inline-flex;
