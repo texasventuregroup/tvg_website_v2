@@ -1,7 +1,10 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import LogoCarousel, { CarouselLogo } from '../components/LogoCarousel';
+import Countdown from '../components/Countdown';
 import { APPLY_FORM_URL } from '../config/apply';
+
+const APPLICATION_DEADLINE = new Date('2026-09-10T23:59:00-05:00');
 
 async function getCarouselLogos(): Promise<CarouselLogo[]> {
   const filePath = path.join(process.cwd(), 'public', 'data', 'carousel-logos.json');
@@ -21,12 +24,12 @@ export default async function Join() {
             <span className="font-mono text-sm text-tvg-green uppercase tracking-wider">Ready to Explore?</span>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 mt-4 text-tvg-forest">Join the Expedition</h1>
             <p className="text-xl text-tvg-forest/80 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Applications for Fall 2026 are now open.
+              Applications for Fall 2026 are open through September 10.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               <div className="flex items-center gap-2 px-6 py-2 bg-tvg-green/10 border border-tvg-green/20 rounded-full text-tvg-green font-semibold">
                 <span>📅</span>
-                <span>Applications Open</span>
+                <span>Apply by Sept 10</span>
               </div>
               <div className="flex items-center gap-2 px-6 py-2 bg-tvg-orange/10 border border-tvg-orange/20 rounded-full text-tvg-orange font-semibold">
                 <span>🚀</span>
@@ -34,11 +37,16 @@ export default async function Join() {
               </div>
             </div>
 
+            <Countdown
+              targetDate={APPLICATION_DEADLINE}
+              deadlineText="Thursday 09/10 by 11:59 PM CT"
+            />
+
             <div className="flex justify-center gap-4 mt-12">
               <a href={APPLY_FORM_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-sm bg-tvg-forest text-white font-bold hover:bg-tvg-forest/90 transition-all">
                 Apply Now
               </a>
-              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-tvg-forest/20 bg-white font-semibold hover:border-tvg-forest/40 transition-all">
+              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-tvg-forest/20 bg-white font-semibold text-tvg-forest hover:bg-tvg-forest/5 transition-all">
                 Contact Us
               </a>
             </div>
@@ -148,15 +156,15 @@ export default async function Join() {
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-3xl mx-auto">
             <span className="font-mono text-sm text-tvg-teal uppercase tracking-wider">Stay Connected</span>
-            <h2 className="text-4xl font-bold mt-4 mb-6">Ready to Apply?</h2>
+            <h2 className="text-4xl font-bold mt-4 mb-6">Applications Open</h2>
             <p className="text-xl text-white/70 mb-10 leading-relaxed">
-              Fall 2026 applications are open. Submit yours through the portal, or reach out with questions.
+              Apply for the Fall 2026 cohort by September 10 at 11:59 PM CT.
             </p>
             <div className="flex justify-center gap-4">
               <a href={APPLY_FORM_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-sm bg-tvg-orange text-white font-bold hover:bg-tvg-orange/90 transition-all">
                 Apply Now
               </a>
-              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-white/20 font-semibold hover:bg-white/10 transition-all">
+              <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-white/20 font-semibold text-white hover:bg-white/10 transition-all">
                 Questions? Reach Out
               </a>
             </div>

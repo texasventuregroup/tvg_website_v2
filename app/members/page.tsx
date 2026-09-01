@@ -73,7 +73,7 @@ export default async function MembersPage() {
           <span className="label block mb-4">Join Us</span>
           <h2 className="text-4xl font-semibold mb-6">Want To Be Part of This?</h2>
           <p className="text-sm opacity-70 max-w-md mx-auto mb-10">
-            Applications for Fall 2026 are now open.
+            Applications for Fall 2026 are open through September 10.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

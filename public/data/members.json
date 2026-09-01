@@ -75,7 +75,10 @@
       "childhoodDream": "I've always wanted to be a (serial) fiction book author. As a kid, I loved reading and writing."
     }
   ],
-  "seniorAdvisors": [
+  "seniorAdvisors": [],
+  "chairs": [],
+  "principals": [],
+  "associates": [
     {
       "name": "Jack Golten",
       "role": "Senior Advisor",
@@ -120,11 +123,7 @@
       "favoritePart": "My favorite part of TVG is being immersed in the exciting world of startups and investing alongside ambitious peers that challenge me to grow.",
       "favoriteBook": "The Idiot by Elif Bautman",
       "childhoodDream": "I wanted to be an Architect, I was obsessed with Architectural Digest"
-    }
-  ],
-  "chairs": [],
-  "principals": [],
-  "associates": [
+    },
     {
       "name": "Aarav Kansupada",
       "role": "Associate",
@@ -639,12 +638,10 @@
       "favoritePart": "I picked TVG because of the resources and the people. Every interaction with a TVG member leaves me learning something new. It’s a diverse group with completely different academic pursuits, yet everyone shares the same drive to grow personally and professionally, absorbing knowledge from any possible source.",
       "favoriteBook": "Shoe Dog by Phil Knight",
       "childhoodDream": "I wanted to be a race car driver, and by the time I was in middle school I became fascinated with the idea of autonomous cars and how they could make a real impact on how our society operates."
-    }
-  ],
-  "analysts": [
+    },
     {
       "name": "Alan Chen",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Computer Science, Mathematics (Turing Scholars)",
       "image": "/Analyst S26 Photos/Alan Chen.jpg",
       "bio": "Hi, I'm a freshman at UT Austin studying computer science and mathematics in the Turing Scholars Honors program. I'm interested in diffusion models, reinforcement learning, and AI applications for robotics and language models. Currently, I research mobile manipulation with vision-language agents and post-training methods.",
@@ -658,7 +655,7 @@
     },
     {
       "name": "Alan Schwartz",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Electrical and Computer Engineering",
       "image": "/Analyst S26 Photos/Alan Schwartz.jpg",
       "bio": "I'm currently a Sophomore Electrical and Computer Engineering major deeply curious about physics, semiconductors, computer architecture, and building startups. I was born and raised in south Florida (Miami - Fort Lauderdale area) and am half Nicaraguan. Some of the things I love doing include traveling, exploring nature, playing poker chess and soccer, running/track & field, and any water sports.",
@@ -672,7 +669,7 @@
     },
     {
       "name": "Andrew Li",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Computer Science, Business (CSB)",
       "image": "/Analyst S26 Photos/Andrew Li.jpeg",
       "bio": "I'm a sophomore in CSB and interested in low-level programming. In my free-time, you'll probably find me running around Austin, learning a new song on the guitar, or watching Spanish YouTubers.",
@@ -686,7 +683,7 @@
     },
     {
       "name": "Hamza Usman",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Business Honors, Finance",
       "image": "/Analyst S26 Photos/Hamza Usman.jpeg",
       "bio": "Hey guys, my name is Hamza Usman. I'm a freshman studying BHP and finance from Houston. I'm interested in Tech IB and VC. I love to play soccer, go thrifting, and watch movies!",
@@ -700,7 +697,7 @@
     },
     {
       "name": "Luke Henderson",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Computer Science",
       "image": "/Analyst S26 Photos/Luke Henderson.png",
       "bio": "Hi there, I am a sophomore studying Computer Science at UT Austin. I am passionate about bio/healthtech. On campus, I'm also involved with Longhorn Neurotech and the Computational Sensing and Imaging lab. In my free time, I enjoy traveling, going for runs, reading, and exploring Austin!",
@@ -714,7 +711,7 @@
     },
     {
       "name": "Maximilian Sandhu",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Business Honors",
       "image": "/Analyst S26 Photos/Maximilian Sandhu.jpeg",
       "bio": "I'm a freshman majoring in BHP with a strong interest in finance and investing. I want to explore careers in investment banking and corporate finance. Outside of school, I love running and playing golf, watching the Pittsburgh Steelers go 9-8, and crushing my friends in poker.",
@@ -728,7 +725,7 @@
     },
     {
       "name": "Melinda Dai",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Electrical and Computer Engineering, Business",
       "image": "/Analyst S26 Photos/Melinda Dai.jpg",
       "bio": "My name is Melinda and I'm from Austin, Texas. I'm a freshman majoring in ECE + Business and I'm interested in hardware (specifically integrated circuit design) and fintech. Outside of school, I love swimming, playing video games, and side questing/exploring new places to eat.",
@@ -742,7 +739,7 @@
     },
     {
       "name": "Rachel Coutinho",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Electrical and Computer Engineering, Business Honors",
       "image": "/Analyst S26 Photos/Rachel Coutinho.png",
       "bio": "Hi everyone! My name is Rachel Coutinho, and I am a student in the Electrical and Computer Engineering and Business Honors program at UT. I am interested in health tech, specifically brain-computer interfaces and wearable technology for sports. On campus, I am also involved with the Technology Consulting Group. Outside of school, you can find me playing volleyball with friends, playing card games, and going paddleboarding.",
@@ -756,7 +753,7 @@
     },
     {
       "name": "Richard Huang",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Electrical and Computer Engineering",
       "image": "/Analyst S26 Photos/Richard Huang.jpg",
       "bio": "Inspiring founder in SW/HW codesign who has EDA/AI experiences.",
@@ -770,7 +767,7 @@
     },
     {
       "name": "Shrey Birmiwal",
-      "role": "Analyst",
+      "role": "Associate",
       "major": "Computer Science",
       "image": "/Analyst S26 Photos/Shrey Birmiwal.JPG",
       "bio": "Hi! I'm Shrey Birmiwal, a freshman studying Computer Science from Austin Texas. In my free time, I'm into sports (pickleball, tennis and lifting), and music (starting to get into EDM music and enjoy DJing frat parties). Technically, I'm interested in the intersection of hardware and AI (companies like Etched, Groq, Exo, Zettascale), distributed inference (Nvidia Dynamo), and decentralized/crypto AI (Prime Intellect).",
@@ -783,161 +780,224 @@
       "childhoodDream": "Hole digger (drill deep holes)"
     }
   ],
+  "analysts": [],
   "alumni": [
     {
       "name": "Ankit Devalla",
       "linkedin": "https://www.linkedin.com/in/ankit-devalla/",
-      "image": "/images/members/ankit-devalla.jpg"
+      "image": "/images/members/ankit-devalla.jpg",
+      "role": "Alumni",
+      "major": "OpenAI"
     },
     {
       "name": "Tejas Mehta",
       "linkedin": "https://www.linkedin.com/in/tejasmehta14/",
-      "image": "/images/members/tejas-mehta.jpeg"
+      "image": "/images/members/tejas-mehta.jpeg",
+      "role": "Alumni",
+      "major": "Google"
     },
     {
       "name": "Amil Naik",
       "linkedin": "https://www.linkedin.com/in/amilnaik/",
-      "image": "/images/members/amil-naik.jpeg"
+      "image": "/images/members/amil-naik.jpeg",
+      "role": "Alumni",
+      "major": "General Medicine"
     },
     {
       "name": "Naman Sharma",
       "linkedin": "https://www.linkedin.com/in/namansharma1/",
-      "image": "/images/members/naman-sharma.jpeg"
+      "image": "/images/members/naman-sharma.jpeg",
+      "role": "Alumni",
+      "major": "Amazon Web Services"
     },
     {
       "name": "Luca Labardini",
       "linkedin": "https://www.linkedin.com/in/lucalabardini/",
-      "image": "/images/members/luca-labardini.jpeg"
+      "image": "/images/members/luca-labardini.jpeg",
+      "role": "Alumni",
+      "major": "Coresource"
     },
     {
       "name": "Sree Grandhe",
       "linkedin": "https://www.linkedin.com/in/sree-grandhe/",
-      "image": "/images/members/sree-grandhe.jpeg"
+      "image": "/images/members/sree-grandhe.jpeg",
+      "role": "Alumni",
+      "major": "Saronic"
     },
     {
       "name": "Andrew Abraham",
       "linkedin": "https://www.linkedin.com/in/andrewabraham17/",
-      "image": "/images/members/andrew-abraham.jpeg"
+      "image": "/images/members/andrew-abraham.jpeg",
+      "role": "Alumni",
+      "major": "heybuddy"
     },
     {
       "name": "Izcan Ordaz",
       "linkedin": "https://www.linkedin.com/in/izcan-ordaz-9219b5183/",
-      "image": "/images/members/izcan-ordaz.jpeg"
+      "image": "/images/members/izcan-ordaz.jpeg",
+      "role": "Alumni",
+      "major": "AlphaSense"
     },
     {
       "name": "Sejal Jain",
       "linkedin": "https://www.linkedin.com/in/sejal-jain2/",
-      "image": "/images/members/sejal-jain.jpeg"
+      "image": "/images/members/sejal-jain.jpeg",
+      "role": "Alumni",
+      "major": "Apple"
     },
     {
       "name": "Jose Herreria",
       "linkedin": "https://www.linkedin.com/in/joseherreria/",
-      "image": "/images/members/jose-herreria.jpeg"
+      "image": "/images/members/jose-herreria.jpeg",
+      "role": "Alumni",
+      "major": "Bain & Company"
     },
     {
       "name": "Surya Kaza",
       "linkedin": "https://www.linkedin.com/in/suryakaza/",
-      "image": "/images/members/surya-kaza.jpeg"
+      "image": "/images/members/surya-kaza.jpeg",
+      "role": "Alumni",
+      "major": "Footprint"
     },
     {
       "name": "Mihiro Suzuki",
       "linkedin": "https://www.linkedin.com/in/mihirosuzuki/",
-      "image": "/images/members/mihiro-suzuki.jpeg"
+      "image": "/images/members/mihiro-suzuki.jpeg",
+      "role": "Alumni",
+      "major": "Chikuya"
     },
     {
       "name": "Khosraw Azizi",
-      "linkedin": "https://www.linkedin.com/in/khosraw-azizi/",
-      "image": "/images/members/khosraw-azizi.jpg"
+      "linkedin": "https://www.linkedin.com/in/khosraw/",
+      "image": "/images/members/khosraw-azizi.jpg",
+      "role": "Alumni",
+      "major": "Pointer"
     },
     {
       "name": "Etai Geller",
       "linkedin": "https://www.linkedin.com/in/etaigeller/",
-      "image": "/images/members/etai-geller.jpg"
+      "image": "/images/members/etai-geller.jpg",
+      "role": "Alumni",
+      "major": "McKinsey & Company"
     },
     {
       "name": "Devan Patel",
       "linkedin": "https://www.linkedin.com/in/devan-patel32/",
-      "image": "/images/members/devan-patel.jpeg"
+      "image": "/images/members/devan-patel.jpeg",
+      "role": "Alumni",
+      "major": "Goldman Sachs"
     },
     {
       "name": "Sanika Bhave",
       "linkedin": "https://www.linkedin.com/in/sanikabhave/",
-      "image": "/images/members/sanika-bhave.jpeg"
+      "image": "/images/members/sanika-bhave.jpeg",
+      "role": "Alumni",
+      "major": "Harvard Business School"
     },
     {
       "name": "Avi Singh",
       "linkedin": "https://www.linkedin.com/in/avisingh-/",
-      "image": "/images/members/avi-singh.jpg"
+      "image": "/images/members/avi-singh.jpg",
+      "role": "Alumni",
+      "major": "Stanford"
     },
     {
       "name": "Ananya Kothari",
       "linkedin": "https://www.linkedin.com/in/ananya-kothari/",
-      "image": "/images/members/ananya-kothari.jpg"
+      "image": "/images/members/ananya-kothari.jpg",
+      "role": "Alumni",
+      "major": "Brokk"
     },
     {
       "name": "Charles Miele",
       "linkedin": "https://www.linkedin.com/in/charles-miele/",
-      "image": "/images/members/charles-miele.jpg"
+      "image": "/images/members/charles-miele.jpg",
+      "role": "Alumni",
+      "major": "Lazard"
     },
     {
       "name": "Mehar Poreddy",
       "linkedin": "https://www.linkedin.com/in/meharporeddy/",
-      "image": "/images/members/mehar-poreddy.jpg"
+      "image": "/images/members/mehar-poreddy.jpg",
+      "role": "Alumni",
+      "major": "N47"
     },
     {
       "name": "Jimmy Propper",
       "linkedin": "https://www.linkedin.com/in/lincolnpropper/",
-      "image": "/images/members/jimmy-propper.jpeg"
+      "image": "/images/members/jimmy-propper.jpeg",
+      "role": "Alumni",
+      "major": "Walmart"
     },
     {
       "name": "Lawrence Park",
       "linkedin": "https://www.linkedin.com/in/parklawrence/",
-      "image": "/images/members/lawrence-park.jpg"
+      "image": "/images/members/lawrence-park.jpg",
+      "role": "Alumni",
+      "major": "Warp"
     },
     {
       "name": "Maya Glenn",
       "linkedin": "https://www.linkedin.com/in/maya-glenn-mgg1968/",
-      "image": "/images/members/maya-glenn.jpeg"
+      "image": "/images/members/maya-glenn.jpeg",
+      "role": "Alumni",
+      "major": "Palantir"
     },
     {
       "name": "Shivam Siddaiya",
       "linkedin": "https://www.linkedin.com/in/shivsid/",
-      "image": "/images/members/shivam-siddaiya.jpg"
+      "image": "/images/members/shivam-siddaiya.jpg",
+      "role": "Alumni",
+      "major": "Abode Money"
     },
     {
       "name": "Ben Sherman",
       "linkedin": "https://www.linkedin.com/in/beniansherman/",
-      "image": "/images/members/ben-sherman.jpg"
+      "image": "/images/members/ben-sherman.jpg",
+      "role": "Alumni",
+      "major": "Goldman Sachs"
     },
     {
       "name": "Rafael Reynal",
       "linkedin": "https://www.linkedin.com/in/rafael-reynal/",
-      "image": "/images/members/rafael-reynal.jpg"
+      "image": "/images/members/rafael-reynal.jpg",
+      "role": "Alumni",
+      "major": "Abode Money"
     },
     {
       "name": "Shrey Gupta",
       "linkedin": "https://www.linkedin.com/in/shreygu/",
-      "image": "/images/members/shrey-gupta.jpg"
+      "image": "/images/members/shrey-gupta.jpg",
+      "role": "Alumni",
+      "major": "Sapien AI"
     },
     {
       "name": "Abhinav Bandi",
       "linkedin": "https://www.linkedin.com/in/abhi-bandi/",
-      "image": "/images/members/abhinav-bandi.jpg"
+      "image": "/images/members/abhinav-bandi.jpg",
+      "role": "Alumni",
+      "major": "Base Power"
     },
     {
       "name": "Anisya Nair",
       "linkedin": "https://www.linkedin.com/in/anisya-nair/",
-      "image": "/images/members/anisya-nair.jpg"
+      "image": "/images/members/anisya-nair.jpg",
+      "role": "Alumni",
+      "major": "EY"
     },
     {
       "name": "Logan Spector",
       "linkedin": "https://www.linkedin.com/in/loganspector/",
-      "image": "/images/members/logan-spector.jpg"
+      "image": "/images/members/logan-spector.jpg",
+      "role": "Alumni",
+      "major": "Vanderbilt"
     },
     {
       "name": "Mac Wyman",
       "linkedin": "https://www.linkedin.com/in/mac-wyman-962806266/",
-      "image": "/images/members/mac-wyman.jpg"
+      "image": "/images/members/mac-wyman.jpg",
+      "role": "Alumni",
+      "major": "NYU School of Law"
     }
   ]
 }

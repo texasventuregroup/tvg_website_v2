@@ -19,9 +19,9 @@ interface SignupConfig {
 
 const DEFAULT_CONFIG: SignupConfig = {
   title: 'Apply to TVG',
-  subtitle: 'Applications for Fall 2026 are now open.',
-  deadlineDate: null,
-  deadlineText: '',
+  subtitle: 'Applications for Fall 2026 are open through September 10.',
+  deadlineDate: new Date('2026-09-10T23:59:00-05:00'),
+  deadlineText: 'Thursday 09/10 by 11:59 PM CT',
   applyUrl: APPLY_FORM_URL,
   applyButtonText: 'Apply Now',
   closedButtonText: 'Applications Closed',
