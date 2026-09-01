@@ -79,7 +79,7 @@ export default function Navbar() {
         href={APPLY_FORM_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="block w-full bg-[#01A072] text-[#fcf7f0] text-center text-xs sm:text-sm font-medium py-2 px-4 hover:bg-[#016F4E] transition-colors"
+        className="block w-full bg-[#F24108] text-[#fcf7f0] text-center text-xs sm:text-sm font-medium py-2 px-4 hover:bg-[#c73406] transition-colors"
       >
         Apply for the Fall 2026 Analyst Class
       </a>
@@ -165,7 +165,7 @@ export default function Navbar() {
                 href={APPLY_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium bg-[#01A072] text-[#fcf7f0] px-4 py-2 rounded hover:bg-[#01A072]/90 transition-colors"
+                className="text-sm font-medium bg-[#F24108] text-[#fcf7f0] px-4 py-2 rounded hover:bg-[#c73406] transition-colors"
               >
                 Apply
               </a>
@@ -229,7 +229,7 @@ export default function Navbar() {
                 href={APPLY_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 block w-full text-center py-3 text-sm font-medium bg-[#01A072] text-[#fcf7f0] rounded hover:bg-[#01A072]/90 transition-colors"
+                className="mt-3 block w-full text-center py-3 text-sm font-medium bg-[#F24108] text-[#fcf7f0] rounded hover:bg-[#c73406] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Apply
