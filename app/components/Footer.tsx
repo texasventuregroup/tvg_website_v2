@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { APPLY_FORM_URL } from '../config/apply';
 
 export default function Footer() {
   const pathname = usePathname();
 
-  if (pathname === '/work-with-us') return null;
+  if (pathname === '/work-with-us' || pathname === '/apply') return null;
 
   return (
     <footer className="bg-[#082820] text-[#fcf7f0]">
@@ -35,7 +36,7 @@ export default function Footer() {
           <div>
             <h4 className="label text-[#01A072] mb-6">Programs</h4>
             <div className="space-y-4">
-              <Link href="/apply" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+              <Link href="/analysts" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
                 Analysts
               </Link>
               <Link href="/associates" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
@@ -63,6 +64,14 @@ export default function Footer() {
               <Link href="/members" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
                 Team
               </Link>
+              <a
+                href={APPLY_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all"
+              >
+                Apply
+              </a>
             </div>
           </div>
 

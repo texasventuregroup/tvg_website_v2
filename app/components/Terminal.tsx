@@ -39,7 +39,7 @@ Type 'open README.txt' to visit the homepage.
     children: {
       'analysts.txt': {
         type: 'file',
-        route: '/apply',
+        route: '/analysts',
         content: `
 ┌─────────────────────────────────────────┐
 │  ANALYST PROGRAM                        │
@@ -238,7 +238,7 @@ We work with VCs, startups, and corporates.
 │  JOIN TVG                               │
 └─────────────────────────────────────────┘
 
-Applications open each semester.
+Applications for Fall 2026 are now open.
 
 PROCESS:
   1. Written application

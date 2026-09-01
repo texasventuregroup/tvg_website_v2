@@ -17,7 +17,7 @@ export default function ClientHeader() {
                     <span className="opacity-60">Online</span>
                 </div>
                 <div className="p-4 hidden md:flex items-center gap-6 text-sm">
-                    <Link href="/apply" className="opacity-60 hover:opacity-100 transition-opacity">Analysts</Link>
+                    <Link href="/analysts" className="opacity-60 hover:opacity-100 transition-opacity">Analysts</Link>
                     <Link href="/associates" className="opacity-60 hover:opacity-100 transition-opacity">Associates</Link>
                     <Link href="/events" className="opacity-60 hover:opacity-100 transition-opacity">Events</Link>
                 </div>

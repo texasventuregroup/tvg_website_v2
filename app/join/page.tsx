@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import LogoCarousel, { CarouselLogo } from '../components/LogoCarousel';
 import Countdown from '../components/Countdown';
+import { APPLY_FORM_URL } from '../config/apply';
 
 const APPLICATION_DEADLINE = new Date('2026-09-10T23:59:00-05:00');
 
@@ -26,11 +27,11 @@ export default async function Join() {
               Applications for Fall 2026 are open through September 10.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <div className="flex items-center gap-2 px-6 py-2 bg-tvg-orange/10 border border-tvg-orange/20 rounded-full text-tvg-orange font-semibold">
+              <div className="flex items-center gap-2 px-6 py-2 bg-tvg-green/10 border border-tvg-green/20 rounded-full text-tvg-green font-semibold">
                 <span>📅</span>
                 <span>Apply by Sept 10</span>
               </div>
-              <div className="flex items-center gap-2 px-6 py-2 bg-tvg-green/10 border border-tvg-green/20 rounded-full text-tvg-green font-semibold">
+              <div className="flex items-center gap-2 px-6 py-2 bg-tvg-orange/10 border border-tvg-orange/20 rounded-full text-tvg-orange font-semibold">
                 <span>🚀</span>
                 <span>Fall 2026 Cohort</span>
               </div>
@@ -42,7 +43,7 @@ export default async function Join() {
             />
 
             <div className="flex justify-center gap-4 mt-12">
-              <a href="/apply" className="px-8 py-4 rounded-sm bg-tvg-forest text-white font-bold hover:bg-tvg-forest/90 transition-all">
+              <a href={APPLY_FORM_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-sm bg-tvg-forest text-white font-bold hover:bg-tvg-forest/90 transition-all">
                 Apply Now
               </a>
               <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-tvg-forest/20 bg-white font-semibold text-tvg-forest hover:bg-tvg-forest/5 transition-all">
@@ -160,7 +161,7 @@ export default async function Join() {
               Apply for the Fall 2026 cohort by September 10 at 11:59 PM CT.
             </p>
             <div className="flex justify-center gap-4">
-              <a href="/apply" className="px-8 py-4 rounded-sm bg-tvg-orange text-white font-bold hover:bg-tvg-orange/90 transition-all">
+              <a href={APPLY_FORM_URL} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-sm bg-tvg-orange text-white font-bold hover:bg-tvg-orange/90 transition-all">
                 Apply Now
               </a>
               <a href="mailto:contact.txventuregroup@gmail.com" className="px-8 py-4 rounded-sm border border-white/20 font-semibold text-white hover:bg-white/10 transition-all">

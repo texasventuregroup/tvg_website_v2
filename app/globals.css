@@ -34,6 +34,8 @@
 
   /* Transitions */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --tvg-banner-h: 2.25rem;
 }
 
 * {
@@ -48,6 +50,7 @@ body {
   font-family: var(--font-heading);
   line-height: 1.6;
   overflow-x: hidden;
+  padding-top: var(--tvg-banner-h);
 }
 
 ::selection {
@@ -219,6 +222,14 @@ h6 {
 }
 
 
+
+.apply-accent {
+  background: linear-gradient(90deg, #ead9be 0%, #f6efe4 48%, #d5e4d8 100%);
+}
+
+.apply-accent:hover {
+  background: linear-gradient(90deg, #e2cfb0 0%, #efe6d6 48%, #c8d9cc 100%);
+}
 
 /* ========== BUTTONS - Concept1 Style ========== */
 .btn-primary {

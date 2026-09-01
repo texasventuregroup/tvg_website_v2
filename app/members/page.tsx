@@ -1,9 +1,9 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import Link from 'next/link';
 import MembersClient from './MembersClient';
 import JoinButton from '../components/JoinButton';
 import Reveal from '../components/Reveal';
+import { APPLY_FORM_URL } from '../config/apply';
 
 interface Member {
   name: string;
@@ -76,10 +76,15 @@ export default async function MembersPage() {
             Applications for Fall 2026 are open through September 10.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/apply" className="px-6 py-3 bg-[#082820] text-[#fcf7f0] text-sm rounded-lg hover:bg-[#016F4E] transition-colors">
+            <a
+              href={APPLY_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
               Apply Now
-            </Link>
-            <JoinButton className="btn-primary">Stay Updated</JoinButton>
+            </a>
+            <JoinButton className="btn-secondary">Stay Updated</JoinButton>
           </div>
         </div>
       </section>
