@@ -35,25 +35,40 @@ const libre = Libre_Baskerville({
   display: 'swap',
 });
 
+const SITE_DESCRIPTION =
+  'Texas Venture Group is the student venture ecosystem at UT Austin. Analyst training, startup partnerships, and hackathons for investors and founders.';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tvg-react.vercel.app'),
-  title: 'Texas Venture Group | Student Venture Capital & Entrepreneurship',
-  description: 'The ecosystem for student investors and founders at UT Austin.',
+  metadataBase: new URL('https://www.texasventuregroup.com'),
+  title: {
+    default: 'Texas Venture Group | Student VC at UT Austin',
+    template: '%s | Texas Venture Group',
+  },
+  description: SITE_DESCRIPTION,
   keywords: ['Venture Capital', 'Entrepreneurship', 'UT Austin', 'Student Startups', 'Texas Venture Group', 'TVG'],
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/favicon-48x48.png', type: 'image/png', sizes: '48x48' },
+      { url: '/icon.png', type: 'image/png', sizes: '96x96' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
   openGraph: {
     type: 'website',
     url: '/',
-    title: 'Texas Venture Group | Student VC & Entrepreneurship',
-    description: 'The ecosystem for student investors and founders at UT Austin.',
-    images: [{ url: '/images/about/cover.webp' }],
+    siteName: 'Texas Venture Group',
+    title: 'Texas Venture Group | Student VC at UT Austin',
+    description: SITE_DESCRIPTION,
+    images: [{ url: '/images/about/cover.webp', alt: 'Texas Venture Group' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Texas Venture Group',
-    description: 'The ecosystem for student investors and founders at UT Austin.',
+    title: 'Texas Venture Group | Student VC at UT Austin',
+    description: SITE_DESCRIPTION,
     images: ['/images/about/cover.webp'],
   },
 };
@@ -66,7 +81,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${spaceMono.variable} ${playfair.variable} ${libre.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images-rebrand/logo.png" />
         {/* Preconnect to external domains for faster resource loading */}
         <link rel="preconnect" href="https://img.logo.dev" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />

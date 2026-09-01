@@ -96,6 +96,8 @@ export default function Navbar() {
                   src="/images-rebrand/logo.png"
                   alt="TVG"
                   fill
+                  priority
+                  sizes="32px"
                   className="object-contain"
                 />
               </div>
