@@ -48,7 +48,7 @@
     {
       "name": "Dhilan Shah",
       "role": "Director of Education",
-      "major": "Computer Science, Philosophy, and Mathematics",
+      "major": "Computer Science, Philosophy",
       "image": "/images/members/dhilan_shah.png",
       "linkedin": "https://www.linkedin.com/in/dhilan-shah-a1326820b/",
       "bio": "I'm a Chicago native (bears/bulls/cubs superfan). Interested in cybersecurity, AI/ML, and blockchain infra. I spend way too much time playing chess and run3. I have a feeling that meaning has ties to craftsmanship.... my goal in life is to build as much cool stuff as I can. ",
@@ -127,7 +127,7 @@
     {
       "name": "Aarav Kansupada",
       "role": "Associate",
-      "major": "Business, Computer Science",
+      "major": "Computer Science & Business Honors",
       "image": "/images/members/aarav-kansupada.jpeg",
       "linkedin": "https://www.linkedin.com/in/aaravkansupada/",
       "bio": "Hi there, I'm Aarav! I'm from Irving, TX, and majoring in Computer Science Honors and Canfield Business Honors. On campus, I'm also involved with the Texas Undergraduate Investment Team. In my free time, I enjoy critiquing movies on my LetterBoxd, watching Ferrari continually lose in Formula 1, finding the optimal Catan strategy, vibecoding, and exploring Austin's food scene.",
@@ -142,7 +142,7 @@
     {
       "name": "Judi Aly",
       "role": "Associate",
-      "major": "Business Honors",
+      "major": "Math, Business Honors",
       "image": "/images/members/judi-aly.jpeg",
       "linkedin": "https://www.linkedin.com/in/judi-aly-631099375/",
       "bio": "Howdy! I'm Judi I'm from Austin, Texas (Lake Travis) and I'm really passionate about community and sustainability. I love learning about anything related to philosophy and current events. My favorite thing to do in my free time is spending time with friends and going on walks and discovering new spots on campus.",
@@ -157,7 +157,7 @@
     {
       "name": "Ravi Tej Guntuku",
       "role": "Associate",
-      "major": "Business, Computer Science",
+      "major": "Computer Science & Business Honors",
       "image": "/images/members/ravi-tej-guntuku.png",
       "linkedin": "https://www.linkedin.com/in/ravi-tej-guntuku/",
       "bio": "I'm a sophomore in UT Austin's Computer Science and Business Program. I'm captivated by the human-centered nature of computer systems and hope to help design intuitive and frictionless digital experiences for all. In my free time, I enjoy reading philosophy, listening to country music, keeping up with politics, watching stand-up comedy, playing pickleball, or getting Insomnia Cookies with my friends. Fun fact: I'm a black belt in TaeKwonDo",
@@ -172,9 +172,9 @@
     {
       "name": "Rushi Yalamanchili",
       "role": "Associate",
-      "major": "Math, Physics",
+      "major": "Math, History",
       "image": "/images/members/rushi-yalamanchili.jpg",
-      "linkedin": "https://www.linkedin.com/in/rushi-yalamanchili/",
+      "linkedin": "https://www.linkedin.com/in/rushisy",
       "bio": "I’m majoring in mathematics and have an interest in national security. I like to run and hangout with friends. I think we often repeat history’s mistakes, and I don’t understand why. I joined TVG my fall freshman year, and have seen this organization grow a lot. It is really cool to see how many people have become interested in the organization.",
       "quote": {
         "text": "The cure for boredom is curiosity. There is no cure for curiosity.",
@@ -187,7 +187,7 @@
     {
       "name": "Leni Brooks",
       "role": "Associate",
-      "major": "Economics",
+      "major": "Business",
       "image": "/images/members/leni-brooks.jpg",
       "linkedin": "https://www.linkedin.com/in/leni-brooks-509102313/",
       "bio": "I'm from Los Angeles, California and I'm a current sophomore at UT studying government. My experiences working in hospitality has helped me gain insight into the cooperate eye of a business and my personal passion for talent and entertainment has helped me find a niche within entrepreneurship that I am excited to explore further. I am constantly looking to expand my knowledge across all verticals of business management in the startup ecosystem. My favorite things to do in my free time is travel and explore the outdoors.",
@@ -202,7 +202,7 @@
     {
       "name": "Akil Dondapati",
       "role": "Associate",
-      "major": "Finance",
+      "major": "Finance, Economics",
       "image": "/images/members/akil-dondapati.jpg",
       "linkedin": "https://www.linkedin.com/in/akildondapati/",
       "bio": "I'm a sophomore finance major from Prosper, Texas. I joined TVG in my freshman fall and have also been involved in Texas Convergent for the past three semesters. Last summer, I interned at a search fund in Philadelphia, and this past semester, I worked with a software-focused VC firm. In my free time, I enjoy lifting weights, supporting Dallas sports, and improving my chess game.",
@@ -246,7 +246,7 @@
     {
       "name": "Priya Patel",
       "role": "Associate",
-      "major": "Business",
+      "major": "Finance",
       "image": "/images/members/priya-patel.jpg",
       "linkedin": "https://www.linkedin.com/in/priya-patel-09a38b29a/",
       "bio": "Hi! I'm from Houston, Texas and am a sophomore majoring in Business. I am involved in Texas Enactus and Texas Political Consulting. In my free time, I love to try new matcha spots, read murder mysteries, research startups in the wellness industry, and travel. Fun fact: I actually used to live in Australia!",
@@ -343,7 +343,7 @@
     {
       "name": "Neha Kamble",
       "role": "Associate",
-      "major": "Business, Computer Science",
+      "major": "Computer Science & Business Honors",
       "image": "/images/members/neha-kamble.jpg",
       "linkedin": "https://www.linkedin.com/in/nehakamble33/"
     },
@@ -380,7 +380,7 @@
     {
       "name": "Shreyas Chennamaraja",
       "role": "Associate",
-      "major": "Business, Computer Science",
+      "major": "Y Combinator",
       "image": "/images/members/shreyas-chennamaraja.jpg",
       "linkedin": "https://www.linkedin.com/in/schennam/",
       "bio": "Hey! I'm a current Senior at UT studying Computer Science and Business. I love researching and learning new things related to AI/Saas, Fintech, and Consumer Tech. Outside of school, I love to travel, attend concerts, and I'm always looking to for new shows to watch.",
@@ -462,7 +462,7 @@
     {
       "name": "Nate Kaplan",
       "role": "Associate",
-      "major": "Math, Chemistry",
+      "major": "Math & Chemistry Honors",
       "image": "/images/members/nate-kaplan.jpg",
       "linkedin": "https://www.linkedin.com/in/nate-kaplan-947ab6254/",
       "bio": "I'm from South Texas and currently studying chemistry and math here at UT. I'm currently working on math research and building a few side projects. I'm passionate about experimental/explorative science and pushing the limits of what's possible. I also enjoy reading about the social sciences, immersing myself in nature, and cooking in my free time.",
@@ -477,7 +477,7 @@
     {
       "name": "Mehran Sarker",
       "role": "Associate",
-      "major": "Business, Electrical & Computer Engineering",
+      "major": "ECE & Business Honors",
       "image": "/images/members/mehran-sarker.jpg",
       "linkedin": "https://www.linkedin.com/in/mehran-sarker/",
       "bio": "I am from Houston, Texas and am currently studying Electrical Engineering and Business. I chose the double major program because I was not sure exactly what I wanted to do when coming to UT. Upon arriving to UT, I have become heavily invested with the Texas Wranglers, a men's service and spirit organization. As the current treasurer, I have enjoyed stepping into a leadership position as an underclassmen and being trusted to oversee the orgs finances. I am also a student associate at Austin Tech Incubator, an incubator that helps startups within the UT ecosystem, specifically in deep tech. Apart from that, I enjoy traveling with family, playing tennis, and volunteering for Easterseals.",
@@ -522,7 +522,7 @@
     {
       "name": "Emilia Kniestedt",
       "role": "Associate",
-      "major": "International Relations",
+      "major": "Economics",
       "image": "/images/members/emilia-kniestedt.jpeg",
       "linkedin": "https://www.linkedin.com/in/emilia-kniestedt/",
       "bio": "I am from Monterrey and San Antonio, and am currently studying International Relations, Economics, and Military Leadership. I love learning about the world, from history to politics, national security, and art. In my free time, you can find me on a long run, practicing my yoga flow, or reading four books at a time.  Outside of TVG, I'm involved in Texas CYC and Army ROTC.",
@@ -537,7 +537,7 @@
     {
       "name": "Dominic Schwarzenbach",
       "role": "Associate",
-      "major": "Business, Electrical & Computer Engineering",
+      "major": "ECE & Business Honors",
       "image": "/images/members/dominic-schwarzenbach.jpeg",
       "linkedin": "https://www.linkedin.com/in/dominic-schwarzenbach/",
       "bio": "I'm a sophomore majoring in ECE and business at UT. In my free time I like to play soccer, run, and grind brawl stars. You'll find me at the top of my premier league fantasy table, or spending time with friends. I also speak French, Swiss-German, and German and I love to travel.",
@@ -552,7 +552,7 @@
     {
       "name": "Arushi Singh",
       "role": "Associate",
-      "major": "Computer Science",
+      "major": "Electrical & Computer Engineering",
       "image": "/images/members/arushi-singh.jpeg",
       "linkedin": "https://www.linkedin.com/in/arushixsingh/",
       "bio": "I’m passionate about AI, cybersecurity, and research. I love exploring how technology shapes the world and finding ways to make it safer and smarter. I’m currently working on research about securing RAG-based LLMs, and have also spent time at startups and in enterprise tech. Outside of that, I’m really into art history and cool science. I have also sneezed inside an ancient Egyptian pot, so basically my DNA is a part of history.",
@@ -582,7 +582,7 @@
     {
       "name": "Asher Feldman",
       "role": "Associate",
-      "major": "Computer Science",
+      "major": "Y Combinator",
       "image": "/images/members/asher-feldman.jpeg",
       "linkedin": "https://www.linkedin.com/in/asher-feldman",
       "bio": "I'm on the more technical side of things as a CS major, but I feel like I manage to balance with other interests well. I've been playing guitar for about 6 years, and I'm currently playing in a band. I also love reading and playing basketball.",
@@ -597,7 +597,7 @@
     {
       "name": "Zeynep Sahin",
       "role": "Associate",
-      "major": "Business, Computer Science",
+      "major": "Computer Science & Business Honors",
       "image": "/images/members/zeynep-sahin.jpg",
       "linkedin": "https://www.linkedin.com/in/zeynepdsahin/",
       "bio": "I'm a freshman in the Computer Science and Canfield Business Honors (CSB) program at UT Austin. On campus, I'm involved in Texas Venture Group, Texas Blockchain, and Luminescence. Off campus, I've co-founded an e-commerce business and built Amazon SEO Helper, an AI-integrated Chrome extension for Amazon listing creation. In my free time, I love to travel, read, go hiking, and watch soccer. Fun fact, I've been to 22 countries and I'm looking to add more to my list! I'm also fluent in Turkish.",
@@ -642,7 +642,7 @@
     {
       "name": "Alan Chen",
       "role": "Associate",
-      "major": "Computer Science, Mathematics (Turing Scholars)",
+      "major": "Turing Scholars (Computer Science)",
       "image": "/Analyst S26 Photos/Alan Chen.jpg",
       "bio": "Hi, I'm a freshman at UT Austin studying computer science and mathematics in the Turing Scholars Honors program. I'm interested in diffusion models, reinforcement learning, and AI applications for robotics and language models. Currently, I research mobile manipulation with vision-language agents and post-training methods.",
       "quote": {
@@ -656,7 +656,7 @@
     {
       "name": "Alan Schwartz",
       "role": "Associate",
-      "major": "Electrical and Computer Engineering",
+      "major": "Electrical & Computer Engineering",
       "image": "/Analyst S26 Photos/Alan Schwartz.jpg",
       "bio": "I'm currently a Sophomore Electrical and Computer Engineering major deeply curious about physics, semiconductors, computer architecture, and building startups. I was born and raised in south Florida (Miami - Fort Lauderdale area) and am half Nicaraguan. Some of the things I love doing include traveling, exploring nature, playing poker chess and soccer, running/track & field, and any water sports.",
       "quote": {
@@ -670,7 +670,7 @@
     {
       "name": "Andrew Li",
       "role": "Associate",
-      "major": "Computer Science, Business (CSB)",
+      "major": "Computer Science & Business Honors",
       "image": "/Analyst S26 Photos/Andrew Li.jpeg",
       "bio": "I'm a sophomore in CSB and interested in low-level programming. In my free-time, you'll probably find me running around Austin, learning a new song on the guitar, or watching Spanish YouTubers.",
       "quote": {
@@ -726,7 +726,7 @@
     {
       "name": "Melinda Dai",
       "role": "Associate",
-      "major": "Electrical and Computer Engineering, Business",
+      "major": "ECE & Business Honors",
       "image": "/Analyst S26 Photos/Melinda Dai.jpg",
       "bio": "My name is Melinda and I'm from Austin, Texas. I'm a freshman majoring in ECE + Business and I'm interested in hardware (specifically integrated circuit design) and fintech. Outside of school, I love swimming, playing video games, and side questing/exploring new places to eat.",
       "quote": {
@@ -740,7 +740,7 @@
     {
       "name": "Rachel Coutinho",
       "role": "Associate",
-      "major": "Electrical and Computer Engineering, Business Honors",
+      "major": "ECE & Business Honors",
       "image": "/Analyst S26 Photos/Rachel Coutinho.png",
       "bio": "Hi everyone! My name is Rachel Coutinho, and I am a student in the Electrical and Computer Engineering and Business Honors program at UT. I am interested in health tech, specifically brain-computer interfaces and wearable technology for sports. On campus, I am also involved with the Technology Consulting Group. Outside of school, you can find me playing volleyball with friends, playing card games, and going paddleboarding.",
       "quote": {
@@ -754,7 +754,7 @@
     {
       "name": "Richard Huang",
       "role": "Associate",
-      "major": "Electrical and Computer Engineering",
+      "major": "Electrical & Computer Engineering",
       "image": "/Analyst S26 Photos/Richard Huang.jpg",
       "bio": "Inspiring founder in SW/HW codesign who has EDA/AI experiences.",
       "quote": {
