@@ -39,7 +39,7 @@ Type 'open README.txt' to visit the homepage.
     children: {
       'analysts.txt': {
         type: 'file',
-        route: '/analysts',
+        route: '/apply',
         content: `
 ┌─────────────────────────────────────────┐
 │  ANALYST PROGRAM                        │

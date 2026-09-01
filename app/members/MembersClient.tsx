@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useJoinModal } from '../components/SignupModal';
 
 interface Member {
   name: string;
@@ -31,7 +30,6 @@ interface MembersData {
 export default function MembersClient({ members }: { members: MembersData }) {
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
   const [activeSection, setActiveSection] = useState<string>('all');
-  const { openModal } = useJoinModal();
 
   useEffect(() => {
     if (selectedMember) {
@@ -47,18 +45,14 @@ export default function MembersClient({ members }: { members: MembersData }) {
   // Section filter tabs
   const allMembers = [
     ...(members.executiveTeam || []),
-    ...(members.seniorAdvisors || []),
     ...(members.associates || []),
-    ...(members.analysts || []),
     ...(members.alumni || []),
   ];
 
   const sections = [
     { id: 'all', label: 'All', count: allMembers.length },
     { id: 'exec', label: 'Executive', count: members.executiveTeam?.length || 0 },
-    { id: 'advisors', label: 'Senior Advisors', count: members.seniorAdvisors?.length || 0 },
     { id: 'associates', label: 'Associates', count: members.associates?.length || 0 },
-    { id: 'analysts', label: 'Analysts', count: members.analysts?.length || 0 },
     { id: 'alumni', label: 'Alumni', count: members.alumni?.length || 0 },
   ];
 
@@ -66,9 +60,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
     switch (activeSection) {
       case 'all': return allMembers;
       case 'exec': return members.executiveTeam || [];
-      case 'advisors': return members.seniorAdvisors || [];
       case 'associates': return members.associates || [];
-      case 'analysts': return members.analysts || [];
       case 'alumni': return members.alumni || [];
       default: return allMembers;
     }
@@ -137,20 +129,9 @@ export default function MembersClient({ members }: { members: MembersData }) {
             </div>
           ) : (
             <div className="text-center py-16">
-              <span className="label block mb-4">
-                {activeSection === 'analysts' ? 'Analysts' : 'No Members'}
-              </span>
+              <span className="label block mb-4">No Members</span>
               <p className="text-sm opacity-60 max-w-md mx-auto">
-                {activeSection === 'analysts' ? (
-                  <>
-                    Recruitment for Spring 2026 is complete. Check back for Fall 2026 or{' '}
-                    <button onClick={openModal} className="underline hover:opacity-100 transition-opacity">
-                      stay updated
-                    </button>.
-                  </>
-                ) : (
-                  'No members in this section yet.'
-                )}
+                No members in this section yet.
               </p>
             </div>
           )}

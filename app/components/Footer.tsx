@@ -35,7 +35,7 @@ export default function Footer() {
           <div>
             <h4 className="label text-[#01A072] mb-6">Programs</h4>
             <div className="space-y-4">
-              <Link href="/analysts" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
+              <Link href="/apply" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">
                 Analysts
               </Link>
               <Link href="/associates" className="block text-sm opacity-70 hover:opacity-100 hover:text-[#01A072] transition-all">

@@ -65,7 +65,7 @@ export default function Navbar() {
     {
       label: 'Programs',
       dropdown: [
-        { href: '/analysts', label: 'Analysts', description: 'Learn the fundamentals' },
+        { href: '/apply', label: 'Analysts', description: 'Learn the fundamentals' },
         { href: '/associates', label: 'Associates', description: 'Work with startups & VCs' },
       ]
     },

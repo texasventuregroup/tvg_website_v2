@@ -18,10 +18,10 @@ interface SignupConfig {
 
 const DEFAULT_CONFIG: SignupConfig = {
   title: 'Apply to TVG',
-  subtitle: 'Applications for Spring 2026 are closed. Stay tuned for Fall 2026.',
-  deadlineDate: new Date('2026-01-22T23:59:00-06:00'),
-  deadlineText: 'Thursday 01/22 by 11:59 PM CT',
-  applyUrl: null,
+  subtitle: 'Applications for Fall 2026 are open.',
+  deadlineDate: new Date('2026-09-10T23:59:00-05:00'),
+  deadlineText: 'Thursday 09/10 by 11:59 PM CT',
+  applyUrl: '/apply',
   applyButtonText: 'Apply Now',
   closedButtonText: 'Applications Closed',
   contactEmail: 'contact.txventuregroup@gmail.com',

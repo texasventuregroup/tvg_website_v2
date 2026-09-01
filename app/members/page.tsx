@@ -73,12 +73,12 @@ export default async function MembersPage() {
           <span className="label block mb-4">Join Us</span>
           <h2 className="text-4xl font-semibold mb-6">Want To Be Part of This?</h2>
           <p className="text-sm opacity-70 max-w-md mx-auto mb-10">
-            Applications for Spring 2026 are closed. Check back for Fall 2026.
+            Applications for Fall 2026 are open through September 10.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-6 py-3 border border-[#082820]/30 opacity-50 cursor-not-allowed text-sm rounded-lg">
-              Applications Closed
-            </span>
+            <Link href="/apply" className="px-6 py-3 bg-[#082820] text-[#fcf7f0] text-sm rounded-lg hover:bg-[#016F4E] transition-colors">
+              Apply Now
+            </Link>
             <JoinButton className="btn-primary">Stay Updated</JoinButton>
           </div>
         </div>

@@ -25,7 +25,7 @@ const programs = [
   {
     title: 'Analysts',
     description: 'Fundamental investing education. Market research, diligence, and thesis generation.',
-    link: '/analysts',
+    link: '/apply',
     image: '/images/analysts/tvg_pitch.jpg'
   },
   {

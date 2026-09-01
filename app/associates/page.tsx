@@ -247,7 +247,7 @@ export default function Associates() {
           <p className="text-xl text-[#082820]/60 mb-12">Associates are selected from our analyst alumni each spring.</p>
 
           <Link
-            href="/analysts"
+            href="/apply"
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#082820] text-[#fcf7f0] font-medium hover:bg-[#01A072] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1"
           >
             Start as an Analyst
