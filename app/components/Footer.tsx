@@ -22,7 +22,8 @@ export default function Footer() {
                   src="/images-rebrand/logo.png"
                   alt="TVG"
                   fill
-                  className="object-contain brightness-0 invert"
+                  sizes="32px"
+                  className="object-contain"
                 />
               </div>
               <span className="font-semibold text-lg">TVG</span>
