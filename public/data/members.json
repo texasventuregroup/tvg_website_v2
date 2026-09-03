@@ -53,7 +53,7 @@
       "linkedin": "https://www.linkedin.com/in/dhilan-shah-a1326820b/",
       "bio": "I'm a Chicago native (bears/bulls/cubs superfan). Interested in cybersecurity, AI/ML, and blockchain infra. I spend way too much time playing chess and run3. I have a feeling that meaning has ties to craftsmanship.... my goal in life is to build as much cool stuff as I can. ",
       "quote": {
-        "text": "Still wouldst thou sing, and I have ears in vain— To thy high requiem become a sod",
+        "text": "Still wouldst thou sing, and I have ears in vain\u2014 To thy high requiem become a sod",
         "author": "John Keats"
       },
       "favoritePart": "The people and culture. TVG is a community of people who want to both define and pursue success. People are curious - not just about venture and technology, but about life and morality.",
@@ -176,14 +176,14 @@
       "major": "Math, History",
       "image": "/images/members/rushi-yalamanchili.jpg",
       "linkedin": "https://www.linkedin.com/in/rushisy",
-      "bio": "I’m majoring in mathematics and have an interest in national security. I like to run and hangout with friends. I think we often repeat history’s mistakes, and I don’t understand why. I joined TVG my fall freshman year, and have seen this organization grow a lot. It is really cool to see how many people have become interested in the organization.",
+      "bio": "I\u2019m majoring in mathematics and have an interest in national security. I like to run and hangout with friends. I think we often repeat history\u2019s mistakes, and I don\u2019t understand why. I joined TVG my fall freshman year, and have seen this organization grow a lot. It is really cool to see how many people have become interested in the organization.",
       "quote": {
         "text": "The cure for boredom is curiosity. There is no cure for curiosity.",
         "author": "Dorothy Parker"
       },
       "favoritePart": "The community is really niche. Everyone has super specific interests and seem to be subject matter experts in their field.",
       "favoriteBook": "Fair Play by Greg Olsen",
-      "childhoodDream": "Bob the Builder. I don’t really need to explain why."
+      "childhoodDream": "Bob the Builder. I don\u2019t really need to explain why."
     },
     {
       "name": "Leni Brooks",
@@ -211,23 +211,9 @@
         "text": "I never let my schooling interfere with my education.",
         "author": "Mark Twain"
       },
-      "favoritePart": "TVG is a diverse group with unique ambitions and pursuits. Whenever I have a question about an unfamiliar space, there’s always someone who can help me understand it.",
+      "favoritePart": "TVG is a diverse group with unique ambitions and pursuits. Whenever I have a question about an unfamiliar space, there\u2019s always someone who can help me understand it.",
       "favoriteBook": "Predictably Irrational - Dan Ariely",
       "childhoodDream": "I wanted to be a firefighter, because it was one of the bravest jobs I could imagine."
-    },
-    {
-      "name": "Max Chen",
-      "role": "Associate",
-      "major": "MIS",
-      "image": "/images/members/max-chen.jpeg",
-      "linkedin": "https://www.linkedin.com/in/maxchen04/",
-      "bio": "Hi I'm Max! I'm from Houston, TX and currently studying Management Information Systems. On campus I have been previously involved with TX Momentum, TEDxUTAustin, Product@TX, and Perplexity  throwing workshops, hackathons, and conferences. I've previously dabbled in start-up projects and hope to bring those experiences into enhancing start-up events around campus. My hottest take is that coffee is best black (I am addicted).  In my free time you can find me scrolling on coffee and AI reddit forums, at the gym, watching anime, or slapping stuff on Figma and Cursor.",
-      "quote": {
-        "text": "It is not in the pursuit of happiness that we find fulfillment, it is in the happiness of pursuit.",
-        "author": "Denis Waitley"
-      },
-      "favoriteBook": "Fahrenheit 451 by Ray Bradbury",
-      "childhoodDream": "Doctor (Before I saw my brother take the MCAT)"
     },
     {
       "name": "Aaron Vedaraj",
@@ -235,12 +221,12 @@
       "major": "Business Honors, Finance, Math",
       "image": "/images/members/aaron-vedaraj.jpg",
       "linkedin": "https://www.linkedin.com/in/aaronvedaraj/",
-      "bio": "I'm from Bordentown, New Jersey, and currently a sophomore at UT Austin studying Canfield Business Honors, Finance, and Math. I'm fascinated by the story behind companies—how numbers reveal strategy, growth, and opportunity, uncovering what makes a business tick. Outside of this, I snowboard (can backflip), scuba dive, lift, and stay hooked on Bollywood movies.",
+      "bio": "I'm from Bordentown, New Jersey, and currently a sophomore at UT Austin studying Canfield Business Honors, Finance, and Math. I'm fascinated by the story behind companies\u2014how numbers reveal strategy, growth, and opportunity, uncovering what makes a business tick. Outside of this, I snowboard (can backflip), scuba dive, lift, and stay hooked on Bollywood movies.",
       "quote": {
         "text": "Originality is nothing but judicious imitation.",
         "author": "Voltaire"
       },
-      "favoritePart": "Mentorship – As an out-of-state student lost at UT, the upperclassmen at TVG took me under their wing from my first week as an analyst. They shared insights about their internships, how they learned, and how they balanced it all. Mentorship is invaluable, but at TVG, it's plentiful.",
+      "favoritePart": "Mentorship \u2013 As an out-of-state student lost at UT, the upperclassmen at TVG took me under their wing from my first week as an analyst. They shared insights about their internships, how they learned, and how they balanced it all. Mentorship is invaluable, but at TVG, it's plentiful.",
       "favoriteBook": "The Count of Monte Cristo by Alexandre Dumas",
       "childhoodDream": "I wanted to be a Lawyer or Politician!"
     },
@@ -290,58 +276,6 @@
       "childhoodDream": "As a young child, I had the same career aspirations as everyone else - policeman, president, athlete. As I matured, I slowly became drawn to technology, specifically its use in automating tedious tasks and creating new solutions that could make people's lives easier. That fascination with building and innovating led me to want to pursue a career in a computer science-related field."
     },
     {
-      "name": "Ryota Yokoyama",
-      "role": "Associate",
-      "major": "Business Analytics",
-      "image": "/images/members/ryota-yokoyama.jpg",
-      "linkedin": "https://www.linkedin.com/in/ryotayokoyama/",
-      "bio": "I'm from Tokyo, Japan, and currently a senior at the UT, studying Business Analytics and Finance. I’m passionate about the intersection of finance and data, particularly how analytical insights drive strategic decision-making. Beyond academics, I love exploring new food, traveling to new places, and playing tennis in my free time.",
-      "quote": {
-        "text": "夢なき者に成功なし(Those who have no dreams will have no success.)",
-        "author": "Shōin Yoshida"
-      },
-      "favoritePart": "The best part about TVG is meeting amazing people with diverse interests and passions. Being part of such a dynamic community has been both exciting and truly inspiring.",
-      "favoriteBook": "The Wright Brothers by David McCullough",
-      "childhoodDream": "When I was a kid, I wanted to be an engineer. I was fascinated by how things worked and enjoyed solving problems, whether it was building things or understanding complex systems."
-    },
-    {
-      "name": "Isha Dhingra",
-      "role": "Associate",
-      "major": "Accounting",
-      "image": "/images/members/isha-dhingra.jpg",
-      "linkedin": "https://www.linkedin.com/in/isha-d/",
-      "bio": "I'm a freshman in the Business Analytics program at UT Austin. I'm passionate about finance and accounting, and I enjoy learning about the latest trends in the industry. In my free time, I love to read and explore new places.",
-      "quote": {
-        "text": "Luck is what happens when preparation meets opportunity.",
-        "author": "Seneca"
-      },
-      "favoritePart": "My favorite part about TVG have been the people I have met as well as the associate projects I have had the opportunity to participate in.",
-      "favoriteBook": "The Namesake by Jhumpa Lahiri",
-      "childhoodDream": "Growing up, I wanted to be a doctor."
-    },
-    {
-      "name": "Shray Jain",
-      "role": "Associate",
-      "major": "Computer Science",
-      "image": "/images/members/shray-jain.jpg",
-      "linkedin": "https://www.linkedin.com/in/shray-jain-a35ba6255/"
-    },
-    {
-      "name": "Mac Macaul",
-      "role": "Associate",
-      "major": "Finance",
-      "image": "/images/members/mac-macaul.jpg",
-      "linkedin": "https://www.linkedin.com/in/macmacaul/",
-      "bio": "My name is Mac and I’m a senior from Houston studying Finance. I enjoy learning about venture, startups, theology, and real estate. I love playing sports, watching anime, reading, and serving at my church. I’m also elite at Super Smash Bros Ultimate.",
-      "quote": {
-        "text": "Your lack of commitment is an insult to the people who believe in you",
-        "author": "Conor McGregor"
-      },
-      "favoritePart": "My favorite part about TVG is that it brings together a diverse group of people—different in where they come from, their interests, and their skills. However, despite these differences, we all share core values like ambition, teamwork, and kindness. At UT, it's easy to stay within familiar circles that feel like home, but TVG offers a special community of new people who embody the same principles I hold close.",
-      "favoriteBook": "The Old Man and the Sea - Ernest Hemingway",
-      "childhoodDream": "Whenever I saw a product, I was curious about what was behind it. I wanted to be one of the people creating and distributing it, seeing it stocked in every Walmart. But this aspiration has always clashed with the fact that, since lower school, every teacher, friend, and parent told me I should be a lawyer. Hopefully, one day, these two paths will come together in a way that makes sense for me."
-    },
-    {
       "name": "Neha Kamble",
       "role": "Associate",
       "major": "Computer Science & Business Honors",
@@ -349,57 +283,12 @@
       "linkedin": "https://www.linkedin.com/in/nehakamble33/"
     },
     {
-      "name": "Avner Lipszyc",
-      "role": "Associate",
-      "major": "Economics",
-      "image": "/images/members/avner-lipszyc.jpg",
-      "linkedin": "https://www.linkedin.com/in/avner-lipszyc/",
-      "bio": "I'm a Senior Econ and CS student from Dallas, Texas. I built a VC backed startup focused on synthetic data. Now tinkering on side projects in fintech and OSS ML. I love running, lifting weights, and meeting new people.",
-      "quote": {
-        "text": "All the returns in life, whether in wealth, relationships, or knowledge, come from compound interest.",
-        "author": "Naval Ravikant"
-      },
-      "favoritePart": "I love hearing about peoples ideas and figuring what I can do to help them achieve their goals. I love hearing about peoples ideas and figuring what I can do to help them achieve their goals.",
-      "favoriteBook": "Elon Musk – Walter Isaacson",
-      "childhoodDream": "Soccer player for Liverpool. Soccer player for Liverpool."
-    },
-    {
-      "name": "Aditya Rai",
-      "role": "Associate",
-      "major": "Computer Science",
-      "image": "/images/members/aditya-rai.jpg",
-      "linkedin": "https://www.linkedin.com/in/raiaditya1/",
-      "bio": "I’m a Senior and work at Saronic Technologies, building boat drones for the US Armed Forces. Outside of work, I enjoy doing math, messing around with new puzzles, studying history, and playing poker / board games.",
-      "quote": {
-        "text": "A wrong decision is better than indecision.",
-        "author": "Tony Soprano"
-      },
-      "favoritePart": "Speaker sessions and SIG presentations. They're both pretty great opportunities to peek into an industry I wouldn't have otherwise explored.",
-      "favoriteBook": "The Slight Edge, by Jeff Olson",
-      "childhoodDream": "As a kid, I always wanted to go into streaming and entertainment. That quickly fell apart, but I still love to game with friends whenever I find the time."
-    },
-    {
-      "name": "Shreyas Chennamaraja",
-      "role": "Associate",
-      "major": "Y Combinator",
-      "image": "/images/members/shreyas-chennamaraja.jpg",
-      "linkedin": "https://www.linkedin.com/in/schennam/",
-      "bio": "Hey! I'm a current Senior at UT studying Computer Science and Business. I love researching and learning new things related to AI/Saas, Fintech, and Consumer Tech. Outside of school, I love to travel, attend concerts, and I'm always looking to for new shows to watch.",
-      "quote": {
-        "text": "Ideas don't wait. Neither should you.",
-        "author": ""
-      },
-      "favoritePart": "Being in a space with intellectually curious and ambitious students is my favorite part of TVG. Each week, I'm always learning something new.",
-      "favoriteBook": "A Long Way Down - Randall Silvis",
-      "childhoodDream": "Cartoonist for PBS Kids (I love Wild Kratts & Fetch with Ruff Ruffman)"
-    },
-    {
       "name": "Mehak Arora",
       "role": "Associate",
       "major": "Finance, Sustainability",
       "image": "/images/members/mehak-arora.jpg",
       "linkedin": "https://www.linkedin.com/in/mehak-arora-33908b2aa/",
-      "bio": "Hey! I'm from Dallas, TX but originally from Iowa 🌽🌽. I love researching at the intersection of sustainability and business and debating on greenwashing ethics. Hiking, painting, and analyzing easter eggs in music albums are some of my favorite things to do. Fun facts: One of my biggest goals in life is to be a cheese connoisseur and I used to have 21 pet slugs.",
+      "bio": "Hey! I'm from Dallas, TX but originally from Iowa \ud83c\udf3d\ud83c\udf3d. I love researching at the intersection of sustainability and business and debating on greenwashing ethics. Hiking, painting, and analyzing easter eggs in music albums are some of my favorite things to do. Fun facts: One of my biggest goals in life is to be a cheese connoisseur and I used to have 21 pet slugs.",
       "quote": {
         "text": "When people flirt with despair about the future, they are less likely to take the actions necessary to safeguard it, focusing instead on the short-term.",
         "author": "Al Gore"
@@ -407,21 +296,6 @@
       "favoritePart": "We always say that we'd like to meet like-minded people...TVG is that in a sense but so much more. I get to sit in a room full of people who each have their own vertical interests and are SO passionate about them. I feel like it's a knowledge bank of people to dumb down and explain any topic so it always feels rewarding to know what's going on in the world.",
       "favoriteBook": "Can't Hurt Me by David Goggins",
       "childhoodDream": "Cartoonist for PBS Kids (I love Wild Kratts & Fetch with Ruff Ruffman)"
-    },
-    {
-      "name": "Saachi Mehta",
-      "role": "Associate",
-      "major": "Finance",
-      "image": "/images/members/saachi-mehta.jpg",
-      "linkedin": "https://www.linkedin.com/in/saachi-mehta/",
-      "bio": "I'm a finance major at UT Austin's McCombs School of Business with experience across private equity, venture capital, and startup marketing. I've worked at Woodson Equity, at Poppi during a period of rapid growth, and most recently at CAVU Consumer Partners, a leading venture capital firm in the CPG space. I'm especially interested in social media marketing, consumer behavior, and business strategy, and I enjoy analyzing how brands build authentic connections with consumers.",
-      "quote": {
-        "text": "Ideas don't wait. Neither should you.",
-        "author": ""
-      },
-      "favoritePart": "I love getting real, hands on experience with venture capital and working with a group of very driven, like minded people. It's been amazing to learn from investors, analyzing startups, and getting a deeper look into how the industry works.",
-      "favoriteBook": "Can't Hurt Me by David Goggins",
-      "childhoodDream": "I wanted to be an astronaut and have always been interested in space. When I was in high school, I took an astrophysics class at Harvard and still find the field fascinating today."
     },
     {
       "name": "Justin Shapiro",
@@ -456,7 +330,7 @@
         "text": "If you don't play to win, don't play at all",
         "author": "Tom Brady"
       },
-      "favoritePart": "The people. I can't stress the A+ caliber of the people in TVG — all with unique interests and a ravenous appetite to learn. I strongly believe it's one of the best communities of builders on campus.",
+      "favoritePart": "The people. I can't stress the A+ caliber of the people in TVG \u2014 all with unique interests and a ravenous appetite to learn. I strongly believe it's one of the best communities of builders on campus.",
       "favoriteBook": "Sapiens by Yuval Harari",
       "childhoodDream": "I wanted to be a coach. I was always drawn to the idea of being part of an organization that is bigger than you."
     },
@@ -496,7 +370,7 @@
       "major": "Finance, Math",
       "image": "/images/members/karthik-pelleti.jpg",
       "linkedin": "https://www.linkedin.com/in/karthikp-/",
-      "bio": "I'm studying Finance and Math at UT Austin. As a kid, I built empires out of Legos—now I build software, deeptech, and startups. When I'm not tinkering, I make chocolate as a chocolatier and sail with the Texas Longhorns Sailing Team. Currently building a stealth AI startup. Always creating, learning, laughing, and connecting.",
+      "bio": "I'm studying Finance and Math at UT Austin. As a kid, I built empires out of Legos\u2014now I build software, deeptech, and startups. When I'm not tinkering, I make chocolate as a chocolatier and sail with the Texas Longhorns Sailing Team. Currently building a stealth AI startup. Always creating, learning, laughing, and connecting.",
       "quote": {
         "text": "The things you think about determine the quality of your mind. Your soul takes on the color of your thoughts.",
         "author": "Marcus Aurelius"
@@ -556,7 +430,7 @@
       "major": "Electrical & Computer Engineering",
       "image": "/images/members/arushi-singh.jpeg",
       "linkedin": "https://www.linkedin.com/in/arushixsingh/",
-      "bio": "I’m passionate about AI, cybersecurity, and research. I love exploring how technology shapes the world and finding ways to make it safer and smarter. I’m currently working on research about securing RAG-based LLMs, and have also spent time at startups and in enterprise tech. Outside of that, I’m really into art history and cool science. I have also sneezed inside an ancient Egyptian pot, so basically my DNA is a part of history.",
+      "bio": "I\u2019m passionate about AI, cybersecurity, and research. I love exploring how technology shapes the world and finding ways to make it safer and smarter. I\u2019m currently working on research about securing RAG-based LLMs, and have also spent time at startups and in enterprise tech. Outside of that, I\u2019m really into art history and cool science. I have also sneezed inside an ancient Egyptian pot, so basically my DNA is a part of history.",
       "quote": {
         "text": "Build an irrefutable stack of evidence that you are who you say you are",
         "author": ""
@@ -631,12 +505,12 @@
       "major": "Computer Science",
       "image": "/images/members/rishik-kolpekwar.jpeg",
       "linkedin": "https://www.linkedin.com/in/rishik-kolpekwar/",
-      "bio": "I am from Round Rock, Texas. I am involved within the Med-Tech space trying to further pursue my startup, MedMorphIQ. I love working on innovations and projects structured to make a positive impact. Outside of tvg, I am also involved in Texas Guadaloop and I love playing tennis and pickleball in my free time. I love exploring, whether it’s taking long drives with no set destination or going on weekend hikes.",
+      "bio": "I am from Round Rock, Texas. I am involved within the Med-Tech space trying to further pursue my startup, MedMorphIQ. I love working on innovations and projects structured to make a positive impact. Outside of tvg, I am also involved in Texas Guadaloop and I love playing tennis and pickleball in my free time. I love exploring, whether it\u2019s taking long drives with no set destination or going on weekend hikes.",
       "quote": {
         "text": "Some people want it to happen, some wish it would happen, others make it happen.",
         "author": "Michael Jordan"
       },
-      "favoritePart": "I picked TVG because of the resources and the people. Every interaction with a TVG member leaves me learning something new. It’s a diverse group with completely different academic pursuits, yet everyone shares the same drive to grow personally and professionally, absorbing knowledge from any possible source.",
+      "favoritePart": "I picked TVG because of the resources and the people. Every interaction with a TVG member leaves me learning something new. It\u2019s a diverse group with completely different academic pursuits, yet everyone shares the same drive to grow personally and professionally, absorbing knowledge from any possible source.",
       "favoriteBook": "Shoe Dog by Phil Knight",
       "childhoodDream": "I wanted to be a race car driver, and by the time I was in middle school I became fascinated with the idea of autonomous cars and how they could make a real impact on how our society operates."
     },
@@ -797,7 +671,7 @@
       "name": "Ankit Devalla",
       "linkedin": "https://www.linkedin.com/in/ankit-devalla/",
       "image": "/images/members/ankit-devalla.jpg",
-      "role": "Alumni",
+      "role": "Technical Staff",
       "major": "OpenAI"
     },
     {
@@ -944,71 +818,155 @@
       "name": "Lawrence Park",
       "linkedin": "https://www.linkedin.com/in/parklawrence/",
       "image": "/images/members/lawrence-park.jpg",
-      "role": "Alumni",
+      "role": "Software Engineer",
       "major": "Warp"
     },
     {
       "name": "Maya Glenn",
       "linkedin": "https://www.linkedin.com/in/maya-glenn-mgg1968/",
       "image": "/images/members/maya-glenn.jpeg",
-      "role": "Alumni",
+      "role": "Deployment Strategist",
       "major": "Palantir"
     },
     {
       "name": "Shivam Siddaiya",
       "linkedin": "https://www.linkedin.com/in/shivsid/",
       "image": "/images/members/shivam-siddaiya.jpg",
-      "role": "Alumni",
+      "role": "Founding Product Eng.",
       "major": "Abode Money"
     },
     {
       "name": "Ben Sherman",
       "linkedin": "https://www.linkedin.com/in/beniansherman/",
       "image": "/images/members/ben-sherman.jpg",
-      "role": "Alumni",
+      "role": "Investment Banking",
       "major": "Goldman Sachs"
     },
     {
       "name": "Rafael Reynal",
       "linkedin": "https://www.linkedin.com/in/rafael-reynal/",
       "image": "/images/members/rafael-reynal.jpg",
-      "role": "Alumni",
+      "role": "Business Operations",
       "major": "Abode Money"
     },
     {
       "name": "Shrey Gupta",
       "linkedin": "https://www.linkedin.com/in/shreygu/",
       "image": "/images/members/shrey-gupta.jpg",
-      "role": "Alumni",
+      "role": "Software Engineer",
       "major": "Sapien AI"
     },
     {
       "name": "Abhinav Bandi",
       "linkedin": "https://www.linkedin.com/in/abhi-bandi/",
       "image": "/images/members/abhinav-bandi.jpg",
-      "role": "Alumni",
+      "role": "Growth",
       "major": "Base Power"
     },
     {
       "name": "Anisya Nair",
       "linkedin": "https://www.linkedin.com/in/anisya-nair/",
       "image": "/images/members/anisya-nair.jpg",
-      "role": "Alumni",
+      "role": "Structured Finance",
       "major": "EY"
     },
     {
       "name": "Logan Spector",
       "linkedin": "https://www.linkedin.com/in/loganspector/",
       "image": "/images/members/logan-spector.jpg",
-      "role": "Alumni",
+      "role": "Masters, Finance",
       "major": "Vanderbilt"
     },
     {
       "name": "Mac Wyman",
       "linkedin": "https://www.linkedin.com/in/mac-wyman-962806266/",
       "image": "/images/members/mac-wyman.jpg",
-      "role": "Alumni",
+      "role": "Law School",
       "major": "NYU School of Law"
+    },
+    {
+      "name": "Max Chen",
+      "linkedin": "https://www.linkedin.com/in/maxchen04/",
+      "image": "/images/members/max-chen.jpeg",
+      "role": "Product Manager",
+      "major": "Tesla"
+    },
+    {
+      "name": "Ryota Yokoyama",
+      "linkedin": "https://www.linkedin.com/in/ryotayokoyama/",
+      "image": "/images/members/ryota-yokoyama.jpg",
+      "role": "Investment Banking",
+      "major": "J.P. Morgan"
+    },
+    {
+      "name": "Isha Dhingra",
+      "linkedin": "https://www.linkedin.com/in/isha-d/",
+      "image": "/images/members/isha-dhingra.jpg",
+      "role": "Masters, Accounting",
+      "major": "UT Austin"
+    },
+    {
+      "name": "Shray Jain",
+      "linkedin": "https://www.linkedin.com/in/shray-jain-a35ba6255/",
+      "image": "/images/members/shray-jain.jpg",
+      "role": "Masters, Accounting",
+      "major": "Microsoft"
+    },
+    {
+      "name": "Mac Macaul",
+      "linkedin": "https://www.linkedin.com/in/macmacaul/",
+      "image": "/images/members/mac-macaul.jpg",
+      "role": "Investment Banking",
+      "major": "Wells Fargo"
+    },
+    {
+      "name": "Avner Lipszyc",
+      "linkedin": "https://www.linkedin.com/in/avner-lipszyc/",
+      "image": "/images/members/avner-lipszyc.jpg",
+      "role": "Founder",
+      "major": "Stealth"
+    },
+    {
+      "name": "Aditya Rai",
+      "linkedin": "https://www.linkedin.com/in/raiaditya1/",
+      "image": "/images/members/aditya-rai.jpg",
+      "role": "Software Engineer",
+      "major": "Saronic"
+    },
+    {
+      "name": "Shreyas Chennamaraja",
+      "linkedin": "https://www.linkedin.com/in/schennam/",
+      "image": "/images/members/shreyas-chennamaraja.jpg",
+      "role": "Co-Founder & CTO",
+      "major": "Y Combinator"
+    },
+    {
+      "name": "Saachi Mehta",
+      "linkedin": "https://www.linkedin.com/in/saachi-mehta/",
+      "image": "/images/members/saachi-mehta.jpg",
+      "role": "Revenue Operations",
+      "major": "HelloPatient"
+    },
+    {
+      "name": "Netra Bhargava",
+      "linkedin": "https://www.linkedin.com/in/netrabhargava",
+      "image": "/images/members/netra-bhargava.jpg",
+      "role": "Investment Banking",
+      "major": "Guggenheim"
+    },
+    {
+      "name": "Cam Llewellyn",
+      "linkedin": "https://www.linkedin.com/in/camll",
+      "image": "/images/members/cameron-llewellyn.jpg",
+      "role": "Investor",
+      "major": "Factorial"
+    },
+    {
+      "name": "Nikhil Reddy",
+      "linkedin": "https://www.linkedin.com/in/nikhilreddy2004",
+      "image": "/images/members/nikhil-reddy.jpg",
+      "role": "Software Engineer",
+      "major": "Base Power"
     }
   ]
 }
