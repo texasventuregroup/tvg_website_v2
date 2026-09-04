@@ -35,11 +35,25 @@ const libre = Libre_Baskerville({
   display: 'swap',
 });
 
+const SITE_URL = 'https://www.texasventuregroup.com';
 const SITE_DESCRIPTION =
   'Texas Venture Group is the student venture ecosystem at UT Austin. Analyst training, startup partnerships, and hackathons for investors and founders.';
 
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Texas Venture Group',
+  url: SITE_URL,
+  logo: `${SITE_URL}/brand/icon-512.png`,
+  description: SITE_DESCRIPTION,
+  sameAs: [
+    'https://www.linkedin.com/company/texas-venture-group/',
+    'https://www.instagram.com/txventuregroup/',
+  ],
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.texasventuregroup.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Texas Venture Group | Student VC at UT Austin',
     template: '%s | Texas Venture Group',
@@ -49,13 +63,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  manifest: '/site.webmanifest',
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '48x48' },
-      { url: '/favicon-48x48.png', type: 'image/png', sizes: '48x48' },
-      { url: '/icon.png', type: 'image/png', sizes: '96x96' },
+      { url: '/brand/icon-48.png', type: 'image/png', sizes: '48x48' },
+      { url: '/brand/icon-96.png', type: 'image/png', sizes: '96x96' },
+      { url: '/brand/icon-192.png', type: 'image/png', sizes: '192x192' },
     ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+    apple: [{ url: '/brand/apple-touch-icon.png', sizes: '180x180' }],
   },
   openGraph: {
     type: 'website',
@@ -92,6 +107,10 @@ export default function RootLayout({
           as="image"
           href="/images/about/cover.webp"
           type="image/webp"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         {/* Font Awesome - loaded with low priority */}
         <link
