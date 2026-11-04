@@ -75,14 +75,6 @@ export default function Navbar() {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-[999]">
-      <a
-        href={APPLY_FORM_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="apply-accent block w-full text-[#082820] text-center text-xs sm:text-sm font-medium py-2 px-4 transition-colors"
-      >
-        Apply for the Fall 2026 Analyst Class
-      </a>
       <nav className={`transition-all duration-300 ${isScrolled
         ? 'bg-[#082820]/90 backdrop-blur-md shadow-sm'
         : 'bg-[#082820]/80 backdrop-blur-sm'
