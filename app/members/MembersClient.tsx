@@ -46,6 +46,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
   const allMembers = [
     ...(members.executiveTeam || []),
     ...(members.associates || []),
+    ...(members.analysts || []),
     ...(members.alumni || []),
   ];
 
@@ -53,6 +54,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
     { id: 'all', label: 'All', count: allMembers.length },
     { id: 'exec', label: 'Executive', count: members.executiveTeam?.length || 0 },
     { id: 'associates', label: 'Associates', count: members.associates?.length || 0 },
+    { id: 'analysts', label: 'Analysts', count: members.analysts?.length || 0 },
     { id: 'alumni', label: 'Alumni', count: members.alumni?.length || 0 },
   ];
 
@@ -61,6 +63,7 @@ export default function MembersClient({ members }: { members: MembersData }) {
       case 'all': return allMembers;
       case 'exec': return members.executiveTeam || [];
       case 'associates': return members.associates || [];
+      case 'analysts': return members.analysts || [];
       case 'alumni': return members.alumni || [];
       default: return allMembers;
     }
