@@ -665,7 +665,92 @@
       "linkedin": "https://www.linkedin.com/in/shrey-birmiwal/"
     }
   ],
-  "analysts": [],
+  "analysts": [
+    {
+      "name": "Adar Serok",
+      "role": "Analyst",
+      "major": "Chemical Engineering",
+      "image": "/images/members/adar-serok.jpg",
+      "linkedin": "https://www.linkedin.com/in/adarserok"
+    },
+    {
+      "name": "Adonia John",
+      "role": "Analyst",
+      "major": "Economics",
+      "image": "/images/members/adonia-john.jpg",
+      "linkedin": "https://www.linkedin.com/in/adonia-john"
+    },
+    {
+      "name": "Anaya Gonzalez-Balaji",
+      "role": "Analyst",
+      "major": "Plan II & Business",
+      "image": "/images/members/anaya-balaji.jpg",
+      "linkedin": "https://www.linkedin.com/in/anaya-gonzalez-balaji-163234202"
+    },
+    {
+      "name": "Arun Rajendra",
+      "role": "Analyst",
+      "major": "Electrical & Computer Engineering",
+      "image": "/images/members/arun-rajendra.jpg",
+      "linkedin": "https://www.linkedin.com/in/arunrajendra"
+    },
+    {
+      "name": "Austin Bauman",
+      "role": "Analyst",
+      "major": "Finance",
+      "image": "/images/members/austin-bauman.jpg",
+      "linkedin": "https://www.linkedin.com/in/austin-bauman"
+    },
+    {
+      "name": "Dongyeong Kim",
+      "role": "Analyst",
+      "major": "Semiconductor Science & Engineering",
+      "image": "/images/members/dongyeong-kim.jpg",
+      "linkedin": "https://www.linkedin.com/in/dongyeongkim"
+    },
+    {
+      "name": "Everett Etie",
+      "role": "Analyst",
+      "major": "Canfield Business Honors",
+      "image": "/images/members/everett-etie.jpg",
+      "linkedin": "https://www.linkedin.com/in/everettetie"
+    },
+    {
+      "name": "Krish Sadarangani",
+      "role": "Analyst",
+      "major": "Business",
+      "image": "/images/members/krish-sadarangani.jpg",
+      "linkedin": "https://www.linkedin.com/in/krish-sadarangani"
+    },
+    {
+      "name": "Madhav Vinod",
+      "role": "Analyst",
+      "major": "CS Honors & Canfield Business Honors",
+      "image": "/images/members/madhav-vinod.jpg",
+      "linkedin": "https://www.linkedin.com/in/madhav-vinod"
+    },
+    {
+      "name": "Pruthviraj Chavda",
+      "role": "Analyst",
+      "major": "Psychology",
+      "image": "/images/members/pruthviraj-chavda.jpg",
+      "linkedin": "https://www.linkedin.com/in/pruthvirajchavda"
+    },
+    {
+      "name": "Raya Patel",
+      "role": "Analyst",
+      "major": "Computational Biology",
+      "image": "/images/members/raya-patel.jpg",
+      "linkedin": "https://www.linkedin.com/in/rayaapatel"
+    },
+    {
+      "name": "Zoe Zemencsik",
+      "role": "Analyst",
+      "major": "Canfield Business Honors",
+      "image": "/images/members/zoe-zemencsik.jpg",
+      "linkedin": "https://www.linkedin.com/in/zoezemencsik"
+    }
+  ],
   "alumni": [
     {
       "name": "Ankit Devalla",
